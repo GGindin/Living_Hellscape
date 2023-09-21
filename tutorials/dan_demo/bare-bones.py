@@ -237,7 +237,6 @@ while RUNNING == True:
     # I highly recommend taking a close look at sprite.spritecollide() and related functions, if for no other reason than to understand the arguments.
     # Additionally, sprite.collide_mask is very useful, because it uses the outer boundaries of the sprite as its hitbox, instead of using a rect value, as is done traditionally.
     if pg.sprite.spritecollide(player, enemy_sprites, False, pg.sprite.collide_mask):
-        player.alive = False
         player.kill() # This call removes the player sprite from all sprite groups.
 
     # Update loop. Calls the update() functions for every indicated sprite group.
