@@ -37,7 +37,7 @@ GRASS_GREEN = pg.Color(80, 180, 30)
 
 # Screen dimensions. Useful not just for setting up the main display, but also for positioning.
 # For example, if we want an object to start from the right side of the screen, we can use SCREEN_W instead of manually typing in the position.
-SCREEN_W = 1042
+SCREEN_W = 1024
 SCREEN_H = 768
 
 # Flags are tags we can give to the set_mode() function below, which include things like FULLSCREEN, RESIZEABLE, and SCALABLE.
