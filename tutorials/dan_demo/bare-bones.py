@@ -138,6 +138,12 @@ class Player(pg.sprite.Sprite):
         
         # I don't think we need this for D-pad style movement. My additions above should handle diagonals just fine.
         # Still, I'm going to keep this here in case we change our minds. -Greg
+
+        # The joystick/dpad controls look good, and will be perfect for controller input.
+        # One thing I want to mention however is that I don't believe it would affect keyboard controls, unless I'm just looking at it wrong.
+        # The method below was recommended to me by Mattiis, the lead mod on the Pygame Discord, in response to me asking about maintaining the same speed in all directions.
+        # Not saying theirs is the word of God or anything (since I couldn't even get the damn thing to work), but their advice has been dead accurate in the past.
+        # If I can get this thing to work (which should just be a matter of getting clarification from Mattiis), and understand it better, perhaps it will handle multiple movement birds with one stone? -Dan
         """
         vel = pg.Vector2() 
 
