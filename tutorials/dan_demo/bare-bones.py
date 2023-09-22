@@ -14,6 +14,7 @@ We will be writing those separate files, and then importing them to their adjace
 # This is very much the same as Java, but without the crap.poop.crud.WhatYouActuallyWanted syntax.
 # Additionally, modules can be imported as a shorthand alias to keep things wonderfully simple.
 import random as rand
+import math as m
 
 # Pygame must be imported into the program before it can be referenced.
 # I typically import pygame as "pg" - more shorthand, easier to wield. We'll be using it a lot.
@@ -86,21 +87,37 @@ class Player(pg.sprite.Sprite):
     # In this case, we are animating with player control - movement is determined by both the arrow keys and WASD.
     # One final thing to note: notice that this method contains the argument "pressed_keys"; this is how we import player keypresses into the player sprite. More on that later.
     def update(self, pressed_keys):
+        player_basespeed = 5 # Change this to change the speed of the player sprite
+        
+        move_yaxis = 0
+        move_xaxis = 0
 
         # These controls are all 'if' statements, rather than 'if/elif' - this is so that more than one direction can be pressed at once.
         # Note also that these pressed_keys conditionals do not use the typical x==y structure, and instead use x[y].
         # This is because pressed_keys is passed as the full set of key-value pairs, and if any keys are true (i.e. K_UP=1), the associated operation is applied.
         if pressed_keys[K_UP] or pressed_keys[K_w]:
-            self.rect.move_ip(0, -5) # 'move_ip' simply means "move in place"
+            move_yaxis -= player_basespeed
+            # 'move_ip' simply means "move in place"
 
         if pressed_keys[K_DOWN] or pressed_keys[K_s]:
-            self.rect.move_ip(0, 5)
+            move_yaxis += player_basespeed
+            
 
         if pressed_keys[K_LEFT] or pressed_keys[K_a]:
-            self.rect.move_ip(-5, 0)
+            move_xaxis -= player_basespeed
+            
 
         if pressed_keys[K_RIGHT] or pressed_keys[K_d]:
-            self.rect.move_ip(5, 0)
+            move_xaxis += player_basespeed
+            
+
+        if move_xaxis != 0 and move_yaxis != 0:
+            move_xaxis = move_xaxis * m.cos(m.pi/4) # This evens out the movement speed on diagonals
+            move_yaxis = move_yaxis * m.sin(m.pi/4)
+            self.rect.move_ip(move_xaxis,move_yaxis)
+        else:
+            self.rect.move_ip(move_xaxis,move_yaxis)
+
 
         # Movement constraints. If the player sprite exceeds the boundaries of the screen, this conditional prevents them from moving off-screen.
         # This is also written as all 'if' statements, so that one constraint doesn't override another in the case of corners.
@@ -118,8 +135,11 @@ class Player(pg.sprite.Sprite):
 
         # Unworking exprimental prototype for vector-based movement.
         # Would be essential for diagonal movement that matches the speed of U/D/L/R movement. Disregard for now.
+        
+        # I don't think we need this for D-pad style movement. My additions above should handle diagonals just fine.
+        # Still, I'm going to keep this here in case we change our minds. -Greg
         """
-        vel = pg.Vector2()
+        vel = pg.Vector2() 
 
         if pressed_keys[K_UP] or pressed_keys[K_w]:
             vel.y += -1
