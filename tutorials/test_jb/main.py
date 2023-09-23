@@ -23,9 +23,16 @@ running = True
 dt = 0
 
 blobSurface = pygame.image.load('Blob.png').convert_alpha()
+blobSurface = pygame.transform.scale(blobSurface, pygame.Vector2(36, 36))
+
 batSurface = pygame.image.load('Bat.png').convert_alpha()
+batSurface = pygame.transform.scale(batSurface, pygame.Vector2(36, 36))
+
 bubbleSurface = pygame.image.load('Bubble.png').convert_alpha()
+bubbleSurface = pygame.transform.scale(bubbleSurface, pygame.Vector2(36, 36))
+
 snakeSurface = pygame.image.load('snake.png').convert_alpha()
+snakeSurface = pygame.transform.scale(snakeSurface, pygame.Vector2(36, 36))
 
 blobKey = SurfaceKeyFrame(0.0, blobSurface)
 batKey = SurfaceKeyFrame(0.5, batSurface)
