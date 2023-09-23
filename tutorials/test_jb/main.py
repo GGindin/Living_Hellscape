@@ -3,6 +3,8 @@ import pygame
 from GameObject import *
 from GameCamera import *
 from InputHelpers import *
+from SurfaceAnimation import *
+from SurfaceKeyFrame import *
 
 pygame.init();
 
@@ -20,8 +22,26 @@ running = True
 
 dt = 0
 
+blobSurface = pygame.image.load('Blob.png').convert_alpha()
+batSurface = pygame.image.load('Bat.png').convert_alpha()
+bubbleSurface = pygame.image.load('Bubble.png').convert_alpha()
+snakeSurface = pygame.image.load('snake.png').convert_alpha()
+
+blobKey = SurfaceKeyFrame(0.0, blobSurface)
+batKey = SurfaceKeyFrame(0.5, batSurface)
+bubbleKey = SurfaceKeyFrame(1.0, bubbleSurface)
+snakeKey = SurfaceKeyFrame(1.5, snakeSurface)
+
+animation = SurfaceAnimation()
+animation.setDuration(2.0)
+animation.loop = True
+animation.addKeyFrame(blobKey)
+animation.addKeyFrame(batKey)
+animation.addKeyFrame(bubbleKey)
+animation.addKeyFrame(snakeKey)
+
 playerObj = GameObject(pygame.image.load('Blob.png').convert_alpha())
-playerObj.scaleTo(pygame.Vector2(36, 36))
+#playerObj.scaleTo(pygame.Vector2(36, 36))
 playerObj.setPosition(pygame.Vector2(screenWidth / 2, screenHeight / 2))
 
 
@@ -42,6 +62,16 @@ while running:
     input *= playerSpeed
 
     playerObj.move(input)
+
+    animation.update(dt)
+    animSurf = animation.getCurrentSurface()
+    if animSurf is not None:
+        playerObj.surface = animation.getCurrentSurface()
+    """else:
+        print("Current: " + str(animation.currentTime))
+        print("Duration: " + str(animation.duration))"""
+
+
     gameCamera.boundByInnerBound(playerObj)
 
     gameCamera.clear("black")
