@@ -1,6 +1,7 @@
 # bunch of imports to get modules needed for demo
 import pygame
 
+from GameState import *
 from GameObject import *
 from GameCamera import *
 from InputHelpers import *
@@ -34,6 +35,30 @@ playerSpeed = 5.0
 #and then we could scale it to be the monitor resolution and blit that to the final surface target
 screen = pygame.display.set_mode((screenWidth, screenHeight))
 
+#adding a room
+roomTextrueSurface = pygame.image.load('brick.png').convert_alpha()
+room = Room(pygame.Vector2(0, 0), pygame.Vector2(200 * 4, 100 * 4), roomTextrueSurface)
+GameState.room = room
+GameState.rooms.append(room)
+
+room = Room(pygame.Vector2(200  * 4, 25  * 4), pygame.Vector2(100  * 4, 50  * 4), roomTextrueSurface)
+GameState.rooms.append(room)
+
+room = Room(pygame.Vector2(300  * 4, -50  * 4), pygame.Vector2(100  * 4, 250  * 4), roomTextrueSurface)
+GameState.rooms.append(room)
+
+room = Room(pygame.Vector2(200  * 4, -200  * 4), pygame.Vector2(300  * 4, 150  * 4), roomTextrueSurface)
+GameState.rooms.append(room)
+
+room = Room(pygame.Vector2(0  * 4, 200  * 4), pygame.Vector2(400  * 4, 100  * 4), roomTextrueSurface)
+GameState.rooms.append(room)
+
+room = Room(pygame.Vector2(100  * 4, 100  * 4), pygame.Vector2(50  * 4, 100  * 4), roomTextrueSurface)
+GameState.rooms.append(room)
+
+#room = Room(roomPos + pygame.Vector2(roomSize.x, roomSize.y / 2), roomSize / 2, roomTextrueSurface)
+#GameState.rooms.append(room)
+
 #clock is used for setting the frame rate and getting delta times
 #will probably move to a static class
 clock = pygame.time.Clock();
@@ -44,51 +69,17 @@ running = True
 #init a delta time var, once again will move to the static class
 dt = 0
 
-#these next lines are just a bunch of loading different images to use for the animation system
-#they are all scaled to the same size because the actual image files are different resolutions
-#I plan to build this system out much more
-blobSurface = pygame.image.load('Blob.png').convert_alpha()
-blobSurface = pygame.transform.scale(blobSurface, pygame.Vector2(36, 36))
-
-batSurface = pygame.image.load('Bat.png').convert_alpha()
-batSurface = pygame.transform.scale(batSurface, pygame.Vector2(36, 36))
-
-bubbleSurface = pygame.image.load('Bubble.png').convert_alpha()
-bubbleSurface = pygame.transform.scale(bubbleSurface, pygame.Vector2(36, 36))
-
-snakeSurface = pygame.image.load('snake.png').convert_alpha()
-snakeSurface = pygame.transform.scale(snakeSurface, pygame.Vector2(36, 36))
-
-#creating key frames, I imagine the different animated objects will either just do this stuff
-#in their constructors and have things hard coded, or they will load a JSON file and go from there
-blobKey = SurfaceKeyFrame(0.0, blobSurface)
-batKey = SurfaceKeyFrame(0.5, batSurface)
-bubbleKey = SurfaceKeyFrame(1.0, bubbleSurface)
-snakeKey = SurfaceKeyFrame(1.5, snakeSurface)
-
-#just more animation stuff
-#you create all the key frames that have a surface image and a time that they start
-#then in the actual animation class you add all of those keyframes and tell it how long the total 
-#animation is, also set loop to true so it restarts after it has reached the duration
-animation = SurfaceAnimation()
-animation.setDuration(2.0)
-animation.loop = True
-animation.addKeyFrame(blobKey)
-animation.addKeyFrame(batKey)
-animation.addKeyFrame(bubbleKey)
-animation.addKeyFrame(snakeKey)
-
 #this is creating the player object. It is a little out of step with the animation class
 #but originally it took the surface it was going to display for its constructor
 #because the animation changes this anyway it isnt really needed but all that still needs more work
 #this is a proof of concept
 playerObj = GameObject(pygame.image.load('Blob.png').convert_alpha())
-#playerObj.scaleTo(pygame.Vector2(36, 36))
+playerObj.scaleTo(pygame.Vector2(36, 36))
 
 #center the player, I still want to create an offset that each game object tracks internally
 #because in pygame each surface is positioned from its topleft corner. It would be nice if we could
 #center them from their center
-playerObj.setPosition(pygame.Vector2(screenWidth / 2, screenHeight / 2))
+playerObj.setPosition(pygame.Vector2(0, 0))
 
 #create the game camera, it takes a world space position, the target surface (the screen) and the inner bounding
 #ratio. This last thing creates a rectangle that is the screen scaled by this ratio.
@@ -108,7 +99,7 @@ while running:
             running = False
 
     #advance the clock by 60 fps, divide by 1000 because the return value is in mili secods
-    #I actually would rather keep them in milis, I just saw this saw where and ran with it
+    #this converts it to seconds
     dt = clock.tick(60) / 1000
 
     #get input vector see InputHelpers for more info
@@ -125,19 +116,10 @@ while running:
     #moves the player
     playerObj.move(input)
 
-    #more animation stuff, update the animation with the delta time
-    animation.update(dt)
-
-    #then get the current sprite (surface) 
-    animSurf = animation.getCurrentSurface()
-
-    #if not null set the player surface to be this animation surface
-    if animSurf is not None:
-        playerObj.surface = animation.getCurrentSurface()
-
     #this keeps the player in the inner bound of the camera
     #will be working on getting this working with a room object
-    gameCamera.boundByInnerBound(playerObj)
+    #gameCamera.boundByInnerBound(playerObj)
+    gameCamera.boundByRoom(playerObj)
 
     #the draw loop, a lot of this will eventually live in the camera class 
     #and be able to draw groups of objects all at once 
@@ -146,6 +128,10 @@ while running:
     gameCamera.clear("black")
     #draw the backgground
     gameCamera.drawBackground(bg)
+    #draw room
+    for i in GameState.rooms:
+        gameCamera.drawRoom(i)
+    
     #draw the player
     gameCamera.drawGameObject(playerObj)
 

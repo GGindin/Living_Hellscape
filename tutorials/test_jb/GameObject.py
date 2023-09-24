@@ -1,5 +1,7 @@
 import pygame
 
+from GameState import *
+
 #game object class, the docs recommend inheriting from the sprite class but I really do not like how
 #the sprite class has a Surface type object called image when pygame also has an Image type. Thats confusing
 #so I wrote my own class, and you can do anything that sprites can do with Rects so you lose nothing
@@ -54,6 +56,26 @@ class GameObject:
     #which will track and provide methods for changing postion, rotation, scale as well as doing space changes
     def move(self, vector : pygame.Vector2):
         self.worldPos += vector
+        if GameState.room is not None:
+            roomWorldRect = GameState.room.getWorldRect()
+            worldRect = self.getWorldRect()
+            if not roomWorldRect.contains(worldRect):
+                if not GameState.isObjectMovingToOtherRoom(worldRect):
+                    offset = pygame.Vector2(0, 0)
+                    if worldRect.top < roomWorldRect.top:
+                        dif = roomWorldRect.top - worldRect.top
+                        offset += pygame.Vector2(0, dif);
+                    if worldRect.right > roomWorldRect.right:
+                        dif = roomWorldRect.right - worldRect.right
+                        offset += pygame.Vector2(dif, 0);
+                    if worldRect.bottom > roomWorldRect.bottom:
+                        dif = roomWorldRect.bottom - worldRect.bottom
+                        offset += pygame.Vector2(0, dif);
+                    if worldRect.left < roomWorldRect.left:
+                        dif = roomWorldRect.left - worldRect.left
+                        offset += pygame.Vector2(dif, 0);
+                    self.worldPos += offset
+                
 
     def setPosition(self, position : pygame.Vector2):
         self.worldPos = position

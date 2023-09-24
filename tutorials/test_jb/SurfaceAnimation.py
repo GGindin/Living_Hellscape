@@ -14,7 +14,7 @@ class SurfaceAnimation:
         self.currentKeyFrame = 0
         self.duration = 0.0
         self.loop = False
-        self.keyFrames = []
+        self.keyFrames = list[SurfaceKeyFrame]
         
     #set how long the total animation lasts for
     def setDuration(self, duration : float):
