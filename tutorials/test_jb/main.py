@@ -37,6 +37,7 @@ screen = pygame.display.set_mode((screenWidth, screenHeight))
 
 #adding a room
 roomTextrueSurface = pygame.image.load('brick.png').convert_alpha()
+roomTextrueSurface = pygame.transform.scale_by(roomTextrueSurface, .5)
 room = Room(pygame.Vector2(0, 0), pygame.Vector2(200 * 4, 100 * 4), roomTextrueSurface)
 GameState.room = room
 GameState.rooms.append(room)
