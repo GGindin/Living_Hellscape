@@ -13,11 +13,11 @@ class Player(pg.sprite.Sprite):
 
         self.size = 32
 
-        self.imageSet = SpriteSheet( os.path.join("data", "gfx", ""))
-        self.image = pg.Surface( (self.size, self.size)) pg.SRCALPHA)
+        self.imageSet = SpriteSheet( os.path.join( "data", "gfx", "PlayerGhostProto.png")).unpack(self.size, self.size)
+        self.image = self.imageSet[0]
         self.rect = self.image.get_rect()
 
-        self.image.fill(MAX_BLUE)
+        self.imageSet.append( pg.transform.flip( self.imageSet[1], True, False))
 
         self.rect.centerx = SCREEN_W / 2
         self.rect.centery = SCREEN_H / 2
@@ -28,15 +28,27 @@ class Player(pg.sprite.Sprite):
 
         # PLAYER CONTROLS
         if pressed_keys[K_UP] or pressed_keys[K_w]:
+            if self.image != self.imageSet[2]:
+                self.image = self.imageSet[2]
+
             self.rect.move_ip(0, -5)
 
         if pressed_keys[K_DOWN] or pressed_keys[K_s]:
+            if self.image != self.imageSet[0]:
+                self.image = self.imageSet[0]
+
             self.rect.move_ip(0, 5)
 
         if pressed_keys[K_LEFT] or pressed_keys[K_a]:
+            if self.image != self.imageSet[1]:
+                self.image = self.imageSet[1]
+
             self.rect.move_ip(-5, 0)
 
         if pressed_keys[K_RIGHT] or pressed_keys[K_d]:
+            if self.image != self.imageSet[3]:
+                self.image = self.imageSet[3]
+
             self.rect.move_ip(5, 0)
 
         # PLAYER CONSTRAINTS

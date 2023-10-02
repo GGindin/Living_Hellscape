@@ -31,14 +31,14 @@ class SpriteSheet():
                                                    # SRCALPHA appears to mean "Source Alpha" - I would imagine this is a flag to indicate that the source image contains alpha values.
                                                    # This is very similar to using 'pg.image.load("image.png").convert_alpha()', which you will see in a lot of tutorials.
 
-        image.blit(self.sheet, (0,0), rect) # Blits the Surface (thus making it visible)
+        image.blit(self.inSheet, (0,0), rect) # Blits the Surface (thus making it visible)
             
         return image # Returns the now-visible image at the location specified
     
     def unpack(self, div_W, div_H): # Takes the strip of images and cuts them into sections according to div_W/div_H, populates self.sheetList, and then returns the list.
         
         x = 0
-        w = self.sheet.get_rect().width
+        w = self.inSheet.get_rect().width
         while x < w:
             self.sheetList.append( self.image_at( pg.Rect( x, 0, div_W, div_H))) # Uses image_at to append each individual image to self.sheetList.
             x += div_W

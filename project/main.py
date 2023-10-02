@@ -20,12 +20,12 @@ while game.RUNNING == True:
         player.alive = True
 
     if enemiesPlaced == False:
-        rambler1 = Rambler(SCREEN_W * 0.25, SCREEN_H * 0.25)
-        rambler2 = Rambler(SCREEN_W * 0.25, SCREEN_H * 0.75)
-        rambler3 = Rambler(SCREEN_W * 0.75, SCREEN_H * 0.25)
-        rambler4 = Rambler(SCREEN_W * 0.75, SCREEN_H * 0.75)
-        enemy_sprites.add(rambler1, rambler2, rambler3, rambler4)
-        all_sprites.add(rambler1, rambler2, rambler3, rambler4)
+        wanderer1 = Wanderer(SCREEN_W * 0.25, SCREEN_H * 0.25)
+        wanderer2 = Wanderer(SCREEN_W * 0.25, SCREEN_H * 0.75)
+        wanderer3 = Wanderer(SCREEN_W * 0.75, SCREEN_H * 0.25)
+        wanderer4 = Wanderer(SCREEN_W * 0.75, SCREEN_H * 0.75)
+        enemy_sprites.add(wanderer1, wanderer2, wanderer3, wanderer4)
+        all_sprites.add(wanderer1, wanderer2, wanderer3, wanderer4)
         enemiesPlaced = True
 
     for event in pg.event.get():
