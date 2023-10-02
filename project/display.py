@@ -1,3 +1,5 @@
+import os.path
+
 import pygame as pg
 from pygame.locals import *
 
@@ -9,6 +11,39 @@ SCREEN = pg.display.set_mode([SCREEN_W, SCREEN_H], flags, vsync=1)
 
 """ ALL SPRITES GROUP """
 all_sprites = pg.sprite.Group()
+
+####################
+""" SPRITE SHEET """
+####################
+class SpriteSheet():
+    
+    def __init__(self, filename): # Initializes the given strip of images
+
+        self.inSheet = pg.image.load(filename) # Loads uncut sheet into memory
+        self.sheetList = [] # List container for our image set
+        
+    def image_at(self, rectangle): # Returns an image on the strip, inidicated by the input rect object (x, y, w, h)
+
+        rect = pg.Rect(rectangle) # Generates a rect based on the rect argument it was passed
+        image = pg.Surface(rect.size, pg.SRCALPHA) # Creates a Surface() based on the rect (using rect.size, which returns a tuple)
+                                                   # While we're here, I wanted to touch on pg.SRCALPHA. This allows elements of a surface to be transparent.
+                                                   # Otherwise, alpha=0 transparencies will be rendered in straight black, and transparency layering would obviously be impossible.
+                                                   # SRCALPHA appears to mean "Source Alpha" - I would imagine this is a flag to indicate that the source image contains alpha values.
+                                                   # This is very similar to using 'pg.image.load("image.png").convert_alpha()', which you will see in a lot of tutorials.
+
+        image.blit(self.sheet, (0,0), rect) # Blits the Surface (thus making it visible)
+            
+        return image # Returns the now-visible image at the location specified
+    
+    def unpack(self, div_W, div_H): # Takes the strip of images and cuts them into sections according to div_W/div_H, populates self.sheetList, and then returns the list.
+        
+        x = 0
+        w = self.sheet.get_rect().width
+        while x < w:
+            self.sheetList.append( self.image_at( pg.Rect( x, 0, div_W, div_H))) # Uses image_at to append each individual image to self.sheetList.
+            x += div_W
+
+        return self.sheetList
 
 #####################
 """ COLOR PALETTE """

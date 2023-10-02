@@ -13,7 +13,8 @@ class Player(pg.sprite.Sprite):
 
         self.size = 32
 
-        self.image = pg.Surface( (self.size, self.size), pg.SRCALPHA)
+        self.imageSet = SpriteSheet( os.path.join("data", "gfx", ""))
+        self.image = pg.Surface( (self.size, self.size)) pg.SRCALPHA)
         self.rect = self.image.get_rect()
 
         self.image.fill(MAX_BLUE)
