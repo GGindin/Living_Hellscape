@@ -10,6 +10,7 @@ flags = 0 # pg.FULLSCREEN | pg.RESIZEABLE | pg.SCALED
 SCREEN = pg.display.set_mode([SCREEN_W, SCREEN_H], flags, vsync=1)
 
 """ ALL SPRITES GROUP """
+floor_tiles = pg.sprite.Group()
 all_sprites = pg.sprite.Group()
 
 ####################
@@ -44,6 +45,33 @@ class SpriteSheet():
             x += div_W
 
         return self.sheetList
+    
+##################
+""" BACKGROUND """
+##################
+
+class TileMap():
+
+    def build(self):
+
+        for i in range(0, 8):
+            for j in range(0, 6):
+
+                new_tile = Tile( os.path.join( "data", "gfx", "Floorboards.png"), 128 * i, 128 * j)
+                floor_tiles.add(new_tile)
+                all_sprites.add(new_tile)
+
+class Tile(pg.sprite.Sprite):
+
+    def __init__(self, image, x, y):
+        super(Tile, self).__init__()
+
+        self.size = 128
+        self.image = pg.image.load(image)
+        self.rect = self.image.get_rect()
+        self.rect.x = x
+        self.rect.y = y
+
 
 #####################
 """ COLOR PALETTE """
@@ -72,3 +100,10 @@ MAX_MAGENTA = pg.Color(255, 0, 255)
 BLOOD_RED = pg.Color(150, 0, 20)
 GRASS_GREEN = pg.Color(80, 180, 30)
 PAPER_WHITE = pg.Color(230, 230, 200)
+
+
+#####################
+""" INSTANTIATION """
+#####################
+
+tilemap = TileMap()

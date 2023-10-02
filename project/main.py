@@ -16,6 +16,8 @@ while game.RUNNING == True:
     pressed_keys = pg.key.get_pressed()
 
     if player.alive == False:
+        
+        tilemap.build()
         all_sprites.add(player)
         player.alive = True
 
