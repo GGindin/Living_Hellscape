@@ -39,7 +39,7 @@ public class Door : MonoBehaviour
     {
         if (GameController.instance.PlayerHasControl)
         {
-            room.RoomTransition(this);
+            room.ConfigureRoomTransition(this);
         }
     }
 

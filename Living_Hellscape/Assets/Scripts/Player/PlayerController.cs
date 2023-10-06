@@ -13,7 +13,6 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D rb;
 
     bool hasControl = true;
-    Vector3 target;
 
     public bool HasControl => hasControl;
 
@@ -35,16 +34,21 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        Vector2 velocity = normInput * speed * Time.fixedDeltaTime;
-        rb.MovePosition(rb.position + velocity);
+        MoveByUserInput();
     }
 
     public void SetTarget(Vector3 target)
     {
-        hasControl = false;
-        this.target = target;
+        StartCoroutine(TransitionRoom(target));
     }
 
+    void MoveByUserInput()
+    {
+        if (!hasControl) return;
+
+        Vector2 velocity = normInput * speed * Time.fixedDeltaTime;
+        rb.MovePosition(rb.position + velocity);
+    }
 
     Vector2 GetNormInput()
     {
@@ -56,22 +60,29 @@ public class PlayerController : MonoBehaviour
             input.Normalize();
             return input;
         }
-        else
+
+        return Vector2.zero;
+    }
+
+    IEnumerator TransitionRoom(Vector3 target)
+    {
+        hasControl = false;
+        Vector3 startPos = rb.position;
+
+        float duration = 2f;
+        float currentTime = 0f;
+
+        while(currentTime < duration)
         {
-            Debug.Log("C");
-            Vector2 dir = target - transform.position;
-            dir.Normalize();
-
-            var frameDist = dir * Time.fixedDeltaTime * speed;
-            frameDist += rb.position;
-            if((frameDist - new Vector2(target.x, target.y)).SqrMagnitude() < .1f)
-            {
-                hasControl = true;
-                return GetNormInput();
-            }
-
-            return dir;
+            currentTime += Time.deltaTime;
+            float t = Mathf.InverseLerp(0f, duration, currentTime);
+            rb.position = Vector3.Lerp(startPos, target, t);
+            yield return null;
         }
+
+        rb.position = target;
+        hasControl = true;
+        GameController.instance.EndRoomTransition();
     }
 
     private void OnCollisionStay2D(Collision2D collision)
