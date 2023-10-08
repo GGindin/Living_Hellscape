@@ -29,6 +29,8 @@ public class EnemyController : MonoBehaviour
 
     Damage damageFromOther;
 
+    public bool isTakingDamage => damageFromOther != null;
+
     public Damage Damage => new Damage(damage);
 
     private void Awake()
@@ -82,12 +84,6 @@ public class EnemyController : MonoBehaviour
 
         health -= damageFromOther.amount;
 
-        if(health <= 0f)
-        {
-            Destroy(gameObject);
-            return;
-        }
-
         animator.SetBool(hitID, true);
     }
 
@@ -101,6 +97,11 @@ public class EnemyController : MonoBehaviour
         {
             damageFromOther = null;
             animator.SetBool(hitID, false);
+            if (health <= 0f)
+            {
+                Destroy(gameObject);
+                return;
+            }
         }
     }
 
@@ -127,7 +128,7 @@ public class EnemyController : MonoBehaviour
     {
         CollisionRouter collisionRouter = collision.gameObject.GetComponent<CollisionRouter>();
 
-        if (collisionRouter)
+        if (collisionRouter && damageFromOther == null)
         {
             var target = collisionRouter.Target;
             Sword sword = target.GetComponent<Sword>();

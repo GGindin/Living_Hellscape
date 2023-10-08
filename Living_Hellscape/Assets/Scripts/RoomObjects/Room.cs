@@ -11,21 +11,39 @@ public class Room : MonoBehaviour
     int id;
 
     [SerializeField]
-    RoomPrefabConnection[] prefabConnections;
-
-    RoomConnection[] connections;
+    CinemachineVirtualCamera virtualCamera;
 
     [SerializeField]
-    CinemachineVirtualCamera virtualCamera;
+    RoomPrefabConnection[] prefabConnections;
+
+    [SerializeField]
+    ObjectPlacement[] enemyPlacements;
+
+    GameObject[] roomEnemies;
+
+    RoomConnection[] connections;
 
     private void Awake()
     {
         connections = new RoomConnection[prefabConnections.Length];
+        roomEnemies = new GameObject[enemyPlacements.Length];
     }
 
     //called when loaded
     public void ConfigureRoom(Transform cameraFollow)
     {
+        //loads objects (right now just enemies
+        for(int i = 0; i < enemyPlacements.Length; i++)
+        {
+            //skip if we already have that enemy loaded
+            if (roomEnemies[i] != null) continue;
+
+            var placement = enemyPlacements[i];
+
+            roomEnemies[i] = Instantiate(placement.prefab, placement.placement.transform.position, Quaternion.identity);
+        }
+
+        //this loads adjacent rooms so they are ready when the player leaves a room
         for(int i = 0; i < prefabConnections.Length; i++)
         {
             //if already has this setup from a previous load skip
@@ -42,6 +60,7 @@ public class Room : MonoBehaviour
             room.SetupRoomConnections();
         }
 
+        //finally set up some stuff on the room
         virtualCamera.Follow = cameraFollow;
         virtualCamera.gameObject.SetActive(true);
     }

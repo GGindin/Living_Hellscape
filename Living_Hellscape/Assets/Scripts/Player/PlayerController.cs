@@ -91,12 +91,6 @@ public class PlayerController : MonoBehaviour
 
         health -= damageFromOther.amount;
 
-        if (health <= 0f)
-        {
-            Destroy(gameObject);
-            return;
-        }
-
         animator.SetBool(hitID, true);
     }
 
@@ -110,6 +104,11 @@ public class PlayerController : MonoBehaviour
         {
             damageFromOther = null;
             animator.SetBool(hitID, false);
+            if (health <= 0f)
+            {
+                Destroy(gameObject);
+                return;
+            }
         }
     }
 
@@ -163,7 +162,7 @@ public class PlayerController : MonoBehaviour
         }
 
         var enemy = collision.gameObject.GetComponent<EnemyController>();
-        if (enemy)
+        if (enemy && damageFromOther == null && !enemy.isTakingDamage)
         {
             var contacts = collision.contacts;
 
