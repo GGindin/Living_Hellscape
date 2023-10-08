@@ -17,93 +17,79 @@ public class Room : MonoBehaviour
     RoomPrefabConnection[] prefabConnections;
 
     [SerializeField]
-    ObjectPlacement[] enemyPlacements;
+    ObjectPlacement<PlayerController> playerSpawnPlacement;
 
-    GameObject[] roomEnemies;
+    [SerializeField]
+    ObjectPlacement<EnemyController>[] enemyPlacements;
+
+    EnemyController[] roomEnemies;
 
     RoomConnection[] connections;
+
+    public ObjectPlacement<PlayerController> PlayerSpawnPlacement => playerSpawnPlacement;
+
+    public int ID => id;
 
     private void Awake()
     {
         connections = new RoomConnection[prefabConnections.Length];
-        roomEnemies = new GameObject[enemyPlacements.Length];
+        roomEnemies = new EnemyController[enemyPlacements.Length];
     }
 
-    //called when loaded
-    public void ConfigureRoom(Transform cameraFollow)
+    private void Update()
     {
-        //loads objects (right now just enemies
-        for(int i = 0; i < enemyPlacements.Length; i++)
+        if(RoomController.instance.ActiveRoom == this)
         {
-            //skip if we already have that enemy loaded
-            if (roomEnemies[i] != null) continue;
-
-            var placement = enemyPlacements[i];
-
-            roomEnemies[i] = Instantiate(placement.prefab, placement.placement.transform.position, Quaternion.identity);
-        }
-
-        //this loads adjacent rooms so they are ready when the player leaves a room
-        for(int i = 0; i < prefabConnections.Length; i++)
-        {
-            //if already has this setup from a previous load skip
-            if (connections[i] != null && connections[i].otherRoom != null) continue;
-
-            //otherwise setup the other room and connections to this room
-            Room room = RoomController.instance.LoadRoomByIndex(prefabConnections[i].otherRoomPrefabID);
-            room.virtualCamera.Follow = cameraFollow;
-            connections[i] = new RoomConnection()
-            {
-                otherRoom = room,
-                thisRoomDoor = prefabConnections[i].thisRoomDoor
-            };
-            room.SetupRoomConnections();
-        }
-
-        //finally set up some stuff on the room
-        virtualCamera.Follow = cameraFollow;
-        virtualCamera.gameObject.SetActive(true);
-    }
-
-    public void UnConfigureActiveRoom(Room nextActiveRoom)
-    {
-        for(int i = 0; i < connections.Length; i++)
-        {
-            var connection = connections[i];
-            if(connection.otherRoom != nextActiveRoom)
-            {
-                Destroy(connection.otherRoom.gameObject);
-            }
+            EnemyUpdate();
         }
     }
 
-    void SetupRoomConnections()
+    private void FixedUpdate()
     {
-        var activeRoom = RoomController.instance.ActiveRoom;
-        for(int i = 0; i < prefabConnections.Length; i++)
+        if (RoomController.instance.ActiveRoom == this)
         {
-            var prefab = prefabConnections[i];
-            if(prefab.otherRoomPrefabID == activeRoom.id)
-            {
-                connections[i] = new RoomConnection()
-                {
-                    otherRoom = activeRoom,
-                    thisRoomDoor = prefab.thisRoomDoor
-                };
-            }
-        }
+            EnemyFixedUpdate();
+        }      
     }
 
-    //called on the to room
-    public void StartRoomTransition()
+    //called when instantiated / loaded
+    public void OnLoadRoom()
     {
-        virtualCamera.gameObject.SetActive(true);
+        //here we will put stuff like reading and storing save data so that when we enter it, it is the same as when we left it
+        //currently not setup yet
+
+        RoomController.instance.AddRoom(this);
     }
 
-    //called on the from room
-    public void EndRoomTransition()
+    //called when player starts transitioning into room
+    public void OnStartEnterRoom()
     {
-        virtualCamera.gameObject.SetActive(false);
+        //these methods in the future will read the save data that was loaded before to setup room properly
+        //currently just resets to the starting state
+        SetupVirtualCamera();
+        LoadEnemies();
+        LoadAdjacentRooms();       
+    }
+
+    //called when actually finished entering room
+    public void OnEnterRoom()
+    {
+        RoomController.instance.SetActiveRoom(this);
+    }
+
+    //called when player finished transition from room
+    //called after the OnEnterRoom
+    public void OnLeaveRoom()
+    {
+        TurnOffVirtualCamera();
+        RemoveUnNeededRooms();
+    }
+
+    //called when room is destroyed
+    public void OnUnloadRoom()
+    {
+        //here we will write save data / reset the room for the next time we load the room
+        RoomController.instance.RemoveRoom(this);
     }
 
     //called by the door to initiate the room transfer
@@ -137,6 +123,8 @@ public class Room : MonoBehaviour
     {
         for(int i = 0; i < other.connections.Length; i++)
         {
+            if (other.connections[i] == null) continue;
+
             if (other.connections[i].otherRoom == this)
             {
                 return other.connections[i].thisRoomDoor;
@@ -144,6 +132,115 @@ public class Room : MonoBehaviour
         }
 
         return null;
+    }
+
+    void SetupVirtualCamera()
+    {
+        virtualCamera.Follow = GameController.instance.PlayerController.transform;
+        virtualCamera.gameObject.SetActive(true);
+    }
+
+    void TurnOffVirtualCamera()
+    {
+        virtualCamera.Follow = null;
+        virtualCamera.gameObject.SetActive(false);
+    }
+
+    void LoadAdjacentRooms()
+    {
+        //this loads adjacent rooms so they are ready when the player leaves a room
+        for (int i = 0; i < prefabConnections.Length; i++)
+        {
+            //if already has this setup from a previous load skip
+            if (connections[i] != null && connections[i].otherRoom != null) continue;
+
+            //otherwise setup the other room and connections to this room
+            Room room = RoomController.instance.LoadRoomByIndex(prefabConnections[i].otherRoomPrefabID);
+            connections[i] = new RoomConnection()
+            {
+                otherRoom = room,
+                thisRoomDoor = prefabConnections[i].thisRoomDoor
+            };
+            room.SetupRoomConnectionsToRoom(this);
+            room.OnLoadRoom();
+        }
+    }
+
+    //this sets up connections to the active room, so that when you try to leave the connections are set up
+    void SetupRoomConnectionsToRoom(Room other)
+    {
+        for (int i = 0; i < prefabConnections.Length; i++)
+        {
+            var prefab = prefabConnections[i];
+            if (prefab.otherRoomPrefabID == other.id)
+            {
+                connections[i] = new RoomConnection()
+                {
+                    otherRoom = other,
+                    thisRoomDoor = prefab.thisRoomDoor
+                };
+            }
+        }
+    }
+
+    void LoadEnemies()
+    {
+        //loads objects (right now just enemies)
+        for (int i = 0; i < enemyPlacements.Length; i++)
+        {
+            //get the placement for the enemy
+            var placement = enemyPlacements[i];
+
+            //Reset position if already loaded
+            if (roomEnemies[i] != null)
+            {
+                roomEnemies[i].transform.position = placement.Position;
+                continue;
+            }
+
+            //create enemy if doesn't exist
+            //in the future we will remember what happened to enemies and objects
+            roomEnemies[i] = Instantiate(placement.prefab, placement.Position, Quaternion.identity, transform);
+        }
+    }
+
+    void RemoveUnNeededRooms()
+    {
+        var activeRoom = RoomController.instance.ActiveRoom;
+
+        for (int i = 0; i < connections.Length; i++)
+        {
+            var connection = connections[i];
+            if (connection.otherRoom != activeRoom)
+            {
+                connection.otherRoom.OnUnloadRoom();
+                Destroy(connection.otherRoom.gameObject);
+            }
+        }
+    }
+
+    void EnemyUpdate()
+    {
+        for (int i = 0; i < roomEnemies.Length; i++)
+        {
+            var e = roomEnemies[i];
+            if (e)
+            {
+                e.RoomUpdate();
+            }
+        }
+    }
+
+    void EnemyFixedUpdate()
+    {
+        for(int i = 0; i < roomEnemies.Length; i++)
+        {
+            var e = roomEnemies[i];
+            if (e)
+            {
+                e.RoomFixedUpdate();
+            }           
+        }
     }
 }
 

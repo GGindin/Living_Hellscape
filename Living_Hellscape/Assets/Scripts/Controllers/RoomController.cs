@@ -8,26 +8,27 @@ public class RoomController : MonoBehaviour
     public static RoomController instance;
 
     [SerializeField]
+    int activeRoomPrefabIndex = -1;
+
+    [SerializeField]
     Room[] roomPrefabs;
 
-    Room activeRoom;
-    int activeRoomPrefabIndex = -1;
+    Room activeRoom;  
+
+    HashSet<Room> spawnedRooms = new HashSet<Room>();
 
     public Room ActiveRoom => activeRoom;
 
     private void Awake()
     {
         instance = this;
-    }
-
-    private void Start()
-    {
         LoadDefaultRoom();
     }
 
     public void SetActiveRoom(Room room)
     {
         activeRoom = room;
+        activeRoomPrefabIndex = activeRoom.ID;
     }
 
     public Room LoadRoomByIndex(int index)
@@ -53,5 +54,22 @@ public class RoomController : MonoBehaviour
         {
             activeRoom = Instantiate(roomPrefabs[activeRoomPrefabIndex]);
         }
+
+        activeRoom.OnLoadRoom();
+    }
+
+    public void AddRoom(Room room)
+    {
+        spawnedRooms.Add(room);
+    }
+
+    public void RemoveRoom(Room room)
+    {
+        spawnedRooms.Remove(room);
+    }
+
+    public void RecenterWorld()
+    {
+        //will use the room list to center around the active room and the active room will be set at (0, 0)
     }
 }

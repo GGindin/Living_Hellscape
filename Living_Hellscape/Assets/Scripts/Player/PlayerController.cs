@@ -36,11 +36,6 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();    
     }
 
-    private void Start()
-    {
-        GameController.instance.AssignPlayer(this);
-    }
-
     // Update is called once per frame
     void Update()
     {

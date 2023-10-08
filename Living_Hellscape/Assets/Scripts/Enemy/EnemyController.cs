@@ -39,12 +39,14 @@ public class EnemyController : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    private void FixedUpdate()
+    public void RoomUpdate() { }
+
+    public void RoomFixedUpdate()
     {
         rb.velocity = Vector2.zero;
 
         UpdateDirection();
-        if(damageFromOther == null)
+        if (damageFromOther == null)
         {
             Move();
         }

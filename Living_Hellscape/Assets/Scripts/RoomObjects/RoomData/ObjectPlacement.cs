@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class ObjectPlacement
+public class ObjectPlacement<T>
 {
     public GameObject placement;
-    public GameObject prefab;
+    public T prefab;
+
+    public Vector2 Position => placement.transform.position;
 }

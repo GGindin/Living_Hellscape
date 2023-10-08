@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,8 @@ public class GameController : MonoBehaviour
 
     PlayerController playerController;
 
+    public PlayerController PlayerController => playerController;
+
     public bool PlayerHasControl => playerController.HasControl;
 
     RoomTransitionData roomTransitionData;
@@ -17,43 +20,43 @@ public class GameController : MonoBehaviour
         instance = this;
     }
 
-    private void Update()
+    private void Start()
     {
-        if(playerController && RoomController.instance.ActiveRoom)
-        {
-            ActivateActiveRoom(RoomController.instance.ActiveRoom);
-            enabled = false;
-        }
+        LoadInPlayer();
     }
 
-    public void AssignPlayer(PlayerController playerController)
+    private void LoadInPlayer()
     {
-        this.playerController = playerController;
+        var placement = RoomController.instance.ActiveRoom.PlayerSpawnPlacement;
+        playerController = Instantiate(placement.prefab, placement.Position, Quaternion.identity, RoomController.instance.ActiveRoom.transform);
 
-    }
-
-    public void ActivateActiveRoom(Room room)
-    {
-        room.ConfigureRoom(playerController.transform);
+        RoomController.instance.ActiveRoom.OnStartEnterRoom();
+        RoomController.instance.ActiveRoom.OnEnterRoom();
     }
 
     public void TransitionToRoom(RoomTransitionData transitionData)
     {
         roomTransitionData = transitionData;
-        roomTransitionData.toRoom.StartRoomTransition();
+        roomTransitionData.toRoom.OnStartEnterRoom();
         playerController.SetTarget(roomTransitionData.toDoor.TargetPos);
     }
 
     public void EndRoomTransition()
     {
-        roomTransitionData.fromRoom.EndRoomTransition();
+        roomTransitionData.toRoom.OnEnterRoom();
+
         roomTransitionData.fromDoor.OperateDoor();
         roomTransitionData.toDoor.OperateDoor();
 
-        roomTransitionData.fromRoom.UnConfigureActiveRoom(roomTransitionData.toRoom);
-        RoomController.instance.SetActiveRoom(roomTransitionData.toRoom);
-        roomTransitionData.toRoom.ConfigureRoom(playerController.transform);
+        roomTransitionData.fromRoom.OnLeaveRoom();
 
+        //set player to be child of active room
+        playerController.transform.SetParent(RoomController.instance.ActiveRoom.transform, true);
+
+        //recenter world
+        RoomController.instance.RecenterWorld();
+
+        //reset data 
         roomTransitionData = new RoomTransitionData();
     }
 }
