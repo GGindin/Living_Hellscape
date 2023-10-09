@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import pygame
 import os
 
@@ -24,6 +25,23 @@ ObjectManager.instance.addGameObjectToGroup(go, ObjectManager.instance.objectGro
 while(PygameController.instance.running):
     PygameController.update()
 =======
+=======
+import pygame as pg
+from pygame.locals import *
+
+from display import *
+from logic import *
+from player import *
+from enemies import *
+
+clock = pg.time.Clock()
+
+enemiesPlaced = False
+
+while game.RUNNING == True:
+    SCREEN.fill(BLACK)
+
+>>>>>>> main
     pressed_keys = pg.key.get_pressed()
 
     if player.alive == False:
@@ -55,5 +73,9 @@ while(PygameController.instance.running):
     pg.display.flip()
     clock.tick(60)
 
+<<<<<<< HEAD
 pg.quit()
 >>>>>>> main:pythonStuff/main.py
+=======
+pg.quit()
+>>>>>>> main
