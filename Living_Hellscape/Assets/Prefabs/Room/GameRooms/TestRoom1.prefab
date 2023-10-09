@@ -7199,7 +7199,7 @@ MonoBehaviour:
     thisRoomDoor: {fileID: 1714565565895678479}
   playerSpawnPlacement:
     placement: {fileID: 1090258812792472872}
-    prefab: {fileID: 7047129748171666703, guid: 4e59370b99365b7408e63c41cb218a04, type: 3}
+    prefab: {fileID: 545511088324393408, guid: 4e59370b99365b7408e63c41cb218a04, type: 3}
   enemyPlacements:
   - placement: {fileID: 5940699714042107774}
     prefab: {fileID: 770196971634610328, guid: 010757b69dbde82469bf880780fedb70, type: 3}

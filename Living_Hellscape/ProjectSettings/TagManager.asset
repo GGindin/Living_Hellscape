@@ -11,12 +11,12 @@ TagManager:
   - 
   - Water
   - UI
-  - Player
+  - PlayerBody
   - Geometry
   - CameraConfiner
   - PlayerItem
   - Enemy
-  - 
+  - PlayerGhost
   - 
   - 
   - 

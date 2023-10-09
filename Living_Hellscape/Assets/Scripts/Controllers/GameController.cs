@@ -7,11 +7,11 @@ public class GameController : MonoBehaviour
 {
     public static GameController instance;
 
-    PlayerController playerController;
+    //PlayerController playerController;
 
-    public PlayerController PlayerController => playerController;
+    public PlayerController PlayerController => PlayerManager.instance.Active;
 
-    public bool PlayerHasControl => playerController.HasControl;
+    public bool PlayerHasControl => PlayerController.HasControl;
 
     RoomTransitionData roomTransitionData;
 
@@ -28,7 +28,7 @@ public class GameController : MonoBehaviour
     private void LoadInPlayer()
     {
         var placement = RoomController.instance.ActiveRoom.PlayerSpawnPlacement;
-        playerController = Instantiate(placement.prefab, placement.Position, Quaternion.identity, RoomController.instance.ActiveRoom.transform);
+        PlayerController.transform.position = placement.Position;
 
         RoomController.instance.ActiveRoom.OnStartEnterRoom();
         RoomController.instance.ActiveRoom.OnEnterRoom();
@@ -38,7 +38,7 @@ public class GameController : MonoBehaviour
     {
         roomTransitionData = transitionData;
         roomTransitionData.toRoom.OnStartEnterRoom();
-        playerController.SetTarget(roomTransitionData.toDoor.TargetPos);
+        PlayerController.SetTarget(roomTransitionData.toDoor.TargetPos);
     }
 
     public void EndRoomTransition()
@@ -51,7 +51,7 @@ public class GameController : MonoBehaviour
         roomTransitionData.fromRoom.OnLeaveRoom();
 
         //set player to be child of active room
-        playerController.transform.SetParent(RoomController.instance.ActiveRoom.transform, true);
+        PlayerController.transform.SetParent(RoomController.instance.ActiveRoom.transform, true);
 
         //recenter world
         RoomController.instance.RecenterWorld();

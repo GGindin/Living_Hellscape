@@ -92,6 +92,18 @@ public class Room : MonoBehaviour
         RoomController.instance.RemoveRoom(this);
     }
 
+    public void SetupVirtualCamera()
+    {
+        virtualCamera.Follow = GameController.instance.PlayerController.transform;
+        virtualCamera.gameObject.SetActive(true);
+    }
+
+    public void TurnOffVirtualCamera()
+    {
+        virtualCamera.Follow = null;
+        virtualCamera.gameObject.SetActive(false);
+    }
+
     //called by the door to initiate the room transfer
     public void ConfigureRoomTransition(Door door)
     {
@@ -132,18 +144,6 @@ public class Room : MonoBehaviour
         }
 
         return null;
-    }
-
-    void SetupVirtualCamera()
-    {
-        virtualCamera.Follow = GameController.instance.PlayerController.transform;
-        virtualCamera.gameObject.SetActive(true);
-    }
-
-    void TurnOffVirtualCamera()
-    {
-        virtualCamera.Follow = null;
-        virtualCamera.gameObject.SetActive(false);
     }
 
     void LoadAdjacentRooms()

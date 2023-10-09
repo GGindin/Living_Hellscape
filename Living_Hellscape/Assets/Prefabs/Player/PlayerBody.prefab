@@ -132,13 +132,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7047129748171666701}
-  - component: {fileID: 7047129748171666703}
+  - component: {fileID: 545511088324393408}
   - component: {fileID: 7047129748171666702}
   - component: {fileID: 7047129748171666700}
   - component: {fileID: 7047129748171666691}
   - component: {fileID: 7047129748171666690}
   m_Layer: 6
-  m_Name: Player
+  m_Name: PlayerBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -159,7 +159,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7047129748171666703
+--- !u!114 &545511088324393408
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -168,14 +168,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 7047129748171666696}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4acc252d7330bfd4cbf4b5bde43513d1, type: 3}
+  m_Script: {fileID: 11500000, guid: 6a3a3f04043553e419ba19ab1ee9d593, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   health: 10
   speed: 5
-  inventory:
-    equipableSlots:
-      equipment: []
   equip: {fileID: 7047129748510374397}
 --- !u!212 &7047129748171666702
 SpriteRenderer:

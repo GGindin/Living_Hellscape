@@ -3,52 +3,65 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public abstract class PlayerController : MonoBehaviour
 {
+    //these two floats are temp, will get moved to a stats class or something
     [SerializeField]
-    float health;
-
-    [SerializeField]
-    float speed;
+    protected float health;
 
     [SerializeField]
-    PlayerInventory inventory;
+    protected float speed;
 
+    //this is temporary until we get the inventory and EquipedGear setup
     [SerializeField]
-    Equipment equip;
+    protected Equipment equip;
 
-    Vector2 lastDirection = Vector2.down;
-    Vector2 normInput = new Vector2();
-
-    Rigidbody2D rb;
+    protected Vector2 lastDirection = Vector2.down;
+    protected Vector2 normInput = new Vector2();
+   
+    protected Rigidbody2D rb;
+    protected BoxCollider2D boxCollider;
     
-    Animator animator;
-    int hitID = Animator.StringToHash("hit");
+    protected Animator animator;
+    protected int hitID = Animator.StringToHash("hit");
+
+    protected Damage damageFromOther;
+
+    public bool isActive = false;
 
     bool hasControl = true;
-    Damage damageFromOther;
 
     public bool HasControl => hasControl;
 
-    private void Awake()
+    virtual protected void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        boxCollider = GetComponent<BoxCollider2D>();
         animator = GetComponent<Animator>();    
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (!isActive) return;
+
         normInput = GetNormInput();
-        if (Input.GetKeyDown(KeyCode.K))
+        if (Input.GetKeyDown(KeyCode.K) && equip)
         {
             equip.TriggerAction();
+        }
+        if (hasControl && Input.GetKeyDown(KeyCode.Space))
+        {
+            //temporary while we split this code into the two classes
+            PlayerManager.instance.SwapActiveController();
         }
         
     }
 
     void FixedUpdate()
     {
+        if (!isActive) return;
+
         if (damageFromOther == null)
         {
             MoveByUserInput();
@@ -60,6 +73,10 @@ public class PlayerController : MonoBehaviour
         
         RotateEquip();
     }
+
+    public abstract void ActivateController();
+
+    public abstract void DeactivateController();
 
     public void SetTarget(Vector3 target)
     {
@@ -79,14 +96,27 @@ public class PlayerController : MonoBehaviour
             lastDirection = normInput;
         }        
     }
-
-    void TakeDamage(Damage damage)
+    Vector2 GetNormInput()
     {
-        damageFromOther = damage;
+        if (hasControl)
+        {
+            Vector2 input = new Vector2();
+            input.x = Input.GetAxisRaw("Horizontal");
+            input.y = Input.GetAxisRaw("Vertical");
+            input.Normalize();
 
-        health -= damageFromOther.amount;
+            return input;
+        }
 
-        animator.SetBool(hitID, true);
+        return Vector2.zero;
+    }
+
+    void RotateEquip()
+    {
+        if (equip)
+        {
+            equip.SetDirection(lastDirection);
+        }      
     }
 
     private void MoveByDamage()
@@ -107,23 +137,13 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void RotateEquip()
+    protected void TakeDamage(Damage damage)
     {
-        equip.SetDirection(lastDirection);
-    }
+        damageFromOther = damage;
 
-    Vector2 GetNormInput()
-    {
-        if (hasControl)
-        {
-            Vector2 input = new Vector2();
-            input.x = Input.GetAxisRaw("Horizontal");
-            input.y = Input.GetAxisRaw("Vertical");
-            input.Normalize();
-            return input;
-        }
+        health -= damageFromOther.amount;
 
-        return Vector2.zero;
+        animator.SetBool(hitID, true);
     }
 
     IEnumerator TransitionRoom(Vector3 target)
@@ -145,42 +165,5 @@ public class PlayerController : MonoBehaviour
         rb.position = target;
         hasControl = true;
         GameController.instance.EndRoomTransition();
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        var door = collision.gameObject.GetComponent<Door>();
-        if (door)
-        {
-            door.OperateDoor();
-            return;
-        }
-
-        var enemy = collision.gameObject.GetComponent<EnemyController>();
-        if (enemy && damageFromOther == null && !enemy.isTakingDamage)
-        {
-            var contacts = collision.contacts;
-
-            Vector2 damageDir = Vector2.zero;
-
-            foreach (var contact in contacts)
-            {
-                damageDir += contact.normal;
-            }
-
-            var damage = enemy.Damage;
-            damage.SetVectorFromDirection(damageDir.normalized);
-
-            TakeDamage(damage);
-        }
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        var doorTrigger = collision.gameObject.GetComponent<DoorTrigger>();
-        if (doorTrigger)
-        {
-            doorTrigger.SignalTrigger();
-        }
     }
 }

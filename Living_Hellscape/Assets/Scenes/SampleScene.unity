@@ -240,7 +240,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &519420033
 MonoBehaviour:
@@ -334,7 +334,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55a9ee386401ac642aa4bd5673e0e006, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeRoomPrefabIndex: 2
+  activeRoomPrefabIndex: 0
   roomPrefabs:
   - {fileID: 4238275303636843574, guid: 8b74335141f0e0d43b26e9dcc6319c1e, type: 3}
   - {fileID: 3675158630561558092, guid: b9cf524b954b0604a9fe1f4a62c66989, type: 3}
@@ -353,3 +353,51 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2052085829
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2052085830}
+  - component: {fileID: 2052085831}
+  m_Layer: 0
+  m_Name: PlayerManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2052085830
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2052085829}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2052085831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2052085829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2a545467f8d18548a89c264a2eea80a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bodyControllerPrefab: {fileID: 545511088324393408, guid: 4e59370b99365b7408e63c41cb218a04, type: 3}
+  ghostControllerPrefab: {fileID: 5641017312213113670, guid: 2a2d3eb29ae45bf4680c1348d2c72c52, type: 3}
+  inventory:
+    equipableSlots:
+      equipment: []
