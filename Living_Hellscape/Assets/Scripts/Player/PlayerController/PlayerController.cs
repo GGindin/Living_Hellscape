@@ -17,7 +17,6 @@ public abstract class PlayerController : MonoBehaviour
     protected Equipment equip;
 
     protected Vector2 lastDirection = Vector2.down;
-    protected Vector2 normInput = new Vector2();
    
     protected Rigidbody2D rb;
     protected BoxCollider2D boxCollider;
@@ -33,6 +32,10 @@ public abstract class PlayerController : MonoBehaviour
 
     public bool HasControl => hasControl;
 
+    public abstract void ActivateController();
+
+    public abstract void DeactivateController();
+
     virtual protected void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -43,72 +46,100 @@ public abstract class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //if this is not the active controller return
         if (!isActive) return;
 
-        normInput = GetNormInput();
-        if (Input.GetKeyDown(KeyCode.K) && equip)
+        //poll user input, we use here in update, but b/c it belongs to the static inputcontroller class
+        //it will be available in fixed with that correct values
+        UserInput userInput = InputController.GetUserInput();
+
+        if (userInput.pause == ButtonState.Down)
         {
-            equip.TriggerAction();
+            //pause game TODO
         }
-        if (hasControl && Input.GetKeyDown(KeyCode.Space))
+
+        if (hasControl)
         {
-            //temporary while we split this code into the two classes
-            PlayerManager.instance.SwapActiveController();
+            SetDirection(userInput.movement);
+            Transform(userInput.transform);
+            MainAction(userInput.mainAction);
+            SecondAction(userInput.secondaryAction);
         }
-        
     }
+
+
 
     void FixedUpdate()
     {
         if (!isActive) return;
 
-        if (damageFromOther == null)
+        if (hasControl)
         {
-            MoveByUserInput();
+            UserInput userInput = InputController.GetUserInput();
+
+            Move(userInput.movement);
+
+            RotateEquip();
         }
-        else
-        {
-            MoveByDamage();
-        }
-        
-        RotateEquip();
     }
-
-    public abstract void ActivateController();
-
-    public abstract void DeactivateController();
 
     public void SetTarget(Vector3 target)
     {
         StartCoroutine(TransitionRoom(target));
     }
 
-    void MoveByUserInput()
+    void MainAction(ButtonState buttonState)
     {
-        if (hasControl)
+        if(buttonState == ButtonState.Down)
         {
-            Vector2 velocity = normInput * speed * Time.fixedDeltaTime;
-            rb.MovePosition(rb.position + velocity);
+            if (equip)
+            {
+                equip.TriggerAction();
+            }
         }
-
-        if(normInput.sqrMagnitude > .1f)
-        {
-            lastDirection = normInput;
-        }        
     }
-    Vector2 GetNormInput()
-    {
-        if (hasControl)
-        {
-            Vector2 input = new Vector2();
-            input.x = Input.GetAxisRaw("Horizontal");
-            input.y = Input.GetAxisRaw("Vertical");
-            input.Normalize();
 
-            return input;
+    void SecondAction(ButtonState buttonState)
+    {
+        //is no second action, will be interactions and second item
+    }
+
+    void Transform(ButtonState buttonState)
+    {
+        if(this is BodyPlayerController && buttonState == ButtonState.Down)
+        {
+            PlayerManager.instance.SwapActiveController();
+        }
+    }
+
+    void Move(Vector2 movement)
+    {
+        var normInput = movement.normalized;
+
+        Vector2 velocity = normInput * speed * Time.fixedDeltaTime;
+
+        if(damageFromOther != null)
+        {
+            velocity += MoveByDamage();
         }
 
-        return Vector2.zero;
+        rb.MovePosition(rb.position + velocity);
+    }
+
+    private void SetDirection(Vector2 movement)
+    {     
+        //if x is greater than y
+        if(Mathf.Abs(movement.x) > Mathf.Abs(movement.y))
+        {
+            lastDirection.x = 1f * Mathf.Sign(movement.x);
+            lastDirection.y = 0f;
+        }
+        //if y is greater than x
+        else if(Mathf.Abs(movement.x) < Mathf.Abs(movement.y))
+        {
+            lastDirection.y = 1f * Mathf.Sign(movement.y);
+            lastDirection.x = 0f;
+        }
     }
 
     void RotateEquip()
@@ -119,12 +150,13 @@ public abstract class PlayerController : MonoBehaviour
         }      
     }
 
-    private void MoveByDamage()
+    private Vector2 MoveByDamage()
     {      
         float t = Mathf.InverseLerp(0, damageFromOther.Duration, damageFromOther.CurrentTime);
         Vector2 offset = Vector2.Lerp(Vector2.zero, damageFromOther.Vector, t) * Time.fixedDeltaTime;
-        rb.MovePosition(rb.position + offset);
+        //rb.MovePosition(rb.position + offset);
         damageFromOther.CurrentTime -= Time.fixedDeltaTime;
+
         if (t <= 0)
         {
             damageFromOther = null;
@@ -132,9 +164,11 @@ public abstract class PlayerController : MonoBehaviour
             if (health <= 0f)
             {
                 Destroy(gameObject);
-                return;
+                return Vector2.zero;
             }
         }
+
+        return offset;
     }
 
     protected void TakeDamage(Damage damage)
