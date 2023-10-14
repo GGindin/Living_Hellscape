@@ -33,7 +33,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: New State 0
+  m_Name: Strike
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -79,7 +79,7 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 6002287318238783395}
-    m_Position: {x: 349.85153, y: 155.59473, z: 0}
+    m_Position: {x: 350, y: 150, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -7203541999506279757}
     m_Position: {x: 486.1555, y: 69.91791, z: 0}
@@ -196,7 +196,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: New State
+  m_Name: Idle
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:

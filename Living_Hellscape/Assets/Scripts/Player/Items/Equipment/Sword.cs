@@ -18,11 +18,10 @@ public class Sword : Equipment
 
     public override void SetDirection(Vector2 direction)
     {
-        if (!isActing)
-        {
-            animator.SetFloat(xDirID, direction.x);
-            animator.SetFloat(yDirID, direction.y);
-        }
+        if (isActing) return;
+
+        animator.SetFloat(xDirID, direction.x);
+        animator.SetFloat(yDirID, direction.y);
     }
 
     public override void TriggerAction()
