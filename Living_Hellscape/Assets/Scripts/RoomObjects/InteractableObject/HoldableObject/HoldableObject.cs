@@ -48,14 +48,10 @@ public class HoldableObject : InteractableObject
         {
             isHeld = false;
             var direction = PlayerManager.Instance.Active.ThrowObject();
-            transform.SetParent(RoomController.instance.ActiveRoom.transform);
+            transform.SetParent(RoomController.Instance.ActiveRoom.transform);
             StartCoroutine(Throw(direction));
         }
     }
-
-    public override void OnAssign() { }
-
-    public override void OnUnassign() { }
 
     IEnumerator Throw(Vector2 direction)
     {

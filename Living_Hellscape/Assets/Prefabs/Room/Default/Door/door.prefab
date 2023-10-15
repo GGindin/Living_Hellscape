@@ -242,7 +242,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   left: {fileID: 1593186598979718510}
   right: {fileID: 1593186597998701774}
-  trigger: {fileID: 1593186598375304762}
+  trigger: {fileID: 1593186598375304763}
   target: {fileID: 1593186599330598583}
 --- !u!1 &1593186598375304761
 GameObject:

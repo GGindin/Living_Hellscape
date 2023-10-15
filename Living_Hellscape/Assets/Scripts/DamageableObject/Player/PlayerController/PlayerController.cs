@@ -23,7 +23,7 @@ public abstract class PlayerController : DamageableObject
 
     bool hasControl = true;
 
-    bool HasHeldObject => heldObjectRoot.childCount > 0;
+    public bool HasHeldObject => heldObjectRoot.childCount > 0;
 
     public bool HasControl => hasControl;
 
@@ -85,6 +85,7 @@ public abstract class PlayerController : DamageableObject
         if (!heldObjectRoot) return Vector2.zero;
         if (!HasHeldObject) return Vector2.zero;
         interactableObject = null;
+        RoomController.Instance.ActiveRoom.AllowRoomTransitions();
         return lastDirection;
     }
 
@@ -95,6 +96,7 @@ public abstract class PlayerController : DamageableObject
 
         holdableObject.transform.SetParent(heldObjectRoot, false);
         holdableObject.transform.position = heldObjectRoot.position;
+        RoomController.Instance.ActiveRoom.StopRoomTransitions();
 
         return true;
     }

@@ -91,9 +91,9 @@ public class PlayerManager : MonoBehaviour
         HealthPanelController.Instance.UpdatePanel(active.PlayerStats);
 
         //if we have an active room we need to reset the camera follow
-        if (RoomController.instance && RoomController.instance.ActiveRoom)
+        if (RoomController.Instance && RoomController.Instance.ActiveRoom)
         {
-            RoomController.instance.ActiveRoom.SetupVirtualCamera();
+            RoomController.Instance.ActiveRoom.SetupVirtualCamera();
         }
     }
 }

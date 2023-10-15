@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class RoomController : MonoBehaviour
 {
-    public static RoomController instance;
+    public static RoomController Instance { get; private set; }
 
     [SerializeField]
     int activeRoomPrefabIndex = -1;
@@ -21,7 +21,7 @@ public class RoomController : MonoBehaviour
 
     private void Awake()
     {
-        instance = this;
+        Instance = this;
         LoadDefaultRoom();
     }
 

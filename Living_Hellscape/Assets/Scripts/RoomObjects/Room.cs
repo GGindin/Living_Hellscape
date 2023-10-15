@@ -38,7 +38,7 @@ public class Room : MonoBehaviour
 
     private void Update()
     {
-        if(RoomController.instance.ActiveRoom == this)
+        if(RoomController.Instance.ActiveRoom == this)
         {
             EnemyUpdate();
         }
@@ -46,7 +46,7 @@ public class Room : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (RoomController.instance.ActiveRoom == this)
+        if (RoomController.Instance.ActiveRoom == this)
         {
             EnemyFixedUpdate();
         }      
@@ -58,7 +58,7 @@ public class Room : MonoBehaviour
         //here we will put stuff like reading and storing save data so that when we enter it, it is the same as when we left it
         //currently not setup yet
 
-        RoomController.instance.AddRoom(this);
+        RoomController.Instance.AddRoom(this);
     }
 
     //called when player starts transitioning into room
@@ -74,7 +74,7 @@ public class Room : MonoBehaviour
     //called when actually finished entering room
     public void OnEnterRoom()
     {
-        RoomController.instance.SetActiveRoom(this);
+        RoomController.Instance.SetActiveRoom(this);
     }
 
     //called when player finished transition from room
@@ -89,7 +89,7 @@ public class Room : MonoBehaviour
     public void OnUnloadRoom()
     {
         //here we will write save data / reset the room for the next time we load the room
-        RoomController.instance.RemoveRoom(this);
+        RoomController.Instance.RemoveRoom(this);
     }
 
     public void SetupVirtualCamera()
@@ -102,6 +102,24 @@ public class Room : MonoBehaviour
     {
         virtualCamera.Follow = null;
         virtualCamera.gameObject.SetActive(false);
+    }
+
+    public void StopRoomTransitions()
+    {
+        for(int i = 0; i < connections.Length; i++)
+        {
+            var door = connections[i].thisRoomDoor;
+            door.SetTriggerToCollider();
+        }
+    }
+
+    public void AllowRoomTransitions()
+    {
+        for (int i = 0; i < connections.Length; i++)
+        {
+            var door = connections[i].thisRoomDoor;
+            door.SetTriggerToTrigger();
+        }
     }
 
     //called by the door to initiate the room transfer
@@ -155,7 +173,7 @@ public class Room : MonoBehaviour
             if (connections[i] != null && connections[i].otherRoom != null) continue;
 
             //otherwise setup the other room and connections to this room
-            Room room = RoomController.instance.LoadRoomByIndex(prefabConnections[i].otherRoomPrefabID);
+            Room room = RoomController.Instance.LoadRoomByIndex(prefabConnections[i].otherRoomPrefabID);
             connections[i] = new RoomConnection()
             {
                 otherRoom = room,
@@ -206,7 +224,7 @@ public class Room : MonoBehaviour
 
     void RemoveUnNeededRooms()
     {
-        var activeRoom = RoomController.instance.ActiveRoom;
+        var activeRoom = RoomController.Instance.ActiveRoom;
 
         for (int i = 0; i < connections.Length; i++)
         {
