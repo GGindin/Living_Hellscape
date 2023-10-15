@@ -94,7 +94,7 @@ public class Room : MonoBehaviour
 
     public void SetupVirtualCamera()
     {
-        virtualCamera.Follow = GameController.instance.PlayerController.transform;
+        virtualCamera.Follow = GameController.Instance.PlayerController.transform;
         virtualCamera.gameObject.SetActive(true);
     }
 
@@ -115,7 +115,7 @@ public class Room : MonoBehaviour
 
         RoomTransitionData data = new RoomTransitionData(this, roomConnection.otherRoom, door, otherDoor);
 
-        GameController.instance.TransitionToRoom(data);
+        GameController.Instance.TransitionToRoom(data);
     }
 
     RoomConnection GetRoomConnectionFromDoor(Door door)
