@@ -47,8 +47,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59d70de0eb046794ebe24d06cc8b06fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
-  speed: 5
+  playerStats:
+    maxHealth: 5
+    speed: 5
   equip: {fileID: 0}
   isActive: 0
 --- !u!212 &5641017312213113677
