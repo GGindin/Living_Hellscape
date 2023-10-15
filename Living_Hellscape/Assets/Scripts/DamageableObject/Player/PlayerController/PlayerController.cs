@@ -9,9 +9,8 @@ public abstract class PlayerController : DamageableObject
     [SerializeField]
     protected PlayerStats playerStats;
 
-    //this is temporary until we get the inventory and EquipedGear setup
     [SerializeField]
-    protected Equipment equip;
+    protected Transform heldObjectRoot;
 
     protected Vector2 lastDirection = Vector2.down;
    

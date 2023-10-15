@@ -4,7 +4,6 @@ using UnityEngine;
 
 public abstract class DamageableObject : MonoBehaviour
 {
-    [SerializeField]
     protected Animator animator;
 
     protected Damage damageFromOther;
