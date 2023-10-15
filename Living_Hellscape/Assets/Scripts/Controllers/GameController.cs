@@ -5,19 +5,21 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    public static GameController instance;
+    public static GameController Instance { get; private set; }
 
-    //PlayerController playerController;
-
-    public PlayerController PlayerController => PlayerManager.instance.Active;
+    public PlayerController PlayerController => PlayerManager.Instance.Active;
 
     public bool PlayerHasControl => PlayerController.HasControl;
+
+    public bool Paused => paused;
+
+    bool paused = false;
 
     RoomTransitionData roomTransitionData;
 
     private void Awake()
     {
-        instance = this;
+        Instance = this;
     }
 
     private void Start()
@@ -25,13 +27,30 @@ public class GameController : MonoBehaviour
         LoadInPlayer();
     }
 
-    private void LoadInPlayer()
+    public void SetPause()
     {
-        var placement = RoomController.instance.ActiveRoom.PlayerSpawnPlacement;
-        PlayerController.transform.position = placement.Position;
+        paused = !paused;
 
-        RoomController.instance.ActiveRoom.OnStartEnterRoom();
-        RoomController.instance.ActiveRoom.OnEnterRoom();
+        if (paused)
+        {
+            Time.timeScale = 0f;
+        }
+        else
+        {
+            Time.timeScale = 1f;
+        }
+    }
+
+    public void HandlePause()
+    {
+        if (paused)
+        {
+            //open pause menu
+        }
+        else
+        {
+            //close pause menu
+        }
     }
 
     public void TransitionToRoom(RoomTransitionData transitionData)
@@ -58,5 +77,14 @@ public class GameController : MonoBehaviour
 
         //reset data 
         roomTransitionData = new RoomTransitionData();
+    }
+
+    private void LoadInPlayer()
+    {
+        var placement = RoomController.instance.ActiveRoom.PlayerSpawnPlacement;
+        PlayerController.transform.position = placement.Position;
+
+        RoomController.instance.ActiveRoom.OnStartEnterRoom();
+        RoomController.instance.ActiveRoom.OnEnterRoom();
     }
 }
