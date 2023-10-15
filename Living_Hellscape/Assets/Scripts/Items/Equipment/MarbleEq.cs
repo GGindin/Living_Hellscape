@@ -27,6 +27,7 @@ public class MarbleEq : Equipment
         {
             var marble = Instantiate(marbleProjectilePrefab, transform.position, Quaternion.identity);
             marble.Direction = direction;
+            marble.StartingVelocity = PlayerManager.Instance.Active.Velocity;
             coolDown = fireRate;
         }
     }

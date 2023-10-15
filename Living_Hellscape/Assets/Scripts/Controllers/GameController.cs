@@ -64,8 +64,8 @@ public class GameController : MonoBehaviour
     {
         roomTransitionData.toRoom.OnEnterRoom();
 
-        roomTransitionData.fromDoor.OperateDoor();
-        roomTransitionData.toDoor.OperateDoor();
+        roomTransitionData.fromDoor.CloseDoor();
+        roomTransitionData.toDoor.CloseDoor();
 
         roomTransitionData.fromRoom.OnLeaveRoom();
 

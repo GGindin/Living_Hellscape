@@ -29,6 +29,8 @@ public abstract class PlayerController : DamageableObject
 
     public PlayerStats PlayerStats => playerStats;
 
+    public Vector2 Velocity { get; protected set; }
+
     public abstract void ActivateController();
 
     public abstract void DeactivateController();
@@ -186,6 +188,8 @@ public abstract class PlayerController : DamageableObject
         {
             velocity += MoveByDamage();
         }
+
+        Velocity = velocity / Time.fixedDeltaTime;
 
         rb.MovePosition(rb.position + velocity);
     }

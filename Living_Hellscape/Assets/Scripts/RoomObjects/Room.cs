@@ -11,6 +11,9 @@ public class Room : MonoBehaviour
     int id;
 
     [SerializeField]
+    bool defeatAllEnemies;
+
+    [SerializeField]
     CinemachineVirtualCamera virtualCamera;
 
     [SerializeField]
@@ -26,9 +29,13 @@ public class Room : MonoBehaviour
 
     RoomConnection[] connections;
 
+    bool hasOpenedAllDoors = false;
+
     public ObjectPlacement<PlayerController> PlayerSpawnPlacement => playerSpawnPlacement;
 
     public int ID => id;
+
+    public bool DefeateAllEnemies => defeatAllEnemies;
 
     private void Awake()
     {
@@ -41,6 +48,10 @@ public class Room : MonoBehaviour
         if(RoomController.Instance.ActiveRoom == this)
         {
             EnemyUpdate();
+            if (defeatAllEnemies && !HasActiveEnemies() && !hasOpenedAllDoors)
+            {
+                OpenAllDoors();
+            }
         }
     }
 
@@ -81,6 +92,8 @@ public class Room : MonoBehaviour
     //called after the OnEnterRoom
     public void OnLeaveRoom()
     {
+        hasOpenedAllDoors = false;
+        CloseAllDoors();
         TurnOffVirtualCamera();
         RemoveUnNeededRooms();
     }
@@ -119,6 +132,37 @@ public class Room : MonoBehaviour
         {
             var door = connections[i].thisRoomDoor;
             door.SetTriggerToTrigger();
+        }
+    }
+
+    public bool HasActiveEnemies()
+    {
+        for(int i = 0; i < roomEnemies.Length; i++)
+        {
+            if (roomEnemies[i])
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public void OpenAllDoors()
+    {
+        for (int i = 0; i < connections.Length; i++)
+        {
+            var door = connections[i].thisRoomDoor;
+            door.OpenDoor();
+        }
+    }
+
+    public void CloseAllDoors()
+    {
+        for (int i = 0; i < connections.Length; i++)
+        {
+            var door = connections[i].thisRoomDoor;
+            door.CloseDoor();
         }
     }
 

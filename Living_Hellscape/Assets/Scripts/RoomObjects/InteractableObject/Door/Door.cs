@@ -51,8 +51,27 @@ public class Door : InteractableObject
 
     public void OperateDoor()
     {
+        if (room.DefeateAllEnemies && room.HasActiveEnemies() && GameController.Instance.PlayerHasControl) return;
         closed = !closed;
         SetDoorSprite();
+    }
+
+    public void OpenDoor()
+    {
+        if (closed)
+        {
+            closed = !closed;
+            SetDoorSprite();
+        }
+    }
+
+    public void CloseDoor()
+    {
+        if(!closed)
+        {
+            closed = !closed;
+            SetDoorSprite();
+        }
     }
 
     public void SignalDoor()

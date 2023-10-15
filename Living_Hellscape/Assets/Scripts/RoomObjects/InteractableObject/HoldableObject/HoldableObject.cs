@@ -56,6 +56,12 @@ public class HoldableObject : InteractableObject
     IEnumerator Throw(Vector2 direction)
     {
         isThrown = true;
+
+        var throwSpeed = throwDistance / throwTime;
+        throwSpeed += Vector2.Dot(direction, PlayerManager.Instance.Active.Velocity);
+
+        var actualThrowTime = throwDistance / throwSpeed;
+
         var playerTrans = PlayerManager.Instance.Active.transform;
         var playerPos = new Vector2(playerTrans.position.x, playerTrans.position.y);
         var end = playerPos + (direction * throwDistance);
@@ -64,10 +70,10 @@ public class HoldableObject : InteractableObject
 
         float currentTime = 0f;
 
-        while(currentTime < throwTime)
+        while(currentTime < actualThrowTime)
         {
             currentTime += Time.deltaTime;
-            float t = Mathf.InverseLerp(0f, throwTime, currentTime);
+            float t = Mathf.InverseLerp(0f, actualThrowTime, currentTime);
             var pos = Vector2.Lerp(start, end, t);
             body.MovePosition(pos);
             yield return null;
