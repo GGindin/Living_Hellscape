@@ -103,6 +103,7 @@ public class EnemyController : DamageableObject
 
             currentTimer = 0f;
             direction.Normalize();
+            direction = Quaternion.Euler(0f, 0f, Random.Range(-30f, 30f)) * direction;
         }
     }
 

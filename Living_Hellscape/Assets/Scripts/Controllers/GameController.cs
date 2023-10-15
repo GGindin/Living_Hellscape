@@ -64,16 +64,16 @@ public class GameController : MonoBehaviour
     {
         roomTransitionData.toRoom.OnEnterRoom();
 
-        roomTransitionData.fromDoor.OperateDoor();
-        roomTransitionData.toDoor.OperateDoor();
+        roomTransitionData.fromDoor.CloseDoor();
+        roomTransitionData.toDoor.CloseDoor();
 
         roomTransitionData.fromRoom.OnLeaveRoom();
 
         //set player to be child of active room
-        PlayerController.transform.SetParent(RoomController.instance.ActiveRoom.transform, true);
+        PlayerController.transform.SetParent(RoomController.Instance.ActiveRoom.transform, true);
 
         //recenter world
-        RoomController.instance.RecenterWorld();
+        RoomController.Instance.RecenterWorld();
 
         //reset data 
         roomTransitionData = new RoomTransitionData();
@@ -81,10 +81,10 @@ public class GameController : MonoBehaviour
 
     private void LoadInPlayer()
     {
-        var placement = RoomController.instance.ActiveRoom.PlayerSpawnPlacement;
+        var placement = RoomController.Instance.ActiveRoom.PlayerSpawnPlacement;
         PlayerController.transform.position = placement.Position;
 
-        RoomController.instance.ActiveRoom.OnStartEnterRoom();
-        RoomController.instance.ActiveRoom.OnEnterRoom();
+        RoomController.Instance.ActiveRoom.OnStartEnterRoom();
+        RoomController.Instance.ActiveRoom.OnEnterRoom();
     }
 }

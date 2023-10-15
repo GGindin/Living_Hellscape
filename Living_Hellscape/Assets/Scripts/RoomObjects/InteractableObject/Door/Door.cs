@@ -8,7 +8,7 @@ public class Door : InteractableObject
     DoorSection left, right;
 
     [SerializeField]
-    BoxCollider2D trigger;
+    DoorTrigger trigger;
 
     [SerializeField]
     GameObject target;
@@ -28,16 +28,6 @@ public class Door : InteractableObject
         OperateDoor();
     }
 
-    public override void OnAssign()
-    {
-        //TODO SEE BASE CLASS
-    }
-
-    public override void OnUnassign()
-    {
-        //TODO SEE BASE CLASS
-    }
-
     private void Awake()
     {
         room = GetComponentInParent<Room>();
@@ -49,10 +39,39 @@ public class Door : InteractableObject
         SetDoorSprite();
     }
 
+    public void SetTriggerToCollider()
+    {
+        trigger.SetToCollider();
+    }
+
+    public void SetTriggerToTrigger()
+    {
+        trigger.SetToTrigger();
+    }
+
     public void OperateDoor()
     {
+        if (room.DefeateAllEnemies && room.HasActiveEnemies() && GameController.Instance.PlayerHasControl) return;
         closed = !closed;
         SetDoorSprite();
+    }
+
+    public void OpenDoor()
+    {
+        if (closed)
+        {
+            closed = !closed;
+            SetDoorSprite();
+        }
+    }
+
+    public void CloseDoor()
+    {
+        if(!closed)
+        {
+            closed = !closed;
+            SetDoorSprite();
+        }
     }
 
     public void SignalDoor()
