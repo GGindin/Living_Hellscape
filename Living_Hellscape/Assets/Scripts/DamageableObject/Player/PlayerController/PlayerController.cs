@@ -23,6 +23,8 @@ public abstract class PlayerController : DamageableObject
 
     bool hasControl = true;
 
+    bool HasHeldObject => heldObjectRoot.childCount > 0;
+
     public bool HasControl => hasControl;
 
     public PlayerStats PlayerStats => playerStats;
@@ -66,13 +68,7 @@ public abstract class PlayerController : DamageableObject
     {
         if (!isActive) return;
 
-        if (interactableObject)
-        {
-            if (!rb.IsTouching(interactableObject.InteractableCollider))
-            {
-                interactableObject = null;
-            }
-        }
+        TestInteractableObject();
 
         if (hasControl)
         {
@@ -82,6 +78,25 @@ public abstract class PlayerController : DamageableObject
 
             RotateEquip();
         }
+    }
+
+    public Vector2 ThrowObject()
+    {
+        if (!heldObjectRoot) return Vector2.zero;
+        if (!HasHeldObject) return Vector2.zero;
+        interactableObject = null;
+        return lastDirection;
+    }
+
+    public bool HoldObject(HoldableObject holdableObject)
+    {
+        if (!heldObjectRoot) return false;
+        if (HasHeldObject) return false;
+
+        holdableObject.transform.SetParent(heldObjectRoot, false);
+        holdableObject.transform.position = heldObjectRoot.position;
+
+        return true;
     }
 
     public void SetTarget(Vector3 target)
@@ -109,6 +124,21 @@ public abstract class PlayerController : DamageableObject
         }
 
         return false;
+    }
+
+    void TestInteractableObject()
+    {
+        if (interactableObject)
+        {
+            if (HasHeldObject)
+            {
+                //todo
+            }
+            else if (!rb.IsTouching(interactableObject.InteractableCollider))
+            {
+                interactableObject = null;
+            }
+        }
     }
 
     void MainAction(ButtonState buttonState)

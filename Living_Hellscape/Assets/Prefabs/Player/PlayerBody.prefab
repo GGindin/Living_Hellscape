@@ -48,7 +48,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a3a3f04043553e419ba19ab1ee9d593, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
   playerStats:
     maxHealth: 5
     speed: 5
@@ -182,7 +181,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4990064950471468445}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: HeldObjectRoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
