@@ -81,7 +81,7 @@ public class EnemyController : DamageableObject
         }
     }
 
-    void SetDirection()
+    protected virtual void SetDirection()
     {
         float angle = Random.Range(0f, 360f);
         direction = Quaternion.AngleAxis(angle, Vector3.forward) * Vector2.right;
@@ -109,16 +109,15 @@ public class EnemyController : DamageableObject
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        CollisionRouter collisionRouter = collision.gameObject.GetComponent<CollisionRouter>();
+        DamageRouter damageRouter = collision.gameObject.GetComponent<DamageRouter>();
 
-        if (collisionRouter && damageFromOther == null)
+        if (damageRouter && damageFromOther == null)
         {
-            var target = collisionRouter.Target;
-            Sword sword = target.GetComponent<Sword>();
-            if (sword)
+            var target = damageRouter.Target;
+            if (target)
             {
                 Vector2 damageDir = (rb.position - collision.ClosestPoint(rb.position)).normalized;
-                var damage = sword.Damage;
+                var damage = target.Damager.GetDamage();
                 SetupDamage(damage, damageDir);
             }
         }
