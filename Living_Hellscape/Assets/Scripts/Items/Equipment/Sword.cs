@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Sword : Equipment
+public class Sword : Equipment, IDamager
 {
     public Damage Damage => new Damage(damage);
 
@@ -29,5 +29,10 @@ public class Sword : Equipment
     public override void EndAction()
     {
         isActing = false;
+    }
+
+    public Damage GetDamage()
+    {
+        return Damage;
     }
 }
