@@ -75,7 +75,7 @@ public class Room : MonoBehaviour
     }
 
     //called when instantiated / loaded
-    public void OnLoadRoom()
+    public virtual void OnLoadRoom()
     {
         //here we will put stuff like reading and storing save data so that when we enter it, it is the same as when we left it
         //currently not setup yet
@@ -84,7 +84,7 @@ public class Room : MonoBehaviour
     }
 
     //called when player starts transitioning into room
-    public void OnStartEnterRoom()
+    public virtual void OnStartEnterRoom()
     {
         //these methods in the future will read the save data that was loaded before to setup room properly
         //currently just resets to the starting state
@@ -95,14 +95,14 @@ public class Room : MonoBehaviour
     }
 
     //called when actually finished entering room
-    public void OnEnterRoom()
+    public virtual void OnEnterRoom()
     {
         RoomController.Instance.SetActiveRoom(this);
     }
 
     //called when player finished transition from room
     //called after the OnEnterRoom
-    public void OnLeaveRoom()
+    public virtual void OnLeaveRoom()
     {
         hasOpenedAllDoors = false;
         CloseAllDoors();
@@ -112,19 +112,19 @@ public class Room : MonoBehaviour
     }
 
     //called when room is destroyed
-    public void OnUnloadRoom()
+    public virtual void OnUnloadRoom()
     {
         //here we will write save data / reset the room for the next time we load the room
         RoomController.Instance.RemoveRoom(this);
     }
 
-    public void SetupVirtualCamera()
+    public virtual void SetupVirtualCamera()
     {
         virtualCamera.Follow = GameController.Instance.PlayerController.transform;
         virtualCamera.gameObject.SetActive(true);
     }
 
-    public void TurnOffVirtualCamera()
+    public virtual void TurnOffVirtualCamera()
     {
         virtualCamera.Follow = null;
         virtualCamera.gameObject.SetActive(false);

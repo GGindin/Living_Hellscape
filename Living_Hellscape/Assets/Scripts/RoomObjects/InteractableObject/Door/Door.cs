@@ -79,7 +79,7 @@ public class Door : InteractableObject
         }
     }
 
-    public void CloseDoor()
+    public virtual void CloseDoor()
     {
         if(!closed)
         {
@@ -96,7 +96,7 @@ public class Door : InteractableObject
         }
     }
 
-    void SetDoorSprite()
+    protected virtual void SetDoorSprite()
     {
         left.SetDoorSprite(closed);
         right.SetDoorSprite(closed);

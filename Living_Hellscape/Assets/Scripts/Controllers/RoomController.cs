@@ -72,6 +72,8 @@ public class RoomController : MonoBehaviour
 
     public Room GetRoomByID(int id)
     {
+        if (id < 0) return null;
+
         foreach (Room room in spawnedRooms)
         {
             if (room.ID == id)
@@ -85,7 +87,9 @@ public class RoomController : MonoBehaviour
 
     public bool IsRoomLoaded(int id)
     {
-        foreach(Room room in spawnedRooms)
+        if (id < 0) return false;
+
+        foreach (Room room in spawnedRooms)
         {
             if(room.ID == id)
             {
