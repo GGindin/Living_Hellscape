@@ -26,6 +26,7 @@ public class MarbleEq : Equipment
         if(coolDown <= 0f)
         {
             var marble = Instantiate(marbleProjectilePrefab, transform.position, Quaternion.identity);
+            marble.transform.SetParent(RoomController.Instance.ActiveRoom.DynamicObjectsHolder, true);
             marble.Direction = direction;
             marble.StartingVelocity = PlayerManager.Instance.Active.Velocity;
             coolDown = fireRate;
