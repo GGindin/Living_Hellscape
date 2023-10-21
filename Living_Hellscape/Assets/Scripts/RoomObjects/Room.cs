@@ -117,6 +117,12 @@ public class Room : MonoBehaviour
         virtualCamera.gameObject.SetActive(false);
     }
 
+    public void WarpVirtualCamera(Vector3 delta)
+    {
+        //virtualCamera.PreviousStateIsValid = false;
+        virtualCamera.OnTargetObjectWarped(GameController.Instance.PlayerController.transform, delta);
+    }
+
     public void StopRoomTransitions()
     {
         for(int i = 0; i < connections.Length; i++)
@@ -172,7 +178,7 @@ public class Room : MonoBehaviour
         RoomConnection roomConnection = GetRoomConnectionFromDoor(door);
         if (roomConnection.otherRoom == null) return;
 
-        Door otherDoor = GetOtherRoomDoor(roomConnection.otherRoom);
+        Door otherDoor = GetOtherRoomDoor(roomConnection);
         if (otherDoor == null) return;
 
         RoomTransitionData data = new RoomTransitionData(this, roomConnection.otherRoom, door, otherDoor);
@@ -193,15 +199,21 @@ public class Room : MonoBehaviour
         return null;
     }
 
-    Door GetOtherRoomDoor(Room other)
+    Door GetOtherRoomDoor(RoomConnection other)
     {
-        for(int i = 0; i < other.connections.Length; i++)
+        for(int i = 0; i < other.otherRoom.connections.Length; i++)
         {
-            if (other.connections[i] == null) continue;
+            if (other.otherRoom.connections[i] == null) continue;
 
-            if (other.connections[i].otherRoom == this)
+            if (other.otherRoom.connections[i].otherRoom == this)
             {
-                return other.connections[i].thisRoomDoor;
+                for(int j = 0; j < connections.Length; j++)
+                {
+                    if (connections[j].thisRoomDoor.InRoomID == other.otherRoom.connections[i].thisRoomDoor.InRoomID)
+                    {
+                        return other.otherRoom.connections[i].thisRoomDoor;
+                    }
+                }             
             }
         }
 
@@ -213,35 +225,76 @@ public class Room : MonoBehaviour
         //this loads adjacent rooms so they are ready when the player leaves a room
         for (int i = 0; i < prefabConnections.Length; i++)
         {
-            //if already has this setup from a previous load skip
+            //if already has this setup from a previous load skip, and the room exists
             if (connections[i] != null && connections[i].otherRoom != null) continue;
 
-            //otherwise setup the other room and connections to this room
-            Room room = RoomController.Instance.LoadRoomByIndex(prefabConnections[i].otherRoomPrefabID);
+            //check to see if the room is already loaded
+            Room room = RoomController.Instance.GetRoomByID(prefabConnections[i].otherRoomPrefabID);
+
+            //if we do not have the room get the room
+            if (!room)
+            {
+                room = RoomController.Instance.LoadRoomByIndex(prefabConnections[i].otherRoomPrefabID);
+            }
+
+            //then set up the connection
             connections[i] = new RoomConnection()
             {
                 otherRoom = room,
                 thisRoomDoor = prefabConnections[i].thisRoomDoor
             };
-            room.SetupRoomConnectionsToRoom(this);
-            room.OnLoadRoom();
+            room.SetupRoomConnectionsToRoom(this, connections[i].thisRoomDoor);
+
+            if (!RoomController.Instance.IsRoomLoaded(room.id))
+            {
+                room.OnLoadRoom();
+                room.OffsetRoom(this, connections[i].thisRoomDoor);
+            }          
         }
     }
 
     //this sets up connections to the active room, so that when you try to leave the connections are set up
-    void SetupRoomConnectionsToRoom(Room other)
+    void SetupRoomConnectionsToRoom(Room otherRoom, Door otherDoor)
     {
         for (int i = 0; i < prefabConnections.Length; i++)
         {
             var prefab = prefabConnections[i];
-            if (prefab.otherRoomPrefabID == other.id)
+            if (prefab.otherRoomPrefabID == otherRoom.id && otherDoor.InRoomID == prefab.thisRoomDoor.InRoomID)
             {
                 connections[i] = new RoomConnection()
                 {
-                    otherRoom = other,
+                    otherRoom = otherRoom,
                     thisRoomDoor = prefab.thisRoomDoor
                 };
             }
+        }
+    }
+
+    void OffsetRoom(Room otherRoom, Door otherDoor)
+    {
+
+        RoomConnection thisConnection = null;
+
+        for(int i = 0; i < connections.Length; i++)
+        {
+            if (connections[i] == null) continue;
+
+            if (connections[i].otherRoom == otherRoom && connections[i].thisRoomDoor.InRoomID == otherDoor.InRoomID)
+            {
+                thisConnection = connections[i];
+                break;
+            }
+        }
+
+        if (thisConnection != null)
+        {
+            Vector2 otherDoorDist = otherDoor.TargetPos - otherRoom.transform.position;
+            Vector2 interRoomDistance = otherDoor.DoorDirection.DirectionToVector2() * RoomController.INTER_ROOM_DISTANCE +
+                otherDoor.DoorDirection.DirectionToVector2() * 2.0f;
+            Vector2 thisDoorDist = transform.position - thisConnection.thisRoomDoor.TargetPos;
+
+            Vector2 totalOffset = otherDoorDist + interRoomDistance + thisDoorDist;
+            transform.position = otherRoom.transform.position + new Vector3(totalOffset.x, totalOffset.y);
         }
     }
 

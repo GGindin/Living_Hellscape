@@ -4,6 +4,16 @@ using UnityEngine;
 
 public class Door : InteractableObject
 {
+    //you need to set the connecting rooms to have the same value
+    //so generally leave at 0, unless you have multiple doors leading to the same rooms
+    //then set each combo to 1 and 1 or 2 and 2 depending on how many connections there are
+    [SerializeField]
+    int inRoomID;
+
+    //this is the direction the player goes through the door
+    [SerializeField]
+    DoorDirection direction;
+
     [SerializeField]
     DoorSection left, right;
 
@@ -22,6 +32,10 @@ public class Door : InteractableObject
     public Vector3 TargetPos => target.transform.position;
 
     public override Collider2D InteractableCollider => compCollider;
+
+    public int InRoomID => inRoomID;
+
+    public DoorDirection DoorDirection => direction;
 
     public override void Interact()
     {
