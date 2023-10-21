@@ -25,6 +25,14 @@ public class Room : MonoBehaviour
     [SerializeField]
     ObjectPlacement<EnemyController>[] enemyPlacements;
 
+    [SerializeField]
+    ObjectPlacement<HoldableObject>[] holdableObjectPlacements;
+
+    [SerializeField]
+    Transform dynamicObjectsHolder;
+
+    HoldableObject[] roomHoldables;
+
     EnemyController[] roomEnemies;
 
     RoomConnection[] connections;
@@ -37,10 +45,13 @@ public class Room : MonoBehaviour
 
     public bool DefeateAllEnemies => defeatAllEnemies;
 
+    public Transform DynamicObjectsHolder => dynamicObjectsHolder;
+
     private void Awake()
     {
         connections = new RoomConnection[prefabConnections.Length];
         roomEnemies = new EnemyController[enemyPlacements.Length];
+        roomHoldables = new HoldableObject[holdableObjectPlacements.Length];
     }
 
     private void Update()
@@ -79,6 +90,7 @@ public class Room : MonoBehaviour
         //currently just resets to the starting state
         SetupVirtualCamera();
         LoadEnemies();
+        LoadHoldableObjects();
         LoadAdjacentRooms();       
     }
 
@@ -94,6 +106,7 @@ public class Room : MonoBehaviour
     {
         hasOpenedAllDoors = false;
         CloseAllDoors();
+        RemoveDynamicObjects();
         TurnOffVirtualCamera();
         RemoveUnNeededRooms();
     }
@@ -316,6 +329,38 @@ public class Room : MonoBehaviour
             //create enemy if doesn't exist
             //in the future we will remember what happened to enemies and objects
             roomEnemies[i] = Instantiate(placement.prefab, placement.Position, Quaternion.identity, transform);
+        }
+    }
+
+    void LoadHoldableObjects()
+    {
+        //loads objects (right now just enemies)
+        for (int i = 0; i < holdableObjectPlacements.Length; i++)
+        {
+            //get the placement for the enemy
+            var placement = holdableObjectPlacements[i];
+
+            //Reset position if already loaded
+            if (roomHoldables[i] != null)
+            {
+                roomHoldables[i].transform.position = placement.Position;
+                continue;
+            }
+
+            //create enemy if doesn't exist
+            //in the future we will remember what happened to enemies and objects
+            roomHoldables[i] = Instantiate(placement.prefab, placement.Position, Quaternion.identity, transform);
+        }
+    }
+
+    void RemoveDynamicObjects()
+    {
+        int childCount = dynamicObjectsHolder.childCount;
+
+        for(int i = childCount - 1; i >= 0; i--)
+        {
+            var child = dynamicObjectsHolder.GetChild(i);
+            Destroy(child.gameObject);
         }
     }
 

@@ -73,6 +73,7 @@ public class GameController : MonoBehaviour
         PlayerManager.Instance.ParentControllersToActiveRoom();
 
         //recenter world, sometimes gets wierd Virtual Cam glitches, and isn't needed
+        //if we do this it might be better to do it before the transition and signal to CM then when only one camera is acting
         //RoomController.Instance.RecenterWorld(roomTransitionData);
 
 
