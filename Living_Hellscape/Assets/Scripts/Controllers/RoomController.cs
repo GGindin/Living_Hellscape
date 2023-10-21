@@ -7,6 +7,8 @@ public class RoomController : MonoBehaviour
 {
     public static RoomController Instance { get; private set; }
 
+    public const float INTER_ROOM_DISTANCE = 6.0f;
+
     [SerializeField]
     int activeRoomPrefabIndex = -1;
 
@@ -68,8 +70,64 @@ public class RoomController : MonoBehaviour
         spawnedRooms.Remove(room);
     }
 
-    public void RecenterWorld()
+    public Room GetRoomByID(int id)
     {
-        //will use the room list to center around the active room and the active room will be set at (0, 0)
+        foreach (Room room in spawnedRooms)
+        {
+            if (room.ID == id)
+            {
+                return room;
+            }
+        }
+
+        return null;
+    }
+
+    public bool IsRoomLoaded(int id)
+    {
+        foreach(Room room in spawnedRooms)
+        {
+            if(room.ID == id)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public void RecenterWorld(RoomTransitionData roomTransitionData)
+    {
+        //cache objects
+        Room fromRoom = roomTransitionData.fromRoom;
+        Door fromDoor = roomTransitionData.fromDoor;
+
+        Room toRoom = roomTransitionData.toRoom;
+        Door toDoor = roomTransitionData.toDoor;
+
+        //get offset from the from room to the door
+        Vector2 fromDoorOffset = fromDoor.TargetPos - fromRoom.transform.position;
+
+        //get the distance between doors
+        Vector2 doorDifference = toDoor.TargetPos - fromDoor.TargetPos;
+
+        //get offset from the toDoor to the to Room
+        Vector2 toDoorOffset = toRoom.transform.position - toDoor.TargetPos;
+
+        //the sum of these is the offfset from 0
+        Vector2 totalOffset = fromDoorOffset + doorDifference + toDoorOffset;
+        totalOffset = -totalOffset;
+
+        RepositionRooms(totalOffset);
+    }
+
+    void RepositionRooms(Vector2 offset)
+    {
+        Vector3 offset3D = new Vector3(offset.x, offset.y);
+
+        foreach (Room room in spawnedRooms)
+        {
+            room.transform.position += offset3D;
+        }
     }
 }

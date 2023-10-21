@@ -70,10 +70,11 @@ public class GameController : MonoBehaviour
         roomTransitionData.fromRoom.OnLeaveRoom();
 
         //set player to be child of active room
-        PlayerController.transform.SetParent(RoomController.Instance.ActiveRoom.transform, true);
+        PlayerManager.Instance.ParentControllersToActiveRoom();
 
-        //recenter world
-        RoomController.Instance.RecenterWorld();
+        //recenter world, sometimes gets wierd Virtual Cam glitches, and isn't needed
+        //RoomController.Instance.RecenterWorld(roomTransitionData);
+
 
         //reset data 
         roomTransitionData = new RoomTransitionData();
@@ -83,6 +84,7 @@ public class GameController : MonoBehaviour
     {
         var placement = RoomController.Instance.ActiveRoom.PlayerSpawnPlacement;
         PlayerController.transform.position = placement.Position;
+        PlayerManager.Instance.ParentControllersToActiveRoom();
 
         RoomController.Instance.ActiveRoom.OnStartEnterRoom();
         RoomController.Instance.ActiveRoom.OnEnterRoom();
