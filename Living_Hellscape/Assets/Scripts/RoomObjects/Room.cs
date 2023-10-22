@@ -1,11 +1,12 @@
 using Cinemachine;
 using JetBrains.Annotations;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-public class Room : MonoBehaviour
+public class Room : MonoBehaviour, ISaveableObject
 {
     [SerializeField]
     int id;
@@ -29,9 +30,14 @@ public class Room : MonoBehaviour
     ObjectPlacement<HoldableObject>[] holdableObjectPlacements;
 
     [SerializeField]
+    ObjectPlacement<InteractableObject>[] interactableObjectPlacements;
+
+    [SerializeField]
     Transform dynamicObjectsHolder;
 
     HoldableObject[] roomHoldables;
+
+    InteractableObject[] roomInteractables;
 
     EnemyController[] roomEnemies;
 
@@ -52,6 +58,7 @@ public class Room : MonoBehaviour
         connections = new RoomConnection[prefabConnections.Length];
         roomEnemies = new EnemyController[enemyPlacements.Length];
         roomHoldables = new HoldableObject[holdableObjectPlacements.Length];
+        roomInteractables = new InteractableObject[interactableObjectPlacements.Length];
     }
 
     protected void Update()
@@ -91,8 +98,13 @@ public class Room : MonoBehaviour
         SetupVirtualCamera();
         LoadEnemies();
         LoadHoldableObjects();
-        LoadAdjacentRooms();       
+        LoadInteractableObjects();
+        LoadAdjacentRooms();
+        GameStorageController.Instance.LoadPerm(this);
+        GameStorageController.Instance.LoadTemp(this);
     }
+
+
 
     //called when actually finished entering room
     public virtual void OnEnterRoom()
@@ -116,6 +128,8 @@ public class Room : MonoBehaviour
     {
         //here we will write save data / reset the room for the next time we load the room
         RoomController.Instance.RemoveRoom(this);
+        GameStorageController.Instance.SavePerm(this);
+        GameStorageController.Instance.SaveTemp(this);
     }
 
     public virtual void SetupVirtualCamera()
@@ -409,6 +423,27 @@ public class Room : MonoBehaviour
         }
     }
 
+    private void LoadInteractableObjects()
+    {
+        //loads objects (right now just enemies)
+        for (int i = 0; i < interactableObjectPlacements.Length; i++)
+        {
+            //get the placement for the enemy
+            var placement = interactableObjectPlacements[i];
+
+            //Reset position if already loaded
+            if (roomInteractables[i] != null)
+            {
+                roomInteractables[i].transform.position = placement.Position;
+                continue;
+            }
+
+            //create enemy if doesn't exist
+            //in the future we will remember what happened to enemies and objects
+            roomInteractables[i] = Instantiate(placement.prefab, placement.Position, Quaternion.identity, transform);
+        }
+    }
+
     void RemoveDynamicObjects()
     {
         int childCount = dynamicObjectsHolder.childCount;
@@ -456,6 +491,103 @@ public class Room : MonoBehaviour
             {
                 e.RoomFixedUpdate();
             }           
+        }
+    }
+
+    public string GetFileName()
+    {
+        return "room_" + id;
+    }
+
+    public void SavePerm(GameDataWriter writer)
+    {
+        for (int i = 0; i < connections.Length; i++)
+        {
+            if (connections[i] == null) continue;
+
+            var door = connections[i].thisRoomDoor;
+            door.SavePerm(writer);           
+        }
+        for (int i = 0; i < roomInteractables.Length; i++)
+        {
+            if (roomInteractables[i] == null) continue;
+
+            var interactable = roomInteractables[i];
+            interactable.SavePerm(writer);
+        }
+    }
+
+    public void SaveTemp(GameDataWriter writer)
+    {
+        for (int i = 0; i < roomEnemies.Length; i++)
+        {           
+            if (roomEnemies[i] == null)
+            {
+                writer.WriteInt(-1);
+            }
+            else
+            {
+                roomEnemies[i].SaveTemp(writer);
+            }
+        }
+        for (int i = 0; i < roomHoldables.Length; i++)
+        {
+            if (roomHoldables[i] == null)
+            {
+                writer.WriteInt(-1);
+            }
+            else
+            {
+                roomHoldables[i].SaveTemp(writer);
+            }
+        }
+    }
+
+    public void LoadPerm(GameDataReader reader)
+    {
+        for (int i = 0; i < connections.Length; i++)
+        {
+            if (connections[i] == null) continue;
+
+            var door = connections[i].thisRoomDoor;
+            door.LoadPerm(reader);
+        }
+        for (int i = 0; i < roomInteractables.Length; i++)
+        {
+            if (roomInteractables[i] == null) continue;
+
+            var interactable = roomInteractables[i];
+            interactable.LoadPerm(reader);
+        }
+    }
+
+    public void LoadTemp(GameDataReader reader)
+    {
+        for (int i = 0; i < roomEnemies.Length; i++)
+        {
+            var isNull = reader.ReadInt();
+            if (isNull < 0)
+            {
+                Destroy(roomEnemies[i].gameObject);
+                roomEnemies[i] = null;
+            }
+            else
+            {
+                roomEnemies[i].LoadTemp(reader);
+            }
+        }
+        for (int i = 0; i < roomHoldables.Length; i++)
+        {
+            var isNull = reader.ReadInt();
+            if (isNull < 0)
+            {
+                Destroy(roomHoldables[i].gameObject);
+                roomHoldables[i] = null;
+            }
+            else
+            {
+                roomHoldables[i].LoadTemp(reader);
+            }
         }
     }
 }

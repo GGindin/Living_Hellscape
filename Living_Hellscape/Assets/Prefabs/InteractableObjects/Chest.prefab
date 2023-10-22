@@ -144,6 +144,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b433c65599014f5478fdd51eb615aa54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chestItemPrefab: {fileID: 0}
+  chestItemPrefab: {fileID: 1490736053402351735, guid: 8dfff96e7c97c64439d15ddd43a5dfa2, type: 3}
   boxCollider: {fileID: 6548932955526166231}
   animator: {fileID: 5220877801265776471}

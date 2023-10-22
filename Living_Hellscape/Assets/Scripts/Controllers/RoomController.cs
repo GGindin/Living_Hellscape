@@ -114,6 +114,8 @@ public class RoomController : MonoBehaviour
         SetActiveRoom(null);
         foreach(Room sr in spawnedRooms)
         {
+            GameStorageController.Instance.SavePerm(sr);
+            GameStorageController.Instance.SaveTemp(sr);
             Destroy(sr.gameObject);
         }
         spawnedRooms.Clear();
