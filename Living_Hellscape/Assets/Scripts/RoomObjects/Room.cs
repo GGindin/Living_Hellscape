@@ -54,7 +54,7 @@ public class Room : MonoBehaviour
         roomHoldables = new HoldableObject[holdableObjectPlacements.Length];
     }
 
-    private void Update()
+    protected void Update()
     {
         if(RoomController.Instance.ActiveRoom == this)
         {
@@ -185,8 +185,49 @@ public class Room : MonoBehaviour
         }
     }
 
+    public PseudoRoom FindPseudoRoomByConnectionID(int id)
+    {
+        for(int i = 0; i < connections.Length; i++)
+        {
+            var room = connections[i].otherRoom;
+            if(room is PseudoRoom)
+            {
+                var pseudo = (PseudoRoom)room;
+                if(id == pseudo.PseudoRoomConnection.pseudoRoomID)
+                {
+                    return pseudo;
+                }
+            }
+        }
+
+        return null;
+    }
+
+    public void ConfigureFromPseudoRoomTransitionByConnectionID(int id)
+    {
+        for (int i = 0; i < connections.Length; i++)
+        {
+            var room = connections[i].otherRoom;
+            if (room is PseudoRoom)
+            {
+                var pseudo = (PseudoRoom)room;
+                if (id == pseudo.PseudoRoomConnection.pseudoRoomID)
+                {
+                    //this shouldnt be thisRoomDoor, needs to be the pseudo room door, but thats not how this method works
+                    //because this is being called on the actual first room on the next floor
+                    RoomTransitionData roomTransitionData = new RoomTransitionData();
+                    roomTransitionData.toDoor = connections[i].thisRoomDoor;
+                    roomTransitionData.toRoom = this;
+                    roomTransitionData.fromDoor = pseudo.PseudoDoor;
+                    roomTransitionData.fromRoom = pseudo;
+                    GameController.Instance.TransitionToRoom(roomTransitionData);
+                }
+            }
+        }
+    }
+
     //called by the door to initiate the room transfer
-    public void ConfigureRoomTransition(Door door)
+    public virtual void ConfigureRoomTransition(Door door)
     {
         RoomConnection roomConnection = GetRoomConnectionFromDoor(door);
         if (roomConnection.otherRoom == null) return;
@@ -241,14 +282,27 @@ public class Room : MonoBehaviour
             //if already has this setup from a previous load skip, and the room exists
             if (connections[i] != null && connections[i].otherRoom != null) continue;
 
-            //check to see if the room is already loaded
-            Room room = RoomController.Instance.GetRoomByID(prefabConnections[i].otherRoomPrefabID);
+            //declare room var
+            Room room = null;
 
-            //if we do not have the room get the room
-            if (!room)
+            //if pseudo room
+            if(prefabConnections[i].otherRoomPrefab is PseudoRoom)
             {
-                room = RoomController.Instance.LoadRoomByIndex(prefabConnections[i].otherRoomPrefabID);
+                //we can just use the prefab because it is going to be placed under the room in the heirarchy
+                room = prefabConnections[i].otherRoomPrefab;
             }
+            else
+            {
+                //check to see if the room is already loaded
+                room = RoomController.Instance.GetRoomByID(prefabConnections[i].otherRoomPrefab.ID);
+
+                //if we do not have the room get the room
+                if (!room)
+                {
+                    room = RoomController.Instance.LoadRoomByIndex(prefabConnections[i].otherRoomPrefab.ID);
+                }
+            }
+
 
             //then set up the connection
             connections[i] = new RoomConnection()
@@ -267,12 +321,12 @@ public class Room : MonoBehaviour
     }
 
     //this sets up connections to the active room, so that when you try to leave the connections are set up
-    void SetupRoomConnectionsToRoom(Room otherRoom, Door otherDoor)
+    protected void SetupRoomConnectionsToRoom(Room otherRoom, Door otherDoor)
     {
         for (int i = 0; i < prefabConnections.Length; i++)
         {
             var prefab = prefabConnections[i];
-            if (prefab.otherRoomPrefabID == otherRoom.id && otherDoor.InRoomID == prefab.thisRoomDoor.InRoomID)
+            if (prefab.otherRoomPrefab.id == otherRoom.id && otherDoor.InRoomID == prefab.thisRoomDoor.InRoomID)
             {
                 connections[i] = new RoomConnection()
                 {
@@ -285,6 +339,8 @@ public class Room : MonoBehaviour
 
     void OffsetRoom(Room otherRoom, Door otherDoor)
     {
+
+        if (this is PseudoRoom) return;
 
         RoomConnection thisConnection = null;
 
@@ -408,7 +464,7 @@ public class Room : MonoBehaviour
 [System.Serializable]
 public class RoomPrefabConnection
 {
-    public int otherRoomPrefabID;
+    public Room otherRoomPrefab;
     public Door thisRoomDoor;
 }
 

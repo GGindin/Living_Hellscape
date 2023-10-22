@@ -92,7 +92,7 @@ Shader "Living_Hellscape/PostProcess/Vignette"
                 float cornerLength = length(float2(maxDistToEdgeHor, maxDistToEdgeVert)) * aspect;
 
                 //remap to be for the new corner distance
-                float amount = RemapFloat(_Amount, float2(0, 1), float2(0, cornerLength));
+                float amount = RemapFloat(1 - _Amount, float2(0, 1), float2(0, cornerLength));
 
                 //sphere mask with hard edge
                 float mask = Unity_SphereMask_float4(texCoord, focus, amount, .999);

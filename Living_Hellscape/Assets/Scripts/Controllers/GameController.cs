@@ -69,16 +69,30 @@ public class GameController : MonoBehaviour
 
         roomTransitionData.fromRoom.OnLeaveRoom();
 
-        //set player to be child of active room
-        PlayerManager.Instance.ParentControllersToActiveRoom();
 
-        //recenter world, sometimes gets wierd Virtual Cam glitches, and isn't needed
-        //if we do this it might be better to do it before the transition and signal to CM then when only one camera is acting
-        //RoomController.Instance.RecenterWorld(roomTransitionData);
+        if(RoomController.Instance.ActiveRoom is PseudoRoom)
+        {
+            //reset data 
+            roomTransitionData = new RoomTransitionData();
 
+            PlayerManager.Instance.SetControl(false);
+            PlayerManager.Instance.ParentControllersToManager();
 
-        //reset data 
-        roomTransitionData = new RoomTransitionData();
+            //doesn't actually need a door because it is a pseudo room
+            RoomController.Instance.ActiveRoom.ConfigureRoomTransition(null);
+        }
+        else
+        {        
+            //set player to be child of active room
+            PlayerManager.Instance.ParentControllersToActiveRoom();
+
+            //recenter world, sometimes gets wierd Virtual Cam glitches, and isn't needed
+            //if we do this it might be better to do it before the transition and signal to CM then when only one camera is acting
+            //RoomController.Instance.RecenterWorld(roomTransitionData);
+
+            //reset data 
+            roomTransitionData = new RoomTransitionData();
+        }
     }
 
     private void LoadInPlayer()

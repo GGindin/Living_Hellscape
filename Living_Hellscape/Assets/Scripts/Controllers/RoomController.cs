@@ -30,7 +30,15 @@ public class RoomController : MonoBehaviour
     public void SetActiveRoom(Room room)
     {
         activeRoom = room;
-        activeRoomPrefabIndex = activeRoom.ID;
+
+        if(room == null)
+        {
+            activeRoomPrefabIndex = -1;
+        }
+        else
+        {
+            activeRoomPrefabIndex = activeRoom.ID;
+        }
     }
 
     public Room LoadRoomByIndex(int index)
@@ -100,6 +108,29 @@ public class RoomController : MonoBehaviour
         return false;
     }
 
+    public void TransitionFloor(FloorTransitionData floorTransitionData)
+    {
+        //first clear out all of the room data
+        SetActiveRoom(null);
+        foreach(Room sr in spawnedRooms)
+        {
+            Destroy(sr.gameObject);
+        }
+        spawnedRooms.Clear();
+
+        //then load in the new data
+        int roomID = floorTransitionData.connectedRoomPrefab.ID;
+        Room room = Instantiate(roomPrefabs[roomID]);
+        room.OnLoadRoom();
+        SetActiveRoom(room);
+        room.OnStartEnterRoom();
+        room.ConfigureFromPseudoRoomTransitionByConnectionID(floorTransitionData.pseudoRoomConnectionID);
+    }
+
+
+    /*
+     * commented out for now maybe we will use in floor transition
+
     public void RecenterWorld(RoomTransitionData roomTransitionData)
     {
         //cache objects
@@ -134,4 +165,6 @@ public class RoomController : MonoBehaviour
             room.transform.position += offset3D;
         }
     }
+
+    */
 }

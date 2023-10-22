@@ -108,6 +108,11 @@ public abstract class PlayerController : DamageableObject
         StartCoroutine(TransitionRoom(target));
     }
 
+    public void SetControl(bool control)
+    {
+        hasControl = control;
+    }
+
     bool HandlePauseAndInventory(UserInput userInput)
     {
         if (userInput.pause == ButtonState.Down)

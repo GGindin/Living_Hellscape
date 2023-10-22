@@ -25,7 +25,7 @@ public class Door : InteractableObject
 
     CompositeCollider2D compCollider;
 
-    Room room;
+    protected Room room;
 
     bool closed = true;
 
@@ -42,7 +42,7 @@ public class Door : InteractableObject
         OperateDoor();
     }
 
-    private void Awake()
+    protected virtual void Awake()
     {
         room = GetComponentInParent<Room>();
         compCollider = GetComponent<CompositeCollider2D>();

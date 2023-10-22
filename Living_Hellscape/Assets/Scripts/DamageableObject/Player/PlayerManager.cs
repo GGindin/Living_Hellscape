@@ -75,6 +75,24 @@ public class PlayerManager : MonoBehaviour
         ghostInstance.transform.SetParent(RoomController.Instance.ActiveRoom.transform, true);
     }
 
+    public void SetControllersPositionToPseduoRoom(PseudoRoom pseudoRoom)
+    {
+        bodyInstance.transform.position = pseudoRoom.transform.position;
+        ghostInstance.transform.position = pseudoRoom.transform.position;
+    }
+
+    public void ParentControllersToManager()
+    {
+        bodyInstance.transform.SetParent(transform, true);
+        ghostInstance.transform.SetParent(transform, true);
+    }
+
+    public void SetControl(bool control)
+    {
+        bodyInstance.SetControl(control);
+        ghostInstance.SetControl(control);
+    }
+
     void InstantiateControllers()
     {
         bodyInstance = Instantiate(bodyControllerPrefab);
