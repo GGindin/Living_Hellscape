@@ -8,5 +8,5 @@ public class EquipedGear
 {
     public Equipment mainAction;
 
-    public Item secondAction;
+    public Equipment secondAction;
 }

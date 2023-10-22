@@ -23,6 +23,9 @@ public class Door : InteractableObject
     [SerializeField]
     GameObject target;
 
+    [SerializeField]
+    bool requiresKey;
+
     CompositeCollider2D compCollider;
 
     protected Room room;
@@ -66,6 +69,18 @@ public class Door : InteractableObject
     public void OperateDoor()
     {
         if (room.DefeateAllEnemies && room.HasActiveEnemies() && GameController.Instance.PlayerHasControl) return;
+        if (closed && requiresKey)
+        {
+            var key = PlayerManager.Instance.Inventory.GetItemByType(typeof(Key));
+            if (key)
+            {
+                key.Activate();
+            }
+            else
+            {
+                return;
+            }
+        }
         closed = !closed;
         SetDoorSprite();
     }

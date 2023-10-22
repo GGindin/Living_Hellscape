@@ -32,37 +32,15 @@ public class Item : MonoBehaviour
 
     public virtual void TriggerAction() { }
 
-    public void Activate()
+    public virtual void Activate()
     {
         gameObject.SetActive(true);
         transform.SetParent(PlayerManager.Instance.Active.transform, false);
-
-        if (IsMainAction)
-        {
-            ActionPanelController.Instance.SetMainActionIcon(uiIcon);
-        }
-        else
-        {
-            ActionPanelController.Instance.SetSecondAction(uiIcon);
-        }
     }
 
-    public void Deactivate()
+    public virtual void Deactivate()
     {
         gameObject.SetActive(false);
         transform.SetParent(PlayerManager.Instance.transform, false);
-
-        if (ActionPanelController.Instance)
-        {
-            if (IsMainAction)
-            {
-                ActionPanelController.Instance.SetMainActionIcon(null);
-            }
-            else
-            {
-                ActionPanelController.Instance.SetSecondAction(null);
-            }
-
-        }
     }
 }
