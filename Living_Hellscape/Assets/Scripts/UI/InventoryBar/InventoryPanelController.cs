@@ -36,17 +36,9 @@ public class InventoryPanelController : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    void CreateIcons()
+    public void UpdatePanel(PlayerInventory inventory)
     {
-        for (int i = 0; i < inventoryIcons.Length; i++)
-        {
-            inventoryIcons[i] = Instantiate(inventoryIconPrefab, transform); 
-        }
-    }
-
-    void UpdatePanel(PlayerInventory inventory)
-    {
-        for(int i = 0; i < inventory.Items.Length; i++)
+        for (int i = 0; i < inventory.Items.Length; i++)
         {
             var item = inventory.Items[i];
             var icon = inventoryIcons[i];
@@ -60,6 +52,16 @@ public class InventoryPanelController : MonoBehaviour
             }
         }
     }
+
+    void CreateIcons()
+    {
+        for (int i = 0; i < inventoryIcons.Length; i++)
+        {
+            inventoryIcons[i] = Instantiate(inventoryIconPrefab, transform); 
+        }
+    }
+
+
 
     private void Update()
     {

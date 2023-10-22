@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -25,6 +26,7 @@ public class PlayerInventory
             if (items[i] != null)
             {
                 items[i] = GameObject.Instantiate(items[i]);
+                items[i].AddCount(1);
                 items[i].Deactivate();
             }
         }
@@ -46,6 +48,8 @@ public class PlayerInventory
             items[index].AddCount(item.Count);
             GameObject.Destroy(item.gameObject);
         }
+
+        InventoryPanelController.Instance.UpdatePanel(this);
     }
 
     public Item GetItemAtIndex(int index)
@@ -53,36 +57,93 @@ public class PlayerInventory
         return items[index];
     }
 
+    public Item GetItemByType(Type type)
+    {
+        for(int i = 0; i < items.Length; i++)
+        {
+            if (items[i])
+            {
+                if (items[i].GetType() == type)
+                {
+                    return items[i];
+                }
+            }
+        }
+
+        return null;
+    }
+
     public void HandleMainActionItemSwap(Item item)
     {
         if (!item.IsMainAction) return;
 
-        if (equipedGear.mainAction)
+        if (item is Equipment)
         {
-            equipedGear.mainAction.Deactivate();
-            var mainAction = equipedGear.mainAction;
-            equipedGear.mainAction = null;
-            if (mainAction == item) return;
-        }
+            if (equipedGear.mainAction)
+            {
+                equipedGear.mainAction.Deactivate();
+                var mainAction = equipedGear.mainAction;
+                equipedGear.mainAction = null;
+                if (mainAction == item) return;
+            }
 
-        equipedGear.mainAction = item as Equipment;
-        item.Activate();
+            equipedGear.mainAction = item as Equipment;
+            item.Activate();
+        }
+        else if(item is Consumable)
+        {
+            //use item if consumable
+            item.Activate();
+
+            if (item.Count <= 0)
+            {
+                for (int i = 0; i < items.Length; i++)
+                {
+                    if (item = items[i])
+                    {
+                        items[i] = null;
+                        GameObject.Destroy(item.gameObject);
+                    }
+                }
+            }
+
+            InventoryPanelController.Instance.UpdatePanel(this);
+        }
     }
 
     public void HandleSecondActionItemSwap(Item item)
     {
         if (item.IsMainAction) return;
 
-        if (equipedGear.secondAction)
+        if (item is Equipment)
         {
-            equipedGear.secondAction.Deactivate();
-            var secondAction = equipedGear.secondAction;
-            equipedGear.secondAction = null;
-            if (secondAction == item) return;
+            if (equipedGear.secondAction)
+            {
+                equipedGear.secondAction.Deactivate();
+                var secondAction = equipedGear.secondAction;
+                equipedGear.secondAction = null;
+                if (secondAction == item) return;
+            }
+
+            equipedGear.secondAction = item as Equipment;
+            item.Activate();
+        }
+    }
+
+    public void UpdateInventory()
+    {
+        for(int i = 0; i < items.Length; i++)
+        {
+            if (items[i] == null) continue;
+
+            if (items[i].Count <= 0)
+            {
+                GameObject.Destroy(items[i].gameObject);
+                items[i] = null;
+            }
         }
 
-        equipedGear.secondAction = item;
-        item.Activate();
+        InventoryPanelController.Instance.UpdatePanel(this);
     }
 
     public void DoMainAction()
@@ -118,9 +179,13 @@ public class PlayerInventory
         for (int i = 0; i < items.Length; i++)
         {
             var itemSlot = items[i];
-            if(itemSlot.GetType() == typeof(Item))
+
+            if (itemSlot)
             {
-                return i;
+                if (itemSlot.GetType() == item.GetType())
+                {
+                    return i;
+                }
             }
         }
 
