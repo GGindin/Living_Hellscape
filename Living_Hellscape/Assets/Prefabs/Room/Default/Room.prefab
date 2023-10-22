@@ -996,8 +996,8 @@ MonoBehaviour:
   virtualCamera: {fileID: 4253120329165040178}
   prefabConnections: []
   playerSpawnPlacement:
-    placement: {fileID: 0}
-    prefab: {fileID: 0}
+    placement: {fileID: 5737459386977658330}
+    prefab: {fileID: 545511088324393408, guid: 4e59370b99365b7408e63c41cb218a04, type: 3}
   enemyPlacements: []
   holdableObjectPlacements: []
   dynamicObjectsHolder: {fileID: 604581835126857012}

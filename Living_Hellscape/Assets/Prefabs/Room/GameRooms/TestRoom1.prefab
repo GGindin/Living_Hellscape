@@ -7228,7 +7228,7 @@ MonoBehaviour:
   defeatAllEnemies: 0
   virtualCamera: {fileID: 4238275303870726403}
   prefabConnections:
-  - otherRoomPrefabID: 1
+  - otherRoomPrefab: {fileID: 3675158630561558092, guid: b9cf524b954b0604a9fe1f4a62c66989, type: 3}
     thisRoomDoor: {fileID: 1714565565895678479}
   playerSpawnPlacement:
     placement: {fileID: 1090258812792472872}
