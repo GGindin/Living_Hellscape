@@ -48,7 +48,7 @@ public class Chest : InteractableObject
     {
         int value = reader.ReadInt();
 
-        if (value == 0)
+        if (value == 1)
         {
             isClosed = false;
             SetAnimator();

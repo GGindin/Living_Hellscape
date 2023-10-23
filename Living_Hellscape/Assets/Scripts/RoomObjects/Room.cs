@@ -95,6 +95,14 @@ public class Room : MonoBehaviour, ISaveableObject
     {
         //these methods in the future will read the save data that was loaded before to setup room properly
         //currently just resets to the starting state
+        //some of these methods need to move to onload
+        //because rooms can get loaded without being entered and then get unloaded, which then
+        //saves eveything as null becasue none of these load methods ever got called
+        //so the load methods should get moved to onload, except for maybe the loadadjrooms method
+        //however that causes problems when you leave and go back without unloading
+        //probably the better way to handle would be to use the IO at the same times as setting things up so 
+        //they are in sync
+        //probably do saves in leave and not unload
         SetupVirtualCamera();
         LoadEnemies();
         LoadHoldableObjects();
