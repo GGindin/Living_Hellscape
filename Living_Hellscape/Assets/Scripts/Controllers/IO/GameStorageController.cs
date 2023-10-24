@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class GameStorageController : MonoBehaviour
 {
+    [SerializeField]
+    bool debugSaveLocation = true;
+
     public static GameStorageController Instance { get; private set; }
 
     const string PERM_DATA_DIR = "PERM";
@@ -33,6 +36,11 @@ public class GameStorageController : MonoBehaviour
 
         Directory.CreateDirectory(permDataPath);
         Directory.CreateDirectory(tempDataPath);
+
+        if (debugSaveLocation)
+        {
+            Debug.Log("Game Data Is Saved to: " + appDatatPath);
+        }
     }
 
     public void SaveTemp(ISaveableObject saveable)
@@ -72,6 +80,10 @@ public class GameStorageController : MonoBehaviour
                 saveable.LoadTemp(gameDataReader);
             }
         }
+        else
+        {
+            saveable.LoadTemp(null);
+        }
     }
 
     public void LoadPerm(ISaveableObject saveable)
@@ -87,5 +99,28 @@ public class GameStorageController : MonoBehaviour
                 saveable.LoadPerm(gameDataReader);
             }
         }
+        else
+        {
+            saveable.LoadPerm(null);
+        }
+    }
+
+    public void DeleteAllData()
+    {
+        appDatatPath = Application.persistentDataPath;
+
+        permDataPath = Path.Combine(appDatatPath, PERM_DATA_DIR);
+        tempDataPath = Path.Combine(appDatatPath, TEMP_DATA_DIR);
+
+        if (Directory.Exists(tempDataPath))
+        {
+            Directory.Delete(tempDataPath, true);
+        }
+        if (Directory.Exists(permDataPath))
+        {
+            Directory.Delete(permDataPath, true);
+        }
+
+        Debug.Log("ALL SAVE DATA DELETED AT: " + appDatatPath);
     }
 }
