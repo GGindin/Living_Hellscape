@@ -502,6 +502,159 @@ public class Room : MonoBehaviour, ISaveableObject
         }
     }
 
+    public void SavePermObjects(GameDataWriter writer)
+    {
+        for (int i = 0; i < connections.Length; i++)
+        {
+            //this shouldn't ever be the case
+            //no need to write a null value because it should always be there
+            if (connections[i] == null) continue;
+
+            var door = connections[i].thisRoomDoor;
+            door.SavePerm(writer);
+        }
+        for (int i = 0; i < roomInteractables.Length; i++)
+        {
+            //this shouldn't ever be the case
+            //no need to write a null value because it should always be there
+            if (roomInteractables[i] == null) continue;
+
+            var interactable = roomInteractables[i];
+            interactable.SavePerm(writer);
+        }
+        //for now we do not save any enemies perm data because we do not have bosses
+        for (int i = 0; i < roomEnemies.Length; i++)
+        {
+            if (roomEnemies[i] == null)
+            {
+                /*
+                if (roomEnemies[i] is BossEnemy)
+                {
+                    writer.WriteInt(-1);
+                }
+                */
+            }
+            else
+            {
+                /*
+                if (roomEnemies[i] is BossEnemy)
+                {
+                    roomEnemies[i].SavePerm(writer);
+                }
+                */
+            }
+        }
+    }
+
+    //these loops nned to be based on reads from data
+    public void LoadPermObjects(GameDataReader reader)
+    {
+        //load doors and connections
+        //the other room will not be available yet just leave null
+        for(int i = 0; i < connections.Length; i++)
+        {
+            var connection = connections[i];
+
+            //if the door is not set up yet assign it and create the connection
+            if (connection == null)
+            {
+                connection = new RoomConnection();
+                connection.thisRoomDoor = prefabConnections[i].thisRoomDoor;
+            }
+
+            //then load any data on that door
+            connection.thisRoomDoor.LoadPerm(reader);
+        }
+
+        //load and setup interactable obejcts
+        for (int i = 0; i < roomInteractables.Length; i++)
+        {
+            //if doesn't exist instantiate and set position
+            if (roomInteractables[i] == null)
+            {
+                var placement = interactableObjectPlacements[i];
+                roomInteractables[i] = Instantiate(placement.prefab, placement.Position, Quaternion.identity, transform);
+            }
+
+            //then load any data
+            roomInteractables[i].LoadPerm(reader);
+        }
+
+        //load and setup any perm state enemies, that is bosses
+        for (int i = 0; i < enemyPlacements.Length; i++)
+        {
+            /*
+             *currently no bosses so does not happen
+            if (enemyPlacements[i].prefab is BossEnemy)
+            {
+                var value = reader.ReadInt();
+                if(value < 0)
+                {
+                    //boss is dead leave null
+                }
+                else
+                {
+                    var placement = enemyPlacements[i];
+                    roomEnemies[i] = Instantiate(placement.prefab, placement.Position, Quaternion.identity, transform);
+                }
+
+                //then load any data
+                //only bosses will actualy read anything
+                roomEnemies[i].LoadPerm(reader);
+            }
+            */
+        }
+    }
+
+    public void SaveTempData(GameDataWriter writer)
+    {
+        for (int i = 0; i < roomEnemies.Length; i++)
+        {
+            if (roomEnemies[i] == null)
+            {
+                //in future need to not write value for boss enemies
+                writer.WriteInt(-1);
+            }
+            else
+            {
+                roomEnemies[i].SaveTemp(writer);
+            }
+        }
+        for (int i = 0; i < roomHoldables.Length; i++)
+        {
+            if (roomHoldables[i] == null)
+            {
+                writer.WriteInt(-1);
+            }
+            else
+            {
+                roomHoldables[i].SaveTemp(writer);
+            }
+        }
+    }
+
+    public void LoadTempObjects(GameDataReader reader)
+    {
+        //load and setup any temp state enemies, that is not bosses
+        for (int i = 0; i < enemyPlacements.Length; i++)
+        {
+            //if doesn't exist instantiate and set position
+            if (roomEnemies[i] == null)
+            {
+                var placement = enemyPlacements[i];
+                roomEnemies[i] = Instantiate(placement.prefab, placement.Position, Quaternion.identity, transform);
+            }
+            else
+            {
+                //reset position
+                roomEnemies[i].transform.position = enemyPlacements[i].Position;
+            }
+
+            //then load any data
+            roomEnemies[i].LoadTemp(reader);
+        }
+    }
+
     public string GetFileName()
     {
         return "room_" + id;
