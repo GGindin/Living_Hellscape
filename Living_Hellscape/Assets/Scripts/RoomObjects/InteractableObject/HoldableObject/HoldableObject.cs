@@ -107,4 +107,32 @@ public class HoldableObject : InteractableObject
         }
 
     }
+
+    public override string GetFileName()
+    {
+        //never should get called
+        throw new System.NotImplementedException();
+    }
+
+    public override void SavePerm(GameDataWriter writer)
+    {
+        //never should get called
+        throw new System.NotImplementedException();
+    }
+
+    public override void LoadPerm(GameDataReader reader)
+    {
+        //never should get called
+        throw new System.NotImplementedException();
+    }
+    public override void SaveTemp(GameDataWriter writer)
+    {
+        writer.WriteInt(1);
+    }
+
+    //doesn't really have anything to load
+    //and the room will read the exists write
+    public override void LoadTemp(GameDataReader reader) { }
+
+
 }

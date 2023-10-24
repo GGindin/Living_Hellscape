@@ -41,6 +41,7 @@ public class PlayerInventory
             int open = FindOpenSlot();
             if (open < 0) return;
             items[open] = item;
+            item.AddCount(1);
             item.Deactivate();
         }
         else

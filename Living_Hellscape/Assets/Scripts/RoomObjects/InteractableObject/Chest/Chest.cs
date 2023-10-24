@@ -26,6 +26,52 @@ public class Chest : InteractableObject
         Open();
     }
 
+    public override string GetFileName()
+    {
+        //never should get called
+        throw new System.NotImplementedException();
+    }
+
+    public override void SavePerm(GameDataWriter writer)
+    {
+        if (isClosed)
+        {
+            writer.WriteInt(0);
+        }
+        else
+        {
+            writer.WriteInt(1);
+        }
+    }
+
+    public override void LoadPerm(GameDataReader reader)
+    {
+        int value = reader.ReadInt();
+
+        if (value == 1)
+        {
+            isClosed = false;
+            SetAnimator();
+        }
+        else
+        {
+            isClosed = true;
+            SetAnimator();
+        }
+    }
+
+    public override void SaveTemp(GameDataWriter writer)
+    {
+        //should never get called
+        throw new System.NotImplementedException();
+    }
+
+    public override void LoadTemp(GameDataReader reader)
+    {
+        //should never get called
+        throw new System.NotImplementedException();
+    }
+
     void Open()
     {
         isClosed = false;

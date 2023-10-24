@@ -26,6 +26,8 @@ public class Door : InteractableObject
     [SerializeField]
     bool requiresKey;
 
+    bool isUnlocked;
+
     CompositeCollider2D compCollider;
 
     protected Room room;
@@ -69,12 +71,13 @@ public class Door : InteractableObject
     public void OperateDoor()
     {
         if (room.DefeateAllEnemies && room.HasActiveEnemies() && GameController.Instance.PlayerHasControl) return;
-        if (closed && requiresKey)
+        if (closed && requiresKey && !isUnlocked)
         {
             var key = PlayerManager.Instance.Inventory.GetItemByType(typeof(Key));
             if (key)
             {
                 key.Activate();
+                isUnlocked = true;
             }
             else
             {
@@ -115,5 +118,53 @@ public class Door : InteractableObject
     {
         left.SetDoorSprite(closed);
         right.SetDoorSprite(closed);
+    }
+
+    public override string GetFileName()
+    {
+        //never should get called
+        throw new System.NotImplementedException();
+    }
+
+    public override void SavePerm(GameDataWriter writer)
+    {
+        if (requiresKey)
+        {
+            if (isUnlocked)
+            {
+                writer.WriteInt(1);
+            }
+            else
+            {
+                writer.WriteInt(0);
+            }
+        }
+    }
+
+    public override void LoadPerm(GameDataReader reader)
+    {
+        if (requiresKey)
+        {
+            int value = reader.ReadInt();
+            if(value == 0)
+            {
+                isUnlocked = false;
+            }
+            else
+            {
+                isUnlocked = true;
+            }
+        }
+    }
+
+    public override void SaveTemp(GameDataWriter writer)
+    {
+        //never should get called
+        throw new System.NotImplementedException();
+    }
+    public override void LoadTemp(GameDataReader reader)
+    {
+        //never should get called
+        throw new System.NotImplementedException();
     }
 }

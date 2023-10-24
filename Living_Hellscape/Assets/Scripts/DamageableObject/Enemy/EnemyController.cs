@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyController : DamageableObject
+public class EnemyController : DamageableObject, ISaveableObject
 {
     [SerializeField]
     float health;
@@ -121,5 +121,36 @@ public class EnemyController : DamageableObject
                 SetupDamage(damage, damageDir);
             }
         }
+    }
+
+    public string GetFileName()
+    {
+        //this should never get called on an enemy
+        throw new System.NotImplementedException();
+    }
+
+    public void SavePerm(GameDataWriter writer)
+    {
+        //currently this is not called
+        //in the future bosses will probably call this
+        throw new System.NotImplementedException();
+    }
+
+    public void LoadPerm(GameDataReader reader)
+    {
+        //enemy should never call this
+        //bosses will eventually
+        throw new System.NotImplementedException();
+    }
+
+    public void SaveTemp(GameDataWriter writer)
+    {
+        writer.WriteInt(1);
+        writer.WriteFloat(health);
+    }
+
+    public void LoadTemp(GameDataReader reader)
+    {
+        health = reader.ReadFloat();
     }
 }
