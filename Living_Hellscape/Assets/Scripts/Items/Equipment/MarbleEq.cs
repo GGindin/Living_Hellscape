@@ -25,10 +25,12 @@ public class MarbleEq : Equipment
     {
         if(coolDown <= 0f)
         {
+            PlayerManager.Instance.Active.StartCoroutine(PlayerManager.Instance.Active.StopControlForTime(.25f));
             var marble = Instantiate(marbleProjectilePrefab, transform.position, Quaternion.identity);
+            marble.SetDamage(new Damage(damage));
             marble.transform.SetParent(RoomController.Instance.ActiveRoom.DynamicObjectsHolder, true);
             marble.Direction = direction;
-            marble.StartingVelocity = PlayerManager.Instance.Active.Velocity;
+            //marble.StartingVelocity = PlayerManager.Instance.Active.Velocity;
             coolDown = fireRate;
         }
     }

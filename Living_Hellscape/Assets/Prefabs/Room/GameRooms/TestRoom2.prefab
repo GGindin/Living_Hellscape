@@ -7299,7 +7299,7 @@ MonoBehaviour:
   - placement: {fileID: 6573249657793412767}
     prefab: {fileID: 770196971634610328, guid: 010757b69dbde82469bf880780fedb70, type: 3}
   - placement: {fileID: 5765216579106946888}
-    prefab: {fileID: 770196971634610328, guid: 010757b69dbde82469bf880780fedb70, type: 3}
+    prefab: {fileID: 8561485784633377489, guid: 8120803b7421f194d9955bd5c6c1e15a, type: 3}
   - placement: {fileID: 244149073702136856}
     prefab: {fileID: 770196971634610328, guid: 010757b69dbde82469bf880780fedb70, type: 3}
   - placement: {fileID: 6170833688952076645}

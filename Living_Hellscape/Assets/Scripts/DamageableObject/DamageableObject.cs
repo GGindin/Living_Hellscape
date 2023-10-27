@@ -28,7 +28,7 @@ public abstract class DamageableObject : MonoBehaviour
 
     protected void TakeDamage(Damage damage)
     {
-        if (damageFromOther != null) return;
+        if (damageFromOther != null && damageFromOther.amount > 0) return;
 
         damageFromOther = damage;
         ChangeHealth((int)-damageFromOther.amount);

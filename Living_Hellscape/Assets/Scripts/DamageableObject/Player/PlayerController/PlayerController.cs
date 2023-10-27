@@ -113,6 +113,19 @@ public abstract class PlayerController : DamageableObject
         hasControl = control;
     }
 
+    public IEnumerator StopControlForTime(float time)
+    {
+        hasControl = false;
+
+        while(time > 0)
+        {
+            time -= Time.deltaTime;
+            yield return null;
+        }
+
+        hasControl = true;
+    }
+
     bool HandlePauseAndInventory(UserInput userInput)
     {
         if (userInput.pause == ButtonState.Down)

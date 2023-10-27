@@ -56,11 +56,13 @@ public class HoldableObject : InteractableObject
     IEnumerator Throw(Vector2 direction)
     {
         isThrown = true;
+        PlayerManager.Instance.Active.StartCoroutine(PlayerManager.Instance.Active.StopControlForTime(.25f));
 
         var throwSpeed = throwDistance / throwTime;
-        throwSpeed += Vector2.Dot(direction, PlayerManager.Instance.Active.Velocity);
+        //throwSpeed += Vector2.Dot(direction, PlayerManager.Instance.Active.Velocity);
 
-        var actualThrowTime = throwDistance / throwSpeed;
+        //var actualThrowTime = throwDistance / throwSpeed;
+        var actualThrowTime = throwTime;
 
         var playerTrans = PlayerManager.Instance.Active.transform;
         var playerPos = new Vector2(playerTrans.position.x, playerTrans.position.y);
