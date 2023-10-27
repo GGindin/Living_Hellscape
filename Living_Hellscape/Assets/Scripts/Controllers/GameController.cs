@@ -24,6 +24,8 @@ public class GameController : MonoBehaviour
 
     private void Start()
     {
+        GameStateController.Instance.LoadGameState();
+        RoomController.Instance.Initialize();
         LoadInPlayer();
     }
 

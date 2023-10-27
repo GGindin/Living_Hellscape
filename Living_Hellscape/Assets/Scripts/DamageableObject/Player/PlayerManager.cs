@@ -18,9 +18,13 @@ public class PlayerManager : MonoBehaviour
 
     PlayerController ghostInstance;
 
+    public PlayerInventory Inventory => inventory;
+
     public PlayerController Active => active;
 
-    public PlayerInventory Inventory => inventory;  
+    public PlayerController BodyInstance => bodyInstance;
+
+    public PlayerController GhostInstance => ghostInstance;
 
     public Vector2 BodyPosition => bodyInstance.transform.position;
     public Vector2 GhostPosition => ghostInstance.transform.position;

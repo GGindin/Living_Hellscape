@@ -444,6 +444,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1168914966}
   - component: {fileID: 1168914965}
+  - component: {fileID: 1168914967}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -477,6 +478,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1168914967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1168914964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ba71ac35c874a6428909351fd7636d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1340566354
 GameObject:
   m_ObjectHideFlags: 0
@@ -583,7 +596,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55a9ee386401ac642aa4bd5673e0e006, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeRoomPrefabIndex: 0
+  currentRoomOverrideIndex: -1
   roomPrefabs:
   - {fileID: 4238275303636843574, guid: 8b74335141f0e0d43b26e9dcc6319c1e, type: 3}
   - {fileID: 3675158630561558092, guid: b9cf524b954b0604a9fe1f4a62c66989, type: 3}
