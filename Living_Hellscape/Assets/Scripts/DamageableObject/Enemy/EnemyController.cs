@@ -25,8 +25,6 @@ public abstract class EnemyController : DamageableObject, ISaveableObject
 
     protected Vector3 startingPos;
 
-    public bool isTakingDamage => damageFromOther != null;
-
     public Damage Damage => new Damage(damage);
 
     protected override void Awake()
@@ -55,7 +53,7 @@ public abstract class EnemyController : DamageableObject, ISaveableObject
     {
         Vector2 velocity = direction * currentSpeed * Time.fixedDeltaTime;
 
-        if (damageFromOther != null)
+        if (IsTakingDamage)
         {
             velocity = MoveByDamage();
         }
@@ -97,7 +95,7 @@ public abstract class EnemyController : DamageableObject, ISaveableObject
             {
                 Vector2 damageDir = (rb.position - collision.ClosestPoint(rb.position)).normalized;
                 var damage = target.Damager.GetDamage();
-                SetupDamage(damage, damageDir);
+                AddStatusEffect(damage, damageDir);
             }
         }
     }

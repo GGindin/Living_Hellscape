@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Sword : Equipment, IDamager
+public class Sword : BodyEquipment, IDamager
 {
     public Damage Damage => new Damage(damage);
 

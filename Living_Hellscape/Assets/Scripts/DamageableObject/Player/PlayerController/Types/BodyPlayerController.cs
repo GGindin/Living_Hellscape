@@ -41,7 +41,7 @@ public class BodyPlayerController : PlayerController
         }
 
         var enemy = collision.gameObject.GetComponent<EnemyController>();
-        if (enemy && damageFromOther == null && !enemy.isTakingDamage)
+        if (enemy && !enemy.IsTakingDamage && !IsTakingDamage)
         {
             var contacts = collision.contacts;
 
@@ -53,7 +53,8 @@ public class BodyPlayerController : PlayerController
             }
 
             var damage = enemy.Damage;
-            SetupDamage(damage, damageDir.normalized);
+            if (damage == null) Debug.Log("WTF");
+            AddStatusEffect(damage, damageDir.normalized);
         }
     }
 
@@ -62,7 +63,7 @@ public class BodyPlayerController : PlayerController
         if (!IsActive) return;
 
         var enemy = collision.gameObject.GetComponent<EnemyController>();
-        if (enemy && damageFromOther == null && !enemy.isTakingDamage)
+        if (enemy && !enemy.IsTakingDamage && !IsTakingDamage)
         {
             var contacts = collision.contacts;
 
@@ -75,7 +76,7 @@ public class BodyPlayerController : PlayerController
 
             var damage = enemy.Damage;
 
-            SetupDamage(damage, damageDir.normalized);
+            AddStatusEffect(damage, damageDir.normalized);
         }
     }
 

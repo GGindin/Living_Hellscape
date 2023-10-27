@@ -6,44 +6,82 @@ public abstract class DamageableObject : MonoBehaviour
 {
     protected Animator animator;
 
-    protected Damage damageFromOther;
+    //protected Damage damageFromOther;
 
     protected int hitID = Animator.StringToHash("hit");
+
+    protected List<StatusEffect> statusEffects = new List<StatusEffect>();
 
     protected abstract bool CheckHealthForDead();
 
     protected abstract void ChangeHealth(int delta);
+
+    public bool IsTakingDamage => GetStatusOfType(StatusEffectType.Damage) != null;
 
     protected virtual void Awake()
     {
         animator = GetComponent<Animator>();
     }
 
-    public void SetupDamage(Damage damage, Vector2 normDirection)
+    public void AddStatusEffect(StatusEffect statusEffect, Vector2 normDirection)
     {
-        var newDamage = damage;
-        newDamage.SetVectorFromDirection(normDirection);
-        TakeDamage(newDamage);
+        var activeEffect = GetStatusOfType(statusEffect.EffectType);
+
+        if(activeEffect == null)
+        {
+            switch(statusEffect.EffectType)
+            {
+                case StatusEffectType.Damage:
+                    var damageEffect = (Damage)statusEffect;
+                    AddDamageEffect(damageEffect, normDirection);
+                    return;
+                case StatusEffectType.Stun:
+                    return;
+                case StatusEffectType.Scare:
+                    return;
+            }
+        }
+        else
+        {
+            switch (statusEffect.EffectType)
+            {
+                case StatusEffectType.Damage:
+                    return;
+                case StatusEffectType.Stun:
+                    return;
+                case StatusEffectType.Scare:
+                    return;
+            }
+        }
     }
 
-    protected void TakeDamage(Damage damage)
+    public void RemoveStatusEffect(StatusEffect statusEffect)
     {
-        if (damageFromOther != null && damageFromOther.amount > 0) return;
-
-        damageFromOther = damage;
-        ChangeHealth((int)-damageFromOther.amount);
-        animator.SetBool(hitID, true);
+        for(int i = 0; i < statusEffects.Count; i++)
+        {
+            if (statusEffects[i].EffectType == statusEffect.EffectType)
+            {
+                statusEffects.RemoveAt(i);
+                return;
+            }
+        }
     }
 
     protected Vector2 MoveByDamage()
     {
-        float t = Mathf.InverseLerp(0, damageFromOther.Duration, damageFromOther.CurrentTime);
+        var damageStatus = GetStatusOfType(StatusEffectType.Damage);
+
+        if (damageStatus == null) return Vector2.zero;
+
+        var damageFromOther = (Damage)damageStatus;
+
+        float t = Mathf.InverseLerp(0, damageFromOther.Duration, damageFromOther.CurrentDuration);
         Vector2 offset = Vector2.Lerp(Vector2.zero, damageFromOther.Vector, t) * Time.fixedDeltaTime;
-        damageFromOther.CurrentTime -= Time.fixedDeltaTime;
+        damageFromOther.TickDuration(Time.fixedDeltaTime);
 
         if (t <= 0)
         {
-            damageFromOther = null;
+            RemoveStatusEffect(damageFromOther);
             animator.SetBool(hitID, false);
             if (CheckHealthForDead())
             {
@@ -53,5 +91,28 @@ public abstract class DamageableObject : MonoBehaviour
         }
 
         return offset;
+    }
+
+    protected void TakeDamage(Damage damage)
+    {
+        ChangeHealth((int)-damage.amount);
+        animator.SetBool(hitID, true);
+    }
+
+    void AddDamageEffect(Damage damage, Vector2 normDirection)
+    {
+        damage.SetVectorFromDirection(normDirection);
+        statusEffects.Add(damage);
+        TakeDamage(damage);
+    }
+
+    StatusEffect GetStatusOfType(StatusEffectType statusEffectType)
+    {
+        for(int i = 0; i < statusEffects.Count; i++)
+        {
+            if (statusEffects[i].EffectType == statusEffectType) return statusEffects[i];
+        }
+
+        return null;
     }
 }

@@ -208,7 +208,7 @@ public abstract class PlayerController : DamageableObject
 
         Vector2 velocity = normInput * playerStats.Speed * Time.fixedDeltaTime;
 
-        if(damageFromOther != null)
+        if(IsTakingDamage)
         {
             velocity += MoveByDamage();
         }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MarbleEq : Equipment
+public class MarbleEq : BodyEquipment
 {
     [SerializeField]
     Projectile marbleProjectilePrefab;

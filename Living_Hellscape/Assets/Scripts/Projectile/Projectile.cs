@@ -55,7 +55,7 @@ public class Projectile : MonoBehaviour
 
             var damage = Damage;
 
-            damageable.SetupDamage(damage, -damageDir.normalized);
+            damageable.AddStatusEffect(damage, -damageDir.normalized);
         }
 
         Destroy(gameObject);
