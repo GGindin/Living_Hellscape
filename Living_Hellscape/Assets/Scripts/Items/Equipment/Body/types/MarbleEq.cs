@@ -8,6 +8,9 @@ public class MarbleEq : BodyEquipment
     Projectile marbleProjectilePrefab;
 
     [SerializeField]
+    Stun stun;
+
+    [SerializeField]
     float fireRate;
 
     float coolDown = 0f;
@@ -27,7 +30,7 @@ public class MarbleEq : BodyEquipment
         {
             PlayerManager.Instance.Active.StartCoroutine(PlayerManager.Instance.Active.StopControlForTime(.25f));
             var marble = Instantiate(marbleProjectilePrefab, transform.position, Quaternion.identity);
-            marble.SetDamage(new Damage(damage));
+            marble.SetDamage(new Stun(stun));
             marble.transform.SetParent(RoomController.Instance.ActiveRoom.DynamicObjectsHolder, true);
             marble.Direction = direction;
             //marble.StartingVelocity = PlayerManager.Instance.Active.Velocity;

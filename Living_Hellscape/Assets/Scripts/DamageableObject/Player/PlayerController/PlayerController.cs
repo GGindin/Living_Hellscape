@@ -61,6 +61,8 @@ public abstract class PlayerController : DamageableObject
 
         if (HandlePauseAndInventory(userInput)) return;
 
+        CheckStun();
+
         if (hasControl)
         {
             SetDirection(userInput.movement);
@@ -191,6 +193,18 @@ public abstract class PlayerController : DamageableObject
             {
                 PlayerManager.Instance.Inventory.DoSecondAction();
             }         
+        }
+    }
+
+    void CheckStun()
+    {
+        if (IsStunned())
+        {
+            hasControl = false;
+        }
+        else
+        {
+            hasControl = true;
         }
     }
 

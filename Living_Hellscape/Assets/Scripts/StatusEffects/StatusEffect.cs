@@ -8,10 +8,7 @@ public abstract class StatusEffect
     [SerializeField]
     protected float duration;
 
-    [SerializeField]
-    StatusEffectType effectType;
-
-    public StatusEffectType EffectType => effectType;
+    public abstract StatusEffectType EffectType { get; }
 
     public float Duration => duration;
 

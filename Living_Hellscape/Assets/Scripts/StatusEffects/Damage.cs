@@ -7,16 +7,10 @@ public class Damage : StatusEffect
 {
     public float amount;
     public float magnitude;
-    
-    public Vector2 Vector { get; set; }
 
-    public Damage(float amount, float magnitude, float duration)
-    {
-        this.amount = amount;
-        this.magnitude = magnitude;
-        this.duration = duration;
-        CurrentDuration = duration;
-    }
+    public override StatusEffectType EffectType => StatusEffectType.Damage;
+
+    public Vector2 Vector { get; set; }
 
     public Damage(Damage damage)
     {

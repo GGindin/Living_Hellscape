@@ -53,6 +53,11 @@ public abstract class EnemyController : DamageableObject, ISaveableObject
     {
         Vector2 velocity = direction * currentSpeed * Time.fixedDeltaTime;
 
+        if (IsStunned())
+        {
+            velocity = Vector2.zero;
+        }
+
         if (IsTakingDamage)
         {
             velocity = MoveByDamage();

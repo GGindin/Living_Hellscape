@@ -1,12 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 
 public abstract class DamageableObject : MonoBehaviour
 {
     protected Animator animator;
-
-    //protected Damage damageFromOther;
 
     protected int hitID = Animator.StringToHash("hit");
 
@@ -36,6 +35,8 @@ public abstract class DamageableObject : MonoBehaviour
                     AddDamageEffect(damageEffect, normDirection);
                     return;
                 case StatusEffectType.Stun:
+                    var stunEffect = (Stun)statusEffect;
+                    AddStunEffect(stunEffect);
                     return;
                 case StatusEffectType.Scare:
                     return;
@@ -48,6 +49,7 @@ public abstract class DamageableObject : MonoBehaviour
                 case StatusEffectType.Damage:
                     return;
                 case StatusEffectType.Stun:
+                    activeEffect.AddDuration(statusEffect.Duration);
                     return;
                 case StatusEffectType.Scare:
                     return;
@@ -82,7 +84,7 @@ public abstract class DamageableObject : MonoBehaviour
         if (t <= 0)
         {
             RemoveStatusEffect(damageFromOther);
-            animator.SetBool(hitID, false);
+            CheckHitAnim();
             if (CheckHealthForDead())
             {
                 Destroy(gameObject);
@@ -93,9 +95,45 @@ public abstract class DamageableObject : MonoBehaviour
         return offset;
     }
 
+    protected bool IsStunned()
+    {
+        var stun = GetStatusOfType(StatusEffectType.Stun);
+        if(stun != null)
+        {
+            stun.TickDuration(Time.deltaTime);
+            if(stun.CurrentDuration <= 0f)
+            {
+                RemoveStatusEffect(stun);
+            }
+            CheckHitAnim();
+            return true;
+        }
+
+        return false;
+    }
+
     protected void TakeDamage(Damage damage)
     {
         ChangeHealth((int)-damage.amount);
+        animator.SetBool(hitID, true);
+    }
+
+    void CheckHitAnim()
+    {
+        for(int i = 0; i < statusEffects.Count; i++)
+        {
+            if (statusEffects[i].EffectType == StatusEffectType.Damage || statusEffects[i].EffectType == StatusEffectType.Stun)
+            {
+                return;
+            }
+        }
+
+        animator.SetBool(hitID, false);
+    }
+
+    void AddStunEffect(Stun stun)
+    {
+        statusEffects.Add(stun);
         animator.SetBool(hitID, true);
     }
 

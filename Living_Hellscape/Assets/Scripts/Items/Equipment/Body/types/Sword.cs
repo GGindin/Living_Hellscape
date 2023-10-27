@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Sword : BodyEquipment, IDamager
 {
+    [SerializeField]
+    Damage damage;
+
     public Damage Damage => new Damage(damage);
 
     int xDirID = Animator.StringToHash("xDir");
