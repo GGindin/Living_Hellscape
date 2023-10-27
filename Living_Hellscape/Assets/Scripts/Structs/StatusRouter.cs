@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class DamageRouter : MonoBehaviour
+public class StatusRouter : MonoBehaviour
 {
     [SerializeField]
-    DamageRoute target;
+    StatusRoute target;
 
-    public DamageRoute Target
+    public StatusRoute Target
     {
         get
         {

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Sword : BodyEquipment, IDamager
+public class Sword : BodyEquipment, IStatuser
 {
     [SerializeField]
     Damage damage;
@@ -34,7 +34,7 @@ public class Sword : BodyEquipment, IDamager
         isActing = false;
     }
 
-    public Damage GetDamage()
+    public StatusEffect GetStatus(DamageableObject recievingObject)
     {
         return Damage;
     }

@@ -776,27 +776,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bodyControllerPrefab: {fileID: 545511088324393408, guid: 4e59370b99365b7408e63c41cb218a04, type: 3}
   ghostControllerPrefab: {fileID: 5641017312213113670, guid: 2a2d3eb29ae45bf4680c1348d2c72c52, type: 3}
-  inventory:
-    equipedGear:
-      mainAction: {fileID: 0}
-      secondAction: {fileID: 0}
-    items:
-    - {fileID: 3070259392443591952, guid: 37de3e3f1c400af4fa2897dd4a964bfe, type: 3}
-    - {fileID: 575737613114154732, guid: 1b059d95d116f1c40b187daffdf24971, type: 3}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
 --- !u!1 &2082415453
 GameObject:
   m_ObjectHideFlags: 0

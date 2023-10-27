@@ -91,16 +91,19 @@ public abstract class EnemyController : DamageableObject, ISaveableObject
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        DamageRouter damageRouter = collision.gameObject.GetComponent<DamageRouter>();
+        StatusRouter statusRouter = collision.gameObject.GetComponent<StatusRouter>();
 
-        if (damageRouter)
+        if (statusRouter)
         {
-            var target = damageRouter.Target;
+            var target = statusRouter.Target;
             if (target)
             {
                 Vector2 damageDir = (rb.position - collision.ClosestPoint(rb.position)).normalized;
-                var damage = target.Damager.GetDamage();
-                AddStatusEffect(damage, damageDir);
+                var status = target.Statuser.GetStatus(this);
+                if(status != null)
+                {
+                    AddStatusEffect(status, damageDir);
+                }
             }
         }
     }

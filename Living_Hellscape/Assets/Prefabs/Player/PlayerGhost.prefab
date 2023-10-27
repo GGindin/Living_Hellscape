@@ -50,8 +50,28 @@ MonoBehaviour:
   playerStats:
     maxHealth: 5
     speed: 5
-  equip: {fileID: 0}
-  isActive: 0
+  heldObjectRoot: {fileID: 0}
+  inventory:
+    equipedGear:
+      mainAction: {fileID: 0}
+      secondAction: {fileID: 0}
+    items:
+    - {fileID: 8035632176690989601, guid: 314302b38daabea4cbb36a5f6914dfac, type: 3}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
 --- !u!212 &5641017312213113677
 SpriteRenderer:
   m_ObjectHideFlags: 0
