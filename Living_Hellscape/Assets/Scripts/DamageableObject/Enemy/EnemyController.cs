@@ -2,49 +2,44 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyController : DamageableObject, ISaveableObject
+public abstract class EnemyController : DamageableObject, ISaveableObject
 {
+    //some of these will get put into an enemy stats struct at some point
     [SerializeField]
-    float health;
-
-    [SerializeField]
-    float speed;
+    protected float health;
 
     [SerializeField]
-    float directionTime;
+    protected float speed;
 
     [SerializeField]
-    LayerMask levelLayer;
+    protected Damage damage;
 
     [SerializeField]
-    Damage damage;
+    protected LayerMask redirectLayers;
 
-    Rigidbody2D rb;
+    protected Rigidbody2D rb;
 
-    float currentTimer = float.MaxValue;
-    Vector2 direction;
+    protected Vector2 direction;
+
+    protected float currentSpeed;
+
+    protected Vector3 startingPos;
 
     public bool isTakingDamage => damageFromOther != null;
 
     public Damage Damage => new Damage(damage);
 
-    override protected void Awake()
+    protected override void Awake()
     {
         base.Awake();
         rb = GetComponent<Rigidbody2D>();
+        startingPos = transform.localPosition;
     }
 
 
-    public void RoomUpdate() { }
+    public abstract void RoomUpdate();
 
-    public void RoomFixedUpdate()
-    {
-        rb.velocity = Vector2.zero;
-
-        UpdateDirection();
-
-        Move();
-    }
+    public abstract void RoomFixedUpdate();
 
     protected override bool CheckHealthForDead()
     {
@@ -56,9 +51,9 @@ public class EnemyController : DamageableObject, ISaveableObject
         health += delta;
     }
 
-    private void Move()
+    protected void Move()
     {
-        Vector2 velocity = direction * speed * Time.fixedDeltaTime;
+        Vector2 velocity = direction * currentSpeed * Time.fixedDeltaTime;
 
         if (damageFromOther != null)
         {
@@ -68,30 +63,15 @@ public class EnemyController : DamageableObject, ISaveableObject
         rb.MovePosition(rb.position + velocity);
     }
 
-    void UpdateDirection()
-    {
-        if(currentTimer >= directionTime)
-        {
-            currentTimer = 0f;
-            SetDirection();
-        }
-        else
-        {
-            currentTimer += Time.fixedDeltaTime;
-        }
-    }
-
-    protected virtual void SetDirection()
-    {
-        float angle = Random.Range(0f, 360f);
-        direction = Quaternion.AngleAxis(angle, Vector3.forward) * Vector2.right;
-    }
+    protected abstract void HitLayerReset();
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         var obj = collision.gameObject;
-        if((levelLayer & 1 << obj.layer) != 0)
+        if((redirectLayers & 1 << obj.layer) != 0)
         {
+            HitLayerReset();
+
             var contacts = collision.contacts;
 
             direction = Vector2.zero;
@@ -101,7 +81,6 @@ public class EnemyController : DamageableObject, ISaveableObject
                 direction += contact.normal;
             }
 
-            currentTimer = 0f;
             direction.Normalize();
             direction = Quaternion.Euler(0f, 0f, Random.Range(-30f, 30f)) * direction;
         }
@@ -111,7 +90,7 @@ public class EnemyController : DamageableObject, ISaveableObject
     {
         DamageRouter damageRouter = collision.gameObject.GetComponent<DamageRouter>();
 
-        if (damageRouter && damageFromOther == null)
+        if (damageRouter)
         {
             var target = damageRouter.Target;
             if (target)
@@ -129,28 +108,11 @@ public class EnemyController : DamageableObject, ISaveableObject
         throw new System.NotImplementedException();
     }
 
-    public void SavePerm(GameDataWriter writer)
-    {
-        //currently this is not called
-        //in the future bosses will probably call this
-        throw new System.NotImplementedException();
-    }
+    public abstract void SavePerm(GameDataWriter writer);
 
-    public void LoadPerm(GameDataReader reader)
-    {
-        //enemy should never call this
-        //bosses will eventually
-        throw new System.NotImplementedException();
-    }
+    public abstract void LoadPerm(GameDataReader reader);
 
-    public void SaveTemp(GameDataWriter writer)
-    {
-        writer.WriteInt(1);
-        writer.WriteFloat(health);
-    }
+    public abstract void SaveTemp(GameDataWriter writer);
 
-    public void LoadTemp(GameDataReader reader)
-    {
-        health = reader.ReadFloat();
-    }
+    public abstract void LoadTemp(GameDataReader reader);
 }

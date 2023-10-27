@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    [SerializeField]
-    Damage damage;
+    Damage damage = new Damage(0, 0, 0);
 
     [SerializeField]
     float speed;
@@ -25,6 +24,13 @@ public class Projectile : MonoBehaviour
     {
         body = GetComponent<Rigidbody2D>();
     }
+
+    public void SetDamage(Damage damage)
+    {
+        this.damage = damage;
+    }
+
+
 
     private void FixedUpdate()
     {
