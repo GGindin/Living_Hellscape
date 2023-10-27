@@ -26,6 +26,7 @@ public class GameController : MonoBehaviour
     {
         GameStateController.Instance.LoadGameState();
         RoomController.Instance.Initialize();
+        PlayerManager.Instance.SetActiveController(PlayerManager.Instance.BodyInstance);
         LoadInPlayer();
     }
 

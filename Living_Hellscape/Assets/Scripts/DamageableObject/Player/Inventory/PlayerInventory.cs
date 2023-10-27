@@ -147,6 +147,11 @@ public class PlayerInventory
         InventoryPanelController.Instance.UpdatePanel(this);
     }
 
+    public void UpdateEquipedGear()
+    {
+        ActionPanelController.Instance.UpdateFromEquipedGear(equipedGear);
+    }
+
     public void DoMainAction()
     {
         if (HasMainAction)

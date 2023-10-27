@@ -9,16 +9,13 @@ public class PlayerManager : MonoBehaviour
     [SerializeField]
     PlayerController bodyControllerPrefab, ghostControllerPrefab;
 
-    [SerializeField]
-    PlayerInventory inventory;
-
     PlayerController active;
 
     PlayerController bodyInstance;
 
     PlayerController ghostInstance;
 
-    public PlayerInventory Inventory => inventory;
+    public PlayerInventory Inventory => active.Inventory;
 
     public PlayerController Active => active;
 
@@ -34,11 +31,6 @@ public class PlayerManager : MonoBehaviour
         Instance = this;
 
         InstantiateControllers();
-
-        //temporarily always the body
-        SetActiveController(bodyInstance);
-
-        inventory.InstantiateInventory();
     }
 
     public void SetActiveController(PlayerController controller)
@@ -117,6 +109,7 @@ public class PlayerManager : MonoBehaviour
         }
 
         HealthPanelController.Instance.UpdatePanel(active.PlayerStats);
+        active.Inventory.UpdateEquipedGear();
 
         //if we have an active room we need to reset the camera follow
         if (RoomController.Instance && RoomController.Instance.ActiveRoom)

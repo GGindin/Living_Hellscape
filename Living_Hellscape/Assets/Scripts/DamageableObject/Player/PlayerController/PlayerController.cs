@@ -12,12 +12,13 @@ public abstract class PlayerController : DamageableObject
     [SerializeField]
     protected Transform heldObjectRoot;
 
+    [SerializeField]
+    PlayerInventory inventory;
+
     protected Vector2 lastDirection = Vector2.down;
    
     protected Rigidbody2D rb;
     protected BoxCollider2D boxCollider;
-
-    public bool isActive = false;
 
     protected InteractableObject interactableObject;
 
@@ -27,7 +28,11 @@ public abstract class PlayerController : DamageableObject
 
     public bool HasControl => hasControl;
 
+    public bool IsActive => PlayerManager.Instance.Active == this;
+
     public PlayerStats PlayerStats => playerStats;
+
+    public PlayerInventory Inventory => inventory;
 
     public Vector2 Velocity { get; protected set; }
 
@@ -41,13 +46,14 @@ public abstract class PlayerController : DamageableObject
         rb = GetComponent<Rigidbody2D>();
         boxCollider = GetComponent<BoxCollider2D>();
         playerStats.Setup();
+        inventory.InstantiateInventory();
     }
 
     // Update is called once per frame
     void Update()
     {
         //if this is not the active controller return
-        if (!isActive) return;
+        if (!IsActive) return;
 
         //poll user input, we use here in update, but b/c it belongs to the static inputcontroller class
         //it will be available in fixed with that correct values
@@ -68,7 +74,7 @@ public abstract class PlayerController : DamageableObject
 
     void FixedUpdate()
     {
-        if (!isActive) return;
+        if (!IsActive) return;
 
         TestInteractableObject();
 

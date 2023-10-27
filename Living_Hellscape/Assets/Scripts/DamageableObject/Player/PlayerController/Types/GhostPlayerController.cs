@@ -10,14 +10,12 @@ public class GhostPlayerController : PlayerController
     {
         gameObject.SetActive(true);
         transform.position = PlayerManager.Instance.BodyPosition;
-        isActive = true;
         hasLeftPlayer = false;
     }
 
     public override void DeactivateController()
     {
         gameObject.SetActive(false);
-        isActive = false;
         hasLeftPlayer = false;
     }
 
@@ -33,7 +31,7 @@ public class GhostPlayerController : PlayerController
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!isActive) return;
+        if (!IsActive) return;
 
         if (hasLeftPlayer)
         {
@@ -47,7 +45,7 @@ public class GhostPlayerController : PlayerController
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (!isActive) return;
+        if (!IsActive) return;
 
         var bodyController = collision.gameObject.GetComponent<BodyPlayerController>();
         if (bodyController)
