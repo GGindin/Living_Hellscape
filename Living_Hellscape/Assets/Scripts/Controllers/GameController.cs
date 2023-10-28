@@ -80,6 +80,7 @@ public class GameController : MonoBehaviour
             PlayerManager.Instance.ParentControllersToManager();
 
             //doesn't actually need a door because it is a pseudo room
+            //this just starts another transition to the next floor
             RoomController.Instance.ActiveRoom.ConfigureRoomTransition(null);
         }
         else
@@ -90,6 +91,8 @@ public class GameController : MonoBehaviour
             //recenter world, sometimes gets wierd Virtual Cam glitches, and isn't needed
             //if we do this it might be better to do it before the transition and signal to CM then when only one camera is acting
             //RoomController.Instance.RecenterWorld(roomTransitionData);
+
+            EnemyGhostManager.Instance.RepositionGhosts();
 
             //reset data 
             roomTransitionData = new RoomTransitionData();

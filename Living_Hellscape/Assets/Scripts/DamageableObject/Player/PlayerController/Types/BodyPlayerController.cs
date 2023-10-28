@@ -53,7 +53,6 @@ public class BodyPlayerController : PlayerController
             }
 
             var damage = enemy.Damage;
-            if (damage == null) Debug.Log("WTF");
             AddStatusEffect(damage, damageDir.normalized);
         }
     }

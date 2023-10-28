@@ -26,7 +26,45 @@ public class GhostPlayerController : PlayerController
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        //TODO
+        if (!IsActive) return;
+
+        var enemy = collision.gameObject.GetComponent<GhostEnemy>();
+        if (enemy && !enemy.IsTakingDamage && !IsTakingDamage)
+        {
+            var contacts = collision.contacts;
+
+            Vector2 damageDir = Vector2.zero;
+
+            foreach (var contact in contacts)
+            {
+                damageDir += contact.normal;
+            }
+
+            var damage = enemy.Damage;
+            AddStatusEffect(damage, damageDir.normalized);
+        }
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (!IsActive) return;
+
+        var enemy = collision.gameObject.GetComponent<GhostEnemy>();
+        if (enemy && !enemy.IsTakingDamage && !IsTakingDamage)
+        {
+            var contacts = collision.contacts;
+
+            Vector2 damageDir = Vector2.zero;
+
+            foreach (var contact in contacts)
+            {
+                damageDir += contact.normal;
+            }
+
+            var damage = enemy.Damage;
+
+            AddStatusEffect(damage, damageDir.normalized);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

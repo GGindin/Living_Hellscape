@@ -130,11 +130,13 @@ public class PlayerManager : MonoBehaviour
         {
             ghostInstance.DeactivateController();
             bodyInstance.ActivateController();
+            EnemyGhostManager.Instance.PlayerTransformEvent(false);
         }
         else
         {
             bodyInstance.DeactivateController();
             ghostInstance.ActivateController();
+            EnemyGhostManager.Instance.PlayerTransformEvent(true);
         }
 
         HealthPanelController.Instance.UpdatePanel(active.PlayerStats);
