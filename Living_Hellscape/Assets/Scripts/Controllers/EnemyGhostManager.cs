@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -27,24 +28,45 @@ public class EnemyGhostManager : MonoBehaviour
         Instance = this;
     }
 
-    public void PlayerTransformEvent(bool isPlayerNowGhost)
+    public void StartFadeIn()
     {
-        if (isPlayerNowGhost)
+        //activate ghosts
+        //reposition ghosts
+        RepositionGhosts();
+        ActiveGhostsCheck();
+
+        for (int i = 0; i < ghosts.Count; i++)
         {
-            //activate ghosts
-            //reposition ghosts
-            RepositionGhosts();
-            ActiveGhostsCheck();        
-        }
-        else
-        {
-            //deactivate ghosts
-            DeactiveGhostsCheck();
+            var ghost = ghosts[i];
+            ghost.StopAllCoroutines();
+            StartCoroutine(ghost.ProcessFadeIn());
         }
     }
 
+    public void StartFadeOut()
+    {
+        StartCoroutine(ProcessFadeOut());
+
+        for (int i = 0; i < ghosts.Count; i++)
+        {
+            var ghost = ghosts[i];
+            ghost.StopAllCoroutines();
+            StartCoroutine(ghost.ProcessFadeOut());
+        }
+    }
+
+
+    IEnumerator ProcessFadeOut()
+    {
+        float current = GhostWorldFilterController.Instance.TransitionLength;
+        yield return new WaitForSeconds(current);
+        DeactiveGhostsCheck();
+    }
+    
+
     private void Update()
     {
+        if (GameController.Instance.StopUpdates) return;
         if (playerInGhostMode)
         {
             CheckForSpawn();
@@ -57,6 +79,7 @@ public class EnemyGhostManager : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (GameController.Instance.StopUpdates) return;
         if (playerInGhostMode)
         {
             for (int i = 0; i < ghosts.Count; i++)

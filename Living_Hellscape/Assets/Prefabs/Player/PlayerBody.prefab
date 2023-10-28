@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerStats:
-    maxHealth: 5
+    defaultMaxHealth: 3
     speed: 5
   heldObjectRoot: {fileID: 4990064950471468445}
   inventory:

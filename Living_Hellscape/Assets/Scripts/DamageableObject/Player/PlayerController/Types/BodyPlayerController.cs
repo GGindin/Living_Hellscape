@@ -87,6 +87,13 @@ public class BodyPlayerController : PlayerController
         if (doorTrigger)
         {
             doorTrigger.SignalTrigger();
+            return;
+        }
+
+        var drop = collision.gameObject.GetComponent<ItemDrop>();
+        if (drop)
+        {
+            drop.Collect();
         }
     }
 }

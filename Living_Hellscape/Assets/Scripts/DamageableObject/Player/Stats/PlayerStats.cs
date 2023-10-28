@@ -6,16 +6,18 @@ using UnityEngine;
 public class PlayerStats
 {
     [SerializeField]
-    int maxHealth;
+    int defaultMaxHealth;
 
     [SerializeField]
     float speed;
+
+    int healthUpgradesCount;
 
     int currentHealth;
 
     bool isSetup = false;
 
-    public int MaxHealth => maxHealth;
+    public int MaxHealth => defaultMaxHealth + healthUpgradesCount;
 
     public int CurrentHealth => currentHealth; 
 
@@ -25,20 +27,21 @@ public class PlayerStats
     {
         if (!isSetup)
         {
-            currentHealth = maxHealth;
+            currentHealth = MaxHealth;
             isSetup = true;
         }
     }
 
     public void ChangeMaxHealth(int delta)
     {
-        maxHealth += delta;
+        healthUpgradesCount += delta;
         HealthPanelController.Instance.UpdatePanel(this);
     }
 
     public void ChangeCurrentHealth(int delta)
     {
         currentHealth += delta;
+        currentHealth = Mathf.Clamp(currentHealth, 0, MaxHealth);
         HealthPanelController.Instance.UpdatePanel(this);
     }
 }

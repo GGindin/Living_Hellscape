@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public abstract class EnemyController : DamageableObject, ISaveableObject
@@ -16,6 +17,9 @@ public abstract class EnemyController : DamageableObject, ISaveableObject
 
     [SerializeField]
     protected LayerMask redirectLayers;
+
+    [SerializeField]
+    protected DroppableObjectTable enemyDropTable;
 
     protected Rigidbody2D rb;
 
@@ -41,7 +45,13 @@ public abstract class EnemyController : DamageableObject, ISaveableObject
 
     protected override bool CheckHealthForDead()
     {
-        return health <= 0f;
+        bool isDead = health <= 0f;
+        if (isDead)
+        {
+            DropDrops();
+        }
+
+        return isDead;
     }
 
     protected override void ChangeHealth(int delta)
@@ -84,6 +94,28 @@ public abstract class EnemyController : DamageableObject, ISaveableObject
 
         vec3 = (transform.localPosition - startingPos).normalized + vec3;
         return vec3.normalized;
+    }
+
+    protected void DropDrops()
+    {
+        if (enemyDropTable == null) return;
+
+        List<DroppableObject> drops = (List<DroppableObject>)enemyDropTable.Result();
+        var dropCount = drops.Count(d => !d.IsNull);
+        var rotIter = 360f / dropCount;
+        Vector2 vec = Quaternion.AngleAxis(Random.Range(0f, 360f), Vector3.forward) * Vector3.up;
+        for(int i = 0; i < drops.Count; i++)
+        {
+            var drop = drops[i];
+
+            if (drop.IsNull) continue;
+
+            var enemyDrop = drop as EnemyDrop;
+            var itemDrop = enemyDrop.GetItemDropInstance();
+            itemDrop.transform.SetParent(RoomController.Instance.ActiveRoom.DynamicObjectsHolder);
+            itemDrop.transform.position = transform.position;
+            itemDrop.StartCoroutine(itemDrop.Drop(Quaternion.AngleAxis(rotIter * i, Vector3.forward) * vec));
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

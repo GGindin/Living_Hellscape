@@ -185,7 +185,8 @@ public abstract class PlayerController : DamageableObject
     {
         if(this is BodyPlayerController && buttonState == ButtonState.Down)
         {
-            PlayerManager.Instance.SwapActiveController();
+            GameController.Instance.SwitchWorlds();
+            //PlayerManager.Instance.SwapActiveController();
         }
     }
 

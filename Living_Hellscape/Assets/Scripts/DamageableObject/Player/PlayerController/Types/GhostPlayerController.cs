@@ -4,7 +4,16 @@ using UnityEngine;
 
 public class GhostPlayerController : PlayerController
 {
+    SpriteRenderer spriteRenderer;
+
     bool hasLeftPlayer = false;
+
+    override protected void Awake()
+    {
+        base.Awake();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
+    }
 
     public override void ActivateController()
     {
@@ -19,9 +28,40 @@ public class GhostPlayerController : PlayerController
         hasLeftPlayer = false;
     }
 
-    override protected void Awake()
+    public IEnumerator ProcessFadeIn()
     {
-        base.Awake();
+        float duration = GhostWorldFilterController.Instance.TransitionLength;
+        float current = 0f;
+        var startColor = new Color(1.0f, 1.0f, 1.0f, 0.0f);
+        var targetColor = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+
+        while (current < duration)
+        {
+            current += Time.deltaTime;
+            float t = Mathf.InverseLerp(0f, duration, current);
+            spriteRenderer.color = Color.Lerp(startColor, targetColor, t);
+            yield return null;
+        }
+
+        spriteRenderer.color = targetColor;
+    }
+
+    public IEnumerator ProcessFadeOut()
+    {
+        float current = GhostWorldFilterController.Instance.TransitionLength;
+
+        var startColor = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+        var targetColor = new Color(1.0f, 1.0f, 1.0f, 0.0f);
+
+        while (current > 0f)
+        {
+            current -= Time.deltaTime;
+            float t = Mathf.InverseLerp(0f, 2f, current);
+            spriteRenderer.color = Color.Lerp(targetColor, startColor, t);
+            yield return null;
+        }
+
+        spriteRenderer.color = targetColor;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -76,7 +116,8 @@ public class GhostPlayerController : PlayerController
             var bodyController = collision.gameObject.GetComponent<BodyPlayerController>();
             if (bodyController)
             {
-                PlayerManager.Instance.SetActiveController(bodyController);
+                GameController.Instance.SwitchWorlds();
+                //PlayerManager.Instance.SetActiveController(bodyController);
             }
         }
     }

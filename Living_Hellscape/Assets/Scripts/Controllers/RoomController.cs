@@ -135,6 +135,16 @@ public class RoomController : MonoBehaviour
         room.ConfigureFromPseudoRoomTransitionByConnectionID(floorTransitionData.pseudoRoomConnectionID);
     }
 
+    public void StartFadeIn()
+    {
+
+    }
+
+    public void StartFadeOut()
+    {
+
+    }
+
 
     /*
      * commented out for now maybe we will use in floor transition

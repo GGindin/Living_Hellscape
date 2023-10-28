@@ -9,6 +9,10 @@ public class GameController : MonoBehaviour
 
     public PlayerController PlayerController => PlayerManager.Instance.Active;
 
+    bool stopUpdates = false;
+
+    public bool StopUpdates => stopUpdates;
+
     public bool Paused => paused;
 
     bool paused = false;
@@ -54,6 +58,11 @@ public class GameController : MonoBehaviour
         }
     }
 
+    public void SetStopUpdates(bool stop)
+    {
+        stopUpdates = stop;
+    }
+
     public void TransitionToRoom(RoomTransitionData transitionData)
     {
         roomTransitionData = transitionData;
@@ -96,6 +105,26 @@ public class GameController : MonoBehaviour
 
             //reset data 
             roomTransitionData = new RoomTransitionData();
+        }
+    }
+
+    public void SwitchWorlds()
+    {
+        //going into ghost world
+        if(PlayerManager.Instance.Active != PlayerManager.Instance.GhostInstance)
+        {
+            PlayerManager.Instance.FadeInPlayerGhost();
+            EnemyGhostManager.Instance.StartFadeIn();
+            RoomController.Instance.StartFadeIn(); //not implimented yet
+            GhostWorldFilterController.Instance.StartFilter();
+        }
+        //going into human world
+        else
+        {
+            PlayerManager.Instance.FadeOutPlayerGhost();
+            EnemyGhostManager.Instance.StartFadeOut();
+            RoomController.Instance.StartFadeOut();//not implimented yet
+            GhostWorldFilterController.Instance.EndFilter();
         }
     }
 

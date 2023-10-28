@@ -39,6 +39,7 @@ public class PlayerManager : MonoBehaviour
 
     private void Update()
     {
+        if (GameController.Instance.StopUpdates) return;
         if (!playerHasControl) return;
         if (bodyInstance)
         {
@@ -52,6 +53,7 @@ public class PlayerManager : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (GameController.Instance.StopUpdates) return;
         if (!playerHasControl) return;
         if (bodyInstance)
         {
@@ -106,16 +108,24 @@ public class PlayerManager : MonoBehaviour
         ghostInstance.transform.SetParent(RoomController.Instance.ActiveRoom.transform, true);
     }
 
-    public void SetControllersPositionToPseduoRoom(PseudoRoom pseudoRoom)
-    {
-        bodyInstance.transform.position = pseudoRoom.transform.position;
-        ghostInstance.transform.position = pseudoRoom.transform.position;
-    }
-
     public void ParentControllersToManager()
     {
         bodyInstance.transform.SetParent(transform, true);
         ghostInstance.transform.SetParent(transform, true);
+    }
+
+    public void FadeInPlayerGhost()
+    {
+        SwapActiveController();
+        var ghost = (GhostPlayerController)ghostInstance;
+        StartCoroutine(ghost.ProcessFadeIn());
+    }
+
+    public void FadeOutPlayerGhost()
+    {
+        SwapActiveController();
+        var ghost = (GhostPlayerController)ghostInstance;
+        StartCoroutine(ghost.ProcessFadeOut());
     }
 
     void InstantiateControllers()
@@ -130,13 +140,11 @@ public class PlayerManager : MonoBehaviour
         {
             ghostInstance.DeactivateController();
             bodyInstance.ActivateController();
-            EnemyGhostManager.Instance.PlayerTransformEvent(false);
         }
         else
         {
             bodyInstance.DeactivateController();
             ghostInstance.ActivateController();
-            EnemyGhostManager.Instance.PlayerTransformEvent(true);
         }
 
         HealthPanelController.Instance.UpdatePanel(active.PlayerStats);
