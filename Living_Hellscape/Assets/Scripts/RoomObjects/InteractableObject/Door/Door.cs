@@ -15,7 +15,7 @@ public class Door : InteractableObject
     DoorDirection direction;
 
     [SerializeField]
-    DoorSection left, right;
+    DoorSection[] sections;
 
     [SerializeField]
     DoorTrigger trigger;
@@ -116,8 +116,10 @@ public class Door : InteractableObject
 
     protected virtual void SetDoorSprite()
     {
-        left.SetDoorSprite(closed);
-        right.SetDoorSprite(closed);
+        for(int i = 0; i < sections.Length; i++)
+        {
+            sections[i].SetDoorSprite(closed);
+        }
     }
 
     public override string GetFileName()

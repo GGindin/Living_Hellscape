@@ -242,10 +242,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inRoomID: 0
   direction: 0
-  left: {fileID: 1593186598979718510}
-  right: {fileID: 1593186597998701774}
+  sections:
+  - {fileID: 1593186598979718510}
+  - {fileID: 1593186597998701774}
   trigger: {fileID: 1593186598375304763}
   target: {fileID: 1593186599330598583}
+  requiresKey: 0
 --- !u!1 &1593186598375304761
 GameObject:
   m_ObjectHideFlags: 0

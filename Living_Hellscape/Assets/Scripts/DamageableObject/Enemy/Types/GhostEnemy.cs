@@ -6,6 +6,10 @@ public class GhostEnemy : EnemyController
 {
     float currentSqrDistToPlayer;
 
+    SpriteRenderer spriteRenderer;
+
+    bool hasDoneFirstFade = false;
+
     //use this for when player in body
     public float CurrentSqrDistToPlayer => currentSqrDistToPlayer;
 
@@ -13,12 +17,16 @@ public class GhostEnemy : EnemyController
     {
         base.Awake();
         currentSpeed = speed;
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        StartCoroutine(ProcessFadeIn());
     }
 
     public override void RoomUpdate() { }
 
     public override void RoomFixedUpdate()
     {
+        if (!hasDoneFirstFade) return;
+
         rb.velocity = Vector2.zero;
 
         UpdateDirection();
@@ -37,6 +45,47 @@ public class GhostEnemy : EnemyController
         var playerPos = PlayerManager.Instance.Active.transform.position;
         var previousVector = -direction * Mathf.Sqrt(currentSqrDistToPlayer);
         transform.position = new Vector2(playerPos.x, playerPos.y) + previousVector;
+    }
+
+    public IEnumerator ProcessFadeIn()
+    {
+        float duration = GhostWorldFilterController.Instance.TransitionLength;
+        float current = 0f;
+        var startColor = new Color(1.0f, 1.0f, 1.0f, 0.0f);
+        var targetColor = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+
+        while (current < duration)
+        {
+            current += Time.deltaTime;
+            float t = Mathf.InverseLerp(0f, duration, current);
+            spriteRenderer.color = Color.Lerp(startColor, targetColor, t);
+            yield return null;
+        }
+
+        spriteRenderer.color = targetColor;
+
+        if (!hasDoneFirstFade)
+        {
+            hasDoneFirstFade = true;
+        }
+    }
+
+    public IEnumerator ProcessFadeOut()
+    {
+        float current = GhostWorldFilterController.Instance.TransitionLength;
+
+        var startColor = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+        var targetColor = new Color(1.0f, 1.0f, 1.0f, 0.0f);
+
+        while (current > 0f)
+        {
+            current -= Time.deltaTime;
+            float t = Mathf.InverseLerp(0f, GhostWorldFilterController.Instance.TransitionLength, current);
+            spriteRenderer.color = Color.Lerp(targetColor, startColor, t);
+            yield return null;
+        }
+
+        spriteRenderer.color = targetColor;
     }
 
     void UpdateDirection()

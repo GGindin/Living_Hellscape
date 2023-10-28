@@ -58,7 +58,8 @@ public class Room : MonoBehaviour, ISaveableObject
 
     protected void Update()
     {
-        if(RoomController.Instance.ActiveRoom == this)
+        if (GameController.Instance.StopUpdates) return;
+        if (RoomController.Instance.ActiveRoom == this)
         {
             EnemyUpdate();
             if (defeatAllEnemies && !HasActiveEnemies() && !hasOpenedAllDoors)
@@ -70,6 +71,7 @@ public class Room : MonoBehaviour, ISaveableObject
 
     private void FixedUpdate()
     {
+        if (GameController.Instance.StopUpdates) return;
         if (RoomController.Instance.ActiveRoom == this)
         {
             EnemyFixedUpdate();
