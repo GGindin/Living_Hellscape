@@ -199,9 +199,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8192
   scare:
-    duration: 0
+    duration: 3
   stun:
-    duration: 0
+    duration: 1
 --- !u!114 &8788883408251877752
 MonoBehaviour:
   m_ObjectHideFlags: 0

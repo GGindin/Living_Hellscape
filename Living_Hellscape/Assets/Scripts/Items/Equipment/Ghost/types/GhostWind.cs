@@ -31,11 +31,11 @@ public class GhostWind : GhostEquipment, IStatuser
     {
         if((EnemyBodyLayer & 1 << recievingObject.gameObject.layer) != 0)
         {
-            return new Stun(stun);
+            return new Scare(scare);
         }
         else if((EnemyGhostLayer & 1 << recievingObject.gameObject.layer) != 0)
         {
-            return new Scare(scare);
+            return new Stun(stun);
         }
 
         return null;

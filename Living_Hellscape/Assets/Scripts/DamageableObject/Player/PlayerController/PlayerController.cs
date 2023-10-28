@@ -196,15 +196,17 @@ public abstract class PlayerController : DamageableObject
         }
     }
 
+    //need another way to check for stunned because a lot of things rely on hasControl
+    //and with this set up if you are not stunned you have control
     void CheckStun()
     {
         if (IsStunned())
         {
-            hasControl = false;
+            //hasControl = false;
         }
         else
         {
-            hasControl = true;
+            //hasControl = true;
         }
     }
 

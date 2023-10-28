@@ -39,6 +39,8 @@ public abstract class DamageableObject : MonoBehaviour
                     AddStunEffect(stunEffect);
                     return;
                 case StatusEffectType.Scare:
+                    var scareEffect = (Scare)statusEffect;
+                    AddScareEffect(scareEffect, normDirection);
                     return;
             }
         }
@@ -52,6 +54,7 @@ public abstract class DamageableObject : MonoBehaviour
                     activeEffect.AddDuration(statusEffect.Duration);
                     return;
                 case StatusEffectType.Scare:
+                    activeEffect.AddDuration(statusEffect.Duration);
                     return;
             }
         }
@@ -112,6 +115,23 @@ public abstract class DamageableObject : MonoBehaviour
         return false;
     }
 
+    protected bool IsScared()
+    {
+        var scare = GetStatusOfType(StatusEffectType.Scare);
+        if (scare != null)
+        {
+            scare.TickDuration(Time.deltaTime);
+            if (scare.CurrentDuration <= 0f)
+            {
+                RemoveStatusEffect(scare);
+            }
+            CheckHitAnim();
+            return true;
+        }
+
+        return false;
+    }
+
     protected void TakeDamage(Damage damage)
     {
         ChangeHealth((int)-damage.amount);
@@ -120,12 +140,9 @@ public abstract class DamageableObject : MonoBehaviour
 
     void CheckHitAnim()
     {
-        for(int i = 0; i < statusEffects.Count; i++)
+        if(statusEffects.Count > 0)
         {
-            if (statusEffects[i].EffectType == StatusEffectType.Damage || statusEffects[i].EffectType == StatusEffectType.Stun)
-            {
-                return;
-            }
+            return;
         }
 
         animator.SetBool(hitID, false);
@@ -137,6 +154,13 @@ public abstract class DamageableObject : MonoBehaviour
         animator.SetBool(hitID, true);
     }
 
+    void AddScareEffect(Scare scare, Vector2 normDirection)
+    {
+        statusEffects.Add(scare);
+        scare.Vector = normDirection;
+        animator.SetBool(hitID, true);
+    }
+
     void AddDamageEffect(Damage damage, Vector2 normDirection)
     {
         damage.SetVectorFromDirection(normDirection);
@@ -144,7 +168,7 @@ public abstract class DamageableObject : MonoBehaviour
         TakeDamage(damage);
     }
 
-    StatusEffect GetStatusOfType(StatusEffectType statusEffectType)
+    protected StatusEffect GetStatusOfType(StatusEffectType statusEffectType)
     {
         for(int i = 0; i < statusEffects.Count; i++)
         {

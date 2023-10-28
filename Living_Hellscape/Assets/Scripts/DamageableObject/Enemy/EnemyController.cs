@@ -53,6 +53,11 @@ public abstract class EnemyController : DamageableObject, ISaveableObject
     {
         Vector2 velocity = direction * currentSpeed * Time.fixedDeltaTime;
 
+        if (IsScared())
+        {
+            velocity = GetScaredDirection() * currentSpeed * Time.fixedDeltaTime;
+        }
+
         if (IsStunned())
         {
             velocity = Vector2.zero;
@@ -67,6 +72,19 @@ public abstract class EnemyController : DamageableObject, ISaveableObject
     }
 
     protected abstract void HitLayerReset();
+
+    private Vector2 GetScaredDirection()
+    {
+        var scare = (Scare)GetStatusOfType(StatusEffectType.Scare);
+
+        if (scare == null) return Vector2.zero;
+
+        var dir = scare.Vector;
+        var vec3 = new Vector3(dir.x, dir.y);
+
+        vec3 = (transform.localPosition - startingPos).normalized + vec3;
+        return vec3.normalized;
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
