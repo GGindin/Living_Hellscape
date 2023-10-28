@@ -32,7 +32,7 @@ public class BodyPlayerController : PlayerController
                 this.interactableObject = interactableObject;
             }         
 
-            if (!HasControl)
+            if (!PlayerManager.Instance.PlayerHasControl)
             {
                 this.interactableObject.Interact();
             }

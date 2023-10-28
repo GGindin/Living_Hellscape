@@ -15,6 +15,10 @@ public class PlayerManager : MonoBehaviour
 
     PlayerController ghostInstance;
 
+    bool playerHasControl = false;
+
+    public bool PlayerHasControl => playerHasControl;
+
     public PlayerInventory Inventory => active.Inventory;
 
     public PlayerController Active => active;
@@ -31,6 +35,37 @@ public class PlayerManager : MonoBehaviour
         Instance = this;
 
         InstantiateControllers();
+    }
+
+    private void Update()
+    {
+        if (!playerHasControl) return;
+        if (bodyInstance)
+        {
+            bodyInstance.ControllerUpdate();
+        }
+        if (ghostInstance)
+        {
+            ghostInstance.ControllerUpdate();
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        if (!playerHasControl) return;
+        if (bodyInstance)
+        {
+            bodyInstance.ControllerFixedUpdate();
+        }
+        if (ghostInstance)
+        {
+            ghostInstance.ControllerFixedUpdate();
+        }
+    }
+
+    public void SetPlayerControl(bool hasControl)
+    {
+        playerHasControl = hasControl;
     }
 
     public void SetActiveController(PlayerController controller)
@@ -81,12 +116,6 @@ public class PlayerManager : MonoBehaviour
     {
         bodyInstance.transform.SetParent(transform, true);
         ghostInstance.transform.SetParent(transform, true);
-    }
-
-    public void SetControl(bool control)
-    {
-        bodyInstance.SetControl(control);
-        ghostInstance.SetControl(control);
     }
 
     void InstantiateControllers()

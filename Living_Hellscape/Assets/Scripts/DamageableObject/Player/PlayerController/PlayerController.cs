@@ -22,11 +22,8 @@ public abstract class PlayerController : DamageableObject
 
     protected InteractableObject interactableObject;
 
-    bool hasControl = true;
-
     public bool HasHeldObject => heldObjectRoot.childCount > 0;
 
-    public bool HasControl => hasControl;
 
     public bool IsActive => PlayerManager.Instance.Active == this;
 
@@ -49,8 +46,7 @@ public abstract class PlayerController : DamageableObject
         inventory.InstantiateInventory();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ControllerUpdate()
     {
         //if this is not the active controller return
         if (!IsActive) return;
@@ -61,9 +57,7 @@ public abstract class PlayerController : DamageableObject
 
         if (HandlePauseAndInventory(userInput)) return;
 
-        CheckStun();
-
-        if (hasControl)
+        if(!(IsStunned() || IsScared()))
         {
             SetDirection(userInput.movement);
             Transform(userInput.transform);
@@ -72,23 +66,19 @@ public abstract class PlayerController : DamageableObject
         }
     }
 
-
-
-    void FixedUpdate()
+    public void ControllerFixedUpdate()
     {
         if (!IsActive) return;
 
         TestInteractableObject();
 
-        if (hasControl)
-        {
-            UserInput userInput = InputController.GetUserInput();
+        UserInput userInput = InputController.GetUserInput();
 
-            Move(userInput.movement);
+        Move(userInput.movement);
 
-            RotateEquip();
-        }
+        RotateEquip();
     }
+
 
     public Vector2 ThrowObject()
     {
@@ -116,14 +106,9 @@ public abstract class PlayerController : DamageableObject
         StartCoroutine(TransitionRoom(target));
     }
 
-    public void SetControl(bool control)
-    {
-        hasControl = control;
-    }
-
     public IEnumerator StopControlForTime(float time)
     {
-        hasControl = false;
+        PlayerManager.Instance.SetPlayerControl(false);
 
         while(time > 0)
         {
@@ -131,7 +116,7 @@ public abstract class PlayerController : DamageableObject
             yield return null;
         }
 
-        hasControl = true;
+        PlayerManager.Instance.SetPlayerControl(true);
     }
 
     bool HandlePauseAndInventory(UserInput userInput)
@@ -196,20 +181,6 @@ public abstract class PlayerController : DamageableObject
         }
     }
 
-    //need another way to check for stunned because a lot of things rely on hasControl
-    //and with this set up if you are not stunned you have control
-    void CheckStun()
-    {
-        if (IsStunned())
-        {
-            //hasControl = false;
-        }
-        else
-        {
-            //hasControl = true;
-        }
-    }
-
     void Transform(ButtonState buttonState)
     {
         if(this is BodyPlayerController && buttonState == ButtonState.Down)
@@ -223,6 +194,20 @@ public abstract class PlayerController : DamageableObject
         var normInput = movement.normalized;
 
         Vector2 velocity = normInput * playerStats.Speed * Time.fixedDeltaTime;
+
+        if (IsScared())
+        {
+            var scare = (Scare)GetStatusOfType(StatusEffectType.Scare);
+            if ( scare != null )
+            {
+                velocity = scare.Vector * playerStats.Speed * Time.fixedDeltaTime;
+            }
+        }
+
+        if (IsStunned())
+        {
+            velocity = Vector2.zero;
+        }
 
         if(IsTakingDamage)
         {
@@ -267,7 +252,7 @@ public abstract class PlayerController : DamageableObject
 
     IEnumerator TransitionRoom(Vector3 target)
     {
-        hasControl = false;
+        PlayerManager.Instance.SetPlayerControl(false);
         Vector3 startPos = rb.position;
 
         float duration = 2f;
@@ -282,7 +267,7 @@ public abstract class PlayerController : DamageableObject
         }
 
         rb.MovePosition(target);
-        hasControl = true;
+        PlayerManager.Instance.SetPlayerControl(true);
         GameController.Instance.EndRoomTransition();
     }
 }
