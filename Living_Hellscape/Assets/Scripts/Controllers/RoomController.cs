@@ -10,7 +10,7 @@ public class RoomController : MonoBehaviour
     public const float INTER_ROOM_DISTANCE = 6.0f;
 
     [SerializeField]
-    int activeRoomPrefabIndex = -1;
+    int currentRoomOverrideIndex = -1;
 
     [SerializeField]
     Room[] roomPrefabs;
@@ -23,7 +23,11 @@ public class RoomController : MonoBehaviour
 
     private void Awake()
     {
-        Instance = this;
+        Instance = this;       
+    }
+
+    public void Initialize()
+    {
         LoadDefaultRoom();
     }
 
@@ -31,13 +35,10 @@ public class RoomController : MonoBehaviour
     {
         activeRoom = room;
 
-        if(room == null)
+        if(room != null)
         {
-            activeRoomPrefabIndex = -1;
-        }
-        else
-        {
-            activeRoomPrefabIndex = activeRoom.ID;
+            currentRoomOverrideIndex = activeRoom.ID;
+            GameStateController.Instance.CurrentRoomIndex = activeRoom.ID;
         }
     }
 
@@ -55,14 +56,19 @@ public class RoomController : MonoBehaviour
 
     private void LoadDefaultRoom()
     {
-        if(activeRoomPrefabIndex < 0 || activeRoomPrefabIndex >= roomPrefabs.Length)
+        var indexToLoad = currentRoomOverrideIndex;
+        if(indexToLoad < 0)
         {
-            activeRoomPrefabIndex = 0;
-            activeRoom = Instantiate(roomPrefabs[activeRoomPrefabIndex]);
+            indexToLoad = GameStateController.Instance.CurrentRoomIndex;
+        }
+
+        if(indexToLoad < 0 || indexToLoad >= roomPrefabs.Length)
+        {
+            activeRoom = Instantiate(roomPrefabs[indexToLoad]);
         }
         else
         {
-            activeRoom = Instantiate(roomPrefabs[activeRoomPrefabIndex]);
+            activeRoom = Instantiate(roomPrefabs[indexToLoad]);
         }
 
         activeRoom.OnLoadRoom();

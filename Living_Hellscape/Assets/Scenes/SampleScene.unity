@@ -123,6 +123,52 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &184036500
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 184036501}
+  - component: {fileID: 184036502}
+  m_Layer: 0
+  m_Name: EnemyGhostManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &184036501
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 184036500}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &184036502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 184036500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84d42bcb29fa54f4e9d978f0c943bc1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ghostEnemyPrefab: {fileID: 6124632360203104757, guid: b32ece0ea3e4caa47a49084065fd10bb, type: 3}
+  spawnDistance: 5
+  spawnInterval: 3
 --- !u!1 &288695070
 GameObject:
   m_ObjectHideFlags: 0
@@ -285,7 +331,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &519420033
 MonoBehaviour:
@@ -444,6 +490,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1168914966}
   - component: {fileID: 1168914965}
+  - component: {fileID: 1168914967}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -477,6 +524,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1168914967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1168914964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ba71ac35c874a6428909351fd7636d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1340566354
 GameObject:
   m_ObjectHideFlags: 0
@@ -583,7 +642,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55a9ee386401ac642aa4bd5673e0e006, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeRoomPrefabIndex: 0
+  currentRoomOverrideIndex: -1
   roomPrefabs:
   - {fileID: 4238275303636843574, guid: 8b74335141f0e0d43b26e9dcc6319c1e, type: 3}
   - {fileID: 3675158630561558092, guid: b9cf524b954b0604a9fe1f4a62c66989, type: 3}
@@ -763,27 +822,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bodyControllerPrefab: {fileID: 545511088324393408, guid: 4e59370b99365b7408e63c41cb218a04, type: 3}
   ghostControllerPrefab: {fileID: 5641017312213113670, guid: 2a2d3eb29ae45bf4680c1348d2c72c52, type: 3}
-  inventory:
-    equipedGear:
-      mainAction: {fileID: 0}
-      secondAction: {fileID: 0}
-    items:
-    - {fileID: 3070259392443591952, guid: 37de3e3f1c400af4fa2897dd4a964bfe, type: 3}
-    - {fileID: 575737613114154732, guid: 1b059d95d116f1c40b187daffdf24971, type: 3}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
 --- !u!1 &2082415453
 GameObject:
   m_ObjectHideFlags: 0
@@ -1061,7 +1099,7 @@ RectTransform:
   - {fileID: 1340566355}
   - {fileID: 579920089}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}

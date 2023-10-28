@@ -25,8 +25,6 @@ public abstract class EnemyController : DamageableObject, ISaveableObject
 
     protected Vector3 startingPos;
 
-    public bool isTakingDamage => damageFromOther != null;
-
     public Damage Damage => new Damage(damage);
 
     protected override void Awake()
@@ -55,7 +53,17 @@ public abstract class EnemyController : DamageableObject, ISaveableObject
     {
         Vector2 velocity = direction * currentSpeed * Time.fixedDeltaTime;
 
-        if (damageFromOther != null)
+        if (IsScared())
+        {
+            velocity = GetScaredDirection() * currentSpeed * Time.fixedDeltaTime;
+        }
+
+        if (IsStunned())
+        {
+            velocity = Vector2.zero;
+        }
+
+        if (IsTakingDamage)
         {
             velocity = MoveByDamage();
         }
@@ -64,6 +72,19 @@ public abstract class EnemyController : DamageableObject, ISaveableObject
     }
 
     protected abstract void HitLayerReset();
+
+    private Vector2 GetScaredDirection()
+    {
+        var scare = (Scare)GetStatusOfType(StatusEffectType.Scare);
+
+        if (scare == null) return Vector2.zero;
+
+        var dir = scare.Vector;
+        var vec3 = new Vector3(dir.x, dir.y);
+
+        vec3 = (transform.localPosition - startingPos).normalized + vec3;
+        return vec3.normalized;
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -88,16 +109,19 @@ public abstract class EnemyController : DamageableObject, ISaveableObject
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        DamageRouter damageRouter = collision.gameObject.GetComponent<DamageRouter>();
+        StatusRouter statusRouter = collision.gameObject.GetComponent<StatusRouter>();
 
-        if (damageRouter)
+        if (statusRouter)
         {
-            var target = damageRouter.Target;
+            var target = statusRouter.Target;
             if (target)
             {
                 Vector2 damageDir = (rb.position - collision.ClosestPoint(rb.position)).normalized;
-                var damage = target.Damager.GetDamage();
-                SetupDamage(damage, damageDir);
+                var status = target.Statuser.GetStatus(this);
+                if(status != null)
+                {
+                    AddStatusEffect(status, damageDir);
+                }
             }
         }
     }

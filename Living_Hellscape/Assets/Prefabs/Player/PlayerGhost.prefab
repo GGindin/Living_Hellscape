@@ -50,8 +50,28 @@ MonoBehaviour:
   playerStats:
     maxHealth: 5
     speed: 5
-  equip: {fileID: 0}
-  isActive: 0
+  heldObjectRoot: {fileID: 0}
+  inventory:
+    equipedGear:
+      mainAction: {fileID: 0}
+      secondAction: {fileID: 0}
+    items:
+    - {fileID: 8035632176690989601, guid: 314302b38daabea4cbb36a5f6914dfac, type: 3}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
 --- !u!212 &5641017312213113677
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -160,7 +180,7 @@ Animator:
   m_GameObject: {fileID: 5641017312213113676}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fac0ff67a653ae244a85ca8001836e0e, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

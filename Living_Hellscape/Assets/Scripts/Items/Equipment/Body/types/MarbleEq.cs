@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MarbleEq : Equipment
+public class MarbleEq : BodyEquipment
 {
     [SerializeField]
     Projectile marbleProjectilePrefab;
+
+    [SerializeField]
+    Stun stun;
 
     [SerializeField]
     float fireRate;
@@ -27,7 +30,7 @@ public class MarbleEq : Equipment
         {
             PlayerManager.Instance.Active.StartCoroutine(PlayerManager.Instance.Active.StopControlForTime(.25f));
             var marble = Instantiate(marbleProjectilePrefab, transform.position, Quaternion.identity);
-            marble.SetDamage(new Damage(damage));
+            marble.SetDamage(new Stun(stun));
             marble.transform.SetParent(RoomController.Instance.ActiveRoom.DynamicObjectsHolder, true);
             marble.Direction = direction;
             //marble.StartingVelocity = PlayerManager.Instance.Active.Velocity;

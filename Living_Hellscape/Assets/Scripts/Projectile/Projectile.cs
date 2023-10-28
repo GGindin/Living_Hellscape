@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    Damage damage = new Damage(0, 0, 0);
+    StatusEffect statusEffect;
 
     [SerializeField]
     float speed;
@@ -18,16 +18,15 @@ public class Projectile : MonoBehaviour
 
     public Vector2 StartingVelocity { get; set; }
 
-    public Damage Damage => new Damage(damage);
 
     private void Awake()
     {
         body = GetComponent<Rigidbody2D>();
     }
 
-    public void SetDamage(Damage damage)
+    public void SetDamage(StatusEffect statusEffect)
     {
-        this.damage = damage;
+        this.statusEffect = statusEffect;
     }
 
 
@@ -53,9 +52,7 @@ public class Projectile : MonoBehaviour
                 damageDir += contact.normal;
             }
 
-            var damage = Damage;
-
-            damageable.SetupDamage(damage, -damageDir.normalized);
+            damageable.AddStatusEffect(statusEffect, -damageDir.normalized);
         }
 
         Destroy(gameObject);

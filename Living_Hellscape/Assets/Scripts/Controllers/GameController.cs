@@ -9,8 +9,6 @@ public class GameController : MonoBehaviour
 
     public PlayerController PlayerController => PlayerManager.Instance.Active;
 
-    public bool PlayerHasControl => PlayerController.HasControl;
-
     public bool Paused => paused;
 
     bool paused = false;
@@ -24,6 +22,9 @@ public class GameController : MonoBehaviour
 
     private void Start()
     {
+        GameStateController.Instance.LoadGameState();
+        RoomController.Instance.Initialize();
+        PlayerManager.Instance.SetActiveController(PlayerManager.Instance.BodyInstance);
         LoadInPlayer();
     }
 
@@ -75,10 +76,11 @@ public class GameController : MonoBehaviour
             //reset data 
             roomTransitionData = new RoomTransitionData();
 
-            PlayerManager.Instance.SetControl(false);
+            PlayerManager.Instance.SetPlayerControl(false);
             PlayerManager.Instance.ParentControllersToManager();
 
             //doesn't actually need a door because it is a pseudo room
+            //this just starts another transition to the next floor
             RoomController.Instance.ActiveRoom.ConfigureRoomTransition(null);
         }
         else
@@ -89,6 +91,8 @@ public class GameController : MonoBehaviour
             //recenter world, sometimes gets wierd Virtual Cam glitches, and isn't needed
             //if we do this it might be better to do it before the transition and signal to CM then when only one camera is acting
             //RoomController.Instance.RecenterWorld(roomTransitionData);
+
+            EnemyGhostManager.Instance.RepositionGhosts();
 
             //reset data 
             roomTransitionData = new RoomTransitionData();
@@ -103,5 +107,7 @@ public class GameController : MonoBehaviour
 
         RoomController.Instance.ActiveRoom.OnStartEnterRoom();
         RoomController.Instance.ActiveRoom.OnEnterRoom();
+
+        PlayerManager.Instance.SetPlayerControl(true);
     }
 }

@@ -104,7 +104,7 @@ public class HoldableObject : InteractableObject
             direction *= -1;
 
             var newDamage = new Damage(damage);
-            damageable.SetupDamage(newDamage, direction.normalized);
+            damageable.AddStatusEffect(newDamage, direction.normalized);
             Destroy(gameObject);
         }
 

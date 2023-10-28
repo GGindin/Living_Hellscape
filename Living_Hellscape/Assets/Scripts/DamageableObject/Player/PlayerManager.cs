@@ -9,18 +9,23 @@ public class PlayerManager : MonoBehaviour
     [SerializeField]
     PlayerController bodyControllerPrefab, ghostControllerPrefab;
 
-    [SerializeField]
-    PlayerInventory inventory;
-
     PlayerController active;
 
     PlayerController bodyInstance;
 
     PlayerController ghostInstance;
 
+    bool playerHasControl = false;
+
+    public bool PlayerHasControl => playerHasControl;
+
+    public PlayerInventory Inventory => active.Inventory;
+
     public PlayerController Active => active;
 
-    public PlayerInventory Inventory => inventory;  
+    public PlayerController BodyInstance => bodyInstance;
+
+    public PlayerController GhostInstance => ghostInstance;
 
     public Vector2 BodyPosition => bodyInstance.transform.position;
     public Vector2 GhostPosition => ghostInstance.transform.position;
@@ -30,11 +35,37 @@ public class PlayerManager : MonoBehaviour
         Instance = this;
 
         InstantiateControllers();
+    }
 
-        //temporarily always the body
-        SetActiveController(bodyInstance);
+    private void Update()
+    {
+        if (!playerHasControl) return;
+        if (bodyInstance)
+        {
+            bodyInstance.ControllerUpdate();
+        }
+        if (ghostInstance)
+        {
+            ghostInstance.ControllerUpdate();
+        }
+    }
 
-        inventory.InstantiateInventory();
+    private void FixedUpdate()
+    {
+        if (!playerHasControl) return;
+        if (bodyInstance)
+        {
+            bodyInstance.ControllerFixedUpdate();
+        }
+        if (ghostInstance)
+        {
+            ghostInstance.ControllerFixedUpdate();
+        }
+    }
+
+    public void SetPlayerControl(bool hasControl)
+    {
+        playerHasControl = hasControl;
     }
 
     public void SetActiveController(PlayerController controller)
@@ -87,12 +118,6 @@ public class PlayerManager : MonoBehaviour
         ghostInstance.transform.SetParent(transform, true);
     }
 
-    public void SetControl(bool control)
-    {
-        bodyInstance.SetControl(control);
-        ghostInstance.SetControl(control);
-    }
-
     void InstantiateControllers()
     {
         bodyInstance = Instantiate(bodyControllerPrefab);
@@ -105,14 +130,17 @@ public class PlayerManager : MonoBehaviour
         {
             ghostInstance.DeactivateController();
             bodyInstance.ActivateController();
+            EnemyGhostManager.Instance.PlayerTransformEvent(false);
         }
         else
         {
             bodyInstance.DeactivateController();
             ghostInstance.ActivateController();
+            EnemyGhostManager.Instance.PlayerTransformEvent(true);
         }
 
         HealthPanelController.Instance.UpdatePanel(active.PlayerStats);
+        active.Inventory.UpdateEquipedGear();
 
         //if we have an active room we need to reset the camera follow
         if (RoomController.Instance && RoomController.Instance.ActiveRoom)

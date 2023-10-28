@@ -7,13 +7,11 @@ public class BodyPlayerController : PlayerController
     public override void ActivateController()
     {
         boxCollider.isTrigger = false;
-        isActive = true;
     }
 
     public override void DeactivateController()
     {
         boxCollider.isTrigger = true;
-        isActive = false;
     }
 
     override protected void Awake()
@@ -23,7 +21,7 @@ public class BodyPlayerController : PlayerController
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (!isActive) return;
+        if (!IsActive) return;
 
         //probably need some check to stop the player from leaving a room whie holding something
         var interactableObject = collision.gameObject.GetComponent<InteractableObject>();
@@ -34,7 +32,7 @@ public class BodyPlayerController : PlayerController
                 this.interactableObject = interactableObject;
             }         
 
-            if (!HasControl)
+            if (!PlayerManager.Instance.PlayerHasControl)
             {
                 this.interactableObject.Interact();
             }
@@ -43,7 +41,7 @@ public class BodyPlayerController : PlayerController
         }
 
         var enemy = collision.gameObject.GetComponent<EnemyController>();
-        if (enemy && damageFromOther == null && !enemy.isTakingDamage)
+        if (enemy && !enemy.IsTakingDamage && !IsTakingDamage)
         {
             var contacts = collision.contacts;
 
@@ -55,16 +53,16 @@ public class BodyPlayerController : PlayerController
             }
 
             var damage = enemy.Damage;
-            SetupDamage(damage, damageDir.normalized);
+            AddStatusEffect(damage, damageDir.normalized);
         }
     }
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if (!isActive) return;
+        if (!IsActive) return;
 
         var enemy = collision.gameObject.GetComponent<EnemyController>();
-        if (enemy && damageFromOther == null && !enemy.isTakingDamage)
+        if (enemy && !enemy.IsTakingDamage && !IsTakingDamage)
         {
             var contacts = collision.contacts;
 
@@ -77,13 +75,13 @@ public class BodyPlayerController : PlayerController
 
             var damage = enemy.Damage;
 
-            SetupDamage(damage, damageDir.normalized);
+            AddStatusEffect(damage, damageDir.normalized);
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(!isActive) return;
+        if(!IsActive) return;
 
         var doorTrigger = collision.gameObject.GetComponent<DoorTrigger>();
         if (doorTrigger)

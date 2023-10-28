@@ -29,6 +29,27 @@ public class ActionPanelController : MonoBehaviour
         secondAction.SetImage(sprite);
     }
 
+    public void UpdateFromEquipedGear(EquipedGear equipedGear)
+    {
+        if (equipedGear.mainAction)
+        {
+            SetMainActionIcon(equipedGear.mainAction.uiIcon);
+        }
+        else
+        {
+            SetMainActionIcon(null);
+        }
+
+        if (equipedGear.secondAction)
+        {
+            SetSecondAction(equipedGear.secondAction.uiIcon);
+        }
+        else
+        {
+            SetSecondAction(null);
+        }
+    }
+
     void CreateActionIcons()
     {
         mainAction = Instantiate(iconPrefab, transform);

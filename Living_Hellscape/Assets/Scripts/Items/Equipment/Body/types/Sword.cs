@@ -2,8 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Sword : Equipment, IDamager
+public class Sword : BodyEquipment, IStatuser
 {
+    [SerializeField]
+    Damage damage;
+
     public Damage Damage => new Damage(damage);
 
     int xDirID = Animator.StringToHash("xDir");
@@ -31,7 +34,7 @@ public class Sword : Equipment, IDamager
         isActing = false;
     }
 
-    public Damage GetDamage()
+    public StatusEffect GetStatus(DamageableObject recievingObject)
     {
         return Damage;
     }

@@ -6,9 +6,6 @@ public abstract class Equipment : Item
 {
     protected Animator animator;
 
-    [SerializeField]
-    protected Damage damage;
-
     private void Awake()
     {
         animator = GetComponent<Animator>();

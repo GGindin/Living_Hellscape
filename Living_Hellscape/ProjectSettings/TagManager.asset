@@ -14,14 +14,14 @@ TagManager:
   - PlayerBody
   - Geometry
   - CameraConfiner
-  - PlayerItem
-  - Enemy
+  - PlayerBodyItem
+  - EnemyBody
   - PlayerGhost
   - DoorTrigger
-  - 
-  - 
-  - 
-  - 
+  - EnemyGhost
+  - PlayerGhostItem
+  - BodyInteractable
+  - GhostInteractable
   - 
   - 
   - 

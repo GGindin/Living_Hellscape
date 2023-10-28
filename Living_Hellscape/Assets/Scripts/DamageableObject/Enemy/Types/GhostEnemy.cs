@@ -1,0 +1,58 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class GhostEnemy : EnemyController
+{
+    float currentSqrDistToPlayer;
+
+    //use this for when player in body
+    public float CurrentSqrDistToPlayer => currentSqrDistToPlayer;
+
+    protected override void Awake()
+    {
+        base.Awake();
+        currentSpeed = speed;
+    }
+
+    public override void RoomUpdate() { }
+
+    public override void RoomFixedUpdate()
+    {
+        rb.velocity = Vector2.zero;
+
+        UpdateDirection();
+
+        Move();
+    }
+
+    public void UpdateDistanceWhenPlayerInBody()
+    {
+        var dist = Mathf.Sqrt(currentSqrDistToPlayer) + currentSpeed * Time.deltaTime;
+        currentSqrDistToPlayer = dist * dist;
+    }
+
+    public void RepositionGhost()
+    {
+        var playerPos = PlayerManager.Instance.Active.transform.position;
+        var previousVector = -direction * Mathf.Sqrt(currentSqrDistToPlayer);
+        transform.position = new Vector2(playerPos.x, playerPos.y) + previousVector;
+    }
+
+    void UpdateDirection()
+    {
+        direction = (PlayerManager.Instance.GhostInstance.transform.position - transform.position);
+        currentSqrDistToPlayer = direction.sqrMagnitude;
+        direction.Normalize();
+    }
+
+    protected override void HitLayerReset() { }
+
+    public override void SavePerm(GameDataWriter writer) { }
+
+    public override void LoadPerm(GameDataReader reader) { }
+
+    public override void SaveTemp(GameDataWriter writer) { }
+
+    public override void LoadTemp(GameDataReader reader) { }
+}

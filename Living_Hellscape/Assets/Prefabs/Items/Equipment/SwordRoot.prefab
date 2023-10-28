@@ -49,9 +49,9 @@ MonoBehaviour:
   uiIcon: {fileID: 21300000, guid: 2985c174e9577e041ae1c7c36f5cae5f, type: 3}
   isMainAction: 1
   damage:
+    duration: 0.5
     amount: 1
     magnitude: 5
-    duration: 0.5
 --- !u!95 &3070259392443591955
 Animator:
   serializedVersion: 5
@@ -204,7 +204,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3070259393575021588}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce8560de2bb99ca4093252d5f408760f, type: 3}
+  m_Script: {fileID: 11500000, guid: 2a4757c56a181ad4d808c8e96d13f533, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 7004741625607013530}

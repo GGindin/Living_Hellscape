@@ -12,22 +12,24 @@ public abstract class PlayerController : DamageableObject
     [SerializeField]
     protected Transform heldObjectRoot;
 
+    [SerializeField]
+    PlayerInventory inventory;
+
     protected Vector2 lastDirection = Vector2.down;
    
     protected Rigidbody2D rb;
     protected BoxCollider2D boxCollider;
 
-    public bool isActive = false;
-
     protected InteractableObject interactableObject;
-
-    bool hasControl = true;
 
     public bool HasHeldObject => heldObjectRoot.childCount > 0;
 
-    public bool HasControl => hasControl;
+
+    public bool IsActive => PlayerManager.Instance.Active == this;
 
     public PlayerStats PlayerStats => playerStats;
+
+    public PlayerInventory Inventory => inventory;
 
     public Vector2 Velocity { get; protected set; }
 
@@ -41,13 +43,13 @@ public abstract class PlayerController : DamageableObject
         rb = GetComponent<Rigidbody2D>();
         boxCollider = GetComponent<BoxCollider2D>();
         playerStats.Setup();
+        inventory.InstantiateInventory();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ControllerUpdate()
     {
         //if this is not the active controller return
-        if (!isActive) return;
+        if (!IsActive) return;
 
         //poll user input, we use here in update, but b/c it belongs to the static inputcontroller class
         //it will be available in fixed with that correct values
@@ -55,7 +57,7 @@ public abstract class PlayerController : DamageableObject
 
         if (HandlePauseAndInventory(userInput)) return;
 
-        if (hasControl)
+        if(!(IsStunned() || IsScared()))
         {
             SetDirection(userInput.movement);
             Transform(userInput.transform);
@@ -64,23 +66,19 @@ public abstract class PlayerController : DamageableObject
         }
     }
 
-
-
-    void FixedUpdate()
+    public void ControllerFixedUpdate()
     {
-        if (!isActive) return;
+        if (!IsActive) return;
 
         TestInteractableObject();
 
-        if (hasControl)
-        {
-            UserInput userInput = InputController.GetUserInput();
+        UserInput userInput = InputController.GetUserInput();
 
-            Move(userInput.movement);
+        Move(userInput.movement);
 
-            RotateEquip();
-        }
+        RotateEquip();
     }
+
 
     public Vector2 ThrowObject()
     {
@@ -108,14 +106,9 @@ public abstract class PlayerController : DamageableObject
         StartCoroutine(TransitionRoom(target));
     }
 
-    public void SetControl(bool control)
-    {
-        hasControl = control;
-    }
-
     public IEnumerator StopControlForTime(float time)
     {
-        hasControl = false;
+        PlayerManager.Instance.SetPlayerControl(false);
 
         while(time > 0)
         {
@@ -123,7 +116,7 @@ public abstract class PlayerController : DamageableObject
             yield return null;
         }
 
-        hasControl = true;
+        PlayerManager.Instance.SetPlayerControl(true);
     }
 
     bool HandlePauseAndInventory(UserInput userInput)
@@ -202,7 +195,21 @@ public abstract class PlayerController : DamageableObject
 
         Vector2 velocity = normInput * playerStats.Speed * Time.fixedDeltaTime;
 
-        if(damageFromOther != null)
+        if (IsScared())
+        {
+            var scare = (Scare)GetStatusOfType(StatusEffectType.Scare);
+            if ( scare != null )
+            {
+                velocity = scare.Vector * playerStats.Speed * Time.fixedDeltaTime;
+            }
+        }
+
+        if (IsStunned())
+        {
+            velocity = Vector2.zero;
+        }
+
+        if(IsTakingDamage)
         {
             velocity += MoveByDamage();
         }
@@ -245,7 +252,7 @@ public abstract class PlayerController : DamageableObject
 
     IEnumerator TransitionRoom(Vector3 target)
     {
-        hasControl = false;
+        PlayerManager.Instance.SetPlayerControl(false);
         Vector3 startPos = rb.position;
 
         float duration = 2f;
@@ -260,7 +267,7 @@ public abstract class PlayerController : DamageableObject
         }
 
         rb.MovePosition(target);
-        hasControl = true;
+        PlayerManager.Instance.SetPlayerControl(true);
         GameController.Instance.EndRoomTransition();
     }
 }

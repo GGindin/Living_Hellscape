@@ -70,7 +70,7 @@ public class Door : InteractableObject
 
     public void OperateDoor()
     {
-        if (room.DefeateAllEnemies && room.HasActiveEnemies() && GameController.Instance.PlayerHasControl) return;
+        if (room.DefeateAllEnemies && room.HasActiveEnemies() && PlayerManager.Instance.PlayerHasControl) return;
         if (closed && requiresKey && !isUnlocked)
         {
             var key = PlayerManager.Instance.Inventory.GetItemByType(typeof(Key));
@@ -108,7 +108,7 @@ public class Door : InteractableObject
 
     public void SignalDoor()
     {
-        if (GameController.Instance.PlayerHasControl)
+        if (PlayerManager.Instance.PlayerHasControl)
         {
             room.ConfigureRoomTransition(this);
         }
