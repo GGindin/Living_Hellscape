@@ -312,8 +312,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_BindingMode: 1
   m_FollowOffset: {x: 0, y: 0, z: -10}
-  m_XDamping: 2
-  m_YDamping: 2
+  m_XDamping: 1
+  m_YDamping: 1
   m_ZDamping: 1
   m_AngularDampingMode: 0
   m_PitchDamping: 0
@@ -3482,7 +3482,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 0
-      m_TileSpriteIndex: 1
+      m_TileSpriteIndex: 3
       m_TileMatrixIndex: 0
       m_TileColorIndex: 9
       m_TileObjectToInstantiateIndex: 65535
@@ -3492,7 +3492,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 12
-      m_TileSpriteIndex: 0
+      m_TileSpriteIndex: 1
       m_TileMatrixIndex: 0
       m_TileColorIndex: 9
       m_TileObjectToInstantiateIndex: 65535
@@ -6987,14 +6987,14 @@ Tilemap:
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 7a7c300700dfabe45aedc85996cd5c5c, type: 2}
   m_TileSpriteArray:
-  - m_RefCount: 1
-    m_Data: {fileID: -5773244093850934461, guid: 742b6461f686c4a4e9a249f93e60fb65, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: -4657764202658221571, guid: 742b6461f686c4a4e9a249f93e60fb65, type: 3}
-  - m_RefCount: 9
-    m_Data: {fileID: 3425605258711615321, guid: 742b6461f686c4a4e9a249f93e60fb65, type: 3}
   - m_RefCount: 0
     m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: -5773244093850934461, guid: 742b6461f686c4a4e9a249f93e60fb65, type: 3}
+  - m_RefCount: 9
+    m_Data: {fileID: 3425605258711615321, guid: 742b6461f686c4a4e9a249f93e60fb65, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: -4657764202658221571, guid: 742b6461f686c4a4e9a249f93e60fb65, type: 3}
   - m_RefCount: 20
     m_Data: {fileID: -7397652778513525935, guid: 742b6461f686c4a4e9a249f93e60fb65, type: 3}
   - m_RefCount: 22
