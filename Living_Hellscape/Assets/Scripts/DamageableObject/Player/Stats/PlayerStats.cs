@@ -54,12 +54,19 @@ public class PlayerStats: ISaveableObject
 
     public void SavePerm(GameDataWriter writer)
     {
+        //save current health
+        writer.WriteInt(currentHealth);
 
+        //save health upgrades
+        writer.WriteInt(healthUpgradesCount);
     }
 
     public void LoadPerm(GameDataReader reader)
     {
-
+        //should alwars have a file and reader in this method
+        //the controller wont call this if it is null
+        currentHealth = reader.ReadInt();
+        healthUpgradesCount = reader.ReadInt();
     }
 
     public void SaveTemp(GameDataWriter writer)

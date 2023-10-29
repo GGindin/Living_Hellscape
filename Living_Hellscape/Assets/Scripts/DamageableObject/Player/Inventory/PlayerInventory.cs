@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Net;
 using UnityEngine;
 
 [System.Serializable]
@@ -51,7 +52,10 @@ public class PlayerInventory: ISaveableObject
             int open = FindOpenSlot();
             if (open < 0) return;
             items[open] = item;
-            item.AddCount(1);
+            if(item.Count == 0)
+            {
+                item.AddCount(1);
+            }
             item.Deactivate();
         }
         else
@@ -221,6 +225,19 @@ public class PlayerInventory: ISaveableObject
         return -1;
     }
 
+    int FindItemByID(int id)
+    {
+        for (int i = 0; i < items.Length; i++)
+        {
+            if (items[i] != null && items[i].ID == id)
+            {
+                return i;
+            }
+        }
+
+        return -1;
+    }
+
     public string GetFileName()
     {
         throw new NotImplementedException();
@@ -228,12 +245,83 @@ public class PlayerInventory: ISaveableObject
 
     public void SavePerm(GameDataWriter writer)
     {
+        //save inventory
+        for(int i = 0; i < items.Length; i++)
+        {
+            var item = items[i];
+            if(item == null)
+            {
+                writer.WriteInt(-1);
+            }
+            else
+            {
+                writer.WriteInt(item.ID);
+                writer.WriteInt(item.Count);
+            }
+        }
 
+        //then save equiped gear
+        if(equipedGear.mainAction == null)
+        {
+            writer.WriteInt(-1);
+        }
+        else
+        {
+            writer.WriteInt(equipedGear.mainAction.ID);
+        }
+
+        //then save equiped gear
+        if (equipedGear.secondAction == null)
+        {
+            writer.WriteInt(-1);
+        }
+        else
+        {
+            writer.WriteInt(equipedGear.secondAction.ID);
+        }
     }
 
     public void LoadPerm(GameDataReader reader)
     {
+        int val = 0;
 
+        //load inventory
+        for (int i = 0; i < items.Length; i++)
+        {
+            val = reader.ReadInt();
+
+            if (val < 0) continue;
+            else
+            {
+                var item = GameObject.Instantiate(Resources.Load<Item>("items/item" + val));
+                val = reader.ReadInt();
+                item.AddCount(val);
+                AddItem(item);
+            }
+        }
+
+        //then load equiped gear
+        //main
+        val = reader.ReadInt();
+        if (val >= 0)
+        {
+            int index = FindItemByID(val);
+            if(index >= 0)
+            {
+                HandleMainActionItemSwap(items[index]);
+            }
+        }
+
+        //second
+        val = reader.ReadInt();
+        if (val >= 0)
+        {
+            int index = FindItemByID(val);
+            if (index >= 0)
+            {
+                HandleSecondActionItemSwap(items[index]);
+            }
+        }
     }
 
     public void SaveTemp(GameDataWriter writer)

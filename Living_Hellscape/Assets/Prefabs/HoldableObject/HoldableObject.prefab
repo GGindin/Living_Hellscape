@@ -148,7 +148,7 @@ MonoBehaviour:
     duration: 0.5
     amount: 1
     magnitude: 5
-  throwTime: 1
+  throwTime: 0.75
   throwDistance: 5
   geometryLayer:
     serializedVersion: 2

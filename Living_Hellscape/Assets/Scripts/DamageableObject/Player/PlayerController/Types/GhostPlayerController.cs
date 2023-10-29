@@ -132,14 +132,4 @@ public class GhostPlayerController : PlayerController
             hasLeftPlayer = true;
         }
     }
-
-    public override void SavePerm(GameDataWriter writer)
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public override void LoadPerm(GameDataReader reader)
-    {
-        throw new System.NotImplementedException();
-    }
 }

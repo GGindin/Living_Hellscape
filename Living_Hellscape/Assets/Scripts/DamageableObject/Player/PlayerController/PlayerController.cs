@@ -15,7 +15,7 @@ public abstract class PlayerController : DamageableObject, ISaveableObject
     protected Transform heldObjectRoot;
 
     [SerializeField]
-    PlayerInventory inventory;
+    protected PlayerInventory inventory;
 
     protected Vector2 lastDirection = Vector2.down;
    
@@ -299,9 +299,27 @@ public abstract class PlayerController : DamageableObject, ISaveableObject
         throw new NotImplementedException();
     }
 
-    public abstract void SavePerm(GameDataWriter writer);
+    public void SavePerm(GameDataWriter writer)
+    {
+        //save stats
+        playerStats.SavePerm(writer);
 
-    public abstract void LoadPerm(GameDataReader reader);
+        //save inventory
+        inventory.SavePerm(writer);
+    }
+
+    public void LoadPerm(GameDataReader reader)
+    {
+        //if reader is null we do not have save data so just leave defaults
+        //eventually the stats and inventory init methods will go here, maybe
+        if (reader == null) return;
+
+        //load stats
+        playerStats.LoadPerm(reader);
+
+        //load inventory
+        inventory.LoadPerm(reader);
+    }
 
     public void SaveTemp(GameDataWriter writer)
     {

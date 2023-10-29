@@ -44,17 +44,12 @@ public class ItemPickup : InteractableObject
         if (value == 1)
         {
             isPickedUp = true;
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
         else
         {
             isPickedUp = false;        
         }
-    }
-
-    public override void LoadTemp(GameDataReader reader)
-    {
-        throw new System.NotImplementedException();
     }
 
     public override void SavePerm(GameDataWriter writer)
@@ -68,6 +63,13 @@ public class ItemPickup : InteractableObject
             writer.WriteInt(0);
         }
     }
+
+    public override void LoadTemp(GameDataReader reader)
+    {
+        throw new System.NotImplementedException();
+    }
+
+
 
     public override void SaveTemp(GameDataWriter writer)
     {
