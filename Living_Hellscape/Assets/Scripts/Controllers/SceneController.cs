@@ -7,24 +7,50 @@ public class SceneController : MonoBehaviour
 {
     public const int SCENE_CONTROLLER_SCENE_ID = 0;
     public const int PLAY_SEESION_SCENE_ID = 1;
+    public const int MAIN_MENU_SCENE_ID = 2;
 
     public static SceneController Instance { get; private set; }
 
     [SerializeField]
     Camera sceneControllerSceneCamera;
 
-    int activeSceneID = -1;
-
     private void Awake()
     {
         Instance = this;
-        StartCoroutine(LoadPlaySessionScene());
+        LoadMainMenuScene();
     }
 
-    IEnumerator LoadPlaySessionScene()
+    public void LoadPlaySessionScene()
     {
-        var progress = SceneManager.LoadSceneAsync(PLAY_SEESION_SCENE_ID, LoadSceneMode.Additive);
-        var scene = SceneManager.GetSceneByBuildIndex(PLAY_SEESION_SCENE_ID);
+        StartCoroutine(SwapToPlaySessionScene());
+    }
+
+    public void LoadMainMenuScene()
+    {
+        StartCoroutine(SwapToMainMenuScene());
+    }
+
+    IEnumerator SwapToPlaySessionScene()
+    {
+        sceneControllerSceneCamera.gameObject.SetActive(true);
+        yield return StartCoroutine(UnLoadSceneByBuildIndex(MAIN_MENU_SCENE_ID));
+        yield return StartCoroutine(LoadSceneByBuildIndex(PLAY_SEESION_SCENE_ID));
+        sceneControllerSceneCamera.gameObject.SetActive(false);
+        GameController.Instance.StartPlaySession();
+    }
+
+    IEnumerator SwapToMainMenuScene()
+    {
+        sceneControllerSceneCamera.gameObject.SetActive(true);
+        yield return StartCoroutine(UnLoadSceneByBuildIndex(PLAY_SEESION_SCENE_ID));
+        yield return StartCoroutine(LoadSceneByBuildIndex(MAIN_MENU_SCENE_ID));
+        sceneControllerSceneCamera.gameObject.SetActive(false);
+    }
+
+    IEnumerator LoadSceneByBuildIndex(int buildIndex)
+    {
+        var progress = SceneManager.LoadSceneAsync(buildIndex, LoadSceneMode.Additive);
+        var scene = SceneManager.GetSceneByBuildIndex(buildIndex);
 
         while (!progress.isDone)
         {
@@ -32,9 +58,17 @@ public class SceneController : MonoBehaviour
         }
 
         SceneManager.SetActiveScene(scene);
+    }
 
-        activeSceneID = PLAY_SEESION_SCENE_ID;
-        sceneControllerSceneCamera.gameObject.SetActive(false);
-        GameController.Instance.StartPlaySession();
+    IEnumerator UnLoadSceneByBuildIndex(int buildIndex)
+    {
+        if (SceneManager.GetSceneByBuildIndex(buildIndex).isLoaded)
+        {
+             var progress = SceneManager.UnloadSceneAsync(buildIndex);
+            while (!progress.isDone)
+            {
+                yield return null;
+            }
+        }
     }
 }
