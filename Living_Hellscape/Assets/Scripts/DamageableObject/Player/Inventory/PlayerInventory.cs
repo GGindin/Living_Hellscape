@@ -293,7 +293,7 @@ public class PlayerInventory: ISaveableObject
             if (val < 0) continue;
             else
             {
-                var item = GameObject.Instantiate(Resources.Load<Item>("items/item" + val));
+                var item = GameObject.Instantiate(Resources.Load<Item>("Items/item" + val));
                 val = reader.ReadInt();
                 item.AddCount(val);
                 AddItem(item);

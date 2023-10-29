@@ -33,8 +33,6 @@ public class PlayerManager : MonoBehaviour, ISaveableObject
     private void Awake()
     {
         Instance = this;
-
-        InstantiateControllers();
     }
 
     private void Update()
@@ -63,6 +61,12 @@ public class PlayerManager : MonoBehaviour, ISaveableObject
         {
             ghostInstance.ControllerFixedUpdate();
         }
+    }
+
+    public void Initialize()
+    {
+        InstantiateControllers();
+        SetActiveController(BodyInstance);
     }
 
     public void SetPlayerControl(bool hasControl)

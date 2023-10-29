@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 8035632176690989601}
   - component: {fileID: 8788883408251877752}
   m_Layer: 14
-  m_Name: GhostWindRoot
+  m_Name: item2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

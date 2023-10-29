@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 575737613114154732}
   - component: {fileID: 7125863075838200812}
   m_Layer: 9
-  m_Name: MarbleEqRoot
+  m_Name: item1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

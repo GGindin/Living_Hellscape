@@ -69,20 +69,6 @@ public class RoomController : MonoBehaviour
 
         activeRoom = InstantiateRoomFromID(indexToLoad);
         activeRoom.OnLoadRoom();
-
-        /*
-
-        if (indexToLoad < 0 || indexToLoad >= roomPrefabs.Length)
-        {
-            activeRoom = Instantiate(roomPrefabs[indexToLoad]);
-        }
-        else
-        {
-            activeRoom = Instantiate(roomPrefabs[indexToLoad]);
-        }
-
-        activeRoom.OnLoadRoom();
-        */
     }
 
     public void AddRoom(Room room)

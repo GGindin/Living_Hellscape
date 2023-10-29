@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiIcon: {fileID: 3848163358043761313, guid: 1442b16ea937f2b4e8952e8972cc05a9, type: 3}
-  id: 0
+  id: 3
   isMainAction: 0
 --- !u!95 &1144828261114722389
 Animator:

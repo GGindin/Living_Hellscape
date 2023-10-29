@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
@@ -26,10 +27,25 @@ public class GameController : MonoBehaviour
 
     private void Start()
     {
+        if (!SceneManager.GetSceneByBuildIndex(SceneController.SCENE_CONTROLLER_SCENE_ID).isLoaded)
+        {
+            StartPlaySession();
+        }
+    }
+
+    public void StartPlaySession()
+    {
+        //tell all controllers to startup and load data
         GameStateController.Instance.LoadGameState();
         RoomController.Instance.Initialize();
-        PlayerManager.Instance.SetActiveController(PlayerManager.Instance.BodyInstance);
+        PlayerManager.Instance.Initialize();
         LoadInPlayer();
+    }
+
+    public void EndPlaySession()
+    {
+        //tell all controllers to save data
+        //then init scene change through scene controller to go to main menu
     }
 
     public void SetPause()
