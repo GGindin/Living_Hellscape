@@ -290,7 +290,7 @@ GameObject:
   - component: {fileID: 8634014007655756583}
   - component: {fileID: 8634014007655756582}
   m_Layer: 7
-  m_Name: TestTransRoom
+  m_Name: room3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

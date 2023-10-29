@@ -153,7 +153,7 @@ MonoBehaviour:
     magnitude: 5
   redirectLayers:
     serializedVersion: 2
-    m_Bits: 1216
+    m_Bits: 132288
   enemyDropTable: {fileID: 11400000, guid: 6667e16d854c9df4180012b4437c0c2e, type: 2}
   directionTime: 2
   maxWanderDistance: 5
