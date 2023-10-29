@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
@@ -27,7 +26,7 @@ public class GameController : MonoBehaviour
 
     private void Start()
     {
-        if (!SceneManager.GetSceneByBuildIndex(SceneController.SCENE_CONTROLLER_SCENE_ID).isLoaded)
+        if (!SceneController.Instance)
         {
             StartPlaySession();
         }
@@ -46,6 +45,20 @@ public class GameController : MonoBehaviour
     {
         //tell all controllers to save data
         //then init scene change through scene controller to go to main menu
+        //for now we just quit or swap scenes
+        if (!SceneController.Instance)
+        {
+            #if UNITY_EDITOR
+                UnityEditor.EditorApplication.isPlaying = false;
+            #else
+                Application.Quit();
+            #endif
+        }
+        else
+        {
+            SceneController.Instance.LoadMainMenuScene();
+        }
+
     }
 
     public void SetPause()
@@ -67,10 +80,12 @@ public class GameController : MonoBehaviour
         if (paused)
         {
             //open pause menu
+            PauseMenuController.Instance.gameObject.SetActive(true);
         }
         else
         {
             //close pause menu
+            PauseMenuController.Instance.gameObject.SetActive(false);
         }
     }
 
