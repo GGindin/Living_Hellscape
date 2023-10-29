@@ -8,6 +8,9 @@ public abstract class Item : MonoBehaviour
     public Sprite uiIcon;
 
     [SerializeField]
+    int id;
+
+    [SerializeField]
     bool isMainAction;
 
     protected Animator animator;
@@ -16,6 +19,8 @@ public abstract class Item : MonoBehaviour
     int count;
 
     public bool IsMainAction => isMainAction;
+
+    public int ID => id;
 
     public int Count => count;
 

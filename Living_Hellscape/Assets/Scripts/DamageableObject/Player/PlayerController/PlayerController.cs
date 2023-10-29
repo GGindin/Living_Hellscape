@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class PlayerController : DamageableObject
+public abstract class PlayerController : DamageableObject, ISaveableObject
 {
     const float PRESENT_ITEM_TIME = 1f;
 
@@ -292,5 +292,24 @@ public abstract class PlayerController : DamageableObject
         rb.MovePosition(target);
         PlayerManager.Instance.SetPlayerControl(true);
         GameController.Instance.EndRoomTransition();
+    }
+
+    public string GetFileName()
+    {
+        throw new NotImplementedException();
+    }
+
+    public abstract void SavePerm(GameDataWriter writer);
+
+    public abstract void LoadPerm(GameDataReader reader);
+
+    public void SaveTemp(GameDataWriter writer)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void LoadTemp(GameDataReader reader)
+    {
+        throw new NotImplementedException();
     }
 }

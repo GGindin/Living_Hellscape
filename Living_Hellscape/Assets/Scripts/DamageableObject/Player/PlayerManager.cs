@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerManager : MonoBehaviour
+public class PlayerManager : MonoBehaviour, ISaveableObject
 {
     public static PlayerManager Instance { get; private set; }
 
@@ -155,5 +155,30 @@ public class PlayerManager : MonoBehaviour
         {
             RoomController.Instance.ActiveRoom.SetupVirtualCamera();
         }
+    }
+
+    public string GetFileName()
+    {
+        return "player";
+    }
+
+    public void SavePerm(GameDataWriter writer)
+    {
+        
+    }
+
+    public void LoadPerm(GameDataReader reader)
+    {
+        
+    }
+
+    public void SaveTemp(GameDataWriter writer)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void LoadTemp(GameDataReader reader)
+    {
+        throw new System.NotImplementedException();
     }
 }

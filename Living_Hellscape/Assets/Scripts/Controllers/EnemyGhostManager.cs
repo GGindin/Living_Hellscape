@@ -67,6 +67,7 @@ public class EnemyGhostManager : MonoBehaviour
     private void Update()
     {
         if (GameController.Instance.StopUpdates) return;
+        if (PlayerManager.Instance.Active == null) return;
         if (playerInGhostMode)
         {
             CheckForSpawn();
@@ -80,6 +81,7 @@ public class EnemyGhostManager : MonoBehaviour
     private void FixedUpdate()
     {
         if (GameController.Instance.StopUpdates) return;
+        if (PlayerManager.Instance.Active == null) return;
         if (playerInGhostMode)
         {
             for (int i = 0; i < ghosts.Count; i++)

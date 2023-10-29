@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class PlayerInventory
+public class PlayerInventory: ISaveableObject
 {
     [SerializeField]
     EquipedGear equipedGear;
@@ -219,5 +219,30 @@ public class PlayerInventory
         }
 
         return -1;
+    }
+
+    public string GetFileName()
+    {
+        throw new NotImplementedException();
+    }
+
+    public void SavePerm(GameDataWriter writer)
+    {
+
+    }
+
+    public void LoadPerm(GameDataReader reader)
+    {
+
+    }
+
+    public void SaveTemp(GameDataWriter writer)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void LoadTemp(GameDataReader reader)
+    {
+        throw new NotImplementedException();
     }
 }
