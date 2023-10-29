@@ -15,9 +15,6 @@ public class Door : InteractableObject
     DoorDirection direction;
 
     [SerializeField]
-    DoorSection[] sections;
-
-    [SerializeField]
     DoorTrigger trigger;
 
     [SerializeField]
@@ -26,6 +23,8 @@ public class Door : InteractableObject
     [SerializeField]
     bool requiresKey;
 
+    Animator doorAnimator;
+
     bool isUnlocked;
 
     CompositeCollider2D compCollider;
@@ -33,6 +32,8 @@ public class Door : InteractableObject
     protected Room room;
 
     bool closed = true;
+
+    int isClosedAnimID = Animator.StringToHash("isClosed");
 
     public Vector3 TargetPos => target.transform.position;
 
@@ -51,6 +52,7 @@ public class Door : InteractableObject
     {
         room = GetComponentInParent<Room>();
         compCollider = GetComponent<CompositeCollider2D>();
+        doorAnimator = GetComponent<Animator>();
     }
 
     private void Start()
@@ -116,10 +118,7 @@ public class Door : InteractableObject
 
     protected virtual void SetDoorSprite()
     {
-        for(int i = 0; i < sections.Length; i++)
-        {
-            sections[i].SetDoorSprite(closed);
-        }
+        doorAnimator.SetBool(isClosedAnimID, closed);
     }
 
     public override string GetFileName()

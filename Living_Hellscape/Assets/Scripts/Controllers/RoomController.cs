@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
 
 public class RoomController : MonoBehaviour
@@ -12,8 +13,8 @@ public class RoomController : MonoBehaviour
     [SerializeField]
     int currentRoomOverrideIndex = -1;
 
-    [SerializeField]
-    Room[] roomPrefabs;
+    //[SerializeField]
+    //Room[] roomPrefabs;
 
     Room activeRoom;  
 
@@ -44,6 +45,9 @@ public class RoomController : MonoBehaviour
 
     public Room LoadRoomByIndex(int index)
     {
+        return InstantiateRoomFromID(index);
+
+        /*
         if (index < 0 || index >= roomPrefabs.Length)
         {
             return null;
@@ -52,6 +56,7 @@ public class RoomController : MonoBehaviour
         {
             return Instantiate(roomPrefabs[index]);
         }
+        */
     }
 
     private void LoadDefaultRoom()
@@ -62,15 +67,7 @@ public class RoomController : MonoBehaviour
             indexToLoad = GameStateController.Instance.CurrentRoomIndex;
         }
 
-        if(indexToLoad < 0 || indexToLoad >= roomPrefabs.Length)
-        {
-            activeRoom = Instantiate(roomPrefabs[indexToLoad]);
-        }
-        else
-        {
-            activeRoom = Instantiate(roomPrefabs[indexToLoad]);
-        }
-
+        activeRoom = InstantiateRoomFromID(indexToLoad);
         activeRoom.OnLoadRoom();
     }
 
@@ -128,7 +125,9 @@ public class RoomController : MonoBehaviour
 
         //then load in the new data
         int roomID = floorTransitionData.connectedRoomPrefab.ID;
-        Room room = Instantiate(roomPrefabs[roomID]);
+        
+        Room room = InstantiateRoomFromID(roomID);
+        //Room room = Instantiate(roomPrefabs[roomID]);
         room.OnLoadRoom();
         SetActiveRoom(room);
         room.OnStartEnterRoom();
@@ -143,6 +142,13 @@ public class RoomController : MonoBehaviour
     public void StartFadeOut()
     {
 
+    }
+
+    Room InstantiateRoomFromID(int id)
+    {
+        var roomPrefab = Resources.Load<Room>("Rooms/room" + id);
+
+        return Instantiate(roomPrefab);
     }
 
 

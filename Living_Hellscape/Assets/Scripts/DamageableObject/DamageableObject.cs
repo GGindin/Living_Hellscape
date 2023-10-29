@@ -132,12 +132,6 @@ public abstract class DamageableObject : MonoBehaviour
         return false;
     }
 
-    protected void TakeDamage(Damage damage)
-    {
-        ChangeHealth((int)-damage.amount);
-        animator.SetBool(hitID, true);
-    }
-
     void CheckHitAnim()
     {
         if(statusEffects.Count > 0)
@@ -146,6 +140,12 @@ public abstract class DamageableObject : MonoBehaviour
         }
 
         animator.SetBool(hitID, false);
+    }
+
+    protected void TakeDamage(Damage damage)
+    {
+        ChangeHealth((int)-damage.amount);
+        animator.SetBool(hitID, true);
     }
 
     void AddStunEffect(Stun stun)

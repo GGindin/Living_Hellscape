@@ -28,10 +28,7 @@ public class ChaserEnemy : EnemyController
 
     void UpdateTarget()
     {
-        if(playerController == null)
-        {
-            FindPlayerController();
-        }
+        FindPlayerController();
 
         SetDirection();
     }

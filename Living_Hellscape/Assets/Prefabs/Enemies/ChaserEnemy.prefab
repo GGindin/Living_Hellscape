@@ -169,10 +169,11 @@ MonoBehaviour:
   health: 3
   speed: 2.5
   damage:
+    duration: 0.5
     amount: 1
     magnitude: 5
-    duration: 0.5
   redirectLayers:
     serializedVersion: 2
-    m_Bits: 1152
+    m_Bits: 132224
+  enemyDropTable: {fileID: 0}
   maxChaseDistance: 5

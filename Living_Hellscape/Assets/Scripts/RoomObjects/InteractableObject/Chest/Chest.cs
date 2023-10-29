@@ -80,7 +80,7 @@ public class Chest : InteractableObject
         if (chestItemPrefab)
         {
             var item = Instantiate(chestItemPrefab);
-            PlayerManager.Instance.Inventory.AddItem(item);
+            PlayerManager.Instance.Inventory.StartAddItem(item);
         }
     }
 
