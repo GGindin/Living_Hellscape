@@ -32,7 +32,17 @@ public class PlayerInventory
         }
     }
 
-    public void AddItem(Item item)
+    public void StartAddItem(Item item)
+    {
+        PlayerManager.Instance.StartCoroutine(PlayerManager.Instance.Active.PresentItem(item));
+    }
+
+    public void EndAddItem(Item item)
+    {
+        AddItem(item);
+    }
+
+    void AddItem(Item item)
     {
         int index = FindStack(item);
 

@@ -4,13 +4,6 @@ using UnityEngine;
 
 public abstract class Equipment : Item
 {
-    protected Animator animator;
-
-    private void Awake()
-    {
-        animator = GetComponent<Animator>();
-    }
-
     public abstract override void SetDirection(Vector2 direction);
 
     public abstract override void TriggerAction();

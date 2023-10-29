@@ -5,6 +5,8 @@ using UnityEngine;
 
 public abstract class PlayerController : DamageableObject
 {
+    const float PRESENT_ITEM_TIME = 1f;
+
     //these two floats are temp, will get moved to a stats class or something
     [SerializeField]
     protected PlayerStats playerStats;
@@ -101,6 +103,27 @@ public abstract class PlayerController : DamageableObject
         return true;
     }
 
+    public IEnumerator PresentItem(Item item)
+    {
+        GameController.Instance.SetStopUpdates(true);
+        item.transform.SetParent(heldObjectRoot, false);
+        item.transform.position = heldObjectRoot.position;
+        item.transform.rotation = Quaternion.identity;
+
+        item.StartPresent();
+        
+        float duration = PRESENT_ITEM_TIME;
+        while(duration > 0)
+        {
+            duration -= Time.deltaTime;
+            yield return null;
+        }
+
+        item.StopPresent();
+        GameController.Instance.SetStopUpdates(false);
+        inventory.EndAddItem(item);
+    }
+
     public void SetTarget(Vector3 target)
     {
         StartCoroutine(TransitionRoom(target));
@@ -158,6 +181,7 @@ public abstract class PlayerController : DamageableObject
 
     void MainAction(ButtonState buttonState)
     {
+        if (HasHeldObject) return;
         if(buttonState == ButtonState.Down)
         {
             PlayerManager.Instance.Inventory.DoMainAction();
@@ -166,8 +190,6 @@ public abstract class PlayerController : DamageableObject
 
     void SecondAction(ButtonState buttonState)
     {
-        //currently just does the second action if set, will setup so that if we are touching an interactable we will interact
-        //instead
         if (buttonState == ButtonState.Down)
         {
             if (interactableObject)

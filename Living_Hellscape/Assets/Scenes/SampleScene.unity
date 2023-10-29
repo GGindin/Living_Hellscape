@@ -658,12 +658,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentRoomOverrideIndex: -1
-  roomPrefabs:
-  - {fileID: 4238275303636843574, guid: 8b74335141f0e0d43b26e9dcc6319c1e, type: 3}
-  - {fileID: 3675158630561558092, guid: b9cf524b954b0604a9fe1f4a62c66989, type: 3}
-  - {fileID: 6338258710638556516, guid: ef5f94c2dcb509b4288abce024f5760e, type: 3}
-  - {fileID: 8634014007655756582, guid: 936645c4b5656b44f87a77b67e9d155b, type: 3}
-  - {fileID: 7107454082892554229, guid: 276ad7d58cc17a043ae75886198e59ce, type: 3}
 --- !u!4 &1984906010
 Transform:
   m_ObjectHideFlags: 0

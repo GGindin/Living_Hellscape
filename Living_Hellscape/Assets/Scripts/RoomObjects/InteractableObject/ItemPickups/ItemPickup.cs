@@ -10,11 +10,24 @@ public class ItemPickup : InteractableObject
     [SerializeField]
     BoxCollider2D boxCollider;
 
+    bool isPickedUp;
+
     public override Collider2D InteractableCollider => boxCollider;
 
     public override void Interact()
     {
-        throw new System.NotImplementedException();
+        PickUp();
+    }
+
+    void PickUp()
+    {
+        if (itemPrefab)
+        {
+            var item = Instantiate(itemPrefab);
+            PlayerManager.Instance.Inventory.StartAddItem(item);
+            isPickedUp = true;
+            gameObject.SetActive(false); //set inactive so that it can save its state when the room saves
+        }
     }
 
     public override string GetFileName()
@@ -22,9 +35,21 @@ public class ItemPickup : InteractableObject
         throw new System.NotImplementedException();
     }
 
+    //will need to work with this and rooms because this should just go away
+    //it could destroy itself I suppose, need to check the room saveing and loading code
     public override void LoadPerm(GameDataReader reader)
     {
-        throw new System.NotImplementedException();
+        int value = reader.ReadInt();
+
+        if (value == 1)
+        {
+            isPickedUp = true;
+            Destroy(gameObject);
+        }
+        else
+        {
+            isPickedUp = false;        
+        }
     }
 
     public override void LoadTemp(GameDataReader reader)
@@ -34,7 +59,14 @@ public class ItemPickup : InteractableObject
 
     public override void SavePerm(GameDataWriter writer)
     {
-        throw new System.NotImplementedException();
+        if (isPickedUp)
+        {
+            writer.WriteInt(1);
+        }
+        else
+        {
+            writer.WriteInt(0);
+        }
     }
 
     public override void SaveTemp(GameDataWriter writer)
