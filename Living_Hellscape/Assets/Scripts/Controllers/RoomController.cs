@@ -144,6 +144,14 @@ public class RoomController : MonoBehaviour
 
     }
 
+    public void SaveRoomData()
+    {
+        foreach(Room room in spawnedRooms)
+        {
+            room.SaveRoomData();
+        }
+    }
+
     Room InstantiateRoomFromID(int id)
     {
         var roomPrefab = Resources.Load<Room>("Rooms/room" + id);

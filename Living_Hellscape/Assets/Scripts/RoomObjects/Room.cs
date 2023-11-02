@@ -78,6 +78,12 @@ public class Room : MonoBehaviour, ISaveableObject
         }      
     }
 
+    public void SaveRoomData()
+    {
+        GameStorageController.Instance.SavePerm(this);
+        GameStorageController.Instance.SaveTemp(this);
+    }
+
     //called when instantiated / loaded
     public virtual void OnLoadRoom()
     {
@@ -118,8 +124,7 @@ public class Room : MonoBehaviour, ISaveableObject
     {
         //here we will write save data / reset the room for the next time we load the room
         RoomController.Instance.RemoveRoom(this);
-        GameStorageController.Instance.SavePerm(this);
-        GameStorageController.Instance.SaveTemp(this);
+        SaveRoomData();
     }
 
     public virtual void SetupVirtualCamera()
