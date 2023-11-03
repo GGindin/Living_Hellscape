@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,6 +21,7 @@ public class GameController : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        Cursor.visible = false;
     }
 
     private void Start()
@@ -38,11 +38,14 @@ public class GameController : MonoBehaviour
         GameStateController.Instance.LoadGameState();
         RoomController.Instance.Initialize();
         PlayerManager.Instance.Initialize();
+        SetPause(false);
+        HandlePause();
         LoadInPlayer();
     }
 
     public void EndPlaySession()
     {
+        SaveGame();
         //tell all controllers to save data
         //then init scene change through scene controller to go to main menu
         //for now we just quit or swap scenes
@@ -61,7 +64,21 @@ public class GameController : MonoBehaviour
 
     }
 
-    public void SetPause()
+    public void SetPause(bool isPaused)
+    {
+        paused = isPaused;
+
+        if (paused)
+        {
+            Time.timeScale = 0f;
+        }
+        else
+        {
+            Time.timeScale = 1f;
+        }
+    }
+
+    public void SwitchPause()
     {
         paused = !paused;
 
@@ -80,12 +97,12 @@ public class GameController : MonoBehaviour
         if (paused)
         {
             //open pause menu
-            PauseMenuController.Instance.gameObject.SetActive(true);
+            PauseMenuController.Instance.OpenPauseMenu();
         }
         else
         {
             //close pause menu
-            PauseMenuController.Instance.gameObject.SetActive(false);
+            PauseMenuController.Instance.ClosePauseMenu();
         }
     }
 
@@ -134,6 +151,8 @@ public class GameController : MonoBehaviour
 
             EnemyGhostManager.Instance.RepositionGhosts();
 
+            PlayerManager.Instance.SavePlayerData();
+
             //reset data 
             roomTransitionData = new RoomTransitionData();
         }
@@ -157,6 +176,13 @@ public class GameController : MonoBehaviour
             RoomController.Instance.StartFadeOut();//not implimented yet
             GhostWorldFilterController.Instance.EndFilter();
         }
+    }
+
+    void SaveGame()
+    {
+        GameStateController.Instance.SaveGameState();
+        PlayerManager.Instance.SavePlayerData();
+        RoomController.Instance.SaveRoomData();      
     }
 
     private void LoadInPlayer()

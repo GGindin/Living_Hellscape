@@ -44,8 +44,8 @@ public abstract class PlayerController : DamageableObject, ISaveableObject
         base.Awake();
         rb = GetComponent<Rigidbody2D>();
         boxCollider = GetComponent<BoxCollider2D>();
-        playerStats.Setup();
-        inventory.InstantiateInventory();
+        //playerStats.Setup();
+        //inventory.InstantiateInventory();
     }
 
     public void ControllerUpdate()
@@ -147,21 +147,18 @@ public abstract class PlayerController : DamageableObject, ISaveableObject
         if (userInput.pause == ButtonState.Down)
         {
             //pause game TODO
-            GameController.Instance.SetPause();
+            if (InventoryPanelController.Instance.gameObject.activeSelf) return GameController.Instance.Paused;
+            GameController.Instance.SwitchPause();
             GameController.Instance.HandlePause();
         }
         else if (userInput.inventory == ButtonState.Down)
         {
-            GameController.Instance.SetPause();
+            if (PauseMenuController.Instance.gameObject.activeSelf) return GameController.Instance.Paused;
+            GameController.Instance.SwitchPause();
             PlayerManager.Instance.HandleInventory();
         }
 
-        if (GameController.Instance.Paused)
-        {
-            return true;
-        }
-
-        return false;
+        return GameController.Instance.Paused;
     }
 
     void TestInteractableObject()
@@ -312,13 +309,18 @@ public abstract class PlayerController : DamageableObject, ISaveableObject
     {
         //if reader is null we do not have save data so just leave defaults
         //eventually the stats and inventory init methods will go here, maybe
-        if (reader == null) return;
+        if (reader == null)
+        {
+            playerStats.Setup();
+        }
+        else
+        {
+            //load stats
+            playerStats.LoadPerm(reader);
 
-        //load stats
-        playerStats.LoadPerm(reader);
-
-        //load inventory
-        inventory.LoadPerm(reader);
+            //load inventory
+            inventory.LoadPerm(reader);
+        }
     }
 
     public void SaveTemp(GameDataWriter writer)

@@ -30,6 +30,7 @@ public class PlayerStats: ISaveableObject
         if (!isSetup)
         {
             currentHealth = MaxHealth;
+            HealthPanelController.Instance.UpdatePanel(this);
             isSetup = true;
         }
     }
@@ -67,6 +68,7 @@ public class PlayerStats: ISaveableObject
         //the controller wont call this if it is null
         currentHealth = reader.ReadInt();
         healthUpgradesCount = reader.ReadInt();
+        Setup();
     }
 
     public void SaveTemp(GameDataWriter writer)

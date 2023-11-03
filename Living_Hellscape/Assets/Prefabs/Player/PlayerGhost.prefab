@@ -57,7 +57,7 @@ MonoBehaviour:
       mainAction: {fileID: 0}
       secondAction: {fileID: 0}
     items:
-    - {fileID: 8035632176690989601, guid: 314302b38daabea4cbb36a5f6914dfac, type: 3}
+    - {fileID: 0}
     - {fileID: 0}
     - {fileID: 0}
     - {fileID: 0}

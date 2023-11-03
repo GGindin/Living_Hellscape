@@ -13,12 +13,9 @@ public class InventoryPanelController : MonoBehaviour
 
     InventoryIcon[] inventoryIcons = new InventoryIcon[16];
 
-    EventSystem eventSystem;
-
     private void Awake()
     {
         Instance = this;
-        eventSystem = EventSystem.current;
         CreateIcons();
         gameObject.SetActive(false);
     }
@@ -26,7 +23,7 @@ public class InventoryPanelController : MonoBehaviour
     public void OpenInventory()
     {
         gameObject.SetActive(true);
-        eventSystem.SetSelectedGameObject(inventoryIcons[0].gameObject);
+        EventSystem.current.SetSelectedGameObject(inventoryIcons[0].gameObject);
         var inventory = PlayerManager.Instance.Inventory;
         UpdatePanel(inventory);
     }
@@ -69,13 +66,13 @@ public class InventoryPanelController : MonoBehaviour
 
         if(userInput.mainAction == ButtonState.Down)
         {
-            int index = eventSystem.currentSelectedGameObject.transform.GetSiblingIndex();
+            int index = EventSystem.current.currentSelectedGameObject.transform.GetSiblingIndex();
             var item = PlayerManager.Instance.Inventory.GetItemAtIndex(index);
             PlayerManager.Instance.Inventory.HandleMainActionItemSwap(item);
         }
         else if(userInput.secondaryAction == ButtonState.Down)
         {
-            int index = eventSystem.currentSelectedGameObject.transform.GetSiblingIndex();
+            int index = EventSystem.current.currentSelectedGameObject.transform.GetSiblingIndex();
             var item = PlayerManager.Instance.Inventory.GetItemAtIndex(index);
             PlayerManager.Instance.Inventory.HandleSecondActionItemSwap(item);
         }     

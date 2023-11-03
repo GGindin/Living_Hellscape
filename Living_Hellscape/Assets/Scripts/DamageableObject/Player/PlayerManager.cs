@@ -67,6 +67,17 @@ public class PlayerManager : MonoBehaviour, ISaveableObject
     {
         InstantiateControllers();
         SetActiveController(BodyInstance);
+        LoadPlayerData();
+    }
+
+    public void SavePlayerData()
+    {
+        GameStorageController.Instance.SavePerm(this);
+    }
+
+    public void LoadPlayerData()
+    {
+        GameStorageController.Instance.LoadPerm(this);
     }
 
     public void SetPlayerControl(bool hasControl)
@@ -168,12 +179,14 @@ public class PlayerManager : MonoBehaviour, ISaveableObject
 
     public void SavePerm(GameDataWriter writer)
     {
-        
+        bodyInstance.SavePerm(writer);
+        ghostInstance.SavePerm(writer);
     }
 
     public void LoadPerm(GameDataReader reader)
     {
-        
+        bodyInstance.LoadPerm(reader);
+        ghostInstance.LoadPerm(reader);
     }
 
     public void SaveTemp(GameDataWriter writer)
