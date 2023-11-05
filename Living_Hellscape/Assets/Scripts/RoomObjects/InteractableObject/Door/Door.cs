@@ -44,6 +44,8 @@ public class Door : InteractableObject
 
     public DoorDirection DoorDirection => direction;
 
+    public override SpriteRenderer SpriteRenderer => null;
+
     public override void Interact()
     {
         OperateDoor();
@@ -84,6 +86,7 @@ public class Door : InteractableObject
             }
             else
             {
+                TextController.Instance.SetText("Door is locked, you need a key");
                 return;
             }
         }

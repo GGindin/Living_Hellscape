@@ -7263,7 +7263,7 @@ MonoBehaviour:
     prefab: {fileID: 6528072756726294598, guid: fdad49b847a21a4408f653418f4da8b7, type: 3}
   interactableObjectPlacements:
   - placement: {fileID: 7064448999639859022}
-    prefab: {fileID: 8707499611520853871, guid: 9e85530c3e1284e49867281eb68818c3, type: 3}
+    prefab: {fileID: 9184675036257441754, guid: 20892a56fe5f39f42b7ab00bb38a555d, type: 3}
   dynamicObjectsHolder: {fileID: 468752964847667172}
   interiorTileMap: {fileID: 4238275302808033569}
   exteriorTileMap: {fileID: 4238275302783602829}
@@ -7700,6 +7700,10 @@ PrefabInstance:
     - target: {fileID: 1593186598186787529, guid: 236c3195b2ae99a4ba8370e2719db931, type: 3}
       propertyPath: direction
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1593186598186787529, guid: 236c3195b2ae99a4ba8370e2719db931, type: 3}
+      propertyPath: requiresKey
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1593186598186787529, guid: 236c3195b2ae99a4ba8370e2719db931, type: 3}
       propertyPath: doorDirection

@@ -14,6 +14,8 @@ public class ItemPickup : InteractableObject
 
     public override Collider2D InteractableCollider => boxCollider;
 
+    public override SpriteRenderer SpriteRenderer => null;
+
     public override void Interact()
     {
         PickUp();

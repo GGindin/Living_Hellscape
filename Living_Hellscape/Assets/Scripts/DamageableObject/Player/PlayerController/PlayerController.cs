@@ -105,22 +105,20 @@ public abstract class PlayerController : DamageableObject, ISaveableObject
 
     public IEnumerator PresentItem(Item item)
     {
-        GameController.Instance.SetStopUpdates(true);
+        TextController.Instance.SetText("You got a " + item.Description);
         item.transform.SetParent(heldObjectRoot, false);
         item.transform.position = heldObjectRoot.position;
         item.transform.rotation = Quaternion.identity;
 
         item.StartPresent();
         
-        float duration = PRESENT_ITEM_TIME;
-        while(duration > 0)
+        while(true)
         {
-            duration -= Time.deltaTime;
+            if (!TextController.Instance.Active) break;
             yield return null;
         }
 
         item.StopPresent();
-        GameController.Instance.SetStopUpdates(false);
         inventory.EndAddItem(item);
     }
 

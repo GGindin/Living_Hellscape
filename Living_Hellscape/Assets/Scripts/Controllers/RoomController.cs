@@ -134,12 +134,73 @@ public class RoomController : MonoBehaviour
 
     public void StartFadeIn()
     {
+        StartCoroutine(ProcessFadeIn());
+    }
 
+    IEnumerator ProcessFadeIn()
+    {
+        float alpha = 0f;
+        Color color = Color.white;
+        color.a = alpha;
+
+        float duration = GhostWorldFilterController.Instance.TransitionLength;
+        float current = 0;
+
+        while(current < duration)
+        {
+            current += Time.deltaTime;
+            float t = Mathf.InverseLerp(0f, duration, current);
+            alpha = Mathf.Lerp(0.0f, 1.0f, t);
+            color.a = alpha;
+
+            foreach(Room r in spawnedRooms)
+            {
+                r.SetColorOnGhostObjects(color);
+            }
+
+            yield return null;
+        }
+
+        foreach (Room r in spawnedRooms)
+        {
+            r.SetColorOnGhostObjects(Color.white);
+        }
     }
 
     public void StartFadeOut()
     {
+        StartCoroutine(ProcessFadeOut());
+    }
 
+    IEnumerator ProcessFadeOut()
+    {
+        float alpha = 1f;
+        Color color = Color.white;
+
+        float duration = GhostWorldFilterController.Instance.TransitionLength;
+        float current = 0;
+
+        while (current < duration)
+        {
+            current += Time.deltaTime;
+            float t = Mathf.InverseLerp(0f, duration, current);
+            alpha = Mathf.Lerp(1.0f, 0.0f, t);
+            color.a = alpha;
+
+            foreach (Room r in spawnedRooms)
+            {
+                r.SetColorOnGhostObjects(color);
+            }
+
+            yield return null;
+        }
+
+        color.a = 0f;
+
+        foreach (Room r in spawnedRooms)
+        {
+            r.SetColorOnGhostObjects(color);
+        }
     }
 
     public void SaveRoomData()

@@ -4,7 +4,14 @@ using UnityEngine;
 
 public abstract class InteractableObject : MonoBehaviour, ISaveableObject
 {
+    [SerializeField]
+    bool ghostObject;
+
+    public bool GhostObject => ghostObject;
+
     public abstract Collider2D InteractableCollider { get; }
+
+    public abstract SpriteRenderer SpriteRenderer { get; }
 
     public abstract void Interact();
 

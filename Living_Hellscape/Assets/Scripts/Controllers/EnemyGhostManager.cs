@@ -21,6 +21,8 @@ public class EnemyGhostManager : MonoBehaviour
 
     bool playerInGhostMode => PlayerManager.Instance.Active == PlayerManager.Instance.GhostInstance;
 
+    public bool PlayerInGhostMode => playerInGhostMode;
+
     public float SqrSpawnDist => spawnDistance * spawnDistance;
 
     private void Awake()

@@ -192,6 +192,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiIcon: {fileID: 2129128031314841554, guid: 1442b16ea937f2b4e8952e8972cc05a9, type: 3}
   id: 2
+  description: Ghost Wind
   isMainAction: 1
   EnemyBodyLayer:
     serializedVersion: 2

@@ -45,6 +45,14 @@ public class PlayerInventory: ISaveableObject
 
     void AddItem(Item item)
     {
+        if(item is Upgrade)
+        {
+            var upgrade = (Upgrade)item;
+            upgrade.AddUpgradeToStats(PlayerManager.Instance.BodyInstance.PlayerStats);
+            upgrade.AddUpgradeToStats(PlayerManager.Instance.GhostInstance.PlayerStats);
+            return;
+        }
+
         int index = FindStack(item);
 
         if (index < 0)

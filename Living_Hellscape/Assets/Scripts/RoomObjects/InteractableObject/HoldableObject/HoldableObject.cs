@@ -28,6 +28,8 @@ public class HoldableObject : InteractableObject
 
     public override Collider2D InteractableCollider => objectCollider;
 
+    public override SpriteRenderer SpriteRenderer => null;
+
     private void Awake()
     {
         body = GetComponent<Rigidbody2D>();
