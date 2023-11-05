@@ -8,6 +8,7 @@ public class TextController : MonoBehaviour
 
     public bool Active => enabled;
 
+    System.Action callBack = null;
 
     private void Awake()
     {
@@ -23,6 +24,7 @@ public class TextController : MonoBehaviour
             {
                 enabled = false;
                 GameController.Instance.SetStopUpdates(false);
+                if(callBack!= null) callBack();
             }
         }
     }
@@ -32,5 +34,13 @@ public class TextController : MonoBehaviour
         Debug.Log(text);
         enabled = true;
         GameController.Instance.SetStopUpdates(true);
+    }
+
+    public void SetTextWithCallback(string text, System.Action callback)
+    {
+        Debug.Log(text);
+        enabled = true;
+        GameController.Instance.SetStopUpdates(true);
+        callBack = callback;
     }
 }

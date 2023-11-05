@@ -7263,7 +7263,7 @@ MonoBehaviour:
     prefab: {fileID: 6528072756726294598, guid: fdad49b847a21a4408f653418f4da8b7, type: 3}
   interactableObjectPlacements:
   - placement: {fileID: 7064448999639859022}
-    prefab: {fileID: 9184675036257441754, guid: 20892a56fe5f39f42b7ab00bb38a555d, type: 3}
+    prefab: {fileID: 9153751679871683101, guid: f30b101f1a8ca01419af9ef1e3e91e15, type: 3}
   dynamicObjectsHolder: {fileID: 468752964847667172}
   interiorTileMap: {fileID: 4238275302808033569}
   exteriorTileMap: {fileID: 4238275302783602829}
