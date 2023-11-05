@@ -24,6 +24,8 @@ public abstract class DamageableObject : MonoBehaviour
 
     public void AddStatusEffect(StatusEffect statusEffect, Vector2 normDirection)
     {
+        ParticleSystemController.Instance.AddHit(transform.position);
+
         var activeEffect = GetStatusOfType(statusEffect.EffectType);
 
         if(activeEffect == null)

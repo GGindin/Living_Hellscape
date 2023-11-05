@@ -38,6 +38,7 @@ public class PlayerStats: ISaveableObject
     public void ChangeMaxHealth(int delta)
     {
         healthUpgradesCount += delta;
+        currentHealth = MaxHealth;
         HealthPanelController.Instance.UpdatePanel(this);
     }
 

@@ -19,6 +19,8 @@ public class Chest : InteractableObject
 
     public override Collider2D InteractableCollider => boxCollider;
 
+    public override SpriteRenderer SpriteRenderer => null;
+
     public override void Interact()
     {
         if (!isClosed) return;

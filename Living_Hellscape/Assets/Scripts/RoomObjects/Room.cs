@@ -204,6 +204,19 @@ public class Room : MonoBehaviour, ISaveableObject
         }
     }
 
+    public void SetColorOnGhostObjects(Color color)
+    {
+        for(int i = 0; i < roomInteractables.Length; i++)
+        {
+            var inter = roomInteractables[i];
+            if(inter && inter.GhostObject && inter.SpriteRenderer)
+            {
+                inter.SpriteRenderer.color = color;
+            }
+        }
+    }
+
+    /*
     public PseudoRoom FindPseudoRoomByConnectionID(int id)
     {
         for(int i = 0; i < connections.Length; i++)
@@ -221,6 +234,7 @@ public class Room : MonoBehaviour, ISaveableObject
 
         return null;
     }
+    */
 
     public void ConfigureFromPseudoRoomTransitionByConnectionID(int id)
     {
@@ -232,8 +246,6 @@ public class Room : MonoBehaviour, ISaveableObject
                 var pseudo = (PseudoRoom)room;
                 if (id == pseudo.PseudoRoomConnection.pseudoRoomID)
                 {
-                    //this shouldnt be thisRoomDoor, needs to be the pseudo room door, but thats not how this method works
-                    //because this is being called on the actual first room on the next floor
                     RoomTransitionData roomTransitionData = new RoomTransitionData();
                     roomTransitionData.toDoor = connections[i].thisRoomDoor;
                     roomTransitionData.toRoom = this;

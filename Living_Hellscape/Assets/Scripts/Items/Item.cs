@@ -11,6 +11,9 @@ public abstract class Item : MonoBehaviour
     int id;
 
     [SerializeField]
+    string description;
+
+    [SerializeField]
     bool isMainAction;
 
     protected Animator animator;
@@ -23,6 +26,8 @@ public abstract class Item : MonoBehaviour
     public int ID => id;
 
     public int Count => count;
+
+    public string Description => description;   
 
     protected virtual void Awake()
     {

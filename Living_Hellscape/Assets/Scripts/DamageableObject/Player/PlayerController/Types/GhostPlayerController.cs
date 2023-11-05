@@ -68,6 +68,23 @@ public class GhostPlayerController : PlayerController
     {
         if (!IsActive) return;
 
+        //probably need some check to stop the player from leaving a room whie holding something
+        var interactableObject = collision.gameObject.GetComponent<InteractableObject>();
+        if (interactableObject)
+        {
+            if (this.interactableObject == null)
+            {
+                this.interactableObject = interactableObject;
+            }
+
+            if (!PlayerManager.Instance.PlayerHasControl)
+            {
+                this.interactableObject.Interact();
+            }
+
+            return;
+        }
+
         var enemy = collision.gameObject.GetComponent<GhostEnemy>();
         if (enemy && !enemy.IsTakingDamage && !IsTakingDamage)
         {
