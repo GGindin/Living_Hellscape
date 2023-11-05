@@ -17,7 +17,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1593186598186787526, guid: 236c3195b2ae99a4ba8370e2719db931, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.1
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1593186598186787526, guid: 236c3195b2ae99a4ba8370e2719db931, type: 3}
       propertyPath: m_LocalPosition.y
@@ -63,13 +63,17 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 1593186598186787527, guid: 236c3195b2ae99a4ba8370e2719db931, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1593186598186787529, guid: 236c3195b2ae99a4ba8370e2719db931, type: 3}
       propertyPath: target
       value: 
       objectReference: {fileID: 3390879868748840411}
     - target: {fileID: 1593186598186787529, guid: 236c3195b2ae99a4ba8370e2719db931, type: 3}
       propertyPath: inRoomID
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1593186598186787529, guid: 236c3195b2ae99a4ba8370e2719db931, type: 3}
       propertyPath: direction
@@ -7758,7 +7762,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4253120329331562245, guid: e22d1f0005f7def40b1efb531c3aa07a, type: 3}
       propertyPath: m_Name
-      value: Sacrifice Room
+      value: room0
       objectReference: {fileID: 0}
     - target: {fileID: 4253120329331562246, guid: e22d1f0005f7def40b1efb531c3aa07a, type: 3}
       propertyPath: m_RootOrder
@@ -7819,7 +7823,7 @@ PrefabInstance:
     - target: {fileID: 4253120329331562247, guid: e22d1f0005f7def40b1efb531c3aa07a, type: 3}
       propertyPath: prefabConnections.Array.data[0].otherRoomPrefab
       value: 
-      objectReference: {fileID: 2469061946323609073, guid: 931369c287eee00428c0c4c8ee7061a5, type: 3}
+      objectReference: {fileID: 3234581570080699930, guid: 6bb4f27f5104b144198239b3f9d48e42, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e22d1f0005f7def40b1efb531c3aa07a, type: 3}
 --- !u!4 &182077977202522573 stripped

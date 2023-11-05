@@ -993,6 +993,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
+  descriptiveName: 
   defeatAllEnemies: 0
   virtualCamera: {fileID: 4253120329165040178}
   prefabConnections: []
@@ -1003,6 +1004,8 @@ MonoBehaviour:
   holdableObjectPlacements: []
   interactableObjectPlacements: []
   dynamicObjectsHolder: {fileID: 604581835126857012}
+  interiorTileMap: {fileID: 4253120328000500240}
+  exteriorTileMap: {fileID: 4253120328108293052}
 --- !u!1 &4511887460769224892
 GameObject:
   m_ObjectHideFlags: 0

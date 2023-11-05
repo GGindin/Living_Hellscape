@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class Door : InteractableObject
 {
@@ -114,6 +115,67 @@ public class Door : InteractableObject
         {
             room.ConfigureRoomTransition(this);
         }
+    }
+
+    public float GetDistanceToRoomEdge(Tilemap intTileMap, Tilemap extTileMap)
+    {
+        var intTargetPos = intTileMap.WorldToCell(target.transform.position);
+
+
+        bool interior = true;
+
+        var currentPos = intTargetPos;
+        var dir = direction.DirectionToVector2();
+
+        while (true)
+        {
+            currentPos += new Vector3Int((int)dir.x, (int)dir.y, 0);
+            if (interior)
+            {
+                if (intTileMap.GetTile(currentPos) == null)
+                {
+                    interior = false;
+                }
+            }
+            else
+            {
+                if (extTileMap.GetTile(currentPos) == null)
+                {
+                    break;
+                }
+            }
+        }
+
+        //because of where the origin is going in south or west direction takes 1 extra to find null
+        if(direction == DoorDirection.South || direction == DoorDirection.West)
+        {
+            currentPos -= new Vector3Int((int)dir.x, (int)dir.y, 0);
+        }
+
+        var cellDistance = (currentPos - intTargetPos);
+        var worldDistance = new Vector3(cellDistance.x * intTileMap.cellSize.x, cellDistance.y * intTileMap.cellSize.y).magnitude;
+
+        var intCellWorldPos = intTileMap.CellToWorld(intTargetPos);
+        var targetOffsetFromCell = target.transform.position - intCellWorldPos;
+
+        switch (direction)
+        {
+            case DoorDirection.North:
+                worldDistance -= targetOffsetFromCell.y;
+                break;
+            case DoorDirection.South:
+                worldDistance += targetOffsetFromCell.y;
+                break;
+            case DoorDirection.West:
+                worldDistance += targetOffsetFromCell.x;
+                break;
+            case DoorDirection.East:
+                worldDistance -= targetOffsetFromCell.x;
+                break;
+            default: break;
+        }
+
+        return worldDistance;
     }
 
     protected virtual void SetDoorSprite()

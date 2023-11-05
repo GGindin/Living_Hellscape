@@ -9433,7 +9433,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4253120329331562245, guid: e22d1f0005f7def40b1efb531c3aa07a, type: 3}
       propertyPath: m_Name
-      value: FinalRoom1
+      value: Bedroom1
       objectReference: {fileID: 0}
     - target: {fileID: 4253120329331562246, guid: e22d1f0005f7def40b1efb531c3aa07a, type: 3}
       propertyPath: m_RootOrder
@@ -9595,7 +9595,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8096181610808148039, guid: 236c3195b2ae99a4ba8370e2719db931, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 17
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 236c3195b2ae99a4ba8370e2719db931, type: 3}
@@ -9695,7 +9695,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8096181610808148039, guid: 236c3195b2ae99a4ba8370e2719db931, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 17
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 236c3195b2ae99a4ba8370e2719db931, type: 3}
