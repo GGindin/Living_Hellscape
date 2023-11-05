@@ -8,8 +8,6 @@ public class RoomController : MonoBehaviour
 {
     public static RoomController Instance { get; private set; }
 
-    public const float INTER_ROOM_DISTANCE = 6.0f;
-
     [SerializeField]
     int currentRoomOverrideIndex = -1;
 

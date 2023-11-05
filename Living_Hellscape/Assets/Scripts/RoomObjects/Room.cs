@@ -1,10 +1,14 @@
 using Cinemachine;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class Room : MonoBehaviour, ISaveableObject
 {
     [SerializeField]
     int id;
+
+    [SerializeField]
+    string descriptiveName;
 
     [SerializeField]
     bool defeatAllEnemies;
@@ -29,6 +33,12 @@ public class Room : MonoBehaviour, ISaveableObject
 
     [SerializeField]
     Transform dynamicObjectsHolder;
+
+    [SerializeField]
+    Tilemap interiorTileMap;
+
+    [SerializeField]
+    Tilemap exteriorTileMap;
 
     HoldableObject[] roomHoldables;
 
@@ -344,7 +354,6 @@ public class Room : MonoBehaviour, ISaveableObject
 
     void OffsetRoom(Room otherRoom, Door otherDoor)
     {
-
         if (this is PseudoRoom) return;
 
         RoomConnection thisConnection = null;
@@ -363,11 +372,13 @@ public class Room : MonoBehaviour, ISaveableObject
         if (thisConnection != null)
         {
             Vector2 otherDoorDist = otherDoor.TargetPos - otherRoom.transform.position;
-            Vector2 interRoomDistance = otherDoor.DoorDirection.DirectionToVector2() * RoomController.INTER_ROOM_DISTANCE +
-                otherDoor.DoorDirection.DirectionToVector2() * 2.0f;
+            //Vector2 interRoomDistance = otherDoor.DoorDirection.DirectionToVector2() * RoomController.INTER_ROOM_DISTANCE +
+            //otherDoor.DoorDirection.DirectionToVector2() * 2.0f * 2.0f; //if the door is in the ext tile map then it is only * 2f
+            var interRoomDistance = otherDoor.GetDistanceToRoomEdge(otherRoom.interiorTileMap, otherRoom.exteriorTileMap) +
+                thisConnection.thisRoomDoor.GetDistanceToRoomEdge(interiorTileMap, exteriorTileMap);
             Vector2 thisDoorDist = transform.position - thisConnection.thisRoomDoor.TargetPos;
 
-            Vector2 totalOffset = otherDoorDist + interRoomDistance + thisDoorDist;
+            Vector2 totalOffset = otherDoorDist + (otherDoor.DoorDirection.DirectionToVector2() * interRoomDistance) + thisDoorDist;
             transform.position = otherRoom.transform.position + new Vector3(totalOffset.x, totalOffset.y);
         }
     }
