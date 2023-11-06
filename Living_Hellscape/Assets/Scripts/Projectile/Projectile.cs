@@ -55,7 +55,6 @@ public class Projectile : MonoBehaviour
 
             damageable.AddStatusEffect(statusEffect, -damageDir.normalized);
         }
-
         Destroy(gameObject);
     }
 }

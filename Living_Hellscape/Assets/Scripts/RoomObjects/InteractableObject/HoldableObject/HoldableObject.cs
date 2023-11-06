@@ -84,12 +84,15 @@ public class HoldableObject : InteractableObject
         }
 
         body.MovePosition(end);
+        FindObjectOfType<AudioController>().Play("boxcrash");
         Destroy(gameObject);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (!isThrown) return;
+
+        FindObjectOfType<AudioController>().Play("boxcrash");
 
         var damageable = collision.gameObject.GetComponent<DamageableObject>();
 

@@ -266,6 +266,14 @@ public abstract class PlayerController : DamageableObject, ISaveableObject
     protected override void ChangeHealth(int delta)
     {
         playerStats.ChangeCurrentHealth(delta);
+        if (delta < 0f)
+        {
+            FindObjectOfType<AudioController>().Play("playerhurt");
+        }
+        if (playerStats.CurrentHealth <= 0f) 
+        {
+            FindObjectOfType<AudioController>().Play("death");
+        }
     }
 
     IEnumerator TransitionRoom(Vector3 target)
