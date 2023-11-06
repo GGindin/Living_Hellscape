@@ -83,6 +83,13 @@ public class Chest : InteractableObject
         {
             var item = Instantiate(chestItemPrefab);
             PlayerManager.Instance.Inventory.StartAddItem(item);
+
+            // If the object has text attached to it, run the attached textbox creator. This will do nothing otherwise.
+            TextboxCreator textbox = gameObject.GetComponent<TextboxCreator>();
+            if (textbox)
+            {
+                textbox.StartTextEvent();
+            }
         }
     }
 
