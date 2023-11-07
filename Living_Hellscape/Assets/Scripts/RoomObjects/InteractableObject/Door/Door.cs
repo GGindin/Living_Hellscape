@@ -82,14 +82,16 @@ public class Door : InteractableObject
             if (key)
             {
                 key.Activate();
+                TextBoxController.instance.OpenTextBox("You hear the lock click. You turn the knob and the door swings open!");
                 isUnlocked = true;
             }
             else
             {
-                TextController.Instance.SetText("Door is locked, you need a key");
+                TextBoxController.instance.OpenTextBox("This door is locked. Maybe you can find a key somewhere?");
                 return;
             }
         }
+        TextBoxController.instance.OpenTextBox("You just opened a door! Press the main action button (currently J) to continue. Pressing this button while the text is being written will allow you to skip to the end of that line instantly. I am going to continue writing here so you can see how the text box works. Feel free to make any suggestions you want and I'll see if I can add them. I currently plan to add a way to control where the line breaks happen (optionally) and a cursor that follows the text (if possible). Maxchars seems a bit janky and I'd like to add a different way to tell when a line ends without manually checking for every line of dialogue and setting it up. I hope it makes sense how you can add text to an object. Thank you!");
         closed = !closed;
         SetDoorSprite();
     }

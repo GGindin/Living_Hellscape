@@ -28,6 +28,17 @@ public class ItemPickup : InteractableObject
             var item = Instantiate(itemPrefab);
             PlayerManager.Instance.Inventory.StartAddItem(item);
             isPickedUp = true;
+
+            // If the object has text attached to it, run the attached textbox creator. This will do nothing otherwise.
+            //TextboxCreator textbox = gameObject.GetComponent<TextboxCreator>();
+            TextBoxController.instance.OpenTextBox("You picked up a " + item.Description);
+            /*
+            if (textbox)
+            {
+                textbox.StartTextEvent();
+            }
+            */
+
             gameObject.SetActive(false); //set inactive so that it can save its state when the room saves
         }
     }
