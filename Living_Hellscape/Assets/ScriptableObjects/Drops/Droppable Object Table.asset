@@ -19,4 +19,5 @@ MonoBehaviour:
   drops:
   - {fileID: 11400000, guid: bb8c84ea0a9fae8409117bd8d28713de, type: 2}
   - {fileID: 11400000, guid: 0f9b278fbbd91c843b571a5bbffad662, type: 2}
+  - {fileID: 11400000, guid: be6a9223b126ff04aab760b3955084da, type: 2}
   dropCount: 2
