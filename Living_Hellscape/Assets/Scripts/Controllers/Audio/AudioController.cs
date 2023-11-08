@@ -6,13 +6,14 @@ using UnityEngine;
 
 public class AudioController : MonoBehaviour
 {
-    public Sound[] sounds;
+    public static AudioController Instance { get; private set; }
 
-    public static AudioController instance;
+    public Sound[] sounds;
     
     void Awake ()
     {
-
+        Instance = this;
+     
         DontDestroyOnLoad(gameObject);
 
         foreach (Sound sound in sounds)
@@ -24,10 +25,11 @@ public class AudioController : MonoBehaviour
             sound.source.pitch = sound.pitch;
             sound.source.loop = sound.loop;
         }
+        
     }
 
     
-    public void Play (string name)
+    public void PlaySoundEffect (string name)
     {
         Sound sound = Array.Find(sounds, sounds => sounds.name == name);
         if (sound != null) 

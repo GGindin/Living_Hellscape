@@ -84,7 +84,9 @@ public class HoldableObject : InteractableObject
         }
 
         body.MovePosition(end);
-        FindObjectOfType<AudioController>().Play("boxcrash");
+
+        AudioController.Instance.PlaySoundEffect("boxcrash");
+        
         Destroy(gameObject);
     }
 
@@ -92,7 +94,7 @@ public class HoldableObject : InteractableObject
     {
         if (!isThrown) return;
 
-        FindObjectOfType<AudioController>().Play("boxcrash");
+        AudioController.Instance.PlaySoundEffect("boxcrash");
 
         var damageable = collision.gameObject.GetComponent<DamageableObject>();
 

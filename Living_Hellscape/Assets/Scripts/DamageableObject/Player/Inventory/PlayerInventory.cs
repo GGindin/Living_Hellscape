@@ -13,6 +13,10 @@ public class PlayerInventory: ISaveableObject
     [SerializeField]
     Item[] items = new Item[16];
 
+    int marbleAmmo;
+
+    public int MarbleAmmo => marbleAmmo;
+
     public Item[] Items => items;
 
     public bool HasMainAction => equipedGear.mainAction;
@@ -59,6 +63,7 @@ public class PlayerInventory: ISaveableObject
         {
             int open = FindOpenSlot();
             if (open < 0) return;
+            item.OnFirstAddToInventory();
             items[open] = item;
             if(item.Count == 0)
             {
@@ -202,6 +207,17 @@ public class PlayerInventory: ISaveableObject
         }
     }
 
+    public void AddAmmo(int amount)
+    {
+        marbleAmmo += amount;
+        AmmoPanelController.Instance.UpdateCount(marbleAmmo);
+    }
+
+    public void UseAmmo(int amount)
+    {
+        marbleAmmo = Mathf.Max(0, marbleAmmo - amount);
+    }
+
     int FindStack(Item item)
     {
         for (int i = 0; i < items.Length; i++)
@@ -287,6 +303,9 @@ public class PlayerInventory: ISaveableObject
         {
             writer.WriteInt(equipedGear.secondAction.ID);
         }
+
+        //write ammo
+        writer.WriteInt(marbleAmmo);
     }
 
     public void LoadPerm(GameDataReader reader)
@@ -329,6 +348,13 @@ public class PlayerInventory: ISaveableObject
             {
                 HandleSecondActionItemSwap(items[index]);
             }
+        }
+
+        //load ammo
+        marbleAmmo = reader.ReadInt();
+        if (GameStateController.Instance.HasSlingShot)
+        {
+            AmmoPanelController.Instance.UpdateCount(marbleAmmo);
         }
     }
 

@@ -110,7 +110,7 @@ public abstract class EnemyController : DamageableObject, ISaveableObject
 
             if (drop.IsNull) continue;
 
-            var enemyDrop = drop as EnemyDrop;
+            var enemyDrop = drop as EnemyDroppable;
             var itemDrop = enemyDrop.GetItemDropInstance();
             itemDrop.transform.SetParent(RoomController.Instance.ActiveRoom.DynamicObjectsHolder);
             itemDrop.transform.position = transform.position;

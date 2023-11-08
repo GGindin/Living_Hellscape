@@ -11,6 +11,20 @@ public class GameStateController : MonoBehaviour, ISaveableObject
 
     //put other flags to keep track of here, like beat this boss, finished this quest
 
+    bool hasSlingShot;
+
+    public bool HasSlingShot
+    {
+        get
+        {
+            return hasSlingShot;
+        }
+        set
+        {
+            hasSlingShot = value;
+        }
+    }
+
     public int CurrentRoomIndex
     {
         get
@@ -50,6 +64,8 @@ public class GameStateController : MonoBehaviour, ISaveableObject
 
         var roomIndex = reader.ReadInt();
         currentRoomID = roomIndex;
+        var val = reader.ReadInt();
+        hasSlingShot = val == 1 ? true : false;
     }
 
     public void LoadTemp(GameDataReader reader)
@@ -60,6 +76,14 @@ public class GameStateController : MonoBehaviour, ISaveableObject
     public void SavePerm(GameDataWriter writer)
     {
         writer.WriteInt(currentRoomID);
+        if (hasSlingShot)
+        {
+            writer.WriteInt(1);
+        }
+        else
+        {
+            writer.WriteInt(0);
+        }
     }
 
     public void SaveTemp(GameDataWriter writer)

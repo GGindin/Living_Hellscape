@@ -29,8 +29,6 @@ public class Projectile : MonoBehaviour
         this.statusEffect = statusEffect;
     }
 
-
-
     private void FixedUpdate()
     {
         if (GameController.Instance.StopUpdates) return;

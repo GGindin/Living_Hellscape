@@ -317,20 +317,20 @@ public class Room : MonoBehaviour, ISaveableObject
             Room room = null;
 
             //if pseudo room
-            if(prefabConnections[i].otherRoomPrefab is PseudoRoom)
+            if(prefabConnections[i].pseudoRoomPrefab != null && prefabConnections[i].pseudoRoomPrefab is PseudoRoom)
             {
                 //we can just use the prefab because it is going to be placed under the room in the heirarchy
-                room = prefabConnections[i].otherRoomPrefab;
+                room = prefabConnections[i].pseudoRoomPrefab;
             }
             else
             {
                 //check to see if the room is already loaded
-                room = RoomController.Instance.GetRoomByID(prefabConnections[i].otherRoomPrefab.ID);
+                room = RoomController.Instance.GetRoomByID(prefabConnections[i].otherRoomID);
 
                 //if we do not have the room get the room
                 if (!room)
                 {
-                    room = RoomController.Instance.LoadRoomByIndex(prefabConnections[i].otherRoomPrefab.ID);
+                    room = RoomController.Instance.LoadRoomByIndex(prefabConnections[i].otherRoomID);
                 }
             }
 
@@ -353,7 +353,7 @@ public class Room : MonoBehaviour, ISaveableObject
         for (int i = 0; i < prefabConnections.Length; i++)
         {
             var prefab = prefabConnections[i];
-            if (prefab.otherRoomPrefab.id == otherRoom.id && otherDoor.InRoomID == prefab.thisRoomDoor.InRoomID)
+            if (prefab.otherRoomID == otherRoom.id && otherDoor.InRoomID == prefab.thisRoomDoor.InRoomID)
             {
                 connections[i] = new RoomConnection()
                 {
@@ -728,7 +728,8 @@ public class Room : MonoBehaviour, ISaveableObject
 [System.Serializable]
 public class RoomPrefabConnection
 {
-    public Room otherRoomPrefab;
+    public int otherRoomID;
+    public Room pseudoRoomPrefab;
     public Door thisRoomDoor;
 }
 
