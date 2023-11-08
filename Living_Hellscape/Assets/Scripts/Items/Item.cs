@@ -71,4 +71,6 @@ public abstract class Item : MonoBehaviour
     {
         animator.SetBool(presentID, false);
     }
+
+    public virtual void OnFirstAddToInventory() { }
 }

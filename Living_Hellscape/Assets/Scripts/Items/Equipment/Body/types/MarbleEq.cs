@@ -26,7 +26,7 @@ public class MarbleEq : BodyEquipment
 
     public override void TriggerAction()
     {
-        if(coolDown <= 0f)
+        if(coolDown <= 0f && PlayerManager.Instance.Active.Inventory.MarbleAmmo > 0)
         {
             PlayerManager.Instance.Active.StartCoroutine(PlayerManager.Instance.Active.StopControlForTime(.25f));
             var marble = Instantiate(marbleProjectilePrefab, transform.position, Quaternion.identity);
@@ -34,7 +34,17 @@ public class MarbleEq : BodyEquipment
             marble.transform.SetParent(RoomController.Instance.ActiveRoom.DynamicObjectsHolder, true);
             marble.Direction = direction;
             //marble.StartingVelocity = PlayerManager.Instance.Active.Velocity;
+            PlayerManager.Instance.Active.Inventory.UseAmmo(1);
             coolDown = fireRate;
+        }
+    }
+
+    public override void OnFirstAddToInventory()
+    {
+        if (!GameStateController.Instance.HasSlingShot)
+        {
+            GameStateController.Instance.HasSlingShot = true;
+            AmmoPanelController.Instance.UpdateCount(0);
         }
     }
 

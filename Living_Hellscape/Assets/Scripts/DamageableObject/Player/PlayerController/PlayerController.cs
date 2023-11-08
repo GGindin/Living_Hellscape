@@ -268,11 +268,11 @@ public abstract class PlayerController : DamageableObject, ISaveableObject
         playerStats.ChangeCurrentHealth(delta);
         if (delta < 0f)
         {
-            FindObjectOfType<AudioController>().Play("playerhurt");
+            AudioController.Instance.PlaySoundEffect("playerhurt");
         }
         if (playerStats.CurrentHealth <= 0f) 
         {
-            FindObjectOfType<AudioController>().Play("death");
+            AudioController.Instance.PlaySoundEffect("death");
         }
     }
 

@@ -172,7 +172,7 @@ GameObject:
   - component: {fileID: 6338258710638556517}
   - component: {fileID: 6338258710638556516}
   m_Layer: 7
-  m_Name: room2
+  m_Name: room2 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -219,7 +219,8 @@ MonoBehaviour:
   defeatAllEnemies: 0
   virtualCamera: {fileID: 6338258710270429265}
   prefabConnections:
-  - otherRoomPrefab: {fileID: 3675158630561558092, guid: c4809a2e3a9934245a5c75e1ec64c19f, type: 3}
+  - otherRoomID: 1
+    pseudoRoomPrefab: {fileID: 0}
     thisRoomDoor: {fileID: 3582458458883154238}
   playerSpawnPlacement:
     placement: {fileID: 6356911054224059573}
