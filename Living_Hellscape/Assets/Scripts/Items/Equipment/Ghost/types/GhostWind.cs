@@ -2,13 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GhostWind : GhostEquipment, IStatuser
+public class GhostWind : GhostEquipment
 {
     [SerializeField]
-    LayerMask EnemyBodyLayer;
-
-    [SerializeField]
-    LayerMask EnemyGhostLayer;
+    WindProjectile windProjectilePrefab;
 
     [SerializeField]
     Scare scare;
@@ -16,44 +13,39 @@ public class GhostWind : GhostEquipment, IStatuser
     [SerializeField]
     Stun stun;
 
-    int xDirID = Animator.StringToHash("xDir");
-    int yDirID = Animator.StringToHash("yDir");
-    int strikeID = Animator.StringToHash("strike");
+    [SerializeField]
+    float fireRate;
 
-    bool isActing = false;
+    float coolDown = 0f;
 
-    public override void EndAction()
-    {
-        isActing = false;
-    }
+    Vector2 direction;
 
-    public StatusEffect GetStatus(DamageableObject recievingObject)
-    {
-        if((EnemyBodyLayer & 1 << recievingObject.gameObject.layer) != 0)
-        {
-            return new Scare(scare);
-        }
-        else if((EnemyGhostLayer & 1 << recievingObject.gameObject.layer) != 0)
-        {
-            return new Stun(stun);
-        }
-
-        return null;
-    }
+    public override void EndAction() { }
 
     public override void SetDirection(Vector2 direction)
     {
-        if (isActing) return;
-
-        animator.SetFloat(xDirID, direction.x);
-        animator.SetFloat(yDirID, direction.y);
+        this.direction = direction;
     }
 
     public override void TriggerAction()
     {
-        isActing = true;
-        animator.SetTrigger(strikeID);
+        if (coolDown <= 0f)
+        {
+            PlayerManager.Instance.Active.StartCoroutine(PlayerManager.Instance.Active.StopControlForTime(.25f));
+            var wind = Instantiate(windProjectilePrefab, transform.position, Quaternion.LookRotation(direction, Vector3.back));
+            wind.SetStun(new Stun(stun));
+            wind.SetScare(new Scare(scare));
+            wind.transform.SetParent(RoomController.Instance.ActiveRoom.DynamicObjectsHolder, true);
+            wind.Direction = direction;
+            coolDown = fireRate;
+        }
     }
 
-
+    private void Update()
+    {
+        if (coolDown > 0)
+        {
+            coolDown -= Time.deltaTime;
+        }
+    }
 }
