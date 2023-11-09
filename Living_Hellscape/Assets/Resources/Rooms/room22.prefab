@@ -51,9 +51,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5695697057170537785, guid: 372a7a1bc746e5b4bbc80419ca87022e, type: 3}
+      propertyPath: prefabConnections.Array.data[0].otherRoomID
+      value: 21
+      objectReference: {fileID: 0}
     - target: {fileID: 5695697057170537787, guid: 372a7a1bc746e5b4bbc80419ca87022e, type: 3}
       propertyPath: m_Name
-      value: Treasury1
+      value: room22
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 372a7a1bc746e5b4bbc80419ca87022e, type: 3}

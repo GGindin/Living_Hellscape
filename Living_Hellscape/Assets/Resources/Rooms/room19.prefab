@@ -51,9 +51,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6892800787067176765, guid: 6f6af0c75e14b5849856eb4b3606a3ba, type: 3}
+      propertyPath: prefabConnections.Array.data[0].otherRoomID
+      value: 16
+      objectReference: {fileID: 0}
     - target: {fileID: 6892800787067176767, guid: 6f6af0c75e14b5849856eb4b3606a3ba, type: 3}
       propertyPath: m_Name
-      value: Pantry
+      value: room19
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f6af0c75e14b5849856eb4b3606a3ba, type: 3}

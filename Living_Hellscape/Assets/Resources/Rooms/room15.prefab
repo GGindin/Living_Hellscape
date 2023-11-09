@@ -9,7 +9,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7037848087318869852, guid: b62abccfac220f3449e019a7b819143b, type: 3}
       propertyPath: m_Name
-      value: Treasury3
+      value: room15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7037848087318869854, guid: b62abccfac220f3449e019a7b819143b, type: 3}
+      propertyPath: prefabConnections.Array.data[0].otherRoomID
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 7037848087318869855, guid: b62abccfac220f3449e019a7b819143b, type: 3}
       propertyPath: m_RootOrder

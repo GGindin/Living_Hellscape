@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7826213195383162489, guid: dac9870ad341a5e43b3f48b46bca0300, type: 3}
       propertyPath: m_Name
-      value: Treasury2
+      value: room29
       objectReference: {fileID: 0}
     - target: {fileID: 7826213195383162490, guid: dac9870ad341a5e43b3f48b46bca0300, type: 3}
       propertyPath: m_RootOrder
@@ -54,6 +54,10 @@ PrefabInstance:
     - target: {fileID: 7826213195383162490, guid: dac9870ad341a5e43b3f48b46bca0300, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7826213195383162491, guid: dac9870ad341a5e43b3f48b46bca0300, type: 3}
+      propertyPath: prefabConnections.Array.data[0].otherRoomID
+      value: 28
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dac9870ad341a5e43b3f48b46bca0300, type: 3}
