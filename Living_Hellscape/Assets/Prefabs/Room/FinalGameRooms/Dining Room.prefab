@@ -10636,8 +10636,24 @@ PrefabInstance:
       value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 4253120329331562247, guid: e22d1f0005f7def40b1efb531c3aa07a, type: 3}
+      propertyPath: descriptiveName
+      value: Dining Room
+      objectReference: {fileID: 0}
+    - target: {fileID: 4253120329331562247, guid: e22d1f0005f7def40b1efb531c3aa07a, type: 3}
       propertyPath: prefabConnections.Array.size
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4253120329331562247, guid: e22d1f0005f7def40b1efb531c3aa07a, type: 3}
+      propertyPath: prefabConnections.Array.data[0].otherRoomID
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 4253120329331562247, guid: e22d1f0005f7def40b1efb531c3aa07a, type: 3}
+      propertyPath: prefabConnections.Array.data[1].otherRoomID
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 4253120329331562247, guid: e22d1f0005f7def40b1efb531c3aa07a, type: 3}
+      propertyPath: prefabConnections.Array.data[2].otherRoomID
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 4253120329331562247, guid: e22d1f0005f7def40b1efb531c3aa07a, type: 3}
       propertyPath: prefabConnections.Array.data[0].thisRoomDoor
