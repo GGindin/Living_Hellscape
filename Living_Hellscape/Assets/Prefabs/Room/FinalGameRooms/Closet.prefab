@@ -8220,8 +8220,16 @@ PrefabInstance:
       value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4253120329331562247, guid: e22d1f0005f7def40b1efb531c3aa07a, type: 3}
+      propertyPath: descriptiveName
+      value: Closet
+      objectReference: {fileID: 0}
+    - target: {fileID: 4253120329331562247, guid: e22d1f0005f7def40b1efb531c3aa07a, type: 3}
       propertyPath: prefabConnections.Array.size
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4253120329331562247, guid: e22d1f0005f7def40b1efb531c3aa07a, type: 3}
+      propertyPath: prefabConnections.Array.data[0].otherRoomID
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4253120329331562247, guid: e22d1f0005f7def40b1efb531c3aa07a, type: 3}
       propertyPath: prefabConnections.Array.data[0].thisRoomDoor
@@ -8308,7 +8316,7 @@ PrefabInstance:
     - target: {fileID: 1593186598186787529, guid: 236c3195b2ae99a4ba8370e2719db931, type: 3}
       propertyPath: target
       value: 
-      objectReference: {fileID: 6561574141757355358, guid: 2ea82249af1e32d41ac9f63bfc3f564a, type: 3}
+      objectReference: {fileID: 4964530966572164838}
     - target: {fileID: 1593186598186787529, guid: 236c3195b2ae99a4ba8370e2719db931, type: 3}
       propertyPath: direction
       value: 4
@@ -8338,3 +8346,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6d8836da9e771340aa220502499e3ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &4964530966572164838 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1593186599330598583, guid: 236c3195b2ae99a4ba8370e2719db931, type: 3}
+  m_PrefabInstance: {fileID: 5978999478579275857}
+  m_PrefabAsset: {fileID: 0}

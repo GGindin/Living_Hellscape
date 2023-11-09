@@ -36653,6 +36653,10 @@ PrefabInstance:
       value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 4253120329331562247, guid: e22d1f0005f7def40b1efb531c3aa07a, type: 3}
+      propertyPath: descriptiveName
+      value: Entrance
+      objectReference: {fileID: 0}
+    - target: {fileID: 4253120329331562247, guid: e22d1f0005f7def40b1efb531c3aa07a, type: 3}
       propertyPath: prefabConnections.Array.size
       value: 10
       objectReference: {fileID: 0}

@@ -70,7 +70,7 @@ PrefabInstance:
     - target: {fileID: 1593186598186787529, guid: 236c3195b2ae99a4ba8370e2719db931, type: 3}
       propertyPath: target
       value: 
-      objectReference: {fileID: 8493019997703821346, guid: 84ed9e12f868be3438c8a39425b31f88, type: 3}
+      objectReference: {fileID: 3061972642438095722}
     - target: {fileID: 1593186598186787529, guid: 236c3195b2ae99a4ba8370e2719db931, type: 3}
       propertyPath: inRoomID
       value: 3
@@ -104,6 +104,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6d8836da9e771340aa220502499e3ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &3061972642438095722 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1593186599330598583, guid: 236c3195b2ae99a4ba8370e2719db931, type: 3}
+  m_PrefabInstance: {fileID: 4351160175583817181}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5169517422461328407
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9652,8 +9657,16 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4253120329331562247, guid: e22d1f0005f7def40b1efb531c3aa07a, type: 3}
+      propertyPath: descriptiveName
+      value: BedRoom3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4253120329331562247, guid: e22d1f0005f7def40b1efb531c3aa07a, type: 3}
       propertyPath: prefabConnections.Array.size
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4253120329331562247, guid: e22d1f0005f7def40b1efb531c3aa07a, type: 3}
+      propertyPath: prefabConnections.Array.data[0].otherRoomID
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4253120329331562247, guid: e22d1f0005f7def40b1efb531c3aa07a, type: 3}
       propertyPath: prefabConnections.Array.data[0].thisRoomDoor

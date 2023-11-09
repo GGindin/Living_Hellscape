@@ -9640,6 +9640,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4253120329331562247, guid: e22d1f0005f7def40b1efb531c3aa07a, type: 3}
+      propertyPath: descriptiveName
+      value: Bedroom1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4253120329331562247, guid: e22d1f0005f7def40b1efb531c3aa07a, type: 3}
       propertyPath: prefabConnections.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -9740,7 +9744,7 @@ PrefabInstance:
     - target: {fileID: 1593186598186787529, guid: 236c3195b2ae99a4ba8370e2719db931, type: 3}
       propertyPath: target
       value: 
-      objectReference: {fileID: 8493019997703821346, guid: 84ed9e12f868be3438c8a39425b31f88, type: 3}
+      objectReference: {fileID: 4881128201035028682}
     - target: {fileID: 1593186598186787529, guid: 236c3195b2ae99a4ba8370e2719db931, type: 3}
       propertyPath: inRoomID
       value: 0
@@ -9774,6 +9778,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6d8836da9e771340aa220502499e3ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &4881128201035028682 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1593186599330598583, guid: 236c3195b2ae99a4ba8370e2719db931, type: 3}
+  m_PrefabInstance: {fileID: 6170321789010761341}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7344915024410889196
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9844,7 +9853,7 @@ PrefabInstance:
     - target: {fileID: 1593186598186787529, guid: 236c3195b2ae99a4ba8370e2719db931, type: 3}
       propertyPath: target
       value: 
-      objectReference: {fileID: 4426659622671091641, guid: 93d74602182c4fe4da1b20a16c364d78, type: 3}
+      objectReference: {fileID: 8354814517996389723}
     - target: {fileID: 1593186598186787529, guid: 236c3195b2ae99a4ba8370e2719db931, type: 3}
       propertyPath: inRoomID
       value: 1
@@ -9878,3 +9887,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6d8836da9e771340aa220502499e3ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &8354814517996389723 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1593186599330598583, guid: 236c3195b2ae99a4ba8370e2719db931, type: 3}
+  m_PrefabInstance: {fileID: 7344915024410889196}
+  m_PrefabAsset: {fileID: 0}

@@ -16,8 +16,6 @@ public class Projectile : MonoBehaviour
 
     public Vector2 Direction { get; set; }
 
-    public Vector2 StartingVelocity { get; set; }
-
 
     private void Awake()
     {
@@ -32,7 +30,7 @@ public class Projectile : MonoBehaviour
     private void FixedUpdate()
     {
         if (GameController.Instance.StopUpdates) return;
-        Vector2 velocity = Direction * (speed + Vector2.Dot(Direction, StartingVelocity)) * Time.fixedDeltaTime;
+        Vector2 velocity = Direction * speed * Time.fixedDeltaTime;
         body.MovePosition(body.position + velocity);
     }
 
