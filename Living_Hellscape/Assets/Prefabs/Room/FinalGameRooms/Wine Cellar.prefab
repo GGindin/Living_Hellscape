@@ -18595,7 +18595,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3500185177029931139, guid: a71a96c23a8f6b748b1528d74670c521, type: 3}
       propertyPath: inRoomID
-      value: 9
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3500185177029931139, guid: a71a96c23a8f6b748b1528d74670c521, type: 3}
       propertyPath: direction

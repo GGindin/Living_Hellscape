@@ -379,6 +379,10 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3390879867512377765, guid: d8c8a463c84698a40bb67f7a5f84d736, type: 3}
+      propertyPath: inRoomID
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3390879867512377771, guid: d8c8a463c84698a40bb67f7a5f84d736, type: 3}
       propertyPath: m_IsActive
       value: 1

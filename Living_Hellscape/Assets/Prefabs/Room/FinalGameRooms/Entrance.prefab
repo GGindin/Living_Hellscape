@@ -61,7 +61,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1593186598186787529, guid: 236c3195b2ae99a4ba8370e2719db931, type: 3}
       propertyPath: inRoomID
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1593186598186787529, guid: 236c3195b2ae99a4ba8370e2719db931, type: 3}
       propertyPath: direction
@@ -141,7 +141,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1593186598186787529, guid: 236c3195b2ae99a4ba8370e2719db931, type: 3}
       propertyPath: inRoomID
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1593186598186787529, guid: 236c3195b2ae99a4ba8370e2719db931, type: 3}
       propertyPath: direction
@@ -286,7 +286,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1593186598186787529, guid: 236c3195b2ae99a4ba8370e2719db931, type: 3}
       propertyPath: inRoomID
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1593186598186787529, guid: 236c3195b2ae99a4ba8370e2719db931, type: 3}
       propertyPath: direction
@@ -36756,7 +36756,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3500185177029931139, guid: a71a96c23a8f6b748b1528d74670c521, type: 3}
       propertyPath: inRoomID
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3500185177029931139, guid: a71a96c23a8f6b748b1528d74670c521, type: 3}
       propertyPath: direction
@@ -36888,7 +36888,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1593186598186787529, guid: 236c3195b2ae99a4ba8370e2719db931, type: 3}
       propertyPath: inRoomID
-      value: 7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1593186598186787529, guid: 236c3195b2ae99a4ba8370e2719db931, type: 3}
       propertyPath: direction
@@ -36968,7 +36968,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1593186598186787529, guid: 236c3195b2ae99a4ba8370e2719db931, type: 3}
       propertyPath: inRoomID
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1593186598186787529, guid: 236c3195b2ae99a4ba8370e2719db931, type: 3}
       propertyPath: direction
@@ -37048,7 +37048,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1593186598186787529, guid: 236c3195b2ae99a4ba8370e2719db931, type: 3}
       propertyPath: inRoomID
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1593186598186787529, guid: 236c3195b2ae99a4ba8370e2719db931, type: 3}
       propertyPath: direction
@@ -37128,7 +37128,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1593186598186787529, guid: 236c3195b2ae99a4ba8370e2719db931, type: 3}
       propertyPath: inRoomID
-      value: 8
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1593186598186787529, guid: 236c3195b2ae99a4ba8370e2719db931, type: 3}
       propertyPath: direction
@@ -37156,7 +37156,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3500185177029931139, guid: a71a96c23a8f6b748b1528d74670c521, type: 3}
       propertyPath: inRoomID
-      value: 9
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3500185177029931139, guid: a71a96c23a8f6b748b1528d74670c521, type: 3}
       propertyPath: direction
@@ -37288,7 +37288,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1593186598186787529, guid: 236c3195b2ae99a4ba8370e2719db931, type: 3}
       propertyPath: inRoomID
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1593186598186787529, guid: 236c3195b2ae99a4ba8370e2719db931, type: 3}
       propertyPath: direction
