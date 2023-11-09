@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 985813115002459364, guid: 55fd3f5b2447a2342a330b426bb43ab4, type: 3}
       propertyPath: m_Name
-      value: Bathroom2
+      value: room3
       objectReference: {fileID: 0}
     - target: {fileID: 985813115002459367, guid: 55fd3f5b2447a2342a330b426bb43ab4, type: 3}
       propertyPath: m_RootOrder
@@ -55,5 +55,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8439633705234231968, guid: 55fd3f5b2447a2342a330b426bb43ab4, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 7339105907829939245}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 55fd3f5b2447a2342a330b426bb43ab4, type: 3}
+--- !u!1 &7339105907829939245 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8439633704870158046, guid: 55fd3f5b2447a2342a330b426bb43ab4, type: 3}
+  m_PrefabInstance: {fileID: 1208697341081518835}
+  m_PrefabAsset: {fileID: 0}

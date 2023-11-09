@@ -9,7 +9,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3903242779254527500, guid: 25c8ea937d57c934f8bcbdf48728d45b, type: 3}
       propertyPath: m_Name
-      value: Office2
+      value: room11
+      objectReference: {fileID: 0}
+    - target: {fileID: 3903242779254527502, guid: 25c8ea937d57c934f8bcbdf48728d45b, type: 3}
+      propertyPath: prefabConnections.Array.data[0].otherRoomID
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3903242779254527503, guid: 25c8ea937d57c934f8bcbdf48728d45b, type: 3}
       propertyPath: m_RootOrder

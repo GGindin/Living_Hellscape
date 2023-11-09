@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2625116172906319790, guid: 76e50dd0231ceca48b9e56c02dfebc43, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 2855908591364019201}
     - target: {fileID: 8952850904329302544, guid: 76e50dd0231ceca48b9e56c02dfebc43, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -51,9 +55,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8952850904329302545, guid: 76e50dd0231ceca48b9e56c02dfebc43, type: 3}
+      propertyPath: prefabConnections.Array.data[0].otherRoomID
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8952850904329302547, guid: 76e50dd0231ceca48b9e56c02dfebc43, type: 3}
       propertyPath: m_Name
-      value: Office1
+      value: room4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 76e50dd0231ceca48b9e56c02dfebc43, type: 3}
+--- !u!1 &2855908591364019201 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2625116173303522256, guid: 76e50dd0231ceca48b9e56c02dfebc43, type: 3}
+  m_PrefabInstance: {fileID: 273717903937681361}
+  m_PrefabAsset: {fileID: 0}

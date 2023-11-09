@@ -101,11 +101,13 @@ public class Room : MonoBehaviour, ISaveableObject
         RoomController.Instance.AddRoom(this);
         GameStorageController.Instance.LoadPerm(this);
         GameStorageController.Instance.LoadTemp(this);
+        gameObject.SetActive(false);
     }
 
     //called when player starts transitioning into room
     public virtual void OnStartEnterRoom()
     {
+        gameObject.SetActive(true);
         //This just sets up the stuff in the active room
         SetupVirtualCamera();
         ResetEnemyPos();
@@ -127,6 +129,7 @@ public class Room : MonoBehaviour, ISaveableObject
         RemoveDynamicObjects();
         TurnOffVirtualCamera();
         RemoveUnNeededRooms();
+        gameObject.SetActive(false);
     }
 
     //called when room is destroyed

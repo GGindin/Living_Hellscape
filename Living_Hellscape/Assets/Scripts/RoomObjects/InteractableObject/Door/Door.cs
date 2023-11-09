@@ -134,8 +134,19 @@ public class Door : InteractableObject
         var currentPos = intTargetPos;
         var dir = direction.DirectionToVector2();
 
+        int i = 0;
+
         while (true)
         {
+            i++;
+            if(i > 1000)
+            {
+                Debug.Log(gameObject.name);
+                Debug.Log(transform.root.gameObject.name);
+                Debug.Break();
+                break;
+            }
+
             currentPos += new Vector3Int((int)dir.x, (int)dir.y, 0);
             if (interior)
             {
