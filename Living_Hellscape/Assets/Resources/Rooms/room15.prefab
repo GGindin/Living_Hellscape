@@ -7581,7 +7581,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4253120329331562245, guid: e22d1f0005f7def40b1efb531c3aa07a, type: 3}
       propertyPath: m_Name
-      value: Treasury3
+      value: room15
       objectReference: {fileID: 0}
     - target: {fileID: 4253120329331562246, guid: e22d1f0005f7def40b1efb531c3aa07a, type: 3}
       propertyPath: m_RootOrder
