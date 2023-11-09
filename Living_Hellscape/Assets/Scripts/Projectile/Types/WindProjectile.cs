@@ -23,17 +23,24 @@ public class WindProjectile : MonoBehaviour, IStatuser
 
     Stun stun;
 
+    HashSet<DamageableObject> hitObjects = new HashSet<DamageableObject>();   
+
     public Vector2 Direction { get; set; }
 
     public StatusEffect GetStatus(DamageableObject recievingObject)
     {
-        if ((EnemyBodyLayer & 1 << recievingObject.gameObject.layer) != 0)
+        if (!hitObjects.Contains(recievingObject))
         {
-            return new Scare(scare);
-        }
-        else if ((EnemyGhostLayer & 1 << recievingObject.gameObject.layer) != 0)
-        {
-            return new Stun(stun);
+            if ((EnemyBodyLayer & 1 << recievingObject.gameObject.layer) != 0)
+            {
+                hitObjects.Add(recievingObject);
+                return new Scare(scare);
+            }
+            else if ((EnemyGhostLayer & 1 << recievingObject.gameObject.layer) != 0)
+            {
+                hitObjects.Add(recievingObject);
+                return new Stun(stun);
+            }
         }
 
         return null;
