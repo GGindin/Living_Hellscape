@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
+using UnityEditor.MemoryProfiler;
 using UnityEngine;
 
 public class RoomController : MonoBehaviour
@@ -38,6 +39,29 @@ public class RoomController : MonoBehaviour
         {
             currentRoomOverrideIndex = activeRoom.ID;
             GameStateController.Instance.CurrentRoomIndex = activeRoom.ID;
+        }
+    }
+
+    public void RemoveUnNeededRooms()
+    {
+        List<Room> removeList = new List<Room>();
+
+        foreach(Room room in spawnedRooms)
+        {
+            if (!room.IsConnectedToActiveRoom())
+            {
+                if (!removeList.Contains(room))
+                {
+                    removeList.Add(room);
+                }               
+            }
+        }
+
+        for(int i = 0; i < removeList.Count; i++)
+        {
+            var room = removeList[i];
+            room.OnUnloadRoom();
+            Destroy(room.gameObject);
         }
     }
 

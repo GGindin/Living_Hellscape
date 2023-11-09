@@ -101,7 +101,7 @@ public class Room : MonoBehaviour, ISaveableObject
         RoomController.Instance.AddRoom(this);
         GameStorageController.Instance.LoadPerm(this);
         GameStorageController.Instance.LoadTemp(this);
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
     }
 
     //called when player starts transitioning into room
@@ -128,7 +128,8 @@ public class Room : MonoBehaviour, ISaveableObject
         CloseAllDoors();
         RemoveDynamicObjects();
         TurnOffVirtualCamera();
-        RemoveUnNeededRooms();
+        RoomController.Instance.RemoveUnNeededRooms();
+        //RemoveUnNeededRooms();
         gameObject.SetActive(false);
     }
 
@@ -346,6 +347,7 @@ public class Room : MonoBehaviour, ISaveableObject
             {
                 room.OnLoadRoom();
                 room.OffsetRoom(this, connections[i].thisRoomDoor);
+                room.gameObject.SetActive(false);
             }          
         }
     }
@@ -470,6 +472,25 @@ public class Room : MonoBehaviour, ISaveableObject
             var child = dynamicObjectsHolder.GetChild(i);
             Destroy(child.gameObject);
         }
+    }
+
+    public bool IsConnectedToActiveRoom()
+    {
+        var activeRoom = RoomController.Instance.ActiveRoom;
+
+        if (activeRoom == this) return true;
+
+        for (int i = 0; i < prefabConnections.Length; i++)
+        {
+            var connection = prefabConnections[i];
+            if (connection.pseudoRoomPrefab) continue;
+            if (connection.otherRoomID == activeRoom.ID)
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     void RemoveUnNeededRooms()

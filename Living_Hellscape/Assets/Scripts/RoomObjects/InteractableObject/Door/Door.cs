@@ -176,6 +176,7 @@ public class Door : InteractableObject
         var intCellWorldPos = intTileMap.CellToWorld(intTargetPos);
         var targetOffsetFromCell = target.transform.position - intCellWorldPos;
 
+        
         switch (direction)
         {
             case DoorDirection.North:
