@@ -105,7 +105,6 @@ public abstract class PlayerController : DamageableObject, ISaveableObject
 
     public IEnumerator PresentItem(Item item)
     {
-        TextController.Instance.SetText("You got a " + item.Description);
         item.transform.SetParent(heldObjectRoot, false);
         item.transform.position = heldObjectRoot.position;
         item.transform.rotation = Quaternion.identity;
@@ -114,7 +113,7 @@ public abstract class PlayerController : DamageableObject, ISaveableObject
         
         while(true)
         {
-            if (!TextController.Instance.Active) break;
+            if (!TextBoxController.instance.gameObject.activeInHierarchy) break;
             yield return null;
         }
 
