@@ -70,7 +70,7 @@ PrefabInstance:
     - target: {fileID: 1593186598186787529, guid: 236c3195b2ae99a4ba8370e2719db931, type: 3}
       propertyPath: target
       value: 
-      objectReference: {fileID: 8493019997703821346, guid: 84ed9e12f868be3438c8a39425b31f88, type: 3}
+      objectReference: {fileID: 3265817302061297828}
     - target: {fileID: 1593186598186787529, guid: 236c3195b2ae99a4ba8370e2719db931, type: 3}
       propertyPath: inRoomID
       value: 4
@@ -104,6 +104,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6d8836da9e771340aa220502499e3ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &3265817302061297828 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1593186599330598583, guid: 236c3195b2ae99a4ba8370e2719db931, type: 3}
+  m_PrefabInstance: {fileID: 4273530448987258387}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5320863549007371158
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -174,7 +179,7 @@ PrefabInstance:
     - target: {fileID: 1593186598186787529, guid: 236c3195b2ae99a4ba8370e2719db931, type: 3}
       propertyPath: target
       value: 
-      objectReference: {fileID: 2761308478036643466, guid: 6241e48dced31f34a8928f781bb863fd, type: 3}
+      objectReference: {fileID: 6902791111688574241}
     - target: {fileID: 1593186598186787529, guid: 236c3195b2ae99a4ba8370e2719db931, type: 3}
       propertyPath: direction
       value: 2
@@ -204,6 +209,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6d8836da9e771340aa220502499e3ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &6902791111688574241 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1593186599330598583, guid: 236c3195b2ae99a4ba8370e2719db931, type: 3}
+  m_PrefabInstance: {fileID: 5320863549007371158}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5999444403404855813
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9912,8 +9922,20 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4253120329331562247, guid: e22d1f0005f7def40b1efb531c3aa07a, type: 3}
+      propertyPath: descriptiveName
+      value: BedRoom2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4253120329331562247, guid: e22d1f0005f7def40b1efb531c3aa07a, type: 3}
       propertyPath: prefabConnections.Array.size
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4253120329331562247, guid: e22d1f0005f7def40b1efb531c3aa07a, type: 3}
+      propertyPath: prefabConnections.Array.data[0].otherRoomID
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4253120329331562247, guid: e22d1f0005f7def40b1efb531c3aa07a, type: 3}
+      propertyPath: prefabConnections.Array.data[1].otherRoomID
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4253120329331562247, guid: e22d1f0005f7def40b1efb531c3aa07a, type: 3}
       propertyPath: prefabConnections.Array.data[0].thisRoomDoor
