@@ -32,7 +32,7 @@ public class GhostWind : GhostEquipment
         if (coolDown <= 0f)
         {
             PlayerManager.Instance.Active.StartCoroutine(PlayerManager.Instance.Active.StopControlForTime(.25f));
-            var wind = Instantiate(windProjectilePrefab, transform.position, Quaternion.LookRotation(direction, Vector3.back));
+            var wind = Instantiate(windProjectilePrefab, transform.position, Quaternion.LookRotation(Vector3.forward, direction));
             wind.SetStun(new Stun(stun));
             wind.SetScare(new Scare(scare));
             wind.transform.SetParent(RoomController.Instance.ActiveRoom.DynamicObjectsHolder, true);

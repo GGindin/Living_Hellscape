@@ -20,7 +20,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8969830130234800575
 Transform:
   m_ObjectHideFlags: 0
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_Sprite: {fileID: 2129128031314841554, guid: 1442b16ea937f2b4e8952e8972cc05a9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -155,5 +155,5 @@ MonoBehaviour:
   EnemyGhostLayer:
     serializedVersion: 2
     m_Bits: 8192
-  speed: 0.25
-  lifeTime: 0.5
+  speed: 2
+  lifeTime: 2

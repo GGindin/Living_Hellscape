@@ -24,7 +24,10 @@ public abstract class DamageableObject : MonoBehaviour
 
     public void AddStatusEffect(StatusEffect statusEffect, Vector2 normDirection)
     {
-        ParticleSystemController.Instance.AddHit(transform.position);
+        if(statusEffect.EffectType == StatusEffectType.Damage)
+        {
+            ParticleSystemController.Instance.AddHit(transform.position);
+        }
 
         var activeEffect = GetStatusOfType(statusEffect.EffectType);
 
@@ -48,6 +51,7 @@ public abstract class DamageableObject : MonoBehaviour
         }
         else
         {
+            
             switch (statusEffect.EffectType)
             {
                 case StatusEffectType.Damage:
@@ -59,6 +63,7 @@ public abstract class DamageableObject : MonoBehaviour
                     activeEffect.AddDuration(statusEffect.Duration);
                     return;
             }
+            
         }
     }
 
