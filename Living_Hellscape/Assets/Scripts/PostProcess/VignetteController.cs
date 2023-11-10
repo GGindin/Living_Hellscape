@@ -10,12 +10,17 @@ public class VignetteController : MonoBehaviour
     [SerializeField]
     Material vignetteMaterial;
 
+    [SerializeField]
+    float duration = 2.0f;
+
     int focusID = Shader.PropertyToID("_FocusPos");
     int amountID = Shader.PropertyToID("_Amount");
 
     Camera cam;
 
     bool setEnabledToFalse = false;
+
+    public float Duration => duration;
 
     private void Awake()
     {
@@ -26,9 +31,17 @@ public class VignetteController : MonoBehaviour
 
     private void OnRenderImage(RenderTexture source, RenderTexture destination)
     {
-        if (!PlayerManager.Instance.Active) return;
+        Vector3 targetPos;
 
-        var targetPos = cam.WorldToViewportPoint(PlayerManager.Instance.Active.transform.position);
+        if (!PlayerManager.Instance)
+        {
+            targetPos = cam.WorldToViewportPoint(cam.transform.position + cam.transform.forward);
+        }
+        else
+        {
+            targetPos = cam.WorldToViewportPoint(PlayerManager.Instance.Active.transform.position);
+        }
+
 
 
         vignetteMaterial.SetVector(focusID, targetPos);
@@ -49,12 +62,14 @@ public class VignetteController : MonoBehaviour
 
     public void EndVignette()
     {
+        enabled = true;
         StartCoroutine(UnProcessVignette());
     }
 
-    IEnumerator ProcessVignette()
+    public IEnumerator ProcessVignette()
     {
-        float duration = 2f;
+        enabled = true;
+        float duration = this.duration;
         float current = 0f;
 
         while(current < duration)
@@ -68,14 +83,15 @@ public class VignetteController : MonoBehaviour
         vignetteMaterial.SetFloat(amountID, 1f);
     }
 
-    IEnumerator UnProcessVignette()
+    public IEnumerator UnProcessVignette()
     {
-        float current = 2f;
+        enabled = true;
+        float current = duration;
 
         while (current > 0f)
         {
             current -= Time.deltaTime;
-            float t = Mathf.InverseLerp(0f, 2f, current);
+            float t = Mathf.InverseLerp(0f, duration, current);
             vignetteMaterial.SetFloat(amountID, t);
             yield return null;
         }

@@ -22,19 +22,21 @@ public class GameController : MonoBehaviour
     {
         Instance = this;
         Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     private void Start()
     {
         if (!SceneController.Instance)
         {
-            StartPlaySession();
+            StartPlaySession(-1);
         }
     }
 
-    public void StartPlaySession()
+    public void StartPlaySession(int saveFile)
     {
         //tell all controllers to startup and load data
+        GameStorageController.Instance.Initialize(saveFile);
         GameStateController.Instance.LoadGameState();
         RoomController.Instance.Initialize();
         PlayerManager.Instance.Initialize();
@@ -49,6 +51,9 @@ public class GameController : MonoBehaviour
         //tell all controllers to save data
         //then init scene change through scene controller to go to main menu
         //for now we just quit or swap scenes
+        SetPause(false);
+        stopUpdates = true;
+
         if (!SceneController.Instance)
         {
             #if UNITY_EDITOR

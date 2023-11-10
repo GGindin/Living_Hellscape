@@ -10,24 +10,48 @@ public class GameStorageController : MonoBehaviour
 
     public static GameStorageController Instance { get; private set; }
 
+    const string SAVE_1 = "SAVE_1";
+    const string SAVE_2 = "SAVE_2";
+    const string SAVE_3 = "SAVE_3";
+
     const string PERM_DATA_DIR = "PERM";
     const string TEMP_DATA_DIR = "TEMP";
 
     string appDatatPath;
     string permDataPath;
     string tempDataPath;
+    string savePath;
 
     GameDataWriter gameDataWriter = new GameDataWriter();
     GameDataReader gameDataReader = new GameDataReader();
 
     private void Awake()
     {
+        if(Instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         Instance = this;
 
         appDatatPath = Application.persistentDataPath;
 
-        permDataPath = Path.Combine(appDatatPath, PERM_DATA_DIR);
-        tempDataPath = Path.Combine(appDatatPath, TEMP_DATA_DIR);
+        if (debugSaveLocation)
+        {
+            Debug.Log("Game Data Is Saved to: " + appDatatPath);
+        }
+    }
+
+    public void Initialize(int saveFile)
+    {
+        savePath = Path.Combine(appDatatPath, GetSaveString(saveFile));
+
+        permDataPath = Path.Combine(savePath, PERM_DATA_DIR);
+        tempDataPath = Path.Combine(savePath, TEMP_DATA_DIR);
+
+
+        Directory.CreateDirectory(savePath);
 
         if (Directory.Exists(tempDataPath))
         {
@@ -36,11 +60,6 @@ public class GameStorageController : MonoBehaviour
 
         Directory.CreateDirectory(permDataPath);
         Directory.CreateDirectory(tempDataPath);
-
-        if (debugSaveLocation)
-        {
-            Debug.Log("Game Data Is Saved to: " + appDatatPath);
-        }
     }
 
     public void SaveTemp(ISaveableObject saveable)
@@ -109,18 +128,63 @@ public class GameStorageController : MonoBehaviour
     {
         appDatatPath = Application.persistentDataPath;
 
-        permDataPath = Path.Combine(appDatatPath, PERM_DATA_DIR);
-        tempDataPath = Path.Combine(appDatatPath, TEMP_DATA_DIR);
-
-        if (Directory.Exists(tempDataPath))
+        savePath = Path.Combine(appDatatPath, GetSaveString(0));
+        if (Directory.Exists(savePath))
         {
-            Directory.Delete(tempDataPath, true);
+            Directory.Delete(savePath, true);
         }
-        if (Directory.Exists(permDataPath))
+        savePath = Path.Combine(appDatatPath, GetSaveString(1));
+        if (Directory.Exists(savePath))
         {
-            Directory.Delete(permDataPath, true);
+            Directory.Delete(savePath, true);
+        }
+        savePath = Path.Combine(appDatatPath, GetSaveString(2));
+        if (Directory.Exists(savePath))
+        {
+            Directory.Delete(savePath, true);
         }
 
         Debug.Log("ALL SAVE DATA DELETED AT: " + appDatatPath);
+    }
+
+    public void DeleteSaveFile(int saveFile)
+    {
+        appDatatPath = Application.persistentDataPath;
+
+        savePath = Path.Combine(appDatatPath, GetSaveString(saveFile));
+        if (Directory.Exists(savePath))
+        {
+            Directory.Delete(savePath, true);
+        }
+
+        Debug.Log("SAVE FILE " + (saveFile + 1) + " DELETED AT: " + savePath);
+    }
+
+    public bool DoesSaveExist(int saveFile)
+    {
+        appDatatPath = Application.persistentDataPath;
+
+        savePath = Path.Combine(appDatatPath, GetSaveString(saveFile));
+        if (Directory.Exists(savePath))
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    private string GetSaveString(int saveFile)
+    {
+        switch (saveFile)
+        {
+            case 0:
+                return SAVE_1;
+            case 1:
+                return SAVE_2;
+            case 2:
+                return SAVE_3;
+            default:
+                return SAVE_1;
+        }
     }
 }

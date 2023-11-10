@@ -19,6 +19,7 @@ public class PauseMenuController : MonoBehaviour
 
     private void Update()
     {
+        if (VignetteController.Instance.enabled) return;
         UserInput userInput = InputController.GetUserInput();
 
         if(userInput.mainAction == ButtonState.Down)

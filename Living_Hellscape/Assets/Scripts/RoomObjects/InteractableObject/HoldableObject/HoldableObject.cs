@@ -58,6 +58,8 @@ public class HoldableObject : InteractableObject
     IEnumerator Throw(Vector2 direction)
     {
         isThrown = true;
+        body.isKinematic = false;
+
         PlayerManager.Instance.Active.StartCoroutine(PlayerManager.Instance.Active.StopControlForTime(.25f));
 
         var throwSpeed = throwDistance / throwTime;
@@ -86,7 +88,8 @@ public class HoldableObject : InteractableObject
         body.MovePosition(end);
 
         AudioController.Instance.PlaySoundEffect("boxcrash");
-        
+        ParticleSystemController.Instance.AddHoldableBreak(transform.position);
+
         Destroy(gameObject);
     }
 
@@ -95,6 +98,7 @@ public class HoldableObject : InteractableObject
         if (!isThrown) return;
 
         AudioController.Instance.PlaySoundEffect("boxcrash");
+        ParticleSystemController.Instance.AddHoldableBreak(transform.position);
 
         var damageable = collision.gameObject.GetComponent<DamageableObject>();
 
@@ -112,9 +116,39 @@ public class HoldableObject : InteractableObject
 
             var newDamage = new Damage(damage);
             damageable.AddStatusEffect(newDamage, direction.normalized);
-            Destroy(gameObject);
+            
         }
+        Destroy(gameObject);
+    }
 
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (!isThrown) return;
+
+        AudioController.Instance.PlaySoundEffect("boxcrash");
+        ParticleSystemController.Instance.AddHoldableBreak(transform.position);
+
+
+
+        var damageable = collision.gameObject.GetComponent<DamageableObject>();
+
+        if (damageable)
+        {
+            var contacts = collision.contacts;
+            var direction = new Vector2();
+
+            foreach (var contact in contacts)
+            {
+                direction += contact.normal;
+            }
+
+            direction *= -1;
+
+            var newDamage = new Damage(damage);
+            damageable.AddStatusEffect(newDamage, direction.normalized);
+            
+        }
+        Destroy(gameObject);
     }
 
     public override string GetFileName()

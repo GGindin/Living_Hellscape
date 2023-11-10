@@ -9,7 +9,16 @@ public class ParticleSystemController : MonoBehaviour
     [SerializeField]
     ParticleSystem hitPrefab;
 
-    List<ParticleSystem> hitParticleSystems = new List<ParticleSystem>();
+    [SerializeField]
+    ParticleSystem scarePrefab;
+
+    [SerializeField]
+    ParticleSystem stunPrefab;
+
+    [SerializeField]
+    ParticleSystem holdableBreakPrefab;
+
+    List<ParticleSystem> particleSystems = new List<ParticleSystem>();
 
     private void Awake()
     {
@@ -25,17 +34,42 @@ public class ParticleSystemController : MonoBehaviour
     {
         var sys = Instantiate(hitPrefab, position, Quaternion.identity, transform);
 
-        hitParticleSystems.Add(sys);
+        particleSystems.Add(sys);
+    }
+
+    public void AddScare(Vector3 position)
+    {
+        /*
+        var sys = Instantiate(scarePrefab, position, Quaternion.identity, transform);
+
+        particleSystems.Add(sys);
+        */
+    }
+
+    public void AddStun(Vector3 position)
+    {
+        /*
+        var sys = Instantiate(stun, position, Quaternion.identity, transform);
+
+        particleSystems.Add(sys);
+        */
+    }
+
+    public void AddHoldableBreak(Vector3 position)
+    {
+        var sys = Instantiate(holdableBreakPrefab, position, Quaternion.identity, transform);
+
+        particleSystems.Add(sys);
     }
 
     void CheckSystems()
     {
-        for(int i = hitParticleSystems.Count - 1; i >= 0; i--)
+        for(int i = particleSystems.Count - 1; i >= 0; i--)
         {
-            var sys = hitParticleSystems[i];
+            var sys = particleSystems[i];
             if (!sys.isPlaying)
             {
-                hitParticleSystems.RemoveAt(i);
+                particleSystems.RemoveAt(i);
                 Destroy(sys.gameObject);
             }
         }
