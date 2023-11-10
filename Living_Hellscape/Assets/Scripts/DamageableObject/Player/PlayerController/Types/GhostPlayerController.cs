@@ -8,6 +8,8 @@ public class GhostPlayerController : PlayerController
 
     bool hasLeftPlayer = false;
 
+    GhostFreeZone lastGhostFreeZone;
+
     override protected void Awake()
     {
         base.Awake();
@@ -20,12 +22,26 @@ public class GhostPlayerController : PlayerController
         gameObject.SetActive(true);
         transform.position = PlayerManager.Instance.BodyPosition;
         hasLeftPlayer = false;
+        if(lastGhostFreeZone != null)
+        {
+            if (!rb.IsTouching(lastGhostFreeZone.GetComponent<Collider2D>()))
+            {
+                Debug.Log("ACTIVATE LEFT ZONE");
+                EnemyGhostManager.Instance.PlayerInGhostFreeZone = false;
+                lastGhostFreeZone = null;
+            }
+        }
     }
 
     public override void DeactivateController()
     {
         gameObject.SetActive(false);
         hasLeftPlayer = false;
+    }
+
+    public void FadeInImmediate()
+    {
+        spriteRenderer.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
     }
 
     public IEnumerator ProcessFadeIn()
@@ -128,6 +144,14 @@ public class GhostPlayerController : PlayerController
     {
         if (!IsActive) return;
 
+        var ghostFreeZone = collision.gameObject.GetComponent<GhostFreeZone>();
+        if (ghostFreeZone)
+        {
+            Debug.Log("ZONE ENTER");
+            lastGhostFreeZone = ghostFreeZone;
+            EnemyGhostManager.Instance.PlayerInGhostFreeZone = true;
+        }
+
         if (hasLeftPlayer)
         {
             var bodyController = collision.gameObject.GetComponent<BodyPlayerController>();
@@ -142,6 +166,14 @@ public class GhostPlayerController : PlayerController
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (!IsActive) return;
+
+        var ghostFreeZone = collision.gameObject.GetComponent<GhostFreeZone>();
+        if (ghostFreeZone)
+        {
+            Debug.Log("ZONE LEAVE");
+            lastGhostFreeZone = null;
+            EnemyGhostManager.Instance.PlayerInGhostFreeZone = false;
+        }
 
         var bodyController = collision.gameObject.GetComponent<BodyPlayerController>();
         if (bodyController)

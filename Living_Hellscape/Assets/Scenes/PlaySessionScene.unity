@@ -1272,6 +1272,7 @@ GameObject:
   - component: {fileID: 1168914966}
   - component: {fileID: 1168914965}
   - component: {fileID: 1168914967}
+  - component: {fileID: 1168914968}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -1317,6 +1318,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ba71ac35c874a6428909351fd7636d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1168914968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1168914964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 245b0d709221bb14c983d78c19afdba3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  introText: This is the intro to the game look at it go. it just is happening. wow
+    isnt this cool. OMG im a dead guy.
 --- !u!1 &1340566354
 GameObject:
   m_ObjectHideFlags: 0
@@ -2216,7 +2231,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55a9ee386401ac642aa4bd5673e0e006, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentRoomOverrideIndex: 16
+  currentRoomOverrideIndex: -1
 --- !u!4 &1984906010
 Transform:
   m_ObjectHideFlags: 0

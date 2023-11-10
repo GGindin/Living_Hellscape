@@ -21,6 +21,8 @@ public class GhostWorldFilterController : MonoBehaviour
 
     public float TransitionLength => transitionLength;
 
+    public float Amount => ghostFilterMaterial.GetFloat(amountID);
+
     private void Awake()
     {
         Instance = this;
@@ -44,6 +46,12 @@ public class GhostWorldFilterController : MonoBehaviour
         enabled = true;
         GameController.Instance.SetStopUpdates(true);
         StartCoroutine(ProcessFilter());
+    }
+
+    public void SetFilterFull()
+    {
+        enabled = true;
+        ghostFilterMaterial.SetFloat(amountID, 1f);
     }
 
     public void EndFilter()

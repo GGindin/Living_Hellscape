@@ -93,6 +93,11 @@ public class GhostEnemy : EnemyController
         direction = (PlayerManager.Instance.GhostInstance.transform.position - transform.position);
         currentSqrDistToPlayer = direction.sqrMagnitude;
         direction.Normalize();
+
+        if (EnemyGhostManager.Instance.PlayerInGhostFreeZone)
+        {
+            direction = -direction;
+        }
     }
 
     protected override void HitLayerReset() { }
