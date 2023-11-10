@@ -85,7 +85,7 @@ public class PlayerInventory: ISaveableObject
         return items[index];
     }
 
-    public Item GetItemByType(Type type)
+    public t GetItemByType<t>(Type type) where t : Item
     {
         for(int i = 0; i < items.Length; i++)
         {
@@ -93,7 +93,7 @@ public class PlayerInventory: ISaveableObject
             {
                 if (items[i].GetType() == type)
                 {
-                    return items[i];
+                    return items[i] as t;
                 }
             }
         }

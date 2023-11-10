@@ -16,13 +16,17 @@ public class SceneController : MonoBehaviour
 
     private void Awake()
     {
-        Instance = this;
+        Instance = this;   
+    }
+
+    private void Start()
+    {
         LoadMainMenuScene();
     }
 
-    public void LoadPlaySessionScene()
+    public void LoadPlaySessionScene(int i)
     {
-        StartCoroutine(SwapToPlaySessionScene());
+        StartCoroutine(SwapToPlaySessionScene(i));
     }
 
     public void LoadMainMenuScene()
@@ -30,21 +34,55 @@ public class SceneController : MonoBehaviour
         StartCoroutine(SwapToMainMenuScene());
     }
 
-    IEnumerator SwapToPlaySessionScene()
+    IEnumerator SwapToPlaySessionScene(int i)
     {
-        sceneControllerSceneCamera.gameObject.SetActive(true);
+        //in here we can change volumes of sounds and stuff
+        if (SceneManager.GetSceneByBuildIndex(MAIN_MENU_SCENE_ID).isLoaded)
+        {
+            VignetteController.Instance.StartVignette();
+            yield return StartCoroutine(AudioController.Instance.FadeOutSoundEffect("MainMusic", VignetteController.Instance.Duration));
+            sceneControllerSceneCamera.gameObject.SetActive(true);
+        }
+
         yield return StartCoroutine(UnLoadSceneByBuildIndex(MAIN_MENU_SCENE_ID));
+
+        yield return null;
+
         yield return StartCoroutine(LoadSceneByBuildIndex(PLAY_SEESION_SCENE_ID));
+
+        yield return null;
+
+        //here move volumes and stuff back to where they were
         sceneControllerSceneCamera.gameObject.SetActive(false);
-        GameController.Instance.StartPlaySession();
+        GameController.Instance.StartPlaySession(i);
+        GameController.Instance.SetStopUpdates(true);
+        VignetteController.Instance.EndVignette();
+        yield return StartCoroutine(AudioController.Instance.FadeInSoundEffect("MainMusic", VignetteController.Instance.Duration));
+        GameController.Instance.SetStopUpdates(false);
     }
 
     IEnumerator SwapToMainMenuScene()
     {
-        sceneControllerSceneCamera.gameObject.SetActive(true);
+        //in here we can change volumes of sounds and stuff
+        if (SceneManager.GetSceneByBuildIndex(PLAY_SEESION_SCENE_ID).isLoaded)
+        {
+            VignetteController.Instance.StartVignette();
+            yield return StartCoroutine(AudioController.Instance.FadeOutSoundEffect("MainMusic", VignetteController.Instance.Duration));
+            sceneControllerSceneCamera.gameObject.SetActive(true);
+        }
+
         yield return StartCoroutine(UnLoadSceneByBuildIndex(PLAY_SEESION_SCENE_ID));
+
+        yield return null;
+
         yield return StartCoroutine(LoadSceneByBuildIndex(MAIN_MENU_SCENE_ID));
+
+        yield return null;
+
+        //here move volumes and stuff back to where they were
         sceneControllerSceneCamera.gameObject.SetActive(false);
+        VignetteController.Instance.EndVignette();
+        yield return StartCoroutine(AudioController.Instance.FadeInSoundEffect("MainMusic", VignetteController.Instance.Duration));
     }
 
     IEnumerator LoadSceneByBuildIndex(int buildIndex)

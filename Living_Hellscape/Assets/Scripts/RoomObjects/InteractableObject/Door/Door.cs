@@ -22,7 +22,7 @@ public class Door : InteractableObject
     GameObject target;
 
     [SerializeField]
-    bool requiresKey;
+    Key.KeyType requiresKey;
 
     Animator doorAnimator;
 
@@ -76,10 +76,10 @@ public class Door : InteractableObject
     public void OperateDoor()
     {
         if (room.DefeateAllEnemies && room.HasActiveEnemies() && PlayerManager.Instance.PlayerHasControl) return;
-        if (closed && requiresKey && !isUnlocked)
+        if (closed && requiresKey != Key.KeyType.None && !isUnlocked)
         {
-            var key = PlayerManager.Instance.Inventory.GetItemByType(typeof(Key));
-            if (key)
+            var key = PlayerManager.Instance.Inventory.GetItemByType<Key>(typeof(Key));
+            if (key && key.Type == requiresKey)
             {
                 key.Activate();
                 TextBoxController.instance.OpenTextBox("You hear the lock click. You turn the knob and the door swings open!");
@@ -210,7 +210,7 @@ public class Door : InteractableObject
 
     public override void SavePerm(GameDataWriter writer)
     {
-        if (requiresKey)
+        if (requiresKey != Key.KeyType.None)
         {
             if (isUnlocked)
             {
@@ -225,7 +225,7 @@ public class Door : InteractableObject
 
     public override void LoadPerm(GameDataReader reader)
     {
-        if (requiresKey)
+        if (requiresKey != Key.KeyType.None)
         {
             int value = reader.ReadInt();
             if(value == 0)

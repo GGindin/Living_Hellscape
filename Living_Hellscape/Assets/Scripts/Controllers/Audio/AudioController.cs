@@ -13,8 +13,6 @@ public class AudioController : MonoBehaviour
     void Awake ()
     {
         Instance = this;
-     
-        DontDestroyOnLoad(gameObject);
 
         foreach (Sound sound in sounds)
         {
@@ -24,18 +22,67 @@ public class AudioController : MonoBehaviour
             sound.source.volume = sound.volume;
             sound.source.pitch = sound.pitch;
             sound.source.loop = sound.loop;
+            sound.source.playOnAwake = false;
         }
         
     }
 
-    
+
     public void PlaySoundEffect (string name)
     {
         Sound sound = Array.Find(sounds, sounds => sounds.name == name);
         if (sound != null) 
         {
             sound.source.Play();
+        }  
+    }
+
+    public void StopSoundEffect (string name)
+    {
+        Sound sound = Array.Find(sounds, sounds => sounds.name == name);
+        if (sound != null)
+        {
+            sound.source.Stop();
         }
-        
+    }
+
+    public IEnumerator FadeInSoundEffect(string name, float duration)
+    {
+        Sound sound = Array.Find(sounds, sounds => sounds.name == name);
+        if (sound != null)
+        {
+            sound.source.Play();
+            float currentDuration = 0;
+
+            while(currentDuration < duration)
+            {
+                currentDuration += Time.deltaTime;
+                float t = Mathf.InverseLerp(0, duration, currentDuration);
+                sound.source.volume = t;
+
+                yield return null;
+            }
+            sound.source.volume = 1;
+        }
+    }
+
+    public IEnumerator FadeOutSoundEffect(string name, float duration)
+    {
+        Sound sound = Array.Find(sounds, sounds => sounds.name == name);
+        if (sound != null)
+        {
+            float currentDuration = duration;
+
+            while (currentDuration > 0)
+            {
+                currentDuration -= Time.deltaTime;
+                float t = Mathf.InverseLerp(0, duration, currentDuration);
+                sound.source.volume = t;
+
+                yield return null;
+            }
+            sound.source.Stop();
+            sound.source.volume = 0;
+        }
     }
 }
