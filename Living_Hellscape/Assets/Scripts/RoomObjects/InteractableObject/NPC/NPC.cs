@@ -22,7 +22,7 @@ public class NPC : InteractableObject
     public override void Interact()
     {
         CheckForTextUpdate();
-        TextController.Instance.SetTextWithCallback(texts[currentText], () => OnFinishText());
+        TextBoxController.instance.OpenTextBoxWithCallBack(texts[currentText], () => OnFinishText());
     }
 
     public virtual void CheckForTextUpdate()

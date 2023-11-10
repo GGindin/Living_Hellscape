@@ -25,6 +25,9 @@ public class TextBoxController : MonoBehaviour
     private float buttonCooldownTimer = 0;
     private UserInput userInput;
 
+    private System.Action callBack;
+    private bool setTextImmediate;
+
     private void Awake()
     {
         instance = this;
@@ -41,6 +44,35 @@ public class TextBoxController : MonoBehaviour
             waitingForInput = false;
             isFinished = false;
             itr = 0;
+        }
+    }
+
+    public void OpenTextBoxImmediate(string newText)
+    {
+        if (!gameObject.activeSelf)
+        {
+            gameObject.SetActive(true);
+            text = newText;
+            atEnd = false;
+            waitingForInput = false;
+            isFinished = false;
+            setTextImmediate = true;
+            SetTextImmediate();
+            itr = 0;
+        }
+    }
+
+    public void OpenTextBoxWithCallBack(string newText, System.Action callBack)
+    {
+        if (!gameObject.activeSelf)
+        {
+            gameObject.SetActive(true);
+            text = newText;
+            atEnd = false;
+            waitingForInput = false;
+            isFinished = false;
+            itr = 0;
+            this.callBack = callBack;
         }
     }
 
@@ -73,6 +105,11 @@ public class TextBoxController : MonoBehaviour
             GameController.Instance.SetStopUpdates(true);
             if (isFinished == true)
             {
+                if(callBack != null)
+                {
+                    callBack();
+                    callBack = null;
+                }
                 CloseTextBox();
             }
             UpdateTextbox();
@@ -145,4 +182,20 @@ public class TextBoxController : MonoBehaviour
         buttonCooldownTimer -= Time.deltaTime;
     }
         
+
+    void SetTextImmediate()
+    {
+        for (; buffer.Length < maxChars; itr++)
+        {
+            if (itr > (text.Length - 1))
+                break;
+            buffer += text[itr];
+        }
+        while (itr <= (text.Length - 1) && text[itr] != ' ')
+        {
+            buffer += text[itr];
+            itr++;
+        }
+        buttonCooldownTimer = buttonCooldown;
+    }
 }

@@ -14,6 +14,9 @@ public class Room : MonoBehaviour, ISaveableObject
     bool defeatAllEnemies;
 
     [SerializeField]
+    bool dontUpdateLastRoomOnEnter;
+
+    [SerializeField]
     CinemachineVirtualCamera virtualCamera;
 
     [SerializeField]
@@ -57,6 +60,8 @@ public class Room : MonoBehaviour, ISaveableObject
     public bool DefeateAllEnemies => defeatAllEnemies;
 
     public Transform DynamicObjectsHolder => dynamicObjectsHolder;
+
+    public bool DontUpdateLastRoomOnEnter => dontUpdateLastRoomOnEnter;
 
     private void Awake()
     {

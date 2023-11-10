@@ -30,6 +30,7 @@ public class InventoryPanelController : MonoBehaviour
 
     public void CloseInventory()
     {
+        TextBoxController.instance.CloseTextBox();
         gameObject.SetActive(false);
     }
 
@@ -64,17 +65,32 @@ public class InventoryPanelController : MonoBehaviour
     {
         UserInput userInput = InputController.GetUserInput();
 
-        if(userInput.mainAction == ButtonState.Down)
+        int index = EventSystem.current.currentSelectedGameObject.transform.GetSiblingIndex();
+        var item = PlayerManager.Instance.Inventory.GetItemAtIndex(index);
+
+        if (item != null && !TextBoxController.instance.gameObject.activeInHierarchy)
         {
-            int index = EventSystem.current.currentSelectedGameObject.transform.GetSiblingIndex();
-            var item = PlayerManager.Instance.Inventory.GetItemAtIndex(index);
-            PlayerManager.Instance.Inventory.HandleMainActionItemSwap(item);
+            string itemText = item.Description + " Count: " + item.Count;
+            TextBoxController.instance.OpenTextBoxImmediate(itemText);
+        }
+        else if (item == null)
+        {
+            TextBoxController.instance.CloseTextBox();
+        }
+
+        if (userInput.mainAction == ButtonState.Down)
+        {
+            if (item)
+            {
+                PlayerManager.Instance.Inventory.HandleMainActionItemSwap(item);
+            }
         }
         else if(userInput.secondaryAction == ButtonState.Down)
         {
-            int index = EventSystem.current.currentSelectedGameObject.transform.GetSiblingIndex();
-            var item = PlayerManager.Instance.Inventory.GetItemAtIndex(index);
-            PlayerManager.Instance.Inventory.HandleSecondActionItemSwap(item);
+            if (item)
+            {
+                PlayerManager.Instance.Inventory.HandleSecondActionItemSwap(item);
+            }
         }     
     }
 }
