@@ -32,7 +32,7 @@ public class RoomController : MonoBehaviour
     {
         activeRoom = room;
 
-        if(room != null)
+        if(room != null && !room.DontUpdateLastRoomOnEnter)
         {
             currentRoomOverrideIndex = activeRoom.ID;
             GameStateController.Instance.CurrentRoomIndex = activeRoom.ID;

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8879256553414660336}
   - component: {fileID: 7615384298161447279}
   - component: {fileID: 9153751679871683101}
-  m_Layer: 16
+  m_Layer: 15
   m_Name: NPC
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 5430343395255711395, guid: 742b6461f686c4a4e9a249f93e60fb65, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -122,7 +122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9b32452282d1964bbd2de3085208070, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ghostObject: 1
+  ghostObject: 0
   texts:
   - I am an NPC
   boxCollider2D: {fileID: 7615384298161447279}
