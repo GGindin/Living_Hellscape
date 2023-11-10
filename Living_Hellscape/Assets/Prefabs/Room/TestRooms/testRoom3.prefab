@@ -334,10 +334,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 3
+  descriptiveName: 
   defeatAllEnemies: 0
   virtualCamera: {fileID: 8634014007486991891}
   prefabConnections:
-  - otherRoomPrefab: {fileID: 3236509206251617832}
+  - otherRoomID: 0
+    pseudoRoomPrefab: {fileID: 3236509206251617832}
     thisRoomDoor: {fileID: 3849935748432901091}
   playerSpawnPlacement:
     placement: {fileID: 237493907801571835}
@@ -348,6 +350,8 @@ MonoBehaviour:
   - placement: {fileID: 8140191174234936888}
     prefab: {fileID: 3336856289341328095, guid: e400d7599eb997f42afd0c8b74cb9dba, type: 3}
   dynamicObjectsHolder: {fileID: 4951659827198589205}
+  interiorTileMap: {fileID: 0}
+  exteriorTileMap: {fileID: 0}
 --- !u!1 &8634014007902592235
 GameObject:
   m_ObjectHideFlags: 0
@@ -2873,7 +2877,11 @@ PrefabInstance:
     - target: {fileID: 6473153734287028323, guid: 7beec81be2ee4fc48a2c2ce440d6853a, type: 3}
       propertyPath: pseudoRoomConnection.roomPrefab
       value: 
-      objectReference: {fileID: 7107454082892554229, guid: 276ad7d58cc17a043ae75886198e59ce, type: 3}
+      objectReference: {fileID: 7107454082892554229, guid: b70ea06cbccfa334abab97beaf45b10a, type: 3}
+    - target: {fileID: 6473153734287028323, guid: 7beec81be2ee4fc48a2c2ce440d6853a, type: 3}
+      propertyPath: prefabConnections.Array.data[0].otherRoomID
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6473153734287028323, guid: 7beec81be2ee4fc48a2c2ce440d6853a, type: 3}
       propertyPath: prefabConnections.Array.data[0].thisRoomDoor
       value: 

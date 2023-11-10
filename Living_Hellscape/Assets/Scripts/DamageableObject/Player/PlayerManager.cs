@@ -117,11 +117,13 @@ public class PlayerManager : MonoBehaviour, ISaveableObject
         }
     }
 
+    /*
     public void ParentControllersToActiveRoom()
     {
         bodyInstance.transform.SetParent(RoomController.Instance.ActiveRoom.transform, true);
         ghostInstance.transform.SetParent(RoomController.Instance.ActiveRoom.transform, true);
     }
+    */
 
     public void ParentControllersToManager()
     {

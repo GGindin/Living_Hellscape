@@ -121,6 +121,12 @@ public abstract class PlayerController : DamageableObject, ISaveableObject
         inventory.EndAddItem(item);
     }
 
+    public void SetPosition(Vector3 position)
+    {
+        rb.position = position;
+        transform.position = position;
+    }
+
     public void SetTarget(Vector3 target)
     {
         StartCoroutine(TransitionRoom(target));

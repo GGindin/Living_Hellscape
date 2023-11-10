@@ -7,6 +7,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4119226432485481549, guid: b62abccfac220f3449e019a7b819143b, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4119226433824175002, guid: b62abccfac220f3449e019a7b819143b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4119226434034810285, guid: b62abccfac220f3449e019a7b819143b, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 7037848087318869852, guid: b62abccfac220f3449e019a7b819143b, type: 3}
       propertyPath: m_Name
       value: room15

@@ -715,5 +715,29 @@ PrefabInstance:
       propertyPath: m_ColliderPaths.Array.data[0].m_ColliderPaths.Array.data[1].Array.data[7].Y
       value: -90000100
       objectReference: {fileID: 0}
+    - target: {fileID: 1129183829011924372, guid: cc7e6815b2ec0f242bb2f5c0d2e2fe04, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1129183829820467779, guid: cc7e6815b2ec0f242bb2f5c0d2e2fe04, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1129183829876434036, guid: cc7e6815b2ec0f242bb2f5c0d2e2fe04, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8940159916126439054, guid: cc7e6815b2ec0f242bb2f5c0d2e2fe04, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8940159916271798457, guid: cc7e6815b2ec0f242bb2f5c0d2e2fe04, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8940159917456124249, guid: cc7e6815b2ec0f242bb2f5c0d2e2fe04, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc7e6815b2ec0f242bb2f5c0d2e2fe04, type: 3}
