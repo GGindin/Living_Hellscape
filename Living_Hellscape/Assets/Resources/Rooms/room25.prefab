@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 635336202080834169, guid: 3f752c61f7610224c9a3b9038dc0ad18, type: 3}
       propertyPath: m_Name
-      value: Library1
+      value: room25
       objectReference: {fileID: 0}
     - target: {fileID: 635336202080834170, guid: 3f752c61f7610224c9a3b9038dc0ad18, type: 3}
       propertyPath: m_RootOrder
@@ -54,6 +54,30 @@ PrefabInstance:
     - target: {fileID: 635336202080834170, guid: 3f752c61f7610224c9a3b9038dc0ad18, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3131309472973543994, guid: 3f752c61f7610224c9a3b9038dc0ad18, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3131309473783100909, guid: 3f752c61f7610224c9a3b9038dc0ad18, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3131309473971190746, guid: 3f752c61f7610224c9a3b9038dc0ad18, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3856826264795380380, guid: 3f752c61f7610224c9a3b9038dc0ad18, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3856826265020429483, guid: 3f752c61f7610224c9a3b9038dc0ad18, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3856826265814113148, guid: 3f752c61f7610224c9a3b9038dc0ad18, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3f752c61f7610224c9a3b9038dc0ad18, type: 3}

@@ -255,7 +255,9 @@ public class Room : MonoBehaviour, ISaveableObject
                     roomTransitionData.toRoom = this;
                     roomTransitionData.fromDoor = pseudo.PseudoDoor;
                     roomTransitionData.fromRoom = pseudo;
+                    GameController.Instance.PlayerController.SetPosition(pseudo.transform.position);
                     GameController.Instance.TransitionToRoom(roomTransitionData);
+                    return;
                 }
             }
         }
@@ -288,19 +290,22 @@ public class Room : MonoBehaviour, ISaveableObject
         return null;
     }
 
-    Door GetOtherRoomDoor(RoomConnection other)
+    Door GetOtherRoomDoor(RoomConnection roomConnection)
     {
-        for(int i = 0; i < other.otherRoom.connections.Length; i++)
-        {
-            if (other.otherRoom.connections[i] == null) continue;
+        var otherRoom = roomConnection.otherRoom;
 
-            if (other.otherRoom.connections[i].otherRoom == this)
+        for(int i = 0; i < otherRoom.connections.Length; i++)
+        {
+            if (otherRoom.connections[i] == null) continue;
+
+            if (otherRoom.connections[i].otherRoom == this)
             {
                 for(int j = 0; j < connections.Length; j++)
                 {
-                    if (connections[j].thisRoomDoor.InRoomID == other.otherRoom.connections[i].thisRoomDoor.InRoomID)
+                    if (connections[j].thisRoomDoor.InRoomID == otherRoom.connections[i].thisRoomDoor.InRoomID && 
+                        roomConnection.thisRoomDoor.InRoomID == otherRoom.connections[i].thisRoomDoor.InRoomID)
                     {
-                        return other.otherRoom.connections[i].thisRoomDoor;
+                        return otherRoom.connections[i].thisRoomDoor;
                     }
                 }             
             }

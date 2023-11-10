@@ -134,7 +134,7 @@ public class GameController : MonoBehaviour
             roomTransitionData = new RoomTransitionData();
 
             PlayerManager.Instance.SetPlayerControl(false);
-            PlayerManager.Instance.ParentControllersToManager();
+            //PlayerManager.Instance.ParentControllersToManager();
 
             //doesn't actually need a door because it is a pseudo room
             //this just starts another transition to the next floor
@@ -143,7 +143,7 @@ public class GameController : MonoBehaviour
         else
         {        
             //set player to be child of active room
-            PlayerManager.Instance.ParentControllersToActiveRoom();
+            //PlayerManager.Instance.ParentControllersToActiveRoom();
 
             //recenter world, sometimes gets wierd Virtual Cam glitches, and isn't needed
             //if we do this it might be better to do it before the transition and signal to CM then when only one camera is acting
@@ -189,7 +189,8 @@ public class GameController : MonoBehaviour
     {
         var placement = RoomController.Instance.ActiveRoom.PlayerSpawnPlacement;
         PlayerController.transform.position = placement.Position;
-        PlayerManager.Instance.ParentControllersToActiveRoom();
+        //PlayerManager.Instance.ParentControllersToActiveRoom();
+        PlayerManager.Instance.ParentControllersToManager();
 
         RoomController.Instance.ActiveRoom.OnStartEnterRoom();
         RoomController.Instance.ActiveRoom.OnEnterRoom();
