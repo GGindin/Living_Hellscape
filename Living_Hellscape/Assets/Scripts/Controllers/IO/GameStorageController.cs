@@ -22,6 +22,8 @@ public class GameStorageController : MonoBehaviour
     string tempDataPath;
     string savePath;
 
+    public int saveFileInt {  get; private set; }
+
     GameDataWriter gameDataWriter = new GameDataWriter();
     GameDataReader gameDataReader = new GameDataReader();
 
@@ -178,12 +180,16 @@ public class GameStorageController : MonoBehaviour
         switch (saveFile)
         {
             case 0:
+                saveFileInt = 0;
                 return SAVE_1;
             case 1:
+                saveFileInt = 1;
                 return SAVE_2;
             case 2:
+                saveFileInt = 2;
                 return SAVE_3;
             default:
+                saveFileInt = 0;
                 return SAVE_1;
         }
     }

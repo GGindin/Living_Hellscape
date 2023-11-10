@@ -24,9 +24,19 @@ public abstract class DamageableObject : MonoBehaviour
 
     public void AddStatusEffect(StatusEffect statusEffect, Vector2 normDirection)
     {
-        if(statusEffect.EffectType == StatusEffectType.Damage)
+        switch (statusEffect.EffectType)
         {
-            ParticleSystemController.Instance.AddHit(transform.position);
+            case StatusEffectType.Damage:
+                ParticleSystemController.Instance.AddHit(transform.position);
+                break;
+            case StatusEffectType.Stun:
+                ParticleSystemController.Instance.AddHit(transform.position);
+                AudioController.Instance.PlaySoundEffect("box");
+                break;
+            case StatusEffectType.Scare:
+                ParticleSystemController.Instance.AddHit(transform.position);
+                AudioController.Instance.PlaySoundEffect("box");
+                break;
         }
 
         var activeEffect = GetStatusOfType(statusEffect.EffectType);

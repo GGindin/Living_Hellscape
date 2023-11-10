@@ -183,19 +183,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
-  - name: 
+  - name: box
     clip: {fileID: 8300000, guid: 8884339fc8d9a944a86671b57f5ff921, type: 3}
     volume: 1
     pitch: 1
     loop: 0
     source: {fileID: 0}
-  - name: 
+  - name: death
     clip: {fileID: 8300000, guid: b1a0be2e5b9a42d48836ce115e088322, type: 3}
     volume: 1
     pitch: 1
     loop: 0
     source: {fileID: 0}
-  - name: 
+  - name: playerhurt
     clip: {fileID: 8300000, guid: 75210a3b68872d54fae33783959e52e8, type: 3}
     volume: 1
     pitch: 1

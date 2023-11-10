@@ -34,6 +34,38 @@ public class SceneController : MonoBehaviour
         StartCoroutine(SwapToMainMenuScene());
     }
 
+    public void ReloadPlayerSessionScene()
+    {
+        StartCoroutine(SwapBackToPlaySessionScene(GameStorageController.Instance.saveFileInt));
+    }
+
+    IEnumerator SwapBackToPlaySessionScene(int i)
+    {
+        //in here we can change volumes of sounds and stuff
+        if (SceneManager.GetSceneByBuildIndex(PLAY_SEESION_SCENE_ID).isLoaded)
+        {
+            VignetteController.Instance.StartVignette();
+            yield return StartCoroutine(AudioController.Instance.FadeOutSoundEffect("MainMusic", VignetteController.Instance.Duration));
+            sceneControllerSceneCamera.gameObject.SetActive(true);
+        }
+
+        yield return StartCoroutine(UnLoadSceneByBuildIndex(PLAY_SEESION_SCENE_ID));
+
+        yield return null;
+
+        yield return StartCoroutine(LoadSceneByBuildIndex(PLAY_SEESION_SCENE_ID));
+
+        yield return null;
+
+        //here move volumes and stuff back to where they were
+        sceneControllerSceneCamera.gameObject.SetActive(false);
+        GameController.Instance.StartPlaySession(i);
+        GameController.Instance.SetStopUpdates(true);
+        VignetteController.Instance.EndVignette();
+        yield return StartCoroutine(AudioController.Instance.FadeInSoundEffect("MainMusic", VignetteController.Instance.Duration));
+        GameController.Instance.SetStopUpdates(false);
+    }
+
     IEnumerator SwapToPlaySessionScene(int i)
     {
         //in here we can change volumes of sounds and stuff

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -67,6 +68,35 @@ public class GameController : MonoBehaviour
             SceneController.Instance.LoadMainMenuScene();
         }
 
+    }
+
+    public void ReloadPlaySession()
+    {
+        SaveGame();
+        //tell all controllers to save data
+        //then init scene change through scene controller to go to main menu
+        //for now we just quit or swap scenes
+        SetPause(false);
+        stopUpdates = true;
+
+        if (!SceneController.Instance)
+        {
+#if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+#else
+                Application.Quit();
+#endif
+        }
+        else
+        {
+            SceneController.Instance.ReloadPlayerSessionScene();
+        }
+
+    }
+
+    public void SetupGameOver()
+    {
+        GameOverMenuController.Instance.OpenGameOverMenu();
     }
 
     public void SetPause(bool isPaused)
@@ -202,4 +232,6 @@ public class GameController : MonoBehaviour
 
         PlayerManager.Instance.SetPlayerControl(true);
     }
+
+
 }
