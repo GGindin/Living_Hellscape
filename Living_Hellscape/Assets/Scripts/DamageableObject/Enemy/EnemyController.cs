@@ -57,6 +57,14 @@ public abstract class EnemyController : DamageableObject, ISaveableObject
     protected override void ChangeHealth(int delta)
     {
         health += delta;
+        if (delta < 0f)
+        {
+            AudioController.Instance.PlaySoundEffect("box");
+        }
+        if (health <= 0f)
+        {
+            AudioController.Instance.PlaySoundEffect("death");
+        }
     }
 
     protected void Move()

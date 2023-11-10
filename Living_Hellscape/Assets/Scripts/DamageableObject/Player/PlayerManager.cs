@@ -9,6 +9,8 @@ public class PlayerManager : MonoBehaviour, ISaveableObject
     [SerializeField]
     PlayerController bodyControllerPrefab, ghostControllerPrefab;
 
+    bool isSetup;
+
     PlayerController active;
 
     PlayerController bodyInstance;
@@ -53,14 +55,19 @@ public class PlayerManager : MonoBehaviour, ISaveableObject
     {
         if (GameController.Instance.StopUpdates) return;
         if (!playerHasControl) return;
-        if (bodyInstance)
+        if(isSetup && !IsPlayerDead())
         {
-            bodyInstance.ControllerFixedUpdate();
+            if (bodyInstance)
+            {
+                bodyInstance.ControllerFixedUpdate();
+            }
+            if (ghostInstance)
+            {
+                ghostInstance.ControllerFixedUpdate();
+            }
         }
-        if (ghostInstance)
-        {
-            ghostInstance.ControllerFixedUpdate();
-        }
+       
+
     }
 
     public void Initialize()
@@ -68,6 +75,7 @@ public class PlayerManager : MonoBehaviour, ISaveableObject
         InstantiateControllers();
         SetActiveController(BodyInstance);
         LoadPlayerData();
+        isSetup = true;
     }
 
     public void SavePlayerData()
@@ -172,6 +180,17 @@ public class PlayerManager : MonoBehaviour, ISaveableObject
         {
             RoomController.Instance.ActiveRoom.SetupVirtualCamera();
         }
+    }
+
+    bool IsPlayerDead()
+    {
+        if((bodyInstance == null || ghostInstance == null) && !GameOverMenuController.Instance.gameObject.activeInHierarchy)
+        {
+            GameController.Instance.SetupGameOver();
+            return true;
+        }
+
+        return false;
     }
 
     public string GetFileName()

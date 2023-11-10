@@ -33,7 +33,7 @@ public class VignetteController : MonoBehaviour
     {
         Vector3 targetPos;
 
-        if (!PlayerManager.Instance)
+        if (!PlayerManager.Instance || !PlayerManager.Instance.Active)
         {
             targetPos = cam.WorldToViewportPoint(cam.transform.position + cam.transform.forward);
         }
