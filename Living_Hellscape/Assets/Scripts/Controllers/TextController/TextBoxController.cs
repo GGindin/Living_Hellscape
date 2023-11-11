@@ -26,6 +26,7 @@ public class TextBoxController : MonoBehaviour
     private UserInput userInput;
 
     private System.Action callBack;
+    private bool setImmediate;
 
     private void Awake()
     {
@@ -51,12 +52,14 @@ public class TextBoxController : MonoBehaviour
         if (!gameObject.activeSelf)
         {
             gameObject.SetActive(true);
-            text = newText;
-            atEnd = false;
-            waitingForInput = false;
-            isFinished = false;
-            SetTextImmediate();
-            itr = 0;
+            currentText.text = newText;
+            setImmediate = true;
+            //text = newText;
+            //atEnd = false;
+            //waitingForInput = false;
+            //isFinished = false;
+            //SetTextImmediate();
+            //itr = 0;
         }
     }
 
@@ -80,6 +83,7 @@ public class TextBoxController : MonoBehaviour
         gameObject.SetActive(false);
         currentText.text = "";
         buffer = "";
+        setImmediate = false;
     }
 
     private void UpdateTextbox()
@@ -99,8 +103,13 @@ public class TextBoxController : MonoBehaviour
     private void Update()
     {
         userInput = InputController.GetUserInput();
+        
         if (gameObject.activeSelf) {
             GameController.Instance.SetStopUpdates(true);
+            if (setImmediate)
+            {
+                return;
+            }
             if (isFinished == true)
             {
                 if(callBack != null)

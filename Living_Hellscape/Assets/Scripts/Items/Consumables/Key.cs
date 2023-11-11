@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Key : Consumable
+public class Key : Consumable
 {
     [System.Serializable]
     public enum KeyType
@@ -12,7 +12,7 @@ public abstract class Key : Consumable
         Boss
     }
 
-    public abstract KeyType Type { get; }
+    public KeyType keyType;
 }
 
 
