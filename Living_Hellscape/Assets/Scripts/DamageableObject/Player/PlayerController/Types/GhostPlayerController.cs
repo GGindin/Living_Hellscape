@@ -93,13 +93,17 @@ public class GhostPlayerController : PlayerController
         var interactableObject = collision.gameObject.GetComponent<InteractableObject>();
         if (interactableObject)
         {
+            NotificationBoxController.instance.OpenNotificationBox("Press K to interact");
+
             if (this.interactableObject == null)
             {
+                NotificationBoxController.instance.CloseNotificationBox();
                 this.interactableObject = interactableObject;
             }
 
             if (!PlayerManager.Instance.PlayerHasControl)
             {
+                NotificationBoxController.instance.CloseNotificationBox();
                 this.interactableObject.Interact();
             }
 
@@ -121,6 +125,11 @@ public class GhostPlayerController : PlayerController
             var damage = enemy.Damage;
             AddStatusEffect(damage, damageDir.normalized);
         }
+    }
+
+    private void OnCollisionExit2D()
+    {
+        NotificationBoxController.instance.CloseNotificationBox();
     }
 
     private void OnCollisionStay2D(Collision2D collision)
