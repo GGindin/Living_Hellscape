@@ -29,11 +29,15 @@ public class BodyPlayerController : PlayerController
         {
             if(this.interactableObject == null)
             {
+                NotificationBoxController.instance.CloseNotificationBox();
                 this.interactableObject = interactableObject;
-            }         
+            }
+
+            NotificationBoxController.instance.OpenNotificationBox("Press K to interact");
 
             if (!PlayerManager.Instance.PlayerHasControl)
             {
+                NotificationBoxController.instance.CloseNotificationBox();
                 this.interactableObject.Interact();
             }
 
@@ -55,6 +59,11 @@ public class BodyPlayerController : PlayerController
             var damage = enemy.Damage;
             AddStatusEffect(damage, damageDir.normalized);
         }
+    }
+
+    private void OnCollisionExit2D()
+    {
+        NotificationBoxController.instance.CloseNotificationBox();
     }
 
     private void OnCollisionStay2D(Collision2D collision)
