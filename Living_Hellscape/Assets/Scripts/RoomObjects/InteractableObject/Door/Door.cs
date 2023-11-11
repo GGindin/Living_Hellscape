@@ -79,8 +79,6 @@ public class Door : InteractableObject
         if (closed && requiresKey != Key.KeyType.None && !isUnlocked)
         {
             var key = PlayerManager.Instance.Inventory.GetItemByType<Key>(typeof(Key));
-            Debug.Log("Required Type: " + requiresKey);
-            //Debug.Log("Have Type: " + key.Type);
             if (key && key.keyType == requiresKey)
             {
                 key.Activate();
