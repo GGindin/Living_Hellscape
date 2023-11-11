@@ -43,7 +43,7 @@ public abstract class PlayerController : DamageableObject, ISaveableObject
     {
         base.Awake();
         rb = GetComponent<Rigidbody2D>();
-        boxCollider = GetComponent<BoxCollider2D>();
+        boxCollider = GetComponentInChildren<BoxCollider2D>();
         //playerStats.Setup();
         //inventory.InstantiateInventory();
     }
@@ -110,9 +110,12 @@ public abstract class PlayerController : DamageableObject, ISaveableObject
         item.transform.rotation = Quaternion.identity;
 
         item.StartPresent();
+
+        lastDirection = Vector2.down;
         
         while(true)
         {
+            SetAnimatorDirection(Vector2.down);
             if (!TextBoxController.instance.gameObject.activeInHierarchy) break;
             yield return null;
         }
@@ -239,6 +242,8 @@ public abstract class PlayerController : DamageableObject, ISaveableObject
 
         Velocity = velocity / Time.fixedDeltaTime;
 
+        animator.SetFloat(speedAnimID, Velocity.magnitude);
+
         rb.MovePosition(rb.position + velocity);
     }
 
@@ -256,6 +261,8 @@ public abstract class PlayerController : DamageableObject, ISaveableObject
             lastDirection.y = 1f * Mathf.Sign(movement.y);
             lastDirection.x = 0f;
         }
+
+        SetAnimatorDirection(lastDirection);
     }
 
     void RotateEquip()
@@ -281,10 +288,19 @@ public abstract class PlayerController : DamageableObject, ISaveableObject
         }
     }
 
+    void SetAnimatorDirection(Vector3 direction)
+    {
+        animator.SetFloat(xDirAnimID, direction.x);
+        animator.SetFloat(yDirAnimID, direction.y);
+    }
+
     IEnumerator TransitionRoom(Vector3 target)
     {
         PlayerManager.Instance.SetPlayerControl(false);
         Vector3 startPos = rb.position;
+
+        Vector3 dir = target - startPos;
+        SetAnimatorDirection(dir.normalized);
 
         float duration = 2f;
         float currentTime = 0f;
@@ -293,7 +309,13 @@ public abstract class PlayerController : DamageableObject, ISaveableObject
         {
             currentTime += Time.deltaTime;
             float t = Mathf.InverseLerp(0f, duration, currentTime);
-            rb.MovePosition(Vector3.Lerp(startPos, target, t));
+
+            Vector3 nextPos = Vector3.Lerp(startPos, target, t);
+
+            float velocity = (nextPos - new Vector3(rb.position.x, rb.position.y)).magnitude;
+            animator.SetFloat(speedAnimID, velocity);
+
+            rb.MovePosition(nextPos);
             yield return null;
         }
 

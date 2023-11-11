@@ -8,6 +8,9 @@ public abstract class DamageableObject : MonoBehaviour
     protected Animator animator;
 
     protected int hitID = Animator.StringToHash("hit");
+    protected int speedAnimID = Animator.StringToHash("speed");
+    protected int xDirAnimID = Animator.StringToHash("xDir");
+    protected int yDirAnimID = Animator.StringToHash("yDir");
 
     protected List<StatusEffect> statusEffects = new List<StatusEffect>();
 

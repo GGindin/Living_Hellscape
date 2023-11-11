@@ -13,7 +13,7 @@ public class GhostPlayerController : PlayerController
     override protected void Awake()
     {
         base.Awake();
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         spriteRenderer.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
     }
 
@@ -158,7 +158,7 @@ public class GhostPlayerController : PlayerController
 
         if (hasLeftPlayer)
         {
-            var bodyController = collision.gameObject.GetComponent<BodyPlayerController>();
+            var bodyController = collision.attachedRigidbody.GetComponent<BodyPlayerController>();
             if (bodyController)
             {
                 GameController.Instance.SwitchWorlds();
@@ -179,7 +179,7 @@ public class GhostPlayerController : PlayerController
             EnemyGhostManager.Instance.PlayerInGhostFreeZone = false;
         }
 
-        var bodyController = collision.gameObject.GetComponent<BodyPlayerController>();
+        var bodyController = collision.attachedRigidbody.GetComponent<BodyPlayerController>();
         if (bodyController)
         {
             hasLeftPlayer = true;
