@@ -54,6 +54,13 @@ public class GhostWorldFilterController : MonoBehaviour
         ghostFilterMaterial.SetFloat(amountID, 1f);
     }
 
+    public void SetFilterNone()
+    {
+        enabled = false;
+        setEnabledToFalse = false;
+        ghostFilterMaterial.SetFloat(amountID, 0f);
+    }
+
     public void EndFilter()
     {
         GameController.Instance.SetStopUpdates(true);

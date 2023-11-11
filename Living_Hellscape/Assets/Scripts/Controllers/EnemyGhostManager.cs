@@ -127,6 +127,18 @@ public class EnemyGhostManager : MonoBehaviour
         }
     }
 
+    public void DestroyAllGhosts()
+    {
+        for(int i = 0; i < ghosts.Count; i++)
+        {
+            var g = ghosts[i];
+            g.StopAllCoroutines();
+            Destroy(g.gameObject);
+        }
+
+        ghosts.Clear();
+    }
+
     private void CheckForDestroy()
     {
         for(int i = ghosts.Count - 1; i >= 0; i--)

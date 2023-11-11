@@ -26,7 +26,6 @@ public class TextBoxController : MonoBehaviour
     private UserInput userInput;
 
     private System.Action callBack;
-    private bool setTextImmediate;
 
     private void Awake()
     {
@@ -56,7 +55,6 @@ public class TextBoxController : MonoBehaviour
             atEnd = false;
             waitingForInput = false;
             isFinished = false;
-            setTextImmediate = true;
             SetTextImmediate();
             itr = 0;
         }

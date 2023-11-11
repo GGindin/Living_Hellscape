@@ -216,8 +216,17 @@ public class GameController : MonoBehaviour
     public void GoToGhostNow()
     {
         PlayerManager.Instance.FadeInPlayerGhostImmediate();
+        EnemyGhostManager.Instance.DestroyAllGhosts();
         RoomController.Instance.FadeInImmediate();
         GhostWorldFilterController.Instance.SetFilterFull();
+    }
+
+    public void GoToBodyNow()
+    {
+        PlayerManager.Instance.FadeOutPlayerGhostImmediate();
+        EnemyGhostManager.Instance.DestroyAllGhosts();
+        RoomController.Instance.FadeOutImmediate();
+        GhostWorldFilterController.Instance.SetFilterNone();
     }
 
     void SaveGame()
@@ -242,6 +251,10 @@ public class GameController : MonoBehaviour
         if(!GameStateController.Instance.HasGottenIntro && GameStateController.Instance.CurrentRoomIndex == 0)
         {
             ScriptingController.Instance.RunIntro();
+        }
+        else
+        {
+            GoToBodyNow();
         }
     }
 

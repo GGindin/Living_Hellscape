@@ -44,6 +44,11 @@ public class GhostPlayerController : PlayerController
         spriteRenderer.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
     }
 
+    public void FadeOutImmediate()
+    {
+        spriteRenderer.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
+    }
+
     public IEnumerator ProcessFadeIn()
     {
         float duration = GhostWorldFilterController.Instance.TransitionLength;

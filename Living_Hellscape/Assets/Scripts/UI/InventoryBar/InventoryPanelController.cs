@@ -68,6 +68,14 @@ public class InventoryPanelController : MonoBehaviour
         int index = EventSystem.current.currentSelectedGameObject.transform.GetSiblingIndex();
         var item = PlayerManager.Instance.Inventory.GetItemAtIndex(index);
 
+        if(userInput.inventory == ButtonState.Down)
+        {
+            GameController.Instance.SetPause(false);
+            TextBoxController.instance.CloseTextBox();
+            CloseInventory();
+            return;
+        }
+
         if (item != null && !TextBoxController.instance.gameObject.activeInHierarchy)
         {
             string itemText = item.Description + " Count: " + item.Count;
