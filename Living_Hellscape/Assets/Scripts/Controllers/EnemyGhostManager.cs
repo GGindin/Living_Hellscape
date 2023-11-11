@@ -25,6 +25,8 @@ public class EnemyGhostManager : MonoBehaviour
 
     public float SqrSpawnDist => spawnDistance * spawnDistance;
 
+    public bool PlayerInGhostFreeZone { get; set; }
+
     private void Awake()
     {
         Instance = this;
@@ -70,7 +72,7 @@ public class EnemyGhostManager : MonoBehaviour
     {
         if (GameController.Instance.StopUpdates) return;
         if (PlayerManager.Instance.Active == null) return;
-        if (playerInGhostMode)
+        if (playerInGhostMode && !PlayerInGhostFreeZone)
         {
             CheckForSpawn();
         }
@@ -125,11 +127,24 @@ public class EnemyGhostManager : MonoBehaviour
         }
     }
 
+    public void DestroyAllGhosts()
+    {
+        for(int i = 0; i < ghosts.Count; i++)
+        {
+            var g = ghosts[i];
+            g.StopAllCoroutines();
+            Destroy(g.gameObject);
+        }
+
+        ghosts.Clear();
+    }
+
     private void CheckForDestroy()
     {
         for(int i = ghosts.Count - 1; i >= 0; i--)
         {
             var ghost = ghosts[i];
+
             ghost.UpdateDistanceWhenPlayerInBody();
             if(ghost.CurrentSqrDistToPlayer > SqrSpawnDist)
             {

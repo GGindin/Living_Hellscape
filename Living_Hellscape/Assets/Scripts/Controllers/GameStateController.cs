@@ -11,6 +11,8 @@ public class GameStateController : MonoBehaviour, ISaveableObject
 
     //put other flags to keep track of here, like beat this boss, finished this quest
 
+    bool hasGottenIntro;
+
     bool hasSlingShot;
 
     public bool HasSlingShot
@@ -37,6 +39,8 @@ public class GameStateController : MonoBehaviour, ISaveableObject
             SaveGameState();
         }
     }
+
+    public bool HasGottenIntro { get; set; }
 
     private void Awake()
     {
@@ -65,6 +69,8 @@ public class GameStateController : MonoBehaviour, ISaveableObject
         var roomIndex = reader.ReadInt();
         currentRoomID = roomIndex;
         var val = reader.ReadInt();
+        HasGottenIntro = val == 1 ? true : false;
+        val = reader.ReadInt();
         hasSlingShot = val == 1 ? true : false;
     }
 
@@ -76,6 +82,16 @@ public class GameStateController : MonoBehaviour, ISaveableObject
     public void SavePerm(GameDataWriter writer)
     {
         writer.WriteInt(currentRoomID);
+
+        if (HasGottenIntro)
+        {
+            writer.WriteInt(1);
+        }
+        else
+        {
+            writer.WriteInt(0);
+        }
+
         if (hasSlingShot)
         {
             writer.WriteInt(1);

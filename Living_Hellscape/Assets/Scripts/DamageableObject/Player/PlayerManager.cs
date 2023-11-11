@@ -146,6 +146,27 @@ public class PlayerManager : MonoBehaviour, ISaveableObject
         StartCoroutine(ghost.ProcessFadeIn());
     }
 
+    public void FadeInPlayerGhostImmediate()
+    {
+        if (active != ghostInstance)
+        {
+            SwapActiveController();
+        }
+
+        var ghost = (GhostPlayerController)ghostInstance;
+        ghost.FadeInImmediate();
+    }
+
+    public void FadeOutPlayerGhostImmediate()
+    {
+        if (active != bodyInstance)
+        {
+            SwapActiveController();
+        }
+        var ghost = (GhostPlayerController)ghostInstance;
+        ghost.FadeOutImmediate();
+    }
+
     public void FadeOutPlayerGhost()
     {
         SwapActiveController();

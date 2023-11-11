@@ -1,5 +1,95 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1445454908525296040
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5269084244401419393}
+  m_Layer: 7
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5269084244401419393
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1445454908525296040}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 7.16, y: -0.83, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2615173255984983461}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3650001929202063686
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5961498726440520354}
+  m_Layer: 7
+  m_Name: GameObject (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5961498726440520354
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3650001929202063686}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.24, y: -0.79, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2615173255984983461}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8778316091902497784
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1057668401068274826}
+  m_Layer: 7
+  m_Name: GameObject (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1057668401068274826
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8778316091902497784}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.39, y: -0.67, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2615173255984983461}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &4263085637614624726
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -167,6 +257,34 @@ PrefabInstance:
       propertyPath: m_Name
       value: room1
       objectReference: {fileID: 0}
+    - target: {fileID: 3234581570080699930, guid: 8f693295b98dd2b4f988c741177584bc, type: 3}
+      propertyPath: interactableObjectPlacements.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3234581570080699930, guid: 8f693295b98dd2b4f988c741177584bc, type: 3}
+      propertyPath: interactableObjectPlacements.Array.data[0].prefab
+      value: 
+      objectReference: {fileID: 3336856289341328095, guid: e400d7599eb997f42afd0c8b74cb9dba, type: 3}
+    - target: {fileID: 3234581570080699930, guid: 8f693295b98dd2b4f988c741177584bc, type: 3}
+      propertyPath: interactableObjectPlacements.Array.data[1].prefab
+      value: 
+      objectReference: {fileID: 3336856289341328095, guid: e400d7599eb997f42afd0c8b74cb9dba, type: 3}
+    - target: {fileID: 3234581570080699930, guid: 8f693295b98dd2b4f988c741177584bc, type: 3}
+      propertyPath: interactableObjectPlacements.Array.data[2].prefab
+      value: 
+      objectReference: {fileID: 3336856289341328095, guid: e400d7599eb997f42afd0c8b74cb9dba, type: 3}
+    - target: {fileID: 3234581570080699930, guid: 8f693295b98dd2b4f988c741177584bc, type: 3}
+      propertyPath: interactableObjectPlacements.Array.data[0].placement
+      value: 
+      objectReference: {fileID: 1445454908525296040}
+    - target: {fileID: 3234581570080699930, guid: 8f693295b98dd2b4f988c741177584bc, type: 3}
+      propertyPath: interactableObjectPlacements.Array.data[1].placement
+      value: 
+      objectReference: {fileID: 8778316091902497784}
+    - target: {fileID: 3234581570080699930, guid: 8f693295b98dd2b4f988c741177584bc, type: 3}
+      propertyPath: interactableObjectPlacements.Array.data[2].placement
+      value: 
+      objectReference: {fileID: 3650001929202063686}
     - target: {fileID: 3234581570080699931, guid: 8f693295b98dd2b4f988c741177584bc, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -237,3 +355,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f693295b98dd2b4f988c741177584bc, type: 3}
+--- !u!4 &2615173255984983461 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2261778931826881139, guid: 8f693295b98dd2b4f988c741177584bc, type: 3}
+  m_PrefabInstance: {fileID: 4263085637614624726}
+  m_PrefabAsset: {fileID: 0}

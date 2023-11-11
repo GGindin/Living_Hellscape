@@ -158,6 +158,22 @@ public class RoomController : MonoBehaviour
         StartCoroutine(ProcessFadeIn());
     }
 
+    public void FadeInImmediate()
+    {
+        foreach (Room r in spawnedRooms)
+        {
+            r.SetColorOnGhostObjects(Color.white);
+        }
+    }
+
+    public void FadeOutImmediate()
+    {
+        foreach (Room r in spawnedRooms)
+        {
+            r.SetColorOnGhostObjects(new Color(1, 1, 1, 0));
+        }
+    }
+
     IEnumerator ProcessFadeIn()
     {
         float alpha = 0f;

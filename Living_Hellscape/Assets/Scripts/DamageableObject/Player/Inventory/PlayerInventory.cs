@@ -73,6 +73,10 @@ public class PlayerInventory: ISaveableObject
         }
         else
         {
+            if (item.Count == 0)
+            {
+                item.AddCount(1);
+            }
             items[index].AddCount(item.Count);
             GameObject.Destroy(item.gameObject);
         }
