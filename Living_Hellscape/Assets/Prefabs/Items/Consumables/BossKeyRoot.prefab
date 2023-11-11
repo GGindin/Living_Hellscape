@@ -92,7 +92,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8646926762573777989}
   - component: {fileID: 7157092433551903841}
-  - component: {fileID: 1853691573300550405}
+  - component: {fileID: 2021290744830765950}
   m_Layer: 0
   m_Name: BossKeyRoot
   m_TagString: Untagged
@@ -136,7 +136,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1853691573300550405
+--- !u!114 &2021290744830765950
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -145,10 +145,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 8646926762573777984}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bbb286a598b85ea4cac8867cc7d0809c, type: 3}
+  m_Script: {fileID: 11500000, guid: a734f99464db22b45a31a3929b1a0241, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   uiIcon: {fileID: 3848163358043761313, guid: 1442b16ea937f2b4e8952e8972cc05a9, type: 3}
-  id: 0
-  description: A Boss Key
+  id: 4
+  description: a Boss Key
   isMainAction: 0
+  keyType: 2

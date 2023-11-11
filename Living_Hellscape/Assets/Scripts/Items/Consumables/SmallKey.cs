@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class SmallKey : Key
 {
-    public override KeyType Type => KeyType.Small;
+    //public override KeyType Type => KeyType.Small;
 }

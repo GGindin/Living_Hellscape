@@ -1,4 +1,5 @@
 using Cinemachine;
+using System;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -116,6 +117,7 @@ public class Room : MonoBehaviour, ISaveableObject
         //This just sets up the stuff in the active room
         SetupVirtualCamera();
         ResetEnemyPos();
+        SetupGhostInteractables();
         LoadAdjacentRooms();
     }
 
@@ -222,6 +224,18 @@ public class Room : MonoBehaviour, ISaveableObject
             {
                 inter.SpriteRenderer.color = color;
             }
+        }
+    }
+
+    private void SetupGhostInteractables()
+    {
+        if(PlayerManager.Instance.Active == PlayerManager.Instance.BodyInstance)
+        {
+            SetColorOnGhostObjects(new Color(1, 1, 1, 0));
+        }
+        else
+        {
+            SetColorOnGhostObjects(Color.white);
         }
     }
 

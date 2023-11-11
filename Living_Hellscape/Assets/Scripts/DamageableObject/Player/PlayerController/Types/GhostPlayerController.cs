@@ -152,7 +152,6 @@ public class GhostPlayerController : PlayerController
         var ghostFreeZone = collision.gameObject.GetComponent<GhostFreeZone>();
         if (ghostFreeZone)
         {
-            Debug.Log("ZONE ENTER");
             lastGhostFreeZone = ghostFreeZone;
             EnemyGhostManager.Instance.PlayerInGhostFreeZone = true;
         }

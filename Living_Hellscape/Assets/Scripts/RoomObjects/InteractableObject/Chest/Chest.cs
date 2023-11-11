@@ -21,6 +21,11 @@ public class Chest : InteractableObject
 
     public override SpriteRenderer SpriteRenderer => null;
 
+    private void Update()
+    {
+        SetAnimator();
+    }
+
     public override void Interact()
     {
         if (!isClosed) return;
@@ -38,11 +43,11 @@ public class Chest : InteractableObject
     {
         if (isClosed)
         {
-            writer.WriteInt(0);
+            writer.WriteInt(1);
         }
         else
         {
-            writer.WriteInt(1);
+            writer.WriteInt(0);
         }
     }
 
@@ -52,12 +57,12 @@ public class Chest : InteractableObject
 
         if (value == 1)
         {
-            isClosed = false;
+            isClosed = true;
             SetAnimator();
         }
         else
         {
-            isClosed = true;
+            isClosed = false;
             SetAnimator();
         }
     }

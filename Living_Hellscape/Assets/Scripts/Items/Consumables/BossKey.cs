@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class BossKey : Key
 {
-    public override KeyType Type => KeyType.Boss;
+    //public override KeyType Type => KeyType.Boss;
 }
