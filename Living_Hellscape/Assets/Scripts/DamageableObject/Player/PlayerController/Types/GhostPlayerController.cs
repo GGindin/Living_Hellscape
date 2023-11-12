@@ -8,6 +8,8 @@ public class GhostPlayerController : PlayerController
 
     bool hasLeftPlayer = false;
 
+    public bool HasLeftPlayer { get => hasLeftPlayer; set => hasLeftPlayer = value; }
+
     GhostFreeZone lastGhostFreeZone;
 
     override protected void Awake()
@@ -165,7 +167,7 @@ public class GhostPlayerController : PlayerController
             EnemyGhostManager.Instance.PlayerInGhostFreeZone = true;
         }
 
-        if (hasLeftPlayer)
+        if (hasLeftPlayer && collision.attachedRigidbody)
         {
             var bodyController = collision.attachedRigidbody.GetComponent<BodyPlayerController>();
             if (bodyController)
