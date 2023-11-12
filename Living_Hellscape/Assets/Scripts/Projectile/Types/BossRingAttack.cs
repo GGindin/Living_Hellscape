@@ -1,15 +1,14 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WindProjectile : MonoBehaviour, IStatuser
+public class BossRingAttack : MonoBehaviour, IStatuser
 {
     [SerializeField]
-    LayerMask EnemyBodyLayer;
+    Stun stun;
 
     [SerializeField]
-    LayerMask EnemyGhostLayer;
+    LayerMask playerBodyLayer;
 
     [SerializeField]
     float speed;
@@ -22,11 +21,12 @@ public class WindProjectile : MonoBehaviour, IStatuser
 
     float startTime;
 
-    Scare scare;
+    HashSet<DamageableObject> hitObjects = new HashSet<DamageableObject>();
 
-    Stun stun;
-
-    HashSet<DamageableObject> hitObjects = new HashSet<DamageableObject>();   
+    private void Awake()
+    {
+        startTime = Time.time;
+    }
 
     public Vector2 Direction { get; set; }
 
@@ -34,12 +34,7 @@ public class WindProjectile : MonoBehaviour, IStatuser
     {
         if (!hitObjects.Contains(recievingObject))
         {
-            if ((EnemyBodyLayer & 1 << recievingObject.gameObject.layer) != 0)
-            {
-                hitObjects.Add(recievingObject);
-                return new Scare(scare);
-            }
-            else if ((EnemyGhostLayer & 1 << recievingObject.gameObject.layer) != 0)
+            if ((playerBodyLayer & 1 << recievingObject.gameObject.layer) != 0)
             {
                 hitObjects.Add(recievingObject);
                 return new Stun(stun);
@@ -49,17 +44,6 @@ public class WindProjectile : MonoBehaviour, IStatuser
         return null;
     }
 
-    public void SetScare(Scare scare)
-    {
-        this.scare = scare;
-        startTime = Time.time;
-    }
-
-    public void SetStun(Stun stun)
-    {
-        this.stun = stun;
-        startTime = Time.time;
-    }
 
     void Update()
     {
@@ -69,13 +53,12 @@ public class WindProjectile : MonoBehaviour, IStatuser
     private void FixedUpdate()
     {
         if (GameController.Instance.StopUpdates) return;
-        Vector2 velocity = Direction * speed * Time.fixedDeltaTime;
-        transform.position += new Vector3(velocity.x, velocity.y);
+        transform.localScale += Vector3.one * speed * Time.deltaTime;
     }
 
     private void CheckLifeTime()
     {
-        if(Time.time - startTime > lifeTime)
+        if (Time.time - startTime > lifeTime)
         {
             Destroy(gameObject);
         }

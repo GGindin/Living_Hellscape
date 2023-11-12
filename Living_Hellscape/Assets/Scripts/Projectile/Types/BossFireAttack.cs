@@ -1,15 +1,14 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WindProjectile : MonoBehaviour, IStatuser
+public class BossFireAttack : MonoBehaviour, IStatuser
 {
     [SerializeField]
-    LayerMask EnemyBodyLayer;
+    Damage damage;
 
     [SerializeField]
-    LayerMask EnemyGhostLayer;
+    LayerMask playerBodyLayer;
 
     [SerializeField]
     float speed;
@@ -22,43 +21,27 @@ public class WindProjectile : MonoBehaviour, IStatuser
 
     float startTime;
 
-    Scare scare;
-
-    Stun stun;
-
-    HashSet<DamageableObject> hitObjects = new HashSet<DamageableObject>();   
+    HashSet<DamageableObject> hitObjects = new HashSet<DamageableObject>();
 
     public Vector2 Direction { get; set; }
+
+    private void Awake()
+    {
+        startTime = Time.time;
+    }
 
     public StatusEffect GetStatus(DamageableObject recievingObject)
     {
         if (!hitObjects.Contains(recievingObject))
         {
-            if ((EnemyBodyLayer & 1 << recievingObject.gameObject.layer) != 0)
+            if ((playerBodyLayer & 1 << recievingObject.gameObject.layer) != 0)
             {
                 hitObjects.Add(recievingObject);
-                return new Scare(scare);
-            }
-            else if ((EnemyGhostLayer & 1 << recievingObject.gameObject.layer) != 0)
-            {
-                hitObjects.Add(recievingObject);
-                return new Stun(stun);
+                return new Damage(damage);
             }
         }
 
         return null;
-    }
-
-    public void SetScare(Scare scare)
-    {
-        this.scare = scare;
-        startTime = Time.time;
-    }
-
-    public void SetStun(Stun stun)
-    {
-        this.stun = stun;
-        startTime = Time.time;
     }
 
     void Update()
@@ -75,7 +58,7 @@ public class WindProjectile : MonoBehaviour, IStatuser
 
     private void CheckLifeTime()
     {
-        if(Time.time - startTime > lifeTime)
+        if (Time.time - startTime > lifeTime)
         {
             Destroy(gameObject);
         }

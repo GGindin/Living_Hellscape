@@ -18,6 +18,8 @@ public abstract class DamageableObject : MonoBehaviour
 
     protected abstract void ChangeHealth(int delta);
 
+    protected abstract void DestroyObject();
+
     public bool IsTakingDamage => GetStatusOfType(StatusEffectType.Damage) != null;
 
     protected virtual void Awake()
@@ -110,7 +112,7 @@ public abstract class DamageableObject : MonoBehaviour
             CheckHitAnim();
             if (CheckHealthForDead())
             {
-                Destroy(gameObject);
+                DestroyObject();
                 return Vector2.zero;
             }
         }
