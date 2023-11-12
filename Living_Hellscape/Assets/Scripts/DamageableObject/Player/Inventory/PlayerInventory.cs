@@ -166,6 +166,10 @@ public class PlayerInventory: ISaveableObject
             equipedGear.secondAction = item as Equipment;
             item.Activate();
         }
+        else if (item is Consumable)
+        {
+
+        }
     }
 
     public void UpdateInventory()
