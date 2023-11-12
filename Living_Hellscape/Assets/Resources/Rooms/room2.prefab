@@ -118,7 +118,7 @@ PrefabInstance:
     - target: {fileID: 5470855770847053265, guid: 25488927514b7ca4f8c2655df8903818, type: 3}
       propertyPath: openBehavior
       value: 
-      objectReference: {fileID: 11400000, guid: 100960da990e78f4c8c0d31e15f07386, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 5470855770847053279, guid: 25488927514b7ca4f8c2655df8903818, type: 3}
       propertyPath: m_IsActive
       value: 1

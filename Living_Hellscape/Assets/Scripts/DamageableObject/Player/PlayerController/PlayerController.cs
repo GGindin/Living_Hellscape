@@ -220,6 +220,7 @@ public abstract class PlayerController : DamageableObject, ISaveableObject
     {
         if(this is BodyPlayerController && buttonState == ButtonState.Down)
         {
+            animator.SetFloat(speedAnimID, 0f);
             GameController.Instance.SwitchWorlds();
             //PlayerManager.Instance.SwapActiveController();
         }
