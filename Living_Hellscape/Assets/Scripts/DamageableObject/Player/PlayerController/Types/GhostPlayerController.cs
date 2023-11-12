@@ -28,7 +28,6 @@ public class GhostPlayerController : PlayerController
         {
             if (!rb.IsTouching(lastGhostFreeZone.GetComponent<Collider2D>()))
             {
-                Debug.Log("ACTIVATE LEFT ZONE");
                 EnemyGhostManager.Instance.PlayerInGhostFreeZone = false;
                 lastGhostFreeZone = null;
             }
@@ -167,6 +166,7 @@ public class GhostPlayerController : PlayerController
         {
             lastGhostFreeZone = ghostFreeZone;
             EnemyGhostManager.Instance.PlayerInGhostFreeZone = true;
+            return;
         }
 
         if (hasLeftPlayer && collision.attachedRigidbody && GameStateController.Instance.KnowsHowToPossesBody)
@@ -187,15 +187,19 @@ public class GhostPlayerController : PlayerController
         var ghostFreeZone = collision.gameObject.GetComponent<GhostFreeZone>();
         if (ghostFreeZone)
         {
-            Debug.Log("ZONE LEAVE");
             lastGhostFreeZone = null;
             EnemyGhostManager.Instance.PlayerInGhostFreeZone = false;
+            return;
         }
 
-        var bodyController = collision.attachedRigidbody.GetComponent<BodyPlayerController>();
-        if (bodyController)
+        if (collision.attachedRigidbody)
         {
-            hasLeftPlayer = true;
+            var bodyController = collision.attachedRigidbody.GetComponent<BodyPlayerController>();
+            if (bodyController)
+            {
+                hasLeftPlayer = true;
+            }
         }
+
     }
 }
