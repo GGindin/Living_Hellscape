@@ -28,6 +28,14 @@ public class RoomController : MonoBehaviour
         LoadDefaultRoom();
     }
 
+    public void ReloadSpawnRoomsTempData()
+    {
+        foreach (Room room in spawnedRooms)
+        {
+            room.ReLoadTempData();
+        }
+    }
+
     public void SetActiveRoom(Room room)
     {
         activeRoom = room;

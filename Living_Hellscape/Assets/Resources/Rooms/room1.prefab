@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4770554730359575776
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 489991275228861601}
+  m_Layer: 7
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &489991275228861601
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4770554730359575776}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.86, y: -1.74, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2615173255984983461}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4953469174163330546
 GameObject:
   m_ObjectHideFlags: 0
@@ -445,12 +475,12 @@ PrefabInstance:
       objectReference: {fileID: 4953469174163330546}
     - target: {fileID: 3234581570080699930, guid: 8f693295b98dd2b4f988c741177584bc, type: 3}
       propertyPath: interactableObjectPlacements.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3234581570080699930, guid: 8f693295b98dd2b4f988c741177584bc, type: 3}
       propertyPath: interactableObjectPlacements.Array.data[0].prefab
       value: 
-      objectReference: {fileID: 2327562176601253350, guid: e3be26ff3c85f744da8789f1f2ccf085, type: 3}
+      objectReference: {fileID: 5148261676553569018, guid: c1ca9d0c219788747a2b64252f84a753, type: 3}
     - target: {fileID: 3234581570080699930, guid: 8f693295b98dd2b4f988c741177584bc, type: 3}
       propertyPath: interactableObjectPlacements.Array.data[1].prefab
       value: 
@@ -462,7 +492,7 @@ PrefabInstance:
     - target: {fileID: 3234581570080699930, guid: 8f693295b98dd2b4f988c741177584bc, type: 3}
       propertyPath: interactableObjectPlacements.Array.data[0].placement
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 4770554730359575776}
     - target: {fileID: 3234581570080699930, guid: 8f693295b98dd2b4f988c741177584bc, type: 3}
       propertyPath: interactableObjectPlacements.Array.data[1].placement
       value: 
@@ -548,5 +578,10 @@ PrefabInstance:
 --- !u!4 &7132720285250707921 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6473087203177250311, guid: 8f693295b98dd2b4f988c741177584bc, type: 3}
+  m_PrefabInstance: {fileID: 4263085637614624726}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2615173255984983461 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2261778931826881139, guid: 8f693295b98dd2b4f988c741177584bc, type: 3}
   m_PrefabInstance: {fileID: 4263085637614624726}
   m_PrefabAsset: {fileID: 0}

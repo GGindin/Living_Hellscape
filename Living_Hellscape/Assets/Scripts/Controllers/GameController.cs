@@ -94,6 +94,21 @@ public class GameController : MonoBehaviour
 
     }
 
+    public IEnumerator ReloadTempData()
+    {
+        yield return null;
+        SetPause(false);
+        SetStopUpdates(true);
+
+        yield return StartCoroutine(VignetteController.Instance.ProcessVignette());
+        GameStorageController.Instance.DeleteAllTempData();
+        RoomController.Instance.ReloadSpawnRoomsTempData();
+        yield return StartCoroutine(VignetteController.Instance.UnProcessVignette());
+
+        SetPause(false);
+        SetStopUpdates(false);
+    }
+
     public void SetupGameOver()
     {
         GameStateController.Instance.CurrentRoomIndex = 0;

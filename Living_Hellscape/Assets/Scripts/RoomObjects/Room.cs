@@ -108,6 +108,23 @@ public class Room : MonoBehaviour, ISaveableObject
         GameStorageController.Instance.SaveTemp(this);
     }
 
+    public void ReLoadTempData()
+    {
+        for(int i = 0; i < roomEnemies.Length; i++)
+        {
+            if (roomEnemies[i] != null) Destroy(roomEnemies[i].gameObject);
+        }
+        for (int i = 0; i < roomHoldables.Length; i++)
+        {
+            if (roomHoldables[i] != null) Destroy(roomHoldables[i].gameObject);
+        }
+        for(int i = 0; i < dynamicObjectsHolder.childCount; i++)
+        {
+            Destroy(DynamicObjectsHolder.GetChild(i).gameObject);
+        }
+        GameStorageController.Instance.LoadTemp(this);
+    }
+
     //called when instantiated / loaded
     public virtual void OnLoadRoom()
     {

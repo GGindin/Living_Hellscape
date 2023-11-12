@@ -26,6 +26,7 @@ public class HealingStation : InteractableObject
     {
         PlayerManager.Instance.BodyInstance.PlayerStats.ChangeCurrentHealth(PlayerManager.Instance.BodyInstance.PlayerStats.MaxHealth);
         PlayerManager.Instance.GhostInstance.PlayerStats.ChangeCurrentHealth(PlayerManager.Instance.GhostInstance.PlayerStats.MaxHealth);
+        GameController.Instance.StartCoroutine(GameController.Instance.ReloadTempData());
     }
 
 
