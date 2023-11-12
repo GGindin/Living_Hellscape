@@ -45,9 +45,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76f9463d86ed9074a83e3db405d4154d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiIcon: {fileID: 2276906124440553330, guid: 8a962297308142e4aa65f70f78bfdf2d, type: 3}
+  uiIcon: {fileID: 2276906124440553330, guid: 0065c805ca9ec7041a12f143b96c6a93, type: 3}
   id: 1
-  description: Slingshot
+  description: slingshot
   isMainAction: 0
   marbleProjectilePrefab: {fileID: 8514994573918602478, guid: dfc345403d7f9e74695c4dd8a235447f, type: 3}
   stun:
@@ -145,7 +145,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 2276906124440553330, guid: 8a962297308142e4aa65f70f78bfdf2d, type: 3}
+  m_Sprite: {fileID: 2276906124440553330, guid: 0065c805ca9ec7041a12f143b96c6a93, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

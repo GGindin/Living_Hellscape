@@ -95,13 +95,15 @@ public class GhostPlayerController : PlayerController
         var interactableObject = collision.gameObject.GetComponent<InteractableObject>();
         if (interactableObject)
         {
-            NotificationBoxController.instance.OpenNotificationBox("Press K to interact");
+
 
             if (this.interactableObject == null)
             {
                 NotificationBoxController.instance.CloseNotificationBox();
                 this.interactableObject = interactableObject;
             }
+
+            NotificationBoxController.instance.OpenNotificationBox("Press K to interact");
 
             if (!PlayerManager.Instance.PlayerHasControl)
             {

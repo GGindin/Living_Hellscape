@@ -1,7 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Net;
 using UnityEngine;
 
 [System.Serializable]
@@ -166,9 +163,9 @@ public class PlayerInventory: ISaveableObject
             equipedGear.secondAction = item as Equipment;
             item.Activate();
         }
-        else if (item is Consumable)
+        else if (item is Bandage)
         {
-
+            item.Activate();
         }
     }
 
@@ -230,6 +227,7 @@ public class PlayerInventory: ISaveableObject
     public void UseAmmo(int amount)
     {
         marbleAmmo = Mathf.Max(0, marbleAmmo - amount);
+        AmmoPanelController.Instance.UpdateCount(marbleAmmo);
     }
 
     int FindStack(Item item)
@@ -364,12 +362,17 @@ public class PlayerInventory: ISaveableObject
             }
         }
 
-        //load ammo
-        marbleAmmo = reader.ReadInt();
-        if (GameStateController.Instance.HasSlingShot)
+        //load ammo if body
+        if(PlayerManager.Instance.BodyInstance.Inventory == this)
         {
-            AmmoPanelController.Instance.UpdateCount(marbleAmmo);
+            marbleAmmo = reader.ReadInt();
+            if (GameStateController.Instance.HasSlingShot)
+            {
+                AmmoPanelController.Instance.UpdateCount(marbleAmmo);
+            }
+
         }
+
     }
 
     public void SaveTemp(GameDataWriter writer)

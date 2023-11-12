@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -5281422124547630143, guid: 11c98e057106d9c4ba1604ebbd1bbaf4, type: 3}
+  m_Sprite: {fileID: -5281422124547630143, guid: 42028682db37e3f40aa050279da28e76, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -145,6 +145,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ghostObject: 0
-  chestItemPrefab: {fileID: 575737613114154732, guid: 1b059d95d116f1c40b187daffdf24971, type: 3}
+  chestItemPrefab: {fileID: 8035632176690989601, guid: 314302b38daabea4cbb36a5f6914dfac, type: 3}
   boxCollider: {fileID: 6548932955526166231}
   animator: {fileID: 5220877801265776471}

@@ -66,9 +66,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a98e0c310a9c547bc130cb6f0bdf6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiIcon: {fileID: 0}
-  id: 6
-  description: a bandage with ghostly powers
+  uiIcon: {fileID: 1861386955807250875, guid: a20f66c26ec965e449071f03a1e2b4a2, type: 3}
+  id: 5
+  description: bandage with ghostly powers
   isMainAction: 0
 --- !u!1 &9000594620847817844
 GameObject:
@@ -141,7 +141,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: -4043195261634050456, guid: 1442b16ea937f2b4e8952e8972cc05a9, type: 3}
+  m_Sprite: {fileID: 1861386955807250875, guid: a20f66c26ec965e449071f03a1e2b4a2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

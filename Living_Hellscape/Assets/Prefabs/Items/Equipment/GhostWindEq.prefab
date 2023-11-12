@@ -47,7 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiIcon: {fileID: 2129128031314841554, guid: 1442b16ea937f2b4e8952e8972cc05a9, type: 3}
   id: 2
-  description: Ghost Wind
+  description: ghostly wind
   isMainAction: 1
   windProjectilePrefab: {fileID: 5408960608105523510, guid: 122488285bd474d43a36e76d7155ff99, type: 3}
   scare:

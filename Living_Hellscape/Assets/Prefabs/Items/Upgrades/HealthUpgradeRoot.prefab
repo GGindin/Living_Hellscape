@@ -68,7 +68,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiIcon: {fileID: -8595708014055669002, guid: 1442b16ea937f2b4e8952e8972cc05a9, type: 3}
   id: 4
-  description: Health Upgrade
+  description: health upgrade
   isMainAction: 0
 --- !u!1 &3447890485793794784
 GameObject:
