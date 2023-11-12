@@ -43,13 +43,16 @@ public class PlayerManager : MonoBehaviour, ISaveableObject
     {
         if (GameController.Instance.StopUpdates) return;
         if (!playerHasControl) return;
-        if (bodyInstance)
+        if (isSetup && !IsPlayerDead())
         {
-            bodyInstance.ControllerUpdate();
-        }
-        if (ghostInstance)
-        {
-            ghostInstance.ControllerUpdate();
+            if (bodyInstance)
+            {
+                bodyInstance.ControllerUpdate();
+            }
+            if (ghostInstance)
+            {
+                ghostInstance.ControllerUpdate();
+            }
         }
     }
 

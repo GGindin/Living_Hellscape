@@ -36,6 +36,8 @@ public class InventoryPanelController : MonoBehaviour
 
     public void UpdatePanel(PlayerInventory inventory)
     {
+        if (PlayerManager.Instance.Active.Inventory != inventory) return;
+
         for (int i = 0; i < inventory.Items.Length; i++)
         {
             var item = inventory.Items[i];

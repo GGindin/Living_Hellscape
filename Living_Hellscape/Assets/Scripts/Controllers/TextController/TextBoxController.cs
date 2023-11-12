@@ -109,12 +109,12 @@ public class TextBoxController : MonoBehaviour
             }
             if (isFinished == true)
             {
-                if(callBack != null)
+                CloseTextBox();
+                if (callBack != null)
                 {
                     callBack();
                     callBack = null;
                 }
-                CloseTextBox();
             }
             UpdateTextbox();
         }

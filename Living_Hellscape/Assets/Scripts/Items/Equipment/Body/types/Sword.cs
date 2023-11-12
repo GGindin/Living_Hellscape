@@ -27,6 +27,10 @@ public class Sword : BodyEquipment, IStatuser
     {
         isActing = true;
         animator.SetTrigger(strikeID);
+        if (gameObject.activeInHierarchy)
+        {
+            PlayerManager.Instance.Active.StartCoroutine(PlayerManager.Instance.Active.StopControlForTime(.25f));
+        }
     }
 
     public override void EndAction()
@@ -37,5 +41,14 @@ public class Sword : BodyEquipment, IStatuser
     public StatusEffect GetStatus(DamageableObject recievingObject)
     {
         return Damage;
+    }
+
+    public override void OnFirstAddToInventory()
+    {
+        if (!GameStateController.Instance.HasGotKnife)
+        {
+            GameStateController.Instance.HasGotKnife = true;
+            TextBoxController.instance.OpenTextBox("Equip items by pressing + to open your inventory. Use Esc to pause and quit the game.");
+        }
     }
 }

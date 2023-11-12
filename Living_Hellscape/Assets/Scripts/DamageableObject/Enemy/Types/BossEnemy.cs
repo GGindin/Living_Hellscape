@@ -194,7 +194,7 @@ public class BossEnemy : EnemyController
     {
         if (playerController)
         {
-            direction = (playerController.transform.localPosition - transform.localPosition).normalized;
+            direction = (playerController.transform.position - transform.position).normalized;
         }
         else
         {

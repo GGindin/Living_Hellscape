@@ -31,7 +31,10 @@ public class GhostWind : GhostEquipment
     {
         if (coolDown <= 0f)
         {
-            PlayerManager.Instance.Active.StartCoroutine(PlayerManager.Instance.Active.StopControlForTime(.25f));
+            if (gameObject.activeInHierarchy)
+            {
+                PlayerManager.Instance.Active.StartCoroutine(PlayerManager.Instance.Active.StopControlForTime(.25f));
+            }
             var wind = Instantiate(windProjectilePrefab, transform.position, Quaternion.LookRotation(Vector3.forward, direction));
             wind.SetStun(new Stun(stun));
             wind.SetScare(new Scare(scare));
@@ -46,6 +49,14 @@ public class GhostWind : GhostEquipment
         if (coolDown > 0)
         {
             coolDown -= Time.deltaTime;
+        }
+    }
+
+    public override void OnFirstAddToInventory()
+    {
+        if (!GameStateController.Instance.HasGhostWind)
+        {
+            GameStateController.Instance.HasGhostWind = true;
         }
     }
 }

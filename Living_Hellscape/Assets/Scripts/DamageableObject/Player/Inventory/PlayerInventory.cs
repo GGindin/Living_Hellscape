@@ -57,6 +57,7 @@ public class PlayerInventory: ISaveableObject
             var upgrade = (Upgrade)item;
             upgrade.AddUpgradeToStats(PlayerManager.Instance.BodyInstance.PlayerStats);
             upgrade.AddUpgradeToStats(PlayerManager.Instance.GhostInstance.PlayerStats);
+            GameObject.Destroy(upgrade.gameObject);
             return;
         }
 

@@ -37,10 +37,13 @@ public abstract class EnemyController : DamageableObject, ISaveableObject
     {
         base.Awake();
         rb = GetComponent<Rigidbody2D>();
-        startingPos = transform.localPosition;
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
     }
 
+    private void Start()
+    {
+        startingPos = transform.position;
+    }
 
     public abstract void RoomUpdate();
 

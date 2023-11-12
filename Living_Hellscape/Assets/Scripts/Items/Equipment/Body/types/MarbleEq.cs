@@ -28,7 +28,10 @@ public class MarbleEq : BodyEquipment
     {
         if(coolDown <= 0f && PlayerManager.Instance.Active.Inventory.MarbleAmmo > 0)
         {
-            PlayerManager.Instance.Active.StartCoroutine(PlayerManager.Instance.Active.StopControlForTime(.25f));
+            if (gameObject.activeInHierarchy)
+            {
+                PlayerManager.Instance.Active.StartCoroutine(PlayerManager.Instance.Active.StopControlForTime(.25f));
+            }
             var marble = Instantiate(marbleProjectilePrefab, transform.position, Quaternion.identity);
             marble.SetDamage(new Stun(stun));
             marble.transform.SetParent(RoomController.Instance.ActiveRoom.DynamicObjectsHolder, true);
