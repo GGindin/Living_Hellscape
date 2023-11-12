@@ -11,8 +11,6 @@ public class GameStateController : MonoBehaviour, ISaveableObject
 
     //put other flags to keep track of here, like beat this boss, finished this quest
 
-    bool hasGottenIntro;
-
     bool hasSlingShot;
 
     public bool HasSlingShot
@@ -31,6 +29,7 @@ public class GameStateController : MonoBehaviour, ISaveableObject
     {
         get
         {
+
             return currentRoomID;
         }
         set

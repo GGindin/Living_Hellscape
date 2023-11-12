@@ -157,3 +157,4 @@ MonoBehaviour:
     m_Bits: 8192
   speed: 2
   lifeTime: 2
+  spriteRenderer: {fileID: 4060169415444314923}

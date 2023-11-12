@@ -17,6 +17,9 @@ public class WindProjectile : MonoBehaviour, IStatuser
     [SerializeField]
     float lifeTime;
 
+    [SerializeField]
+    SpriteRenderer spriteRenderer;
+
     float startTime;
 
     Scare scare;
@@ -76,5 +79,10 @@ public class WindProjectile : MonoBehaviour, IStatuser
         {
             Destroy(gameObject);
         }
+
+        float t = 1 - Mathf.InverseLerp(0f, lifeTime, Time.time - startTime);
+        var col = spriteRenderer.color;
+        col.a = t;
+        spriteRenderer.color = col;
     }
 }

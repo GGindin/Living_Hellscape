@@ -1015,8 +1015,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2945950795116975947, guid: 3253d6139bd5c4741a8b543c685e42e3, type: 3}
+      propertyPath: enemyPlacements.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2945950795116975947, guid: 3253d6139bd5c4741a8b543c685e42e3, type: 3}
       propertyPath: prefabConnections.Array.size
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2945950795116975947, guid: 3253d6139bd5c4741a8b543c685e42e3, type: 3}
+      propertyPath: enemyPlacements.Array.data[0].prefab
+      value: 
+      objectReference: {fileID: 2371403667347056927, guid: 049c509cbdbc83e468b0a5d916ae6bce, type: 3}
+    - target: {fileID: 2945950795116975947, guid: 3253d6139bd5c4741a8b543c685e42e3, type: 3}
+      propertyPath: enemyPlacements.Array.data[0].placement
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 2945950795116975947, guid: 3253d6139bd5c4741a8b543c685e42e3, type: 3}
       propertyPath: prefabConnections.Array.data[3].otherRoomID

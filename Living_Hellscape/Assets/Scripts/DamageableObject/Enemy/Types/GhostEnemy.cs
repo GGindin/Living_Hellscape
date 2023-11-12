@@ -6,8 +6,6 @@ public class GhostEnemy : EnemyController
 {
     float currentSqrDistToPlayer;
 
-    SpriteRenderer spriteRenderer;
-
     bool hasDoneFirstFade = false;
 
     //use this for when player in body
@@ -17,7 +15,6 @@ public class GhostEnemy : EnemyController
     {
         base.Awake();
         currentSpeed = speed;
-        spriteRenderer = GetComponent<SpriteRenderer>();
         StartCoroutine(ProcessFadeIn());
     }
 
@@ -98,6 +95,12 @@ public class GhostEnemy : EnemyController
         {
             direction = -direction;
         }
+    }
+
+    protected override void SetAnimatorDirection(Vector3 direction)
+    {
+        animator.SetFloat(xDirAnimID, direction.x);
+        animator.SetFloat(yDirAnimID, direction.y);
     }
 
     protected override void HitLayerReset() { }

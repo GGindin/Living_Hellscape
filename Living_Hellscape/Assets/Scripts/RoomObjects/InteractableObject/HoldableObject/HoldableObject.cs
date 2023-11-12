@@ -26,14 +26,17 @@ public class HoldableObject : InteractableObject
     [SerializeField]
     LayerMask itemLayer;
 
+    SpriteRenderer spriteRenderer;
+
     public override Collider2D InteractableCollider => objectCollider;
 
-    public override SpriteRenderer SpriteRenderer => null;
+    public override SpriteRenderer SpriteRenderer => spriteRenderer;
 
     private void Awake()
     {
         body = GetComponent<Rigidbody2D>();
         objectCollider = GetComponent<Collider2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     public override void Interact()
@@ -44,6 +47,7 @@ public class HoldableObject : InteractableObject
             if (isHeld)
             {
                 gameObject.layer = LayerUtil.LayerMaskToLayer(itemLayer);
+                spriteRenderer.sortingOrder = 1;
             }       
         }
         else if (!isThrown)
@@ -60,6 +64,7 @@ public class HoldableObject : InteractableObject
         isThrown = true;
         body.isKinematic = false;
 
+        AudioController.Instance.PlaySoundEffect("throw");
         PlayerManager.Instance.Active.StartCoroutine(PlayerManager.Instance.Active.StopControlForTime(.25f));
 
         var throwSpeed = throwDistance / throwTime;

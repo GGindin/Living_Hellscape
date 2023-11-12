@@ -49,6 +49,12 @@ public class PlayerInventory: ISaveableObject
 
     void AddItem(Item item)
     {
+        if(item is EndGameItem)
+        {
+            item.OnFirstAddToInventory();
+            return;
+        }
+
         if(item is Upgrade)
         {
             var upgrade = (Upgrade)item;

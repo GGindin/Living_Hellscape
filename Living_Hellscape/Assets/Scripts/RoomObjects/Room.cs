@@ -77,7 +77,11 @@ public class Room : MonoBehaviour, ISaveableObject
         if (GameController.Instance.StopUpdates) return;
         if (RoomController.Instance.ActiveRoom == this)
         {
-            EnemyUpdate();
+            if (PlayerManager.Instance.PlayerHasControl)
+            {
+                EnemyUpdate();
+            }
+
             if (defeatAllEnemies && !HasActiveEnemies() && !hasOpenedAllDoors)
             {
                 OpenAllDoors();
@@ -90,7 +94,11 @@ public class Room : MonoBehaviour, ISaveableObject
         if (GameController.Instance.StopUpdates) return;
         if (RoomController.Instance.ActiveRoom == this)
         {
-            EnemyFixedUpdate();
+            if (PlayerManager.Instance.PlayerHasControl)
+            {
+                EnemyFixedUpdate();
+            }
+
         }      
     }
 
@@ -595,8 +603,7 @@ public class Room : MonoBehaviour, ISaveableObject
         }
         //for now we do not save any enemies perm data because we do not have bosses
         for (int i = 0; i < enemyPlacements.Length; i++)
-        {
-            /*
+        {           
             var prefab = enemyPlacements[i].prefab;
             if(prefab is BossEnemy)
             {
@@ -611,7 +618,7 @@ public class Room : MonoBehaviour, ISaveableObject
                     prefab.SavePerm(writer);
                 }
             }
-            */
+            
         }
     }
 
@@ -656,27 +663,32 @@ public class Room : MonoBehaviour, ISaveableObject
         //load and setup any perm state enemies, that is bosses
         for (int i = 0; i < enemyPlacements.Length; i++)
         {
-            /*
-             *currently no bosses so does not happen
+            
+             //currently no bosses so does not happen
             if (enemyPlacements[i].prefab is BossEnemy)
             {
-                var value = reader.ReadInt();
-                if(value >= 0)
+                if(reader == null)
                 {
-                    //if not dead instantiate
+                    //if no reader its not dead, instantiate
                     var placement = enemyPlacements[i];
                     roomEnemies[i] = Instantiate(placement.prefab, placement.Position, Quaternion.identity, transform);
-
-                    //then load any data
-                    //only bosses will actualy read anything
-                    if (reader != null)
+                }
+                else
+                {
+                    var value = reader.ReadInt();
+                    if (value >= 0)
                     {
+                        //if not dead instantiate
+                        var placement = enemyPlacements[i];
+                        roomEnemies[i] = Instantiate(placement.prefab, placement.Position, Quaternion.identity, transform);
+
                         roomEnemies[i].LoadPerm(reader);
                     }
                 }
+
             }
 
-            */
+            
         }
     }
 
@@ -684,12 +696,12 @@ public class Room : MonoBehaviour, ISaveableObject
     {
         for (int i = 0; i < roomEnemies.Length; i++)
         {
-            /* the bosses do not have temp data so they can just be ignored
-            if (enemyPlacements[i].prefab == BossEnemy)
+            // the bosses do not have temp data so they can just be ignored
+            if (enemyPlacements[i].prefab is BossEnemy)
             {
                 continue;
             }
-            */
+            
             if (roomEnemies[i] == null)
             {
                 //in future need to not write value for boss enemies
@@ -718,12 +730,12 @@ public class Room : MonoBehaviour, ISaveableObject
         //load and setup any temp state enemies, that is not bosses
         for (int i = 0; i < enemyPlacements.Length; i++)
         {
-            /* the bosses do not have temp data so they can just be ignored
-            if (enemyPlacements[i].prefab == BossEnemy)
+            // the bosses do not have temp data so they can just be ignored
+            if (enemyPlacements[i].prefab is BossEnemy)
             {
                 continue;
             }
-            */
+            
             //if doesn't exist instantiate and set position
 
             if(reader == null)

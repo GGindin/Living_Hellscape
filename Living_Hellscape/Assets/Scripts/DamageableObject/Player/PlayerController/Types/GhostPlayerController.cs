@@ -8,12 +8,14 @@ public class GhostPlayerController : PlayerController
 
     bool hasLeftPlayer = false;
 
+    public bool HasLeftPlayer { get => hasLeftPlayer; set => hasLeftPlayer = value; }
+
     GhostFreeZone lastGhostFreeZone;
 
     override protected void Awake()
     {
         base.Awake();
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         spriteRenderer.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
     }
 
@@ -93,13 +95,17 @@ public class GhostPlayerController : PlayerController
         var interactableObject = collision.gameObject.GetComponent<InteractableObject>();
         if (interactableObject)
         {
+            NotificationBoxController.instance.OpenNotificationBox("Press K to interact");
+
             if (this.interactableObject == null)
             {
+                NotificationBoxController.instance.CloseNotificationBox();
                 this.interactableObject = interactableObject;
             }
 
             if (!PlayerManager.Instance.PlayerHasControl)
             {
+                NotificationBoxController.instance.CloseNotificationBox();
                 this.interactableObject.Interact();
             }
 
@@ -121,6 +127,11 @@ public class GhostPlayerController : PlayerController
             var damage = enemy.Damage;
             AddStatusEffect(damage, damageDir.normalized);
         }
+    }
+
+    private void OnCollisionExit2D()
+    {
+        NotificationBoxController.instance.CloseNotificationBox();
     }
 
     private void OnCollisionStay2D(Collision2D collision)
@@ -156,9 +167,9 @@ public class GhostPlayerController : PlayerController
             EnemyGhostManager.Instance.PlayerInGhostFreeZone = true;
         }
 
-        if (hasLeftPlayer)
+        if (hasLeftPlayer && collision.attachedRigidbody)
         {
-            var bodyController = collision.gameObject.GetComponent<BodyPlayerController>();
+            var bodyController = collision.attachedRigidbody.GetComponent<BodyPlayerController>();
             if (bodyController)
             {
                 GameController.Instance.SwitchWorlds();
@@ -179,7 +190,7 @@ public class GhostPlayerController : PlayerController
             EnemyGhostManager.Instance.PlayerInGhostFreeZone = false;
         }
 
-        var bodyController = collision.gameObject.GetComponent<BodyPlayerController>();
+        var bodyController = collision.attachedRigidbody.GetComponent<BodyPlayerController>();
         if (bodyController)
         {
             hasLeftPlayer = true;

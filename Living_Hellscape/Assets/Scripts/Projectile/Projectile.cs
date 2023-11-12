@@ -51,6 +51,7 @@ public class Projectile : MonoBehaviour
 
             damageable.AddStatusEffect(statusEffect, -damageDir.normalized);
         }
+        ParticleSystemController.Instance.AddMarbleBreak(transform.position);
         Destroy(gameObject);
     }
 }

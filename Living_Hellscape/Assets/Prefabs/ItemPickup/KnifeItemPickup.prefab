@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3253936215166384786}
   - component: {fileID: 8707499611520853871}
   - component: {fileID: 5019141061981725176}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: KnifeItemPickup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,6 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e721c4f66f2538468679fa088909f84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ghostObject: 0
   itemPrefab: {fileID: 3070259392443591952, guid: 37de3e3f1c400af4fa2897dd4a964bfe, type: 3}
   boxCollider: {fileID: 5019141061981725176}
 --- !u!61 &5019141061981725176

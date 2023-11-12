@@ -96,6 +96,7 @@ public class GameController : MonoBehaviour
 
     public void SetupGameOver()
     {
+        GameStateController.Instance.CurrentRoomIndex = 0;
         GameOverMenuController.Instance.OpenGameOverMenu();
     }
 

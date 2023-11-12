@@ -8,12 +8,17 @@ public abstract class DamageableObject : MonoBehaviour
     protected Animator animator;
 
     protected int hitID = Animator.StringToHash("hit");
+    protected int speedAnimID = Animator.StringToHash("speed");
+    protected int xDirAnimID = Animator.StringToHash("xDir");
+    protected int yDirAnimID = Animator.StringToHash("yDir");
 
     protected List<StatusEffect> statusEffects = new List<StatusEffect>();
 
     protected abstract bool CheckHealthForDead();
 
     protected abstract void ChangeHealth(int delta);
+
+    protected abstract void DestroyObject();
 
     public bool IsTakingDamage => GetStatusOfType(StatusEffectType.Damage) != null;
 
@@ -107,7 +112,7 @@ public abstract class DamageableObject : MonoBehaviour
             CheckHitAnim();
             if (CheckHealthForDead())
             {
-                Destroy(gameObject);
+                DestroyObject();
                 return Vector2.zero;
             }
         }

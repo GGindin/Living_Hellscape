@@ -23,6 +23,8 @@ public abstract class EnemyController : DamageableObject, ISaveableObject
 
     protected Rigidbody2D rb;
 
+    protected SpriteRenderer spriteRenderer;
+
     protected Vector2 direction;
 
     protected float currentSpeed;
@@ -36,12 +38,18 @@ public abstract class EnemyController : DamageableObject, ISaveableObject
         base.Awake();
         rb = GetComponent<Rigidbody2D>();
         startingPos = transform.localPosition;
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
     }
 
 
     public abstract void RoomUpdate();
 
     public abstract void RoomFixedUpdate();
+
+    protected override void DestroyObject()
+    {
+        Destroy(gameObject);
+    }
 
     protected override bool CheckHealthForDead()
     {
@@ -86,7 +94,14 @@ public abstract class EnemyController : DamageableObject, ISaveableObject
             velocity = MoveByDamage();
         }
 
+        SetAnimatorDirection(velocity.normalized);
+
+
         rb.MovePosition(rb.position + velocity);
+    }
+
+    protected virtual void SetAnimatorDirection(Vector3 direction)
+    {
     }
 
     protected abstract void HitLayerReset();
