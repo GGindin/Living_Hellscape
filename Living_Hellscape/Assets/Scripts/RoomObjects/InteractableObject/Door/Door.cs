@@ -98,6 +98,7 @@ public class Door : InteractableObject
             if (key && key.keyType == requiresKey)
             {
                 key.Activate();
+                AudioController.Instance.PlaySoundEffect("doorunlock");
                 TextBoxController.instance.OpenTextBox("You hear the lock click. You turn the knob and the door swings open!");
                 isUnlocked = true;
             }

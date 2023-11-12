@@ -244,6 +244,15 @@ public abstract class PlayerController : DamageableObject, ISaveableObject
 
         Velocity = velocity / Time.fixedDeltaTime;
 
+        if (velocity.sqrMagnitude > 0)
+        {
+            AudioController.Instance.PlayWalkSound();
+        }
+        else
+        {
+            AudioController.Instance.StopWalkSound();
+        }
+
         animator.SetFloat(speedAnimID, Velocity.magnitude);
 
         rb.MovePosition(rb.position + velocity);

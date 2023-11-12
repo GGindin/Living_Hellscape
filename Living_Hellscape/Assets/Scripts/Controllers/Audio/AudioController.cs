@@ -9,8 +9,8 @@ public class AudioController : MonoBehaviour
     public static AudioController Instance { get; private set; }
 
     public Sound[] sounds;
-    
-    void Awake ()
+
+    void Awake()
     {
         Instance = this;
 
@@ -24,20 +24,20 @@ public class AudioController : MonoBehaviour
             sound.source.loop = sound.loop;
             sound.source.playOnAwake = false;
         }
-        
+
     }
 
 
-    public void PlaySoundEffect (string name)
+    public void PlaySoundEffect(string name)
     {
         Sound sound = Array.Find(sounds, sounds => sounds.name == name);
-        if (sound != null) 
+        if (sound != null)
         {
             sound.source.Play();
-        }  
+        }
     }
 
-    public void StopSoundEffect (string name)
+    public void StopSoundEffect(string name)
     {
         Sound sound = Array.Find(sounds, sounds => sounds.name == name);
         if (sound != null)
@@ -54,7 +54,7 @@ public class AudioController : MonoBehaviour
             sound.source.Play();
             float currentDuration = 0;
 
-            while(currentDuration < duration)
+            while (currentDuration < duration)
             {
                 currentDuration += Time.deltaTime;
                 float t = Mathf.InverseLerp(0, duration, currentDuration);
@@ -85,4 +85,54 @@ public class AudioController : MonoBehaviour
             sound.source.volume = 0;
         }
     }
+
+
+    private bool playWalk = false;
+    private bool alternateWalkSound = false;
+    private float walkTimer = 0.25f;
+    private float currentWalkTimer = 0;
+
+    public void PlayWalkSound()
+    {
+        if (!playWalk)
+        {
+            playWalk = true;
+        }
+    }
+
+    public void StopWalkSound()
+    {
+        if (playWalk)
+        {
+            playWalk = false;
+            currentWalkTimer = 0;
+            alternateWalkSound = false;
+        }
+    }
+
+    private void Update()
+    {
+        if (playWalk)
+        {
+            if (currentWalkTimer <= 0)
+            {
+                if (!alternateWalkSound)
+                {
+                    PlaySoundEffect("testwalk1");
+                    alternateWalkSound = true;
+                }
+                else
+                {
+                    PlaySoundEffect("testwalk2");
+                    alternateWalkSound = false;
+                }
+                currentWalkTimer = walkTimer;
+            }
+            else
+            {
+                currentWalkTimer -= Time.deltaTime;
+            }
+        }
+    }
 }
+

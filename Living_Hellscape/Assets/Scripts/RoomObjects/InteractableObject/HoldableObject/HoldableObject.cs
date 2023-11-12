@@ -64,6 +64,7 @@ public class HoldableObject : InteractableObject
         isThrown = true;
         body.isKinematic = false;
 
+        AudioController.Instance.PlaySoundEffect("throw");
         PlayerManager.Instance.Active.StartCoroutine(PlayerManager.Instance.Active.StopControlForTime(.25f));
 
         var throwSpeed = throwDistance / throwTime;
