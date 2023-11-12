@@ -96,7 +96,7 @@ public class GameStateController : MonoBehaviour, ISaveableObject
         var roomIndex = reader.ReadInt();
         currentRoomID = roomIndex;
         var val = reader.ReadInt();
-        HasGottenIntro = val == 1 ? true : false;
+        hasGottenIntro = val == 1 ? true : false;
         val = reader.ReadInt();
         hasSlingShot = val == 1 ? true : false;
         val = reader.ReadInt();

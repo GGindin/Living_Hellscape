@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8879256553414660337}
   - component: {fileID: 8879256553414660336}
   - component: {fileID: 7615384298161447279}
-  - component: {fileID: 9153751679871683101}
+  - component: {fileID: 8524929206121822222}
   m_Layer: 16
   m_Name: Room0GhostNPC
   m_TagString: Untagged
@@ -110,7 +110,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.9}
   m_EdgeRadius: 0
---- !u!114 &9153751679871683101
+--- !u!114 &8524929206121822222
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -119,12 +119,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 8879256553414660334}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9b32452282d1964bbd2de3085208070, type: 3}
+  m_Script: {fileID: 11500000, guid: 1ad2bb243218f4d4cbfd2c8e09c842dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ghostObject: 1
   texts:
   - Whoa there, you took a nasty touble on that knife. Your body still looks OK.
-    You might be able to posses it if you get close enough.
+    You might be able to posses it if you get close enough. If it works come back
+    and see me with space bar.
+  - Look at that. Be careful moving into the ghost world. There are ghosts not as
+    friendly as me out there. This room is safe though.
   boxCollider2D: {fileID: 7615384298161447279}
   spriteRenderer: {fileID: 8879256553414660336}

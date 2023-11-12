@@ -82,7 +82,7 @@ PrefabInstance:
     - target: {fileID: 182077977202522572, guid: d8c8a463c84698a40bb67f7a5f84d736, type: 3}
       propertyPath: interactableObjectPlacements.Array.data[1].prefab
       value: 
-      objectReference: {fileID: 9153751679871683101, guid: 7707a00b814b220469e2f03d8a0a6806, type: 3}
+      objectReference: {fileID: 8524929206121822222, guid: 7707a00b814b220469e2f03d8a0a6806, type: 3}
     - target: {fileID: 182077977202522572, guid: d8c8a463c84698a40bb67f7a5f84d736, type: 3}
       propertyPath: interactableObjectPlacements.Array.data[2].prefab
       value: 

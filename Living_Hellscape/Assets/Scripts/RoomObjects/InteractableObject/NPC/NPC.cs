@@ -5,9 +5,9 @@ using UnityEngine;
 public class NPC : InteractableObject
 {
     [SerializeField]
-    string[] texts;
+    protected string[] texts;
 
-    int currentText;
+    protected int currentText;
 
     [SerializeField]
     BoxCollider2D boxCollider2D;
@@ -25,15 +25,9 @@ public class NPC : InteractableObject
         TextBoxController.instance.OpenTextBoxWithCallBack(texts[currentText], () => OnFinishText());
     }
 
-    public virtual void CheckForTextUpdate()
-    {
-        Debug.Log("Checking for Text Update");
-    }
+    public virtual void CheckForTextUpdate() { }
 
-    public virtual void OnFinishText()
-    {
-        Debug.Log(name + " finished text");
-    }
+    public virtual void OnFinishText() { }
 
     public override string GetFileName()
     {
