@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8c9f23b219de9bf47b2348cd84f0aede, type: 3}
-  m_Name: Droppable Object Table
+  m_Name: EnemyDropTable
   m_EditorClassIdentifier: 
   dropProbability: 0
   isUnique: 0

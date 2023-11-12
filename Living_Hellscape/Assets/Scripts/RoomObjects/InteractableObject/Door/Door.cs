@@ -78,12 +78,16 @@ public class Door : InteractableObject
 
     public void OperateDoor()
     {
-        if (room.DefeateAllEnemies && room.HasActiveEnemies() && PlayerManager.Instance.PlayerHasControl) return;
+        if (room.DefeateAllEnemies && room.HasActiveEnemies() && PlayerManager.Instance.PlayerHasControl)
+        {
+            TextBoxController.instance.OpenTextBox("This door is locked. You feel you must fight to escape.");
+            return;
+        }
         if (openBehavior && !isUnlocked)
         {
             if (openBehavior.ShouldOpenDoor())
             {
-                TextBoxController.instance.OpenTextBox("The knob turns! You You feel as if you have done something important");
+                TextBoxController.instance.OpenTextBox("The knob turns! You feel as if you have done something important");
                 isUnlocked = true;
             }
             else

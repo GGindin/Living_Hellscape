@@ -61,7 +61,7 @@ public abstract class PlayerController : DamageableObject, ISaveableObject
 
         if (HandlePauseAndInventory(userInput)) return;
 
-        if(!(IsStunned() || IsScared()))
+        if (!(IsStunned() || IsScared()))
         {
             SetDirection(userInput.movement);
             Transform(userInput.transform);
@@ -72,6 +72,8 @@ public abstract class PlayerController : DamageableObject, ISaveableObject
 
     public void ControllerFixedUpdate()
     {
+        rb.velocity = Vector2.zero;
+
         if (!IsActive) return;
 
         TestInteractableObject();
