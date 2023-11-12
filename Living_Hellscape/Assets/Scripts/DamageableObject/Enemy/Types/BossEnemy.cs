@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditorInternal;
 using UnityEngine;
 
 public class BossEnemy : EnemyController
@@ -91,10 +92,13 @@ public class BossEnemy : EnemyController
                 fireAttackSettings.CurrentCoolDown = 0f;
                 if (Random.Range(0f, 1f) < fireAttackSettings.probablity)
                 {
-                    currentAttackStopTime = 0f;
-                    var fireAttack = Instantiate(fireAttackPrefab, transform.position + Vector3.up * .5f, Quaternion.LookRotation(Vector3.forward, direction));
-                    fireAttack.transform.SetParent(RoomController.Instance.ActiveRoom.DynamicObjectsHolder, true);
-                    fireAttack.Direction = (playerController.transform.position - transform.position).normalized;
+                    if (fireAttackPrefab)
+                    {
+                        currentAttackStopTime = 0f;
+                        var fireAttack = Instantiate(fireAttackPrefab, transform.position + Vector3.up * .5f, Quaternion.LookRotation(Vector3.forward, direction));
+                        fireAttack.transform.SetParent(RoomController.Instance.ActiveRoom.DynamicObjectsHolder, true);
+                        fireAttack.Direction = (playerController.transform.position - transform.position).normalized;
+                    }
                 }
 
             }
@@ -103,7 +107,7 @@ public class BossEnemy : EnemyController
         if (ringAttackSettings.CurrentCoolDown > ringAttackSettings.coolDown)
         {
             ringAttackSettings.CurrentCoolDown = 0f;
-            if (Random.Range(0f, 1f) < ringAttackSettings.probablity)
+            if (Random.Range(0f, 1f) < ringAttackSettings.probablity && ringAttackPrefab)
             {
                 currentAttackStopTime = 0f;
 
