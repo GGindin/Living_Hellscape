@@ -103,6 +103,22 @@ public class BodyPlayerController : PlayerController
         if (drop)
         {
             drop.Collect();
+            return;
+        }
+
+        StatusRouter statusRouter = collision.gameObject.GetComponent<StatusRouter>();
+        if (statusRouter)
+        {
+            var target = statusRouter.Target;
+            if (target)
+            {
+                Vector2 damageDir = (rb.position - collision.ClosestPoint(rb.position)).normalized;
+                var status = target.Statuser.GetStatus(this);
+                if (status != null)
+                {
+                    AddStatusEffect(status, damageDir);
+                }
+            }
         }
     }
 }

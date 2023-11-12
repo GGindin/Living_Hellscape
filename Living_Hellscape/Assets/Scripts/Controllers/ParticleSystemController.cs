@@ -18,6 +18,9 @@ public class ParticleSystemController : MonoBehaviour
     [SerializeField]
     ParticleSystem holdableBreakPrefab;
 
+    [SerializeField]
+    ParticleSystem marbleBreakPrefab;
+
     List<ParticleSystem> particleSystems = new List<ParticleSystem>();
 
     private void Awake()
@@ -58,6 +61,13 @@ public class ParticleSystemController : MonoBehaviour
     public void AddHoldableBreak(Vector3 position)
     {
         var sys = Instantiate(holdableBreakPrefab, position, Quaternion.identity, transform);
+
+        particleSystems.Add(sys);
+    }
+
+    public void AddMarbleBreak(Vector3 position)
+    {
+        var sys = Instantiate(marbleBreakPrefab, position, Quaternion.identity, transform);
 
         particleSystems.Add(sys);
     }

@@ -29,6 +29,8 @@ public abstract class PlayerController : DamageableObject, ISaveableObject
 
     public bool IsActive => PlayerManager.Instance.Active == this;
 
+    public bool IsDead { get; private set; }
+
     public PlayerStats PlayerStats => playerStats;
 
     public PlayerInventory Inventory => inventory;
@@ -148,6 +150,12 @@ public abstract class PlayerController : DamageableObject, ISaveableObject
         }
 
         PlayerManager.Instance.SetPlayerControl(true);
+    }
+
+    protected override void DestroyObject()
+    {
+        gameObject.SetActive(false);
+        IsDead = true;
     }
 
     bool HandlePauseAndInventory(UserInput userInput)
