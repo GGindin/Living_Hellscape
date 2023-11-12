@@ -49,18 +49,15 @@ public class TextBoxController : MonoBehaviour
 
     public void OpenTextBoxImmediate(string newText)
     {
-        if (!gameObject.activeSelf)
-        {
-            gameObject.SetActive(true);
-            currentText.text = newText;
-            setImmediate = true;
-            //text = newText;
-            //atEnd = false;
-            //waitingForInput = false;
-            //isFinished = false;
-            //SetTextImmediate();
-            //itr = 0;
-        }
+        gameObject.SetActive(true);
+        currentText.text = newText;
+        setImmediate = true;
+        //text = newText;
+        //atEnd = false;
+        //waitingForInput = false;
+        //isFinished = false;
+        //SetTextImmediate();
+        //itr = 0;
     }
 
     public void OpenTextBoxWithCallBack(string newText, System.Action callBack)

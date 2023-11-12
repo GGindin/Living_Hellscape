@@ -76,9 +76,12 @@ public class InventoryPanelController : MonoBehaviour
             return;
         }
 
-        if (item != null && !TextBoxController.instance.gameObject.activeInHierarchy)
+        if (item != null)// && !TextBoxController.instance.gameObject.activeInHierarchy)
         {
-            string itemText = item.Description + " Count: " + item.Count;
+            string itemText = item.Description + " Count: " + item.Count + '\n';
+            itemText += "Equip or use with ";
+            if (item.IsMainAction) itemText += "j";
+            else itemText += "k";
             TextBoxController.instance.OpenTextBoxImmediate(itemText);
         }
         else if (item == null)
