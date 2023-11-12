@@ -21,6 +21,8 @@ public class PlayerManager : MonoBehaviour, ISaveableObject
 
     public bool PlayerHasControl => playerHasControl;
 
+    public bool StillUpdateRooms { get; set; }
+
     public PlayerInventory Inventory => active.Inventory;
 
     public PlayerController Active => active;

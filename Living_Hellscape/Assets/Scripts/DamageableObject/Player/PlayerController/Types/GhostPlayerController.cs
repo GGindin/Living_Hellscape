@@ -167,7 +167,7 @@ public class GhostPlayerController : PlayerController
             EnemyGhostManager.Instance.PlayerInGhostFreeZone = true;
         }
 
-        if (hasLeftPlayer && collision.attachedRigidbody)
+        if (hasLeftPlayer && collision.attachedRigidbody && GameStateController.Instance.KnowsHowToPossesBody)
         {
             var bodyController = collision.attachedRigidbody.GetComponent<BodyPlayerController>();
             if (bodyController)

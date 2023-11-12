@@ -142,12 +142,14 @@ public abstract class PlayerController : DamageableObject, ISaveableObject
     public IEnumerator StopControlForTime(float time)
     {
         PlayerManager.Instance.SetPlayerControl(false);
+        PlayerManager.Instance.StillUpdateRooms = true;
 
         while(time > 0)
         {
             time -= Time.deltaTime;
             yield return null;
         }
+        PlayerManager.Instance.StillUpdateRooms = false;
 
         PlayerManager.Instance.SetPlayerControl(true);
     }

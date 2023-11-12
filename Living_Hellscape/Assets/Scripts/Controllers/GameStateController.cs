@@ -12,6 +12,8 @@ public class GameStateController : MonoBehaviour, ISaveableObject
     //put other flags to keep track of here, like beat this boss, finished this quest
 
     bool hasSlingShot;
+    bool hasGottenIntro;
+    bool knowsHowToPossesBody;
 
     public bool HasSlingShot
     {
@@ -22,6 +24,20 @@ public class GameStateController : MonoBehaviour, ISaveableObject
         set
         {
             hasSlingShot = value;
+            SaveGameState();
+        }
+    }
+
+    public bool KnowsHowToPossesBody
+    {
+        get
+        {
+            return knowsHowToPossesBody;
+        }
+        set
+        {
+            knowsHowToPossesBody = value;
+            SaveGameState();
         }
     }
 
@@ -39,7 +55,19 @@ public class GameStateController : MonoBehaviour, ISaveableObject
         }
     }
 
-    public bool HasGottenIntro { get; set; }
+    public bool HasGottenIntro
+    {
+        get
+        {
+
+            return hasGottenIntro;
+        }
+        set
+        {
+            hasGottenIntro = value;
+            SaveGameState();
+        }
+    }
 
     private void Awake()
     {
@@ -71,6 +99,8 @@ public class GameStateController : MonoBehaviour, ISaveableObject
         HasGottenIntro = val == 1 ? true : false;
         val = reader.ReadInt();
         hasSlingShot = val == 1 ? true : false;
+        val = reader.ReadInt();
+        knowsHowToPossesBody = val == 1 ? true : false;
     }
 
     public void LoadTemp(GameDataReader reader)
@@ -92,6 +122,15 @@ public class GameStateController : MonoBehaviour, ISaveableObject
         }
 
         if (hasSlingShot)
+        {
+            writer.WriteInt(1);
+        }
+        else
+        {
+            writer.WriteInt(0);
+        }
+
+        if (knowsHowToPossesBody)
         {
             writer.WriteInt(1);
         }

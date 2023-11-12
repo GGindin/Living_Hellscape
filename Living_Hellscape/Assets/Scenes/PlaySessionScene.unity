@@ -1554,8 +1554,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 245b0d709221bb14c983d78c19afdba3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  introText: This is the intro to the game look at it go. it just is happening. wow
-    isnt this cool. OMG im a dead guy.
+  introText: Welp, it looks like you are dead. Who would have guessed occult rituals
+    would end up this way. Hmm looks like thats your body laying over there.
 --- !u!1 &1340566354
 GameObject:
   m_ObjectHideFlags: 0
@@ -2456,7 +2456,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55a9ee386401ac642aa4bd5673e0e006, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentRoomOverrideIndex: 16
+  currentRoomOverrideIndex: -1
 --- !u!4 &1984906010
 Transform:
   m_ObjectHideFlags: 0
