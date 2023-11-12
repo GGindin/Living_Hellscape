@@ -302,7 +302,8 @@ public abstract class PlayerController : DamageableObject, ISaveableObject
         Vector3 startPos = rb.position;
 
         Vector3 dir = target - startPos;
-        SetAnimatorDirection(dir.normalized);
+        dir.Normalize();
+        SetAnimatorDirection(dir);
 
         float duration = 2f;
         float currentTime = 0f;
@@ -315,7 +316,8 @@ public abstract class PlayerController : DamageableObject, ISaveableObject
             Vector3 nextPos = Vector3.Lerp(startPos, target, t);
 
             float velocity = (nextPos - new Vector3(rb.position.x, rb.position.y)).magnitude;
-            animator.SetFloat(speedAnimID, velocity);
+            animator.SetFloat(speedAnimID, 1.0f);
+            SetAnimatorDirection(dir);
 
             rb.MovePosition(nextPos);
             yield return null;

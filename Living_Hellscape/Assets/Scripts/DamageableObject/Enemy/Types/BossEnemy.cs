@@ -166,7 +166,7 @@ public class BossEnemy : EnemyController
 
     public override void SavePerm(GameDataWriter writer)
     {
-
+        writer.WriteInt(1);
     }
 
     public override void SaveTemp(GameDataWriter writer)
