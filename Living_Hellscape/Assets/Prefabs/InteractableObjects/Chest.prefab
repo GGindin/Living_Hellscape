@@ -145,6 +145,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ghostObject: 0
-  chestItemPrefab: {fileID: 7469818767151421446, guid: 8dfff96e7c97c64439d15ddd43a5dfa2, type: 3}
+  chestItemPrefab: {fileID: 575737613114154732, guid: 1b059d95d116f1c40b187daffdf24971, type: 3}
   boxCollider: {fileID: 6548932955526166231}
   animator: {fileID: 5220877801265776471}

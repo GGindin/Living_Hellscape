@@ -24,6 +24,9 @@ public class Door : InteractableObject
     [SerializeField]
     Key.KeyType requiresKey;
 
+    [SerializeField]
+    DoorOpenBehavior openBehavior;
+
     Animator doorAnimator;
 
     bool isUnlocked;
@@ -76,6 +79,19 @@ public class Door : InteractableObject
     public void OperateDoor()
     {
         if (room.DefeateAllEnemies && room.HasActiveEnemies() && PlayerManager.Instance.PlayerHasControl) return;
+        if (openBehavior && !isUnlocked)
+        {
+            if (openBehavior.ShouldOpenDoor())
+            {
+                TextBoxController.instance.OpenTextBox("The knob turns! You You feel as if you have done something important");
+                isUnlocked = true;
+            }
+            else
+            {
+                TextBoxController.instance.OpenTextBox("This door is locked. You feel like there is something you should do first.");
+                return;
+            }
+        }
         if (closed && requiresKey != Key.KeyType.None && !isUnlocked)
         {
             var key = PlayerManager.Instance.Inventory.GetItemByType<Key>(typeof(Key));
