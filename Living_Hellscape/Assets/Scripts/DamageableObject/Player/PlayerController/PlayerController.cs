@@ -109,6 +109,8 @@ public abstract class PlayerController : DamageableObject, ISaveableObject
         item.transform.position = heldObjectRoot.position;
         item.transform.rotation = Quaternion.identity;
 
+        yield return null;
+
         item.StartPresent();
 
         lastDirection = Vector2.down;

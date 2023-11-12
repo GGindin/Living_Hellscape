@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 575737613114154732}
   - component: {fileID: 7125863075838200812}
   m_Layer: 9
-  m_Name: MarbleEqRoot
+  m_Name: SlingShotEqRoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,9 +45,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76f9463d86ed9074a83e3db405d4154d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiIcon: {fileID: 21300000, guid: 186b7cce69a7f354980aa8c64a71d4a8, type: 3}
+  uiIcon: {fileID: 2276906124440553330, guid: 8a962297308142e4aa65f70f78bfdf2d, type: 3}
   id: 1
-  description: 
+  description: Slingshot
   isMainAction: 0
   marbleProjectilePrefab: {fileID: 8514994573918602478, guid: dfc345403d7f9e74695c4dd8a235447f, type: 3}
   stun:
@@ -145,8 +145,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 186b7cce69a7f354980aa8c64a71d4a8, type: 3}
-  m_Color: {r: 0, g: 0.98039216, b: 1, a: 1}
+  m_Sprite: {fileID: 2276906124440553330, guid: 8a962297308142e4aa65f70f78bfdf2d, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
