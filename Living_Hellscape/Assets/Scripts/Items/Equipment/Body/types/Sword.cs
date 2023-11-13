@@ -27,6 +27,7 @@ public class Sword : BodyEquipment, IStatuser
     {
         isActing = true;
         animator.SetTrigger(strikeID);
+        AudioController.Instance.PlaySoundEffect("knifeattack");
         if (gameObject.activeInHierarchy)
         {
             PlayerManager.Instance.Active.StartCoroutine(PlayerManager.Instance.Active.StopControlForTime(.25f));
