@@ -207,3 +207,21 @@ MonoBehaviour:
     pitch: 1
     loop: 1
     source: {fileID: 0}
+  - name: testwalk1
+    clip: {fileID: 8300000, guid: ad72318ae479df243a622a9c29978ee4, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: testwalk2
+    clip: {fileID: 8300000, guid: bf87531cf13243341b890720fe6c4734, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: doorunlock
+    clip: {fileID: 8300000, guid: 797100476ccc3534db7d2e442dc12d6e, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}

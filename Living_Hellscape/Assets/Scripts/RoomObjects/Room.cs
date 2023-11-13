@@ -112,7 +112,7 @@ public class Room : MonoBehaviour, ISaveableObject
     {
         for(int i = 0; i < roomEnemies.Length; i++)
         {
-            if (roomEnemies[i] != null) Destroy(roomEnemies[i].gameObject);
+            if (roomEnemies[i] != null && !(roomEnemies[i] is BossEnemy)) Destroy(roomEnemies[i].gameObject);
         }
         for (int i = 0; i < roomHoldables.Length; i++)
         {

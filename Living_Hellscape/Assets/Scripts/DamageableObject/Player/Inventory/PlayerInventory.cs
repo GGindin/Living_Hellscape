@@ -73,15 +73,6 @@ public class PlayerInventory: ISaveableObject
             {
                 item.AddCount(1);
             }
-            if(this == PlayerManager.Instance.BodyInstance.Inventory)
-            {
-                Debug.Log("Body Inv");
-            }
-            else
-            {
-                Debug.Log("ghost Inv");
-            }
-            Debug.Log("adding item: " + item.Description);
             item.Deactivate();
         }
         else

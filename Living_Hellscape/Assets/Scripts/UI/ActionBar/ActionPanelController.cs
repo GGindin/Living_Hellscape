@@ -21,14 +21,6 @@ public class ActionPanelController : MonoBehaviour
 
     public void SetMainActionIcon(Sprite sprite)
     {
-        if(sprite == null)
-        {
-            Debug.Log("SETTING NULL SPRITE");
-        }
-        else
-        {
-            Debug.Log("SETTING REAL ICON");
-        }
         mainAction.SetImage(sprite);
     }
 

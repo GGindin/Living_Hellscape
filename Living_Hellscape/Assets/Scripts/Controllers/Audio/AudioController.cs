@@ -58,11 +58,11 @@ public class AudioController : MonoBehaviour
             {
                 currentDuration += Time.deltaTime;
                 float t = Mathf.InverseLerp(0, duration, currentDuration);
-                sound.source.volume = t;
+                sound.source.volume = t * sound.volume;
 
                 yield return null;
             }
-            sound.source.volume = 1;
+            sound.source.volume = 1 * sound.volume;
         }
     }
 
@@ -77,12 +77,12 @@ public class AudioController : MonoBehaviour
             {
                 currentDuration -= Time.deltaTime;
                 float t = Mathf.InverseLerp(0, duration, currentDuration);
-                sound.source.volume = t;
+                sound.source.volume = t * sound.volume;
 
                 yield return null;
             }
             sound.source.Stop();
-            sound.source.volume = 0;
+            sound.source.volume = 0 * sound.volume;
         }
     }
 
