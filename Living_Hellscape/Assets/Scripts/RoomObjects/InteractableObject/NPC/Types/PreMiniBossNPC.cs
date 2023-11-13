@@ -6,7 +6,6 @@ public class PreMiniBossNPC : NPC
 {
     public override void CheckForTextUpdate()
     {
-        Debug.Log(GameStateController.Instance.BeatMiniBoss);
         if (GameStateController.Instance.BeatMiniBoss)
         {
            
@@ -14,7 +13,6 @@ public class PreMiniBossNPC : NPC
         }
         else
         {
-            Debug.Log("WTF");
             currentText = 0;
         }
     }
