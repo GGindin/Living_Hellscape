@@ -16,6 +16,20 @@ public class GameStateController : MonoBehaviour, ISaveableObject
     bool hasGhostWind;
     bool hasGottenIntro;
     bool knowsHowToPossesBody;
+    bool beatMiniBoss;
+
+    public bool BeatMiniBoss
+    {
+        get
+        {
+            return beatMiniBoss;
+        }
+        set
+        {
+            beatMiniBoss = value;
+            SaveGameState();
+        }
+    }
 
     public bool HasGotKnife
     {
@@ -133,6 +147,8 @@ public class GameStateController : MonoBehaviour, ISaveableObject
         hasGhostWind = val == 1 ? true : false;
         val = reader.ReadInt();
         knowsHowToPossesBody = val == 1 ? true : false;
+        val = reader.ReadInt();
+        beatMiniBoss = val == 1 ? true : false;
     }
 
     public void LoadTemp(GameDataReader reader)
@@ -181,6 +197,15 @@ public class GameStateController : MonoBehaviour, ISaveableObject
         }
 
         if (knowsHowToPossesBody)
+        {
+            writer.WriteInt(1);
+        }
+        else
+        {
+            writer.WriteInt(0);
+        }
+
+        if (beatMiniBoss)
         {
             writer.WriteInt(1);
         }

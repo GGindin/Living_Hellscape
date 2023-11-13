@@ -2579,6 +2579,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: room2
       objectReference: {fileID: 0}
+    - target: {fileID: 8152599587771281414, guid: 25488927514b7ca4f8c2655df8903818, type: 3}
+      propertyPath: holdableObjectPlacements.Array.size
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 8152599587771281415, guid: 25488927514b7ca4f8c2655df8903818, type: 3}
       propertyPath: m_RootOrder
       value: 0

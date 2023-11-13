@@ -93,6 +93,22 @@ public class PlayerInventory: ISaveableObject
         return items[index];
     }
 
+    public bool DoesInventoryContainItem(Item item)
+    {
+        for (int i = 0; i < items.Length; i++)
+        {
+            if (items[i])
+            {
+                if (items[i] == item)
+                {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
     public t GetItemByType<t>(Type type) where t : Item
     {
         for(int i = 0; i < items.Length; i++)
@@ -116,15 +132,25 @@ public class PlayerInventory: ISaveableObject
         if (item is Equipment)
         {
             if (equipedGear.mainAction)
-            {
+            {            
                 equipedGear.mainAction.Deactivate();
+                if (PlayerManager.Instance.Inventory == this)
+                {
+                    equipedGear.mainAction.TurnOffActionIcon();
+                }
+                
+
                 var mainAction = equipedGear.mainAction;
                 equipedGear.mainAction = null;
                 if (mainAction == item) return;
             }
-
             equipedGear.mainAction = item as Equipment;
             item.Activate();
+            if (PlayerManager.Instance.Inventory == this)
+            {
+                equipedGear.mainAction.SetActionIcon();
+            }
+            
         }
         else if(item is Consumable)
         {
@@ -156,6 +182,12 @@ public class PlayerInventory: ISaveableObject
             if (equipedGear.secondAction)
             {
                 equipedGear.secondAction.Deactivate();
+                if (PlayerManager.Instance.Inventory == this)
+                {
+                    equipedGear.secondAction.TurnOffActionIcon();
+                }
+                
+
                 var secondAction = equipedGear.secondAction;
                 equipedGear.secondAction = null;
                 if (secondAction == item) return;
@@ -163,6 +195,12 @@ public class PlayerInventory: ISaveableObject
 
             equipedGear.secondAction = item as Equipment;
             item.Activate();
+            if (PlayerManager.Instance.Inventory == this)
+            {
+                equipedGear.secondAction.SetActionIcon();
+            }
+            
+
         }
         else if (item is Bandage)
         {

@@ -250,10 +250,20 @@ public class BossEnemy : EnemyController
 
     private void OnDestroy()
     {
-        if(exitText != null && health <= 0)
+        if (health <= 0)
         {
-            TextBoxController.instance.OpenTextBox(exitText);
+            if (!ringAttackPrefab)
+            {
+                GameStateController.Instance.BeatMiniBoss = true;
+            }
+
+            if (exitText != null)
+            {
+                TextBoxController.instance.OpenTextBox(exitText);
+            }
         }
+
+
     }
 }
 

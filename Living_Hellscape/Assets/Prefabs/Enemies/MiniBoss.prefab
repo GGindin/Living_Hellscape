@@ -152,7 +152,7 @@ GameObject:
   - component: {fileID: 2371403667347056927}
   - component: {fileID: 6998762087044943512}
   m_Layer: 10
-  m_Name: BossEnemyRoot
+  m_Name: MiniBoss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -207,7 +207,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a321358fb94b7de409b46d9e0ff75977, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+  health: 5
   speed: 3
   damage:
     duration: 1
@@ -217,7 +217,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 132288
   enemyDropTable: {fileID: 0}
-  ringAttackPrefab: {fileID: 4568787853985871543, guid: 0ab08559d5c80c04eb92ecc47146e118, type: 3}
+  ringAttackPrefab: {fileID: 0}
   fireAttackPrefab: {fileID: 2626348481617351450, guid: c92100fbf7542b64092cf6cfed53139d, type: 3}
   fireAttackStartPos: {fileID: 5858504409279733142, guid: c92100fbf7542b64092cf6cfed53139d, type: 3}
   behaviorUpdateTime: 5
@@ -228,10 +228,10 @@ MonoBehaviour:
     coolDown: 5
   fireAttackSettings:
     probablity: 0.75
-    coolDown: 5
+    coolDown: 2.5
   attackStopTime: 0.25
   enterText: I have been waiting for you. Prepare to die!!!
-  exitText: NOoOOOoOOOOo
+  exitText: I will be back for you
 --- !u!50 &6998762087044943512
 Rigidbody2D:
   serializedVersion: 4

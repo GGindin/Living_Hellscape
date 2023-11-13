@@ -38,9 +38,7 @@ public class GhostWindNPC : NPC
 
             // If the object has text attached to it, run the attached textbox creator. This will do nothing otherwise.
 
-            Debug.Log("TEXT IS ACTIVE: " + TextBoxController.instance.gameObject.activeInHierarchy);
-
-            TextBoxController.instance.OpenTextBox("You learn " + ghostWindPrefab.Description);
+            TextBoxController.instance.OpenTextBox("You learned " + ghostWindPrefab.Description);
 
             PlayerManager.Instance.Inventory.StartAddItem(item);
         }

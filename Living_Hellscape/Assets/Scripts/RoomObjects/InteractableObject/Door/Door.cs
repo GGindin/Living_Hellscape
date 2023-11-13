@@ -231,7 +231,7 @@ public class Door : InteractableObject
 
     public override void SavePerm(GameDataWriter writer)
     {
-        if (requiresKey != Key.KeyType.None)
+        if (requiresKey != Key.KeyType.None || openBehavior)
         {
             if (isUnlocked)
             {
@@ -246,7 +246,7 @@ public class Door : InteractableObject
 
     public override void LoadPerm(GameDataReader reader)
     {
-        if (requiresKey != Key.KeyType.None)
+        if (requiresKey != Key.KeyType.None || openBehavior)
         {
             int value = reader.ReadInt();
             if(value == 0)
