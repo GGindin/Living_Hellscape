@@ -87,6 +87,7 @@ public class Door : InteractableObject
         {
             if (openBehavior.ShouldOpenDoor())
             {
+                AudioController.Instance.PlaySoundEffect("doorunlock");
                 TextBoxController.instance.OpenTextBox("The knob turns! You feel as if you have done something important");
                 isUnlocked = true;
             }
