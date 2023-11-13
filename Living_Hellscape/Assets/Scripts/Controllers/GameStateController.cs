@@ -26,6 +26,7 @@ public class GameStateController : MonoBehaviour, ISaveableObject
         }
         set
         {
+            AudioController.Instance.PlaySoundEffect("victory");
             beatMiniBoss = value;
             SaveGameState();
         }
@@ -52,6 +53,7 @@ public class GameStateController : MonoBehaviour, ISaveableObject
         }
         set
         {
+            AudioController.Instance.PlaySoundEffect("victory");
             hasSlingShot = value;
             SaveGameState();
         }
@@ -65,6 +67,7 @@ public class GameStateController : MonoBehaviour, ISaveableObject
         }
         set
         {
+            AudioController.Instance.PlaySoundEffect("victory");
             hasGhostWind = value;
             SaveGameState();
         }
