@@ -36,6 +36,8 @@ public class InventoryPanelController : MonoBehaviour
 
     public void UpdatePanel(PlayerInventory inventory)
     {
+        if (PlayerManager.Instance.Active.Inventory != inventory) return;
+
         for (int i = 0; i < inventory.Items.Length; i++)
         {
             var item = inventory.Items[i];
@@ -76,9 +78,12 @@ public class InventoryPanelController : MonoBehaviour
             return;
         }
 
-        if (item != null && !TextBoxController.instance.gameObject.activeInHierarchy)
+        if (item != null)// && !TextBoxController.instance.gameObject.activeInHierarchy)
         {
-            string itemText = item.Description + " Count: " + item.Count;
+            string itemText = item.Description + " Count: " + item.Count + '\n';
+            itemText += "Equip or use with ";
+            if (item.IsMainAction) itemText += "j";
+            else itemText += "k";
             TextBoxController.instance.OpenTextBoxImmediate(itemText);
         }
         else if (item == null)

@@ -1,7 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Net;
 using UnityEngine;
 
 [System.Serializable]
@@ -49,11 +46,18 @@ public class PlayerInventory: ISaveableObject
 
     void AddItem(Item item)
     {
+        if(item is EndGameItem)
+        {
+            item.OnFirstAddToInventory();
+            return;
+        }
+
         if(item is Upgrade)
         {
             var upgrade = (Upgrade)item;
             upgrade.AddUpgradeToStats(PlayerManager.Instance.BodyInstance.PlayerStats);
             upgrade.AddUpgradeToStats(PlayerManager.Instance.GhostInstance.PlayerStats);
+            GameObject.Destroy(upgrade.gameObject);
             return;
         }
 
@@ -89,6 +93,22 @@ public class PlayerInventory: ISaveableObject
         return items[index];
     }
 
+    public bool DoesInventoryContainItem(Item item)
+    {
+        for (int i = 0; i < items.Length; i++)
+        {
+            if (items[i])
+            {
+                if (items[i] == item)
+                {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
     public t GetItemByType<t>(Type type) where t : Item
     {
         for(int i = 0; i < items.Length; i++)
@@ -112,15 +132,25 @@ public class PlayerInventory: ISaveableObject
         if (item is Equipment)
         {
             if (equipedGear.mainAction)
-            {
+            {            
                 equipedGear.mainAction.Deactivate();
+                if (PlayerManager.Instance.Inventory == this)
+                {
+                    equipedGear.mainAction.TurnOffActionIcon();
+                }
+                
+
                 var mainAction = equipedGear.mainAction;
                 equipedGear.mainAction = null;
                 if (mainAction == item) return;
             }
-
             equipedGear.mainAction = item as Equipment;
             item.Activate();
+            if (PlayerManager.Instance.Inventory == this)
+            {
+                equipedGear.mainAction.SetActionIcon();
+            }
+            
         }
         else if(item is Consumable)
         {
@@ -152,12 +182,28 @@ public class PlayerInventory: ISaveableObject
             if (equipedGear.secondAction)
             {
                 equipedGear.secondAction.Deactivate();
+                if (PlayerManager.Instance.Inventory == this)
+                {
+                    equipedGear.secondAction.TurnOffActionIcon();
+                }
+                
+
                 var secondAction = equipedGear.secondAction;
                 equipedGear.secondAction = null;
                 if (secondAction == item) return;
             }
 
             equipedGear.secondAction = item as Equipment;
+            item.Activate();
+            if (PlayerManager.Instance.Inventory == this)
+            {
+                equipedGear.secondAction.SetActionIcon();
+            }
+            
+
+        }
+        else if (item is Bandage)
+        {
             item.Activate();
         }
     }
@@ -220,6 +266,7 @@ public class PlayerInventory: ISaveableObject
     public void UseAmmo(int amount)
     {
         marbleAmmo = Mathf.Max(0, marbleAmmo - amount);
+        AmmoPanelController.Instance.UpdateCount(marbleAmmo);
     }
 
     int FindStack(Item item)
@@ -354,12 +401,17 @@ public class PlayerInventory: ISaveableObject
             }
         }
 
-        //load ammo
-        marbleAmmo = reader.ReadInt();
-        if (GameStateController.Instance.HasSlingShot)
+        //load ammo if body
+        if(PlayerManager.Instance.BodyInstance.Inventory == this)
         {
-            AmmoPanelController.Instance.UpdateCount(marbleAmmo);
+            marbleAmmo = reader.ReadInt();
+            if (GameStateController.Instance.HasSlingShot)
+            {
+                AmmoPanelController.Instance.UpdateCount(marbleAmmo);
+            }
+
         }
+
     }
 
     public void SaveTemp(GameDataWriter writer)

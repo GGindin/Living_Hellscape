@@ -24,7 +24,7 @@ TagManager:
   - GhostInteractable
   - EnemyOnlyGeometry
   - GhostFreeZone
-  - 
+  - EnemyBodyProjectile
   - 
   - 
   - 

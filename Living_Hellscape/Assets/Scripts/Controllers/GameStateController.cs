@@ -11,7 +11,38 @@ public class GameStateController : MonoBehaviour, ISaveableObject
 
     //put other flags to keep track of here, like beat this boss, finished this quest
 
+    bool hasGotKnife;
     bool hasSlingShot;
+    bool hasGhostWind;
+    bool hasGottenIntro;
+    bool knowsHowToPossesBody;
+    bool beatMiniBoss;
+
+    public bool BeatMiniBoss
+    {
+        get
+        {
+            return beatMiniBoss;
+        }
+        set
+        {
+            beatMiniBoss = value;
+            SaveGameState();
+        }
+    }
+
+    public bool HasGotKnife
+    {
+        get
+        {
+            return hasGotKnife;
+        }
+        set
+        {
+            hasGotKnife = value;
+            SaveGameState();
+        }
+    }
 
     public bool HasSlingShot
     {
@@ -22,6 +53,33 @@ public class GameStateController : MonoBehaviour, ISaveableObject
         set
         {
             hasSlingShot = value;
+            SaveGameState();
+        }
+    }
+
+    public bool HasGhostWind
+    {
+        get
+        {
+            return hasGhostWind;
+        }
+        set
+        {
+            hasGhostWind = value;
+            SaveGameState();
+        }
+    }
+
+    public bool KnowsHowToPossesBody
+    {
+        get
+        {
+            return knowsHowToPossesBody;
+        }
+        set
+        {
+            knowsHowToPossesBody = value;
+            SaveGameState();
         }
     }
 
@@ -29,6 +87,7 @@ public class GameStateController : MonoBehaviour, ISaveableObject
     {
         get
         {
+
             return currentRoomID;
         }
         set
@@ -38,7 +97,19 @@ public class GameStateController : MonoBehaviour, ISaveableObject
         }
     }
 
-    public bool HasGottenIntro { get; set; }
+    public bool HasGottenIntro
+    {
+        get
+        {
+
+            return hasGottenIntro;
+        }
+        set
+        {
+            hasGottenIntro = value;
+            SaveGameState();
+        }
+    }
 
     private void Awake()
     {
@@ -67,9 +138,17 @@ public class GameStateController : MonoBehaviour, ISaveableObject
         var roomIndex = reader.ReadInt();
         currentRoomID = roomIndex;
         var val = reader.ReadInt();
-        HasGottenIntro = val == 1 ? true : false;
+        hasGotKnife = val == 1 ? true : false;
+        val = reader.ReadInt();
+        hasGottenIntro = val == 1 ? true : false;
         val = reader.ReadInt();
         hasSlingShot = val == 1 ? true : false;
+        val = reader.ReadInt();
+        hasGhostWind = val == 1 ? true : false;
+        val = reader.ReadInt();
+        knowsHowToPossesBody = val == 1 ? true : false;
+        val = reader.ReadInt();
+        beatMiniBoss = val == 1 ? true : false;
     }
 
     public void LoadTemp(GameDataReader reader)
@@ -81,6 +160,15 @@ public class GameStateController : MonoBehaviour, ISaveableObject
     {
         writer.WriteInt(currentRoomID);
 
+        if (HasGotKnife)
+        {
+            writer.WriteInt(1);
+        }
+        else
+        {
+            writer.WriteInt(0);
+        }
+
         if (HasGottenIntro)
         {
             writer.WriteInt(1);
@@ -91,6 +179,33 @@ public class GameStateController : MonoBehaviour, ISaveableObject
         }
 
         if (hasSlingShot)
+        {
+            writer.WriteInt(1);
+        }
+        else
+        {
+            writer.WriteInt(0);
+        }
+
+        if (hasGhostWind)
+        {
+            writer.WriteInt(1);
+        }
+        else
+        {
+            writer.WriteInt(0);
+        }
+
+        if (knowsHowToPossesBody)
+        {
+            writer.WriteInt(1);
+        }
+        else
+        {
+            writer.WriteInt(0);
+        }
+
+        if (beatMiniBoss)
         {
             writer.WriteInt(1);
         }

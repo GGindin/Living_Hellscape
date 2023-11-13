@@ -29,6 +29,8 @@ public abstract class PlayerController : DamageableObject, ISaveableObject
 
     public bool IsActive => PlayerManager.Instance.Active == this;
 
+    public bool IsDead { get; private set; }
+
     public PlayerStats PlayerStats => playerStats;
 
     public PlayerInventory Inventory => inventory;
@@ -59,7 +61,7 @@ public abstract class PlayerController : DamageableObject, ISaveableObject
 
         if (HandlePauseAndInventory(userInput)) return;
 
-        if(!(IsStunned() || IsScared()))
+        if (!(IsStunned() || IsScared()))
         {
             SetDirection(userInput.movement);
             Transform(userInput.transform);
@@ -70,6 +72,8 @@ public abstract class PlayerController : DamageableObject, ISaveableObject
 
     public void ControllerFixedUpdate()
     {
+        rb.velocity = Vector2.zero;
+
         if (!IsActive) return;
 
         TestInteractableObject();
@@ -140,14 +144,22 @@ public abstract class PlayerController : DamageableObject, ISaveableObject
     public IEnumerator StopControlForTime(float time)
     {
         PlayerManager.Instance.SetPlayerControl(false);
+        PlayerManager.Instance.StillUpdateRooms = true;
 
         while(time > 0)
         {
             time -= Time.deltaTime;
             yield return null;
         }
+        PlayerManager.Instance.StillUpdateRooms = false;
 
         PlayerManager.Instance.SetPlayerControl(true);
+    }
+
+    protected override void DestroyObject()
+    {
+        gameObject.SetActive(false);
+        IsDead = true;
     }
 
     bool HandlePauseAndInventory(UserInput userInput)
@@ -189,7 +201,7 @@ public abstract class PlayerController : DamageableObject, ISaveableObject
         if (HasHeldObject) return;
         if(buttonState == ButtonState.Down)
         {
-            PlayerManager.Instance.Inventory.DoMainAction();
+            inventory.DoMainAction();
         }
     }
 
@@ -203,7 +215,7 @@ public abstract class PlayerController : DamageableObject, ISaveableObject
             }
             else
             {
-                PlayerManager.Instance.Inventory.DoSecondAction();
+                inventory.DoSecondAction();
             }         
         }
     }
@@ -212,6 +224,7 @@ public abstract class PlayerController : DamageableObject, ISaveableObject
     {
         if(this is BodyPlayerController && buttonState == ButtonState.Down)
         {
+            animator.SetFloat(speedAnimID, 0f);
             GameController.Instance.SwitchWorlds();
             //PlayerManager.Instance.SwapActiveController();
         }

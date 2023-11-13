@@ -20,6 +20,8 @@ public class HealthPanelController : MonoBehaviour
 
     public void UpdatePanel(PlayerStats stats)
     {
+        if (PlayerManager.Instance.Active.PlayerStats != stats) return;
+
         SetMaxHearts(stats.MaxHealth);
         SetCurrentHealth(stats.CurrentHealth);
     }

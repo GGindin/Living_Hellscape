@@ -13,7 +13,7 @@ public abstract class Equipment : Item
     public override void Activate()
     {
         base.Activate();
-
+        /*
         if (IsMainAction)
         {
             ActionPanelController.Instance.SetMainActionIcon(uiIcon);
@@ -22,12 +22,47 @@ public abstract class Equipment : Item
         {
             ActionPanelController.Instance.SetSecondAction(uiIcon);
         }
+        */
     }
 
     public override void Deactivate()
     {
         base.Deactivate();
 
+        /*
+        if (ActionPanelController.Instance)
+        {
+            if (IsMainAction)
+            {
+                ActionPanelController.Instance.SetMainActionIcon(null);
+            }
+            else
+            {
+                ActionPanelController.Instance.SetSecondAction(null);
+            }
+
+        }
+        */
+    }
+
+    public void SetActionIcon()
+    {
+        if (ActionPanelController.Instance)
+        {
+            if (IsMainAction)
+            {
+
+                ActionPanelController.Instance.SetMainActionIcon(uiIcon);
+            }
+            else
+            {
+                ActionPanelController.Instance.SetSecondAction(uiIcon);
+            }
+        }
+    }
+
+    public void TurnOffActionIcon()
+    {
         if (ActionPanelController.Instance)
         {
             if (IsMainAction)

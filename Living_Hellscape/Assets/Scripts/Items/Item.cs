@@ -52,7 +52,16 @@ public abstract class Item : MonoBehaviour
     public virtual void Activate()
     {
         gameObject.SetActive(true);
-        transform.SetParent(PlayerManager.Instance.Active.transform, false);
+
+        if (PlayerManager.Instance.BodyInstance.Inventory.DoesInventoryContainItem(this))
+        {
+            transform.SetParent(PlayerManager.Instance.BodyInstance.transform, false);
+        }
+        else
+        {
+            transform.SetParent(PlayerManager.Instance.GhostInstance.transform, false);
+        }
+        
     }
 
     public virtual void Deactivate()

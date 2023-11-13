@@ -18,6 +18,7 @@ public class ScriptingController : MonoBehaviour
     {
         GameController.Instance.GoToGhostNow();
         PlayerManager.Instance.GhostInstance.transform.position += Vector3.up * 2f;
+        (PlayerManager.Instance.GhostInstance as GhostPlayerController).HasLeftPlayer = true;
         TextBoxController.instance.OpenTextBox(introText);
         GameStateController.Instance.HasGottenIntro = true;
     }

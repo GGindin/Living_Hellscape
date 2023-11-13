@@ -45,7 +45,7 @@ public class WandererEnemy : EnemyController
         else if (IsPastMaxWanderDistance())
         {
             currentTimer = 0f;
-            direction = startingPos - transform.localPosition;
+            direction = startingPos - transform.position;
             direction.Normalize();
         }
         else
@@ -56,7 +56,7 @@ public class WandererEnemy : EnemyController
 
     bool IsPastMaxWanderDistance()
     {
-        float sqrDst = (startingPos - transform.localPosition).sqrMagnitude;
+        float sqrDst = (startingPos - transform.position).sqrMagnitude;
         return sqrDst > maxWanderDistance * maxWanderDistance;
     }
 

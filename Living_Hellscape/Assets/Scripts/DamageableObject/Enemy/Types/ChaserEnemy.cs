@@ -35,6 +35,7 @@ public class ChaserEnemy : EnemyController
 
     void FindPlayerController()
     {
+
         var controller = PlayerManager.Instance.Active;
         if(controller is BodyPlayerController)
         {
@@ -49,16 +50,17 @@ public class ChaserEnemy : EnemyController
 
     void SetDirection()
     {
-        var resetDst = (startingPos - transform.localPosition).sqrMagnitude;
+        var resetDst = (startingPos - transform.position).sqrMagnitude;
 
         if (playerController)
         {
-            var chaseDist = (playerController.transform.localPosition - startingPos).sqrMagnitude;
-            if(chaseDist > maxChaseDistance * maxChaseDistance)
+            var chaseDist = (playerController.transform.position - startingPos).sqrMagnitude;
+
+            if (chaseDist > maxChaseDistance * maxChaseDistance)
             {
                 if(resetDst > 0.01f)
                 {
-                    direction = (startingPos - transform.localPosition).normalized;
+                    direction = (startingPos - transform.position).normalized;
                 }
                 else
                 {
@@ -67,14 +69,14 @@ public class ChaserEnemy : EnemyController
             }
             else
             {
-                direction = (playerController.transform.localPosition - transform.localPosition).normalized;
+                direction = (playerController.transform.position - transform.position).normalized;
             }
         }
         else
         {
             if (resetDst > 0.01f)
             {
-                direction = (startingPos - transform.localPosition).normalized;
+                direction = (startingPos - transform.position).normalized;
             }
             else
             {

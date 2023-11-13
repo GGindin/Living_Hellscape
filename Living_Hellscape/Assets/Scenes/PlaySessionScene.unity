@@ -1554,8 +1554,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 245b0d709221bb14c983d78c19afdba3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  introText: This is the intro to the game look at it go. it just is happening. wow
-    isnt this cool. OMG im a dead guy.
+  introText: Welp, it looks like you are dead. Who would have guessed occult rituals
+    would end up this way. Hmm looks like thats your body laying over there.
 --- !u!1 &1340566354
 GameObject:
   m_ObjectHideFlags: 0
@@ -2275,7 +2275,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -4028759719765767889, guid: 8a962297308142e4aa65f70f78bfdf2d, type: 3}
+  m_Sprite: {fileID: -4028759719765767889, guid: 0065c805ca9ec7041a12f143b96c6a93, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3084,6 +3084,7 @@ MonoBehaviour:
   scarePrefab: {fileID: 0}
   stunPrefab: {fileID: 0}
   holdableBreakPrefab: {fileID: 8786208925912130230, guid: ed296a2f023e60048aaa9824867092ff, type: 3}
+  marbleBreakPrefab: {fileID: 8786208925912130230, guid: a0245f9be29d6894db2f94774c4e8bf2, type: 3}
 --- !u!1 &2125686221
 GameObject:
   m_ObjectHideFlags: 0
@@ -3200,64 +3201,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: Main Camera
       objectReference: {fileID: 0}
-    - target: {fileID: 2802514380940128811, guid: ee0b4dc88792d0547835a338e766f273, type: 3}
-      propertyPath: m_BlendUpdateMethod
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2802514380940128977, guid: ee0b4dc88792d0547835a338e766f273, type: 3}
       propertyPath: sounds.Array.size
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 2802514380940128977, guid: ee0b4dc88792d0547835a338e766f273, type: 3}
       propertyPath: sounds.Array.data[4].clip
       value: 
-      objectReference: {fileID: 8300000, guid: 797100476ccc3534db7d2e442dc12d6e, type: 3}
+      objectReference: {fileID: 8300000, guid: ad72318ae479df243a622a9c29978ee4, type: 3}
     - target: {fileID: 2802514380940128977, guid: ee0b4dc88792d0547835a338e766f273, type: 3}
       propertyPath: sounds.Array.data[4].loop
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2802514380940128977, guid: ee0b4dc88792d0547835a338e766f273, type: 3}
-      propertyPath: sounds.Array.data[4].name
-      value: doorunlock
-      objectReference: {fileID: 0}
-    - target: {fileID: 2802514380940128977, guid: ee0b4dc88792d0547835a338e766f273, type: 3}
       propertyPath: sounds.Array.data[5].clip
       value: 
-      objectReference: {fileID: 8300000, guid: 7b7820364dc7c9941b776e16bc6f09d5, type: 3}
+      objectReference: {fileID: 8300000, guid: bf87531cf13243341b890720fe6c4734, type: 3}
     - target: {fileID: 2802514380940128977, guid: ee0b4dc88792d0547835a338e766f273, type: 3}
-      propertyPath: sounds.Array.data[5].name
-      value: throw
+      propertyPath: sounds.Array.data[5].loop
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2802514380940128977, guid: ee0b4dc88792d0547835a338e766f273, type: 3}
       propertyPath: sounds.Array.data[6].clip
       value: 
-      objectReference: {fileID: 8300000, guid: ad72318ae479df243a622a9c29978ee4, type: 3}
+      objectReference: {fileID: 8300000, guid: 797100476ccc3534db7d2e442dc12d6e, type: 3}
     - target: {fileID: 2802514380940128977, guid: ee0b4dc88792d0547835a338e766f273, type: 3}
       propertyPath: sounds.Array.data[6].name
-      value: testwalk1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2802514380940128977, guid: ee0b4dc88792d0547835a338e766f273, type: 3}
-      propertyPath: sounds.Array.data[7].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: bf87531cf13243341b890720fe6c4734, type: 3}
-    - target: {fileID: 2802514380940128977, guid: ee0b4dc88792d0547835a338e766f273, type: 3}
-      propertyPath: sounds.Array.data[7].name
-      value: testwalk2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2802514380940128977, guid: ee0b4dc88792d0547835a338e766f273, type: 3}
-      propertyPath: sounds.Array.data[4].pitch
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2802514380940128977, guid: ee0b4dc88792d0547835a338e766f273, type: 3}
-      propertyPath: sounds.Array.data[5].pitch
-      value: 1
+      value: doorunlock
       objectReference: {fileID: 0}
     - target: {fileID: 2802514380940128977, guid: ee0b4dc88792d0547835a338e766f273, type: 3}
       propertyPath: sounds.Array.data[6].pitch
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2802514380940128977, guid: ee0b4dc88792d0547835a338e766f273, type: 3}
-      propertyPath: sounds.Array.data[7].pitch
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2802514380940128977, guid: ee0b4dc88792d0547835a338e766f273, type: 3}
@@ -3270,11 +3243,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2802514380940128977, guid: ee0b4dc88792d0547835a338e766f273, type: 3}
       propertyPath: sounds.Array.data[6].volume
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2802514380940128977, guid: ee0b4dc88792d0547835a338e766f273, type: 3}
-      propertyPath: sounds.Array.data[7].volume
-      value: 0.7
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2802514380940128981, guid: ee0b4dc88792d0547835a338e766f273, type: 3}
       propertyPath: m_RootOrder

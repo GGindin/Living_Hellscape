@@ -21,6 +21,8 @@ public class PlayerManager : MonoBehaviour, ISaveableObject
 
     public bool PlayerHasControl => playerHasControl;
 
+    public bool StillUpdateRooms { get; set; }
+
     public PlayerInventory Inventory => active.Inventory;
 
     public PlayerController Active => active;
@@ -41,13 +43,16 @@ public class PlayerManager : MonoBehaviour, ISaveableObject
     {
         if (GameController.Instance.StopUpdates) return;
         if (!playerHasControl) return;
-        if (bodyInstance)
+        if (isSetup && !IsPlayerDead())
         {
-            bodyInstance.ControllerUpdate();
-        }
-        if (ghostInstance)
-        {
-            ghostInstance.ControllerUpdate();
+            if (bodyInstance)
+            {
+                bodyInstance.ControllerUpdate();
+            }
+            if (ghostInstance)
+            {
+                ghostInstance.ControllerUpdate();
+            }
         }
     }
 
@@ -205,7 +210,7 @@ public class PlayerManager : MonoBehaviour, ISaveableObject
 
     bool IsPlayerDead()
     {
-        if((bodyInstance == null || ghostInstance == null) && !GameOverMenuController.Instance.gameObject.activeInHierarchy)
+        if((bodyInstance.IsDead || ghostInstance.IsDead) && !GameOverMenuController.Instance.gameObject.activeInHierarchy)
         {
             GameController.Instance.SetupGameOver();
             return true;

@@ -126,6 +126,26 @@ public class GameStorageController : MonoBehaviour
         }
     }
 
+    public void DeleteAllTempData()
+    {
+        for(int i = 0; i < 3; i++)
+        {
+            var currentSave = Path.Combine(appDatatPath, GetSaveString(i));
+
+            var currentTempDataPath = Path.Combine(currentSave, TEMP_DATA_DIR);
+
+            if (Directory.Exists(currentSave))
+            {
+                if (Directory.Exists(currentTempDataPath))
+                {
+                    Directory.Delete(currentTempDataPath, true);
+                    Directory.CreateDirectory(currentTempDataPath);
+                }
+            }
+        }
+
+    }
+
     public void DeleteAllData()
     {
         appDatatPath = Application.persistentDataPath;

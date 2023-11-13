@@ -8,6 +8,8 @@ public class GhostPlayerController : PlayerController
 
     bool hasLeftPlayer = false;
 
+    public bool HasLeftPlayer { get => hasLeftPlayer; set => hasLeftPlayer = value; }
+
     GhostFreeZone lastGhostFreeZone;
 
     override protected void Awake()
@@ -26,7 +28,6 @@ public class GhostPlayerController : PlayerController
         {
             if (!rb.IsTouching(lastGhostFreeZone.GetComponent<Collider2D>()))
             {
-                Debug.Log("ACTIVATE LEFT ZONE");
                 EnemyGhostManager.Instance.PlayerInGhostFreeZone = false;
                 lastGhostFreeZone = null;
             }
@@ -93,13 +94,15 @@ public class GhostPlayerController : PlayerController
         var interactableObject = collision.gameObject.GetComponent<InteractableObject>();
         if (interactableObject)
         {
-            NotificationBoxController.instance.OpenNotificationBox("Press K to interact");
+
 
             if (this.interactableObject == null)
             {
                 NotificationBoxController.instance.CloseNotificationBox();
                 this.interactableObject = interactableObject;
             }
+
+            NotificationBoxController.instance.OpenNotificationBox("Press K to interact");
 
             if (!PlayerManager.Instance.PlayerHasControl)
             {
@@ -163,9 +166,10 @@ public class GhostPlayerController : PlayerController
         {
             lastGhostFreeZone = ghostFreeZone;
             EnemyGhostManager.Instance.PlayerInGhostFreeZone = true;
+            return;
         }
 
-        if (hasLeftPlayer)
+        if (hasLeftPlayer && collision.attachedRigidbody && GameStateController.Instance.KnowsHowToPossesBody)
         {
             var bodyController = collision.attachedRigidbody.GetComponent<BodyPlayerController>();
             if (bodyController)
@@ -183,15 +187,19 @@ public class GhostPlayerController : PlayerController
         var ghostFreeZone = collision.gameObject.GetComponent<GhostFreeZone>();
         if (ghostFreeZone)
         {
-            Debug.Log("ZONE LEAVE");
             lastGhostFreeZone = null;
             EnemyGhostManager.Instance.PlayerInGhostFreeZone = false;
+            return;
         }
 
-        var bodyController = collision.attachedRigidbody.GetComponent<BodyPlayerController>();
-        if (bodyController)
+        if (collision.attachedRigidbody)
         {
-            hasLeftPlayer = true;
+            var bodyController = collision.attachedRigidbody.GetComponent<BodyPlayerController>();
+            if (bodyController)
+            {
+                hasLeftPlayer = true;
+            }
         }
+
     }
 }
