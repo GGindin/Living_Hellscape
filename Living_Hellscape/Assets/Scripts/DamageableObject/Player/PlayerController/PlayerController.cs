@@ -201,7 +201,15 @@ public abstract class PlayerController : DamageableObject, ISaveableObject
         if (HasHeldObject) return;
         if(buttonState == ButtonState.Down)
         {
-            PlayerManager.Instance.Inventory.DoMainAction();
+            if(this is BodyPlayerController)
+            {
+                Debug.Log("BODY");
+            }
+            else
+            {
+                Debug.Log("GHOST");
+            }
+            inventory.DoMainAction();
         }
     }
 
@@ -215,7 +223,7 @@ public abstract class PlayerController : DamageableObject, ISaveableObject
             }
             else
             {
-                PlayerManager.Instance.Inventory.DoSecondAction();
+                inventory.DoSecondAction();
             }         
         }
     }
