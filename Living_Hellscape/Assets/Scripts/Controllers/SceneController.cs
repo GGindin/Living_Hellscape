@@ -62,7 +62,7 @@ public class SceneController : MonoBehaviour
         GameController.Instance.StartPlaySession(i);
         GameController.Instance.SetStopUpdates(true);
         VignetteController.Instance.EndVignette();
-        yield return StartCoroutine(AudioController.Instance.FadeInSoundEffect("MainMusic", VignetteController.Instance.Duration));
+        yield return StartCoroutine(AudioController.Instance.FadeInSoundEffect("", VignetteController.Instance.Duration));
         GameController.Instance.SetStopUpdates(false);
     }
 
@@ -72,7 +72,7 @@ public class SceneController : MonoBehaviour
         if (SceneManager.GetSceneByBuildIndex(MAIN_MENU_SCENE_ID).isLoaded)
         {
             VignetteController.Instance.StartVignette();
-            yield return StartCoroutine(AudioController.Instance.FadeOutSoundEffect("MainMusic", VignetteController.Instance.Duration));
+            yield return StartCoroutine(AudioController.Instance.FadeOutSoundEffect("MansionAtmosphere", VignetteController.Instance.Duration));
             sceneControllerSceneCamera.gameObject.SetActive(true);
         }
 
@@ -89,7 +89,7 @@ public class SceneController : MonoBehaviour
         GameController.Instance.StartPlaySession(i);
         GameController.Instance.SetStopUpdates(true);
         VignetteController.Instance.EndVignette();
-        yield return StartCoroutine(AudioController.Instance.FadeInSoundEffect("MainMusic", VignetteController.Instance.Duration));
+        yield return StartCoroutine(AudioController.Instance.FadeInSoundEffect("MansionAtmosphere", VignetteController.Instance.Duration));
         GameController.Instance.SetStopUpdates(false);
     }
 
@@ -99,7 +99,7 @@ public class SceneController : MonoBehaviour
         if (SceneManager.GetSceneByBuildIndex(PLAY_SEESION_SCENE_ID).isLoaded)
         {
             VignetteController.Instance.StartVignette();
-            yield return StartCoroutine(AudioController.Instance.FadeOutSoundEffect("MainMusic", VignetteController.Instance.Duration));
+            yield return StartCoroutine(AudioController.Instance.FadeOutSoundEffect("MansionAtmosphere", VignetteController.Instance.Duration));
             sceneControllerSceneCamera.gameObject.SetActive(true);
         }
 
@@ -114,7 +114,7 @@ public class SceneController : MonoBehaviour
         //here move volumes and stuff back to where they were
         sceneControllerSceneCamera.gameObject.SetActive(false);
         VignetteController.Instance.EndVignette();
-        yield return StartCoroutine(AudioController.Instance.FadeInSoundEffect("MainMusic", VignetteController.Instance.Duration));
+        yield return StartCoroutine(AudioController.Instance.FadeInSoundEffect("MansionAtmosphere", VignetteController.Instance.Duration));
     }
 
     IEnumerator LoadSceneByBuildIndex(int buildIndex)

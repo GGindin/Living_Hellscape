@@ -225,3 +225,15 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+  - name: throw
+    clip: {fileID: 8300000, guid: 7b7820364dc7c9941b776e16bc6f09d5, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: MansionAtmosphere
+    clip: {fileID: 8300000, guid: b95c493bc81fd014ca8437fbb768c906, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
