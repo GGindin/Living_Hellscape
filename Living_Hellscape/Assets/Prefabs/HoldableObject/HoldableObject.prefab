@@ -154,6 +154,6 @@ MonoBehaviour:
   geometryLayer:
     serializedVersion: 2
     m_Bits: 128
-  itemLayer:
+  thrownItemLayer:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 1048576

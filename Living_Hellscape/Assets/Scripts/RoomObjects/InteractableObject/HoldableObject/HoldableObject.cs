@@ -24,7 +24,7 @@ public class HoldableObject : InteractableObject
     LayerMask geometryLayer;
 
     [SerializeField]
-    LayerMask itemLayer;
+    LayerMask thrownItemLayer;
 
     SpriteRenderer spriteRenderer;
 
@@ -46,7 +46,7 @@ public class HoldableObject : InteractableObject
             isHeld = PlayerManager.Instance.Active.HoldObject(this);
             if (isHeld)
             {
-                gameObject.layer = LayerUtil.LayerMaskToLayer(itemLayer);
+                gameObject.layer = LayerUtil.LayerMaskToLayer(thrownItemLayer);
                 spriteRenderer.sortingOrder = 1;
             }       
         }
@@ -64,18 +64,31 @@ public class HoldableObject : InteractableObject
         isThrown = true;
         body.isKinematic = false;
 
-        AudioController.Instance.PlaySoundEffect("throw");
-        PlayerManager.Instance.Active.StartCoroutine(PlayerManager.Instance.Active.StopControlForTime(.25f));
-
-        var throwSpeed = throwDistance / throwTime;
-        //throwSpeed += Vector2.Dot(direction, PlayerManager.Instance.Active.Velocity);
-
-        //var actualThrowTime = throwDistance / throwSpeed;
-        var actualThrowTime = throwTime;
-
         var playerTrans = PlayerManager.Instance.Active.transform;
         var playerPos = new Vector2(playerTrans.position.x, playerTrans.position.y);
         var end = playerPos + (direction * throwDistance);
+        var currentThrowDistance = throwDistance;
+
+        var hitResult = Physics2D.Raycast(playerPos, direction, throwDistance, geometryLayer);
+        if(hitResult)
+        {
+            end = hitResult.point;
+            currentThrowDistance = (end - playerPos).magnitude;
+        }
+
+        AudioController.Instance.PlaySoundEffect("throw");
+        PlayerManager.Instance.Active.StartCoroutine(PlayerManager.Instance.Active.StopControlForTime(.25f));
+
+        var generalThrowSpeed = throwDistance / throwTime;
+        var distanceRatio = throwDistance / currentThrowDistance;
+        var throwSpeed = generalThrowSpeed * distanceRatio;
+        //throwSpeed += Vector2.Dot(direction, PlayerManager.Instance.Active.Velocity);
+
+        var actualThrowTime = currentThrowDistance / throwSpeed;
+        //var actualThrowTime = throwTime;
+
+
+
 
         var start = body.position;
 
