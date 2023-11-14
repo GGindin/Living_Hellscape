@@ -65,6 +65,8 @@ public class BossEnemy : EnemyController
             hasDoneFirstUpdate = true;
             if(enterText != null)
             {
+                //do with callback
+                //TextBoxController.instance.OpenTextBoxWithCallBack(enterText, () => AudioController.Instance.PlaySoundEffect("bossmusic"));
                 TextBoxController.instance.OpenTextBox(enterText);
             }
         }
@@ -261,6 +263,8 @@ public class BossEnemy : EnemyController
             {
                 TextBoxController.instance.OpenTextBox(exitText);
             }
+
+            //fade out music
         }
 
 
