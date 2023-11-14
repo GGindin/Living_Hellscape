@@ -72,6 +72,12 @@ MonoBehaviour:
     - {fileID: 0}
     - {fileID: 0}
     - {fileID: 0}
+  normalLayer:
+    serializedVersion: 2
+    m_Bits: 2048
+  invincibleLayer:
+    serializedVersion: 2
+    m_Bits: 4194304
 --- !u!50 &5641017312213113673
 Rigidbody2D:
   serializedVersion: 4

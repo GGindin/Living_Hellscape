@@ -25,10 +25,10 @@ TagManager:
   - EnemyOnlyGeometry
   - GhostFreeZone
   - EnemyBodyProjectile
-  - 
-  - 
-  - 
-  - 
+  - ThrownObjectsLayer
+  - playerBodyInvincible
+  - playerGhostInvincible
+  - HeldObjectsLayer
   - 
   - 
   - 

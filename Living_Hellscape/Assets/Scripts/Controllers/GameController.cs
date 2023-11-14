@@ -270,6 +270,10 @@ public class GameController : MonoBehaviour
         }
         else
         {
+            if (!GameStateController.Instance.KnowsHowToPossesBody)
+            {
+                GameStateController.Instance.KnowsHowToPossesBody = true;
+            }
             GoToBodyNow();
         }
     }
