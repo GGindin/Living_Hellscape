@@ -103,7 +103,7 @@ public class GhostEnemy : EnemyController
         animator.SetFloat(yDirAnimID, direction.y);
     }
 
-    protected override void HitLayerReset() { }
+    protected override void HitLayerReset(Collision2D collision) { }
 
     public override void SavePerm(GameDataWriter writer) { }
 

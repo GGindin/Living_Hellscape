@@ -107,7 +107,7 @@ public abstract class EnemyController : DamageableObject, ISaveableObject
     {
     }
 
-    protected abstract void HitLayerReset();
+    protected abstract void HitLayerReset(Collision2D collision);
 
     private Vector2 GetScaredDirection()
     {
@@ -149,7 +149,7 @@ public abstract class EnemyController : DamageableObject, ISaveableObject
         var obj = collision.gameObject;
         if((redirectLayers & 1 << obj.layer) != 0)
         {
-            HitLayerReset();
+            HitLayerReset(collision);
 
             var contacts = collision.contacts;
 

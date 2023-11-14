@@ -224,7 +224,7 @@ public class BossEnemy : EnemyController
         direction = Quaternion.AngleAxis(angle, Vector3.forward) * Vector2.right;
     }
 
-    protected override void HitLayerReset()
+    protected override void HitLayerReset(Collision2D collision)
     {
         SetBehaviorToWander();
     }
