@@ -26,6 +26,9 @@ public class HoldableObject : InteractableObject
     [SerializeField]
     LayerMask thrownItemLayer;
 
+    [SerializeField]
+    GameObject shadow;
+
     SpriteRenderer spriteRenderer;
 
     public override Collider2D InteractableCollider => objectCollider;
@@ -64,16 +67,23 @@ public class HoldableObject : InteractableObject
         isThrown = true;
         body.isKinematic = false;
 
+        shadow.SetActive(true);
+
         var playerTrans = PlayerManager.Instance.Active.transform;
         var playerPos = new Vector2(playerTrans.position.x, playerTrans.position.y);
         var end = playerPos + (direction * throwDistance);
         var currentThrowDistance = throwDistance;
+
+        var shadowStartPos = playerPos + Vector2.down * .5f;
+        var shadowEndPos = shadowStartPos + (direction * throwDistance);
+        shadow.transform.position = shadowStartPos;
 
         var hitResult = Physics2D.Raycast(playerPos, direction, throwDistance, geometryLayer);
         if(hitResult)
         {
             end = hitResult.point;
             currentThrowDistance = (end - playerPos).magnitude;
+            shadowEndPos = shadowStartPos + (direction * currentThrowDistance);
         }
 
         AudioController.Instance.PlaySoundEffect("throw");
@@ -84,7 +94,8 @@ public class HoldableObject : InteractableObject
         var throwSpeed = generalThrowSpeed * distanceRatio;
         //throwSpeed += Vector2.Dot(direction, PlayerManager.Instance.Active.Velocity);
 
-        var actualThrowTime = currentThrowDistance / throwSpeed;
+        var actualThrowTime = throwTime / distanceRatio;
+        //var actualThrowTime = currentThrowDistance / throwSpeed;
         //var actualThrowTime = throwTime;
 
 
@@ -100,6 +111,8 @@ public class HoldableObject : InteractableObject
             float t = Mathf.InverseLerp(0f, actualThrowTime, currentTime);
             var pos = Vector2.Lerp(start, end, t);
             body.MovePosition(pos);
+
+            shadow.transform.position = Vector2.Lerp(shadowStartPos, shadowEndPos, t);
             yield return null;
         }
 
