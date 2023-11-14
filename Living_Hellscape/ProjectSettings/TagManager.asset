@@ -26,9 +26,9 @@ TagManager:
   - GhostFreeZone
   - EnemyBodyProjectile
   - ThrownObjectsLayer
-  - 
-  - 
-  - 
+  - playerBodyInvincible
+  - playerGhostInvincible
+  - HeldObjectsLayer
   - 
   - 
   - 

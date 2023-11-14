@@ -27,6 +27,9 @@ public class HoldableObject : InteractableObject
     LayerMask thrownItemLayer;
 
     [SerializeField]
+    LayerMask heldItemLayer;
+
+    [SerializeField]
     GameObject shadow;
 
     SpriteRenderer spriteRenderer;
@@ -49,7 +52,7 @@ public class HoldableObject : InteractableObject
             isHeld = PlayerManager.Instance.Active.HoldObject(this);
             if (isHeld)
             {
-                gameObject.layer = LayerUtil.LayerMaskToLayer(thrownItemLayer);
+                gameObject.layer = LayerUtil.LayerMaskToLayer(heldItemLayer);
                 spriteRenderer.sortingOrder = 1;
             }       
         }
@@ -58,6 +61,7 @@ public class HoldableObject : InteractableObject
             isHeld = false;
             var direction = PlayerManager.Instance.Active.ThrowObject();
             transform.SetParent(RoomController.Instance.ActiveRoom.transform);
+            gameObject.layer = LayerUtil.LayerMaskToLayer(thrownItemLayer);
             StartCoroutine(Throw(direction));
         }
     }

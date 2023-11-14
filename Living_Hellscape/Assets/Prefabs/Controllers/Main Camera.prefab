@@ -68,7 +68,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 1048543
+    m_Bits: 16777183
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -219,6 +219,18 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: MansionAtmosphere
     clip: {fileID: 8300000, guid: b95c493bc81fd014ca8437fbb768c906, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: knifeattack
+    clip: {fileID: 8300000, guid: 7f7e7f79869029a4e8b2a8c6cbd184f1, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: victory
+    clip: {fileID: 8300000, guid: fe16cfe31ddc2a848afd6981609bf5be, type: 3}
     volume: 1
     pitch: 1
     loop: 1

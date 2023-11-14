@@ -240,4 +240,7 @@ MonoBehaviour:
   thrownItemLayer:
     serializedVersion: 2
     m_Bits: 1048576
+  heldItemLayer:
+    serializedVersion: 2
+    m_Bits: 8388608
   shadow: {fileID: 4623347091985522641}
