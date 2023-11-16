@@ -65,6 +65,8 @@ public class BossEnemy : EnemyController
             hasDoneFirstUpdate = true;
             if(enterText != null)
             {
+                //do with callback
+                //TextBoxController.instance.OpenTextBoxWithCallBack(enterText, () => AudioController.Instance.PlaySoundEffect("bossmusic"));
                 TextBoxController.instance.OpenTextBox(enterText);
             }
         }
@@ -222,7 +224,7 @@ public class BossEnemy : EnemyController
         direction = Quaternion.AngleAxis(angle, Vector3.forward) * Vector2.right;
     }
 
-    protected override void HitLayerReset()
+    protected override void HitLayerReset(Collision2D collision)
     {
         SetBehaviorToWander();
     }
@@ -261,6 +263,8 @@ public class BossEnemy : EnemyController
             {
                 TextBoxController.instance.OpenTextBox(exitText);
             }
+
+            //fade out music
         }
 
 

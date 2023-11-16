@@ -144,6 +144,10 @@ public class Room : MonoBehaviour, ISaveableObject
         ResetEnemyPos();
         SetupGhostInteractables();
         LoadAdjacentRooms();
+        if (CheckForBossEnemy())
+        {
+            //fade out main music here
+        }
     }
 
     //called when actually finished entering room
@@ -447,6 +451,19 @@ public class Room : MonoBehaviour, ISaveableObject
             Vector2 totalOffset = otherDoorDist + (otherDoor.DoorDirection.DirectionToVector2() * interRoomDistance) + thisDoorDist;
             transform.position = otherRoom.transform.position + new Vector3(totalOffset.x, totalOffset.y);
         }
+    }
+
+    private bool CheckForBossEnemy()
+    {
+        for (int i = 0; i < roomEnemies.Length; i++)
+        {
+            if (roomEnemies[i] != null && roomEnemies[i] is BossEnemy)
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     void LoadEnemiesFromDefault()

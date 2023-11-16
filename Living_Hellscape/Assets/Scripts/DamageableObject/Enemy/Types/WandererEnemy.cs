@@ -60,7 +60,7 @@ public class WandererEnemy : EnemyController
         return sqrDst > maxWanderDistance * maxWanderDistance;
     }
 
-    protected override void HitLayerReset()
+    protected override void HitLayerReset(Collision2D collision)
     {
         currentTimer = 0f;
     }

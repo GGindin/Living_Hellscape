@@ -10,6 +10,9 @@ public class AudioController : MonoBehaviour
 
     public Sound[] sounds;
 
+    [SerializeField]
+    bool logError;
+
     void Awake()
     {
         Instance = this;
@@ -34,7 +37,10 @@ public class AudioController : MonoBehaviour
         if (sound != null)
         {
             sound.source.Play();
+            return;
         }
+
+        LogError(name);
     }
 
     public void StopSoundEffect(string name)
@@ -44,6 +50,8 @@ public class AudioController : MonoBehaviour
         {
             sound.source.Stop();
         }
+
+        LogError(name);
     }
 
     public IEnumerator FadeInSoundEffect(string name, float duration)
@@ -64,6 +72,8 @@ public class AudioController : MonoBehaviour
             }
             sound.source.volume = 1 * sound.volume;
         }
+
+        LogError(name);
     }
 
     public IEnumerator FadeOutSoundEffect(string name, float duration)
@@ -84,6 +94,8 @@ public class AudioController : MonoBehaviour
             sound.source.Stop();
             sound.source.volume = 0 * sound.volume;
         }
+
+        LogError(name);
     }
 
 
@@ -132,6 +144,14 @@ public class AudioController : MonoBehaviour
             {
                 currentWalkTimer -= Time.deltaTime;
             }
+        }
+    }
+
+    void LogError(string name)
+    {
+        if (logError)
+        {
+            Debug.LogWarning("SOUND: " + name + " NOT FOUND");
         }
     }
 }
