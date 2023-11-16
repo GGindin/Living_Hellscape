@@ -71,5 +71,13 @@ PrefabInstance:
       propertyPath: prefabConnections.Array.data[0].otherRoomID
       value: 28
       objectReference: {fileID: 0}
+    - target: {fileID: 7826213196609759964, guid: dac9870ad341a5e43b3f48b46bca0300, type: 3}
+      propertyPath: m_ColliderPaths.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7826213196609759966, guid: dac9870ad341a5e43b3f48b46bca0300, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dac9870ad341a5e43b3f48b46bca0300, type: 3}

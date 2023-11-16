@@ -185,7 +185,6 @@ public abstract class DamageableObject : MonoBehaviour
 
     void AddDamageEffect(Damage damage, Vector2 normDirection)
     {
-        Debug.Log("DAMAGE");
         damage.SetVectorFromDirection(normDirection);
         statusEffects.Add(damage);
         TakeDamage(damage);

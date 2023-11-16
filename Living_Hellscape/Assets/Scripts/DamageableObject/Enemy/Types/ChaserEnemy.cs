@@ -107,8 +107,12 @@ public class ChaserEnemy : EnemyController
 
         normal.Normalize();
 
-        collisionGameObject = collision.gameObject;
-        colNormal = normal;
+        if(Vector2.Dot(direction, normal) < 0)
+        {
+            collisionGameObject = collision.gameObject;
+            colNormal = normal;
+        }
+        
     }
 
     private void OnCollisionExit2D(Collision2D collision)

@@ -7,6 +7,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 635336200686059228, guid: 3f752c61f7610224c9a3b9038dc0ad18, type: 3}
+      propertyPath: m_ColliderPaths.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 635336200686059230, guid: 3f752c61f7610224c9a3b9038dc0ad18, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 635336202080834169, guid: 3f752c61f7610224c9a3b9038dc0ad18, type: 3}
       propertyPath: m_Name
       value: room25
