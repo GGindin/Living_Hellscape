@@ -97,9 +97,10 @@ public class BossEnemy : EnemyController
                     if (fireAttackPrefab)
                     {
                         currentAttackStopTime = 0f;
-                        var fireAttack = Instantiate(fireAttackPrefab, transform.position + Vector3.up * .5f, Quaternion.LookRotation(Vector3.forward, direction));
+                        var attackDir = (playerController.transform.position - transform.position).normalized;
+                        var fireAttack = Instantiate(fireAttackPrefab, transform.position + Vector3.up * .5f, Quaternion.LookRotation(Vector3.forward, attackDir));
                         fireAttack.transform.SetParent(RoomController.Instance.ActiveRoom.DynamicObjectsHolder, true);
-                        fireAttack.Direction = (playerController.transform.position - transform.position).normalized;
+                        fireAttack.Direction = attackDir;
                     }
                 }
 

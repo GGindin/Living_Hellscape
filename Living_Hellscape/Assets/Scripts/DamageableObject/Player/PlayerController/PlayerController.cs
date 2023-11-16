@@ -170,6 +170,11 @@ public abstract class PlayerController : DamageableObject, ISaveableObject
         PlayerManager.Instance.SetPlayerControl(true);
     }
 
+    public void SetAnimSpeedToZero()
+    {
+        animator.SetFloat(speedAnimID, 0f);
+    }
+
     protected override void DestroyObject()
     {
         gameObject.SetActive(false);

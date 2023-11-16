@@ -160,6 +160,13 @@ public class GameController : MonoBehaviour
     public void SetStopUpdates(bool stop)
     {
         stopUpdates = stop;
+        if (stopUpdates)
+        {
+            if (PlayerManager.Instance.Active)
+            {
+                PlayerManager.Instance.Active.SetAnimSpeedToZero();
+            }
+        }
     }
 
     public void TransitionToRoom(RoomTransitionData transitionData)
