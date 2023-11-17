@@ -74,11 +74,16 @@ public class ChaserEnemy : EnemyController
             else
             {
                 direction = (playerController.transform.position - transform.position).normalized;
-                if (collisionGameObject)
+                if (collisionGameObject && Vector2.Dot(direction, colNormal) < 0)
                 {
                     var dot = Vector2.Dot(colNormal, direction);
                     direction = direction - (colNormal * dot);
                     direction.Normalize();
+                }
+                else
+                {
+                    collisionGameObject = null;
+                    colNormal = Vector2.zero;
                 }
             }
         }
