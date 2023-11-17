@@ -83,6 +83,13 @@ public class GhostEnemy : EnemyController
         }
 
         spriteRenderer.color = targetColor;
+
+    }
+
+    public IEnumerator SelfDestroy()
+    {
+        yield return StartCoroutine(ProcessFadeOut());
+        Destroy(gameObject);
     }
 
     void UpdateDirection()

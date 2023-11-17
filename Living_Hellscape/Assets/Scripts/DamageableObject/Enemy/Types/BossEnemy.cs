@@ -66,8 +66,7 @@ public class BossEnemy : EnemyController
             if(enterText != null)
             {
                 //do with callback
-                //TextBoxController.instance.OpenTextBoxWithCallBack(enterText, () => AudioController.Instance.PlaySoundEffect("bossmusic"));
-                TextBoxController.instance.OpenTextBox(enterText);
+                TextBoxController.instance.OpenTextBoxWithCallBack(enterText, () => AudioController.Instance.PlaySoundEffect("BossMusic"));
             }
         }
 
@@ -255,6 +254,8 @@ public class BossEnemy : EnemyController
     {
         if (health <= 0)
         {
+            AudioController.Instance.StopSoundEffect("BossMusic");
+
             if (!ringAttackPrefab)
             {
                 GameStateController.Instance.BeatMiniBoss = true;
@@ -262,10 +263,16 @@ public class BossEnemy : EnemyController
 
             if (exitText != null)
             {
-                TextBoxController.instance.OpenTextBox(exitText);
+                TextBoxController.instance.OpenTextBoxWithCallBack(exitText, () =>
+                {
+                    AudioController.Instance.StartCoroutine(AudioController.Instance.FadeInSoundEffect("MansionAtmosphere", 2f));
+                });
+                
             }
-
-            //fade out music
+            else
+            {
+                AudioController.Instance.StartCoroutine(AudioController.Instance.FadeInSoundEffect("MansionAtmosphere", 2f));
+            }
         }
 
 

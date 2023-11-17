@@ -250,8 +250,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5409594155342648777}
   - component: {fileID: 3046171989462569064}
-  m_Layer: 15
-  m_Name: GameObject
+  - component: {fileID: 6800755350399417588}
+  m_Layer: 24
+  m_Name: Pit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -297,6 +298,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 15.253729, y: 4.25}
   m_EdgeRadius: 0
+--- !u!114 &6800755350399417588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6292044412586438184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 541b097d87721f14c952f797aad2f615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ghostObject: 0
+  spriteRenderer: {fileID: 0}
+  signCollider: {fileID: 3046171989462569064}
+  signText: A deep pit lays before you. You cannot see the bottom.
 --- !u!1 &6354869307039065888
 GameObject:
   m_ObjectHideFlags: 0
@@ -3566,14 +3583,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ad880acfab66c72419493a4d01e72187, type: 3}
---- !u!4 &5639210974620830662 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6673370577510455715, guid: ad880acfab66c72419493a4d01e72187, type: 3}
-  m_PrefabInstance: {fileID: 1359545775772635749}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5327054510341015790 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6571715528359631499, guid: ad880acfab66c72419493a4d01e72187, type: 3}
+  m_PrefabInstance: {fileID: 1359545775772635749}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5639210974620830662 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6673370577510455715, guid: ad880acfab66c72419493a4d01e72187, type: 3}
   m_PrefabInstance: {fileID: 1359545775772635749}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &8821855550404512902 stripped

@@ -124,7 +124,7 @@ public class AudioController : MonoBehaviour
 
     private void Update()
     {
-        if (playWalk)
+        if (playWalk && !GameController.Instance.StopUpdates)
         {
             if (currentWalkTimer <= 0)
             {
