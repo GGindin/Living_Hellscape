@@ -78,43 +78,51 @@ public class Door : InteractableObject
 
     public void OperateDoor()
     {
-        if (room.DefeateAllEnemies && room.HasActiveEnemies() && PlayerManager.Instance.PlayerHasControl)
+        //if we have control we need to do checks
+        if (PlayerManager.Instance.PlayerHasControl)
         {
-            TextBoxController.instance.OpenTextBox("This door is locked. You feel you must fight to escape.");
-            return;
-        }
-        if (openBehavior && !isUnlocked)
-        {
-            if (openBehavior.ShouldOpenDoor())
+            if (room.DefeateAllEnemies && room.HasActiveEnemies())
             {
-                AudioController.Instance.PlaySoundEffect("doorunlock");
-                TextBoxController.instance.OpenTextBox("The knob turns! You feel as if you have done something important");
-                isUnlocked = true;
-            }
-            else
-            {
-                TextBoxController.instance.OpenTextBox("This door is locked. You feel like there is something you should do first.");
+                TextBoxController.instance.OpenTextBox("This door is locked. You feel you must fight to escape.");
                 return;
             }
+            if (openBehavior && !isUnlocked)
+            {
+                if (openBehavior.ShouldOpenDoor())
+                {
+                    AudioController.Instance.PlaySoundEffect("doorunlock");
+                    TextBoxController.instance.OpenTextBox("The knob turns! You feel as if you have done something important");
+                    isUnlocked = true;
+                }
+                else
+                {
+                    TextBoxController.instance.OpenTextBox("This door is locked. You feel like there is something you should do first.");
+                    return;
+                }
+            }
+            if (closed && requiresKey != Key.KeyType.None && !isUnlocked)
+            {
+                var key = PlayerManager.Instance.Inventory.GetItemByType<Key>(typeof(Key));
+                if (key && key.keyType == requiresKey)
+                {
+                    key.Activate();
+                    AudioController.Instance.PlaySoundEffect("doorunlock");
+                    TextBoxController.instance.OpenTextBox("You hear the lock click. You turn the knob and the door swings open!");
+                    isUnlocked = true;
+                }
+                else
+                {
+                    TextBoxController.instance.OpenTextBox("This door is locked. Maybe you can find a key somewhere?");
+                    return;
+                }
+            }
         }
-        if (closed && requiresKey != Key.KeyType.None && !isUnlocked)
+        //if we dont have control and the door is locked just unlock the door and let the player go through
+        else if(!isUnlocked)
         {
-            var key = PlayerManager.Instance.Inventory.GetItemByType<Key>(typeof(Key));
-            if (key && key.keyType == requiresKey)
-            {
-                key.Activate();
-                AudioController.Instance.PlaySoundEffect("doorunlock");
-                TextBoxController.instance.OpenTextBox("You hear the lock click. You turn the knob and the door swings open!");
-                isUnlocked = true;
-            }
-            else
-            {
-                TextBoxController.instance.OpenTextBox("This door is locked. Maybe you can find a key somewhere?");
-                return;
-            }
+            isUnlocked = true;
         }
-        /* TextBoxController.instance.OpenTextBox("You just opened a door! Press the main action button (currently J) to continue. Pressing this button while the text is being written will allow you to skip to the end of that line instantly. I am going to continue writing here so you can see how the text box works. Feel free to make any suggestions you want and I'll see if I can add them. I currently plan to add a way to control where the line breaks happen (optionally) and a cursor that follows the text (if possible). Maxchars seems a bit janky and I'd like to add a different way to tell when a line ends without manually checking for every line of dialogue and setting it up. I hope it makes sense how you can add text to an object. Thank you!");
-        */
+
         NotificationBoxController.instance.CloseNotificationBox();
         closed = !closed;
         SetDoorSprite();
@@ -122,7 +130,7 @@ public class Door : InteractableObject
 
     public void OpenDoor()
     {
-        if (closed)
+        if (closed && !isUnlocked)
         {
             closed = !closed;
             SetDoorSprite();
