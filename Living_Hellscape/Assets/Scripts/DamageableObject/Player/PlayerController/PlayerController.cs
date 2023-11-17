@@ -72,7 +72,7 @@ public abstract class PlayerController : DamageableObject, ISaveableObject
         if(hasDamage && GetStatusOfType(StatusEffectType.Damage) == null)
         {
             hasDamage = false;
-            gameObject.layer = LayerUtil.LayerMaskToLayer(normalLayer);
+            boxCollider.gameObject.layer = LayerUtil.LayerMaskToLayer(normalLayer);
         }
 
         if (!(IsStunned() || IsScared()))
@@ -322,7 +322,7 @@ public abstract class PlayerController : DamageableObject, ISaveableObject
     {
         playerStats.ChangeCurrentHealth(delta);
         hasDamage = true;
-        gameObject.layer = LayerUtil.LayerMaskToLayer(invincibleLayer);
+        boxCollider.gameObject.layer = LayerUtil.LayerMaskToLayer(invincibleLayer);
         if (delta < 0f)
         {
             AudioController.Instance.PlaySoundEffect("playerhurt");
