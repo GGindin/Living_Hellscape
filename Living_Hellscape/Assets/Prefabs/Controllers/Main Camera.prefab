@@ -187,7 +187,7 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
-  - name: MainMusic
+  - name: BossMusic
     clip: {fileID: 8300000, guid: e631019ea7a039a498edbd4ebebde96c, type: 3}
     volume: 1
     pitch: 1
