@@ -9,6 +9,7 @@ public class HealthDrop : ItemDrop
 
     public override void Collect()
     {
+        base.Collect();
         PlayerManager.Instance.Active.PlayerStats.ChangeCurrentHealth(healthAmount);
         Destroy(gameObject);
     }

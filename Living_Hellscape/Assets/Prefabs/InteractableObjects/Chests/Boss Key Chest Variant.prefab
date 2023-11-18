@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 3336856289341328095, guid: e400d7599eb997f42afd0c8b74cb9dba, type: 3}
       propertyPath: chestItemPrefab
       value: 
-      objectReference: {fileID: 2021290744830765950, guid: a9e477ff8d6ef124ba699a0276feae39, type: 3}
+      objectReference: {fileID: 6690754426486976801, guid: a9e477ff8d6ef124ba699a0276feae39, type: 3}
     - target: {fileID: 5220877801265776457, guid: e400d7599eb997f42afd0c8b74cb9dba, type: 3}
       propertyPath: m_RootOrder
       value: 0

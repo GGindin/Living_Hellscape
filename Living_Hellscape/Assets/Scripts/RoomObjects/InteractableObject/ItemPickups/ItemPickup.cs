@@ -32,7 +32,7 @@ public class ItemPickup : InteractableObject
             {
                 isPickedUp = true;
             }
-
+            AudioController.Instance.PlaySoundEffect("victory");
             TextBoxController.instance.OpenTextBox("You got a " + item.Description);
 
             gameObject.SetActive(false); //set inactive so that it can save its state when the room saves

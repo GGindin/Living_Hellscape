@@ -26,5 +26,8 @@ public abstract class ItemDrop : MonoBehaviour
         transform.position = target;
     }
 
-    public abstract void Collect();
+    public virtual void Collect()
+    {
+        AudioController.Instance.PlaySoundEffect("doorunlock");
+    }
 }

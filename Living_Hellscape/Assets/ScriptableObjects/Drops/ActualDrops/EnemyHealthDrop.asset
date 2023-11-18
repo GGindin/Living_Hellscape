@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc5fbc718bcf94c4daf0ddf61441cee0, type: 3}
   m_Name: EnemyHealthDrop
   m_EditorClassIdentifier: 
-  dropProbability: 10
+  dropProbability: 5
   isUnique: 0
   alwaysDrop: 0
   isEnabled: 1
