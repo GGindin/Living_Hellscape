@@ -24,11 +24,41 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 241994022657888905}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.79, y: -5.23, z: 0}
+  m_LocalPosition: {x: 4.07, y: -3.68, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8741331413211466287}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4115957702187240097
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5857032186868623174}
+  m_Layer: 0
+  m_Name: GameObject (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5857032186868623174
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4115957702187240097}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.73, y: -6.44, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8741331413211466287}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5741682790175209052
 GameObject:
@@ -114,7 +144,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7761170752042304400}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.84, y: -2.13, z: 0}
+  m_LocalPosition: {x: -0.77, y: -0.97, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8741331413211466287}
@@ -173,7 +203,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 366037948330963169, guid: 8ee09770f54cbae4ab97524ad77871c6, type: 3}
       propertyPath: enemyPlacements.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 366037948330963169, guid: 8ee09770f54cbae4ab97524ad77871c6, type: 3}
       propertyPath: holdableObjectPlacements.Array.size
@@ -188,6 +218,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 770196971634610328, guid: 010757b69dbde82469bf880780fedb70, type: 3}
     - target: {fileID: 366037948330963169, guid: 8ee09770f54cbae4ab97524ad77871c6, type: 3}
+      propertyPath: enemyPlacements.Array.data[2].prefab
+      value: 
+      objectReference: {fileID: 8561485784633377489, guid: 8120803b7421f194d9955bd5c6c1e15a, type: 3}
+    - target: {fileID: 366037948330963169, guid: 8ee09770f54cbae4ab97524ad77871c6, type: 3}
       propertyPath: enemyPlacements.Array.data[0].placement
       value: 
       objectReference: {fileID: 7761170752042304400}
@@ -195,6 +229,10 @@ PrefabInstance:
       propertyPath: enemyPlacements.Array.data[1].placement
       value: 
       objectReference: {fileID: 241994022657888905}
+    - target: {fileID: 366037948330963169, guid: 8ee09770f54cbae4ab97524ad77871c6, type: 3}
+      propertyPath: enemyPlacements.Array.data[2].placement
+      value: 
+      objectReference: {fileID: 4115957702187240097}
     - target: {fileID: 366037948330963169, guid: 8ee09770f54cbae4ab97524ad77871c6, type: 3}
       propertyPath: prefabConnections.Array.data[1].otherRoomID
       value: 25
