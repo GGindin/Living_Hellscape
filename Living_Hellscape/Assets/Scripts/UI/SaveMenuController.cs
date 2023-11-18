@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class SaveMenuController : MonoBehaviour
+public class SaveMenuController : MenuController
 {
     public static SaveMenuController Instance { get; private set; }
 
@@ -24,6 +24,7 @@ public class SaveMenuController : MonoBehaviour
     private void OnEnable()
     {
         EventSystem.current.SetSelectedGameObject(saveButtons[0].gameObject);
+        currentSelected = saveButtons[0].gameObject;
         SetupSaveButtons();
     }
 
@@ -32,12 +33,14 @@ public class SaveMenuController : MonoBehaviour
         if (VignetteController.Instance.isActiveAndEnabled) return;
 
         UserInput userInput = InputController.GetUserInput();
+        CheckSelected();
 
         if (userInput.mainAction == ButtonState.Down)
         {
             var button = EventSystem.current.currentSelectedGameObject.GetComponent<Button>();
             if (button != null)
             {
+                PlayButtonDownSound();
                 button.onClick.Invoke();
             }
         }
@@ -61,7 +64,18 @@ public class SaveMenuController : MonoBehaviour
 
     public void PlaySave(int i)
     {
-        if (SceneController.Instance) SceneController.Instance.LoadPlaySessionScene(i);
+        if (SceneController.Instance)
+        {
+            if (GameStorageController.Instance.DoesSaveExist(i))
+            {
+                PlayMenuController.Instance.OpenMenu(i);
+                gameObject.SetActive(false);
+            }
+            else
+            {
+                SceneController.Instance.LoadPlaySessionScene(i);
+            }           
+        }
         else
         {
             Debug.Log("Need to start play session from scene controller scene for button to work");

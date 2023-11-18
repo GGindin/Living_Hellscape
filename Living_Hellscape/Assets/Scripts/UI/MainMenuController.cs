@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class MainMenuController : MonoBehaviour
+public class MainMenuController : MenuController
 {
     public static MainMenuController Instance { get; private set; }
 
@@ -17,6 +17,7 @@ public class MainMenuController : MonoBehaviour
         Instance = this;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+        currentSelected = defaultSelectedButton.gameObject;
     }
 
     private void OnEnable()
@@ -29,12 +30,14 @@ public class MainMenuController : MonoBehaviour
         if (VignetteController.Instance.isActiveAndEnabled) return;
 
         UserInput userInput = InputController.GetUserInput();
+        CheckSelected();
 
         if (userInput.mainAction == ButtonState.Down)
         {
             var button = EventSystem.current.currentSelectedGameObject.GetComponent<Button>();
             if (button != null)
             {
+                PlayButtonDownSound();
                 button.onClick.Invoke();
             }
         }
