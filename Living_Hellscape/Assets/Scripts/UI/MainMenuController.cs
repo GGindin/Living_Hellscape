@@ -57,6 +57,12 @@ public class MainMenuController : MenuController
         }
     }
 
+    public void OpenControlsMenu()
+    {
+        ControlsMenuController.Instance.OpenMenu();
+        gameObject.SetActive(false);
+    }
+
     public void QuitGame()
     {
         #if UNITY_EDITOR
