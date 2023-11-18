@@ -9,11 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc5fbc718bcf94c4daf0ddf61441cee0, type: 3}
-  m_Name: EnemyHealthDrop
+  m_Script: {fileID: 11500000, guid: 5558326771ab9f74b89e15d075dc5c3f, type: 3}
+  m_Name: HasBossKeyBehavior
   m_EditorClassIdentifier: 
-  dropProbability: 5
-  isUnique: 0
-  alwaysDrop: 0
-  isEnabled: 1
-  dropPrefab: {fileID: 5423346255551193686, guid: d32d0efcc500b4b49ac94d0eb2d6c9c6, type: 3}

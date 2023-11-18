@@ -207,10 +207,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a321358fb94b7de409b46d9e0ff75977, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+  health: 20
   speed: 3
   damage:
-    duration: 1
+    duration: 0.5
     amount: 1
     magnitude: 5
   redirectLayers:
@@ -228,9 +228,9 @@ MonoBehaviour:
     coolDown: 5
   fireAttackSettings:
     probablity: 0.75
-    coolDown: 5
+    coolDown: 2
   attackStopTime: 0.25
-  enterText: I have been waiting for you. Prepare to die!!!
+  enterText: This time you will not escape. Prepare to meet DEATH ITSELF!!!
   exitText: NOoOOOoOOOOo
 --- !u!50 &6998762087044943512
 Rigidbody2D:
