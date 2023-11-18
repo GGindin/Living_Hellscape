@@ -9,6 +9,7 @@ public class MarbleDrop : ItemDrop
 
     public override void Collect()
     {
+        base.Collect();
         PlayerManager.Instance.Active.Inventory.AddAmmo(ammoAmount);
         Destroy(gameObject);
     }

@@ -196,6 +196,14 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4005012473825732117, guid: fa31b134c019efb4db1ae49e110ef69e, type: 3}
+      propertyPath: enemyPlacements.Array.data[0].prefab
+      value: 
+      objectReference: {fileID: 8561485784633377489, guid: 8120803b7421f194d9955bd5c6c1e15a, type: 3}
+    - target: {fileID: 4005012473825732117, guid: fa31b134c019efb4db1ae49e110ef69e, type: 3}
+      propertyPath: enemyPlacements.Array.data[1].prefab
+      value: 
+      objectReference: {fileID: 770196971634610328, guid: 010757b69dbde82469bf880780fedb70, type: 3}
+    - target: {fileID: 4005012473825732117, guid: fa31b134c019efb4db1ae49e110ef69e, type: 3}
       propertyPath: enemyPlacements.Array.data[0].placement
       value: 
       objectReference: {fileID: 1291665327054685038}

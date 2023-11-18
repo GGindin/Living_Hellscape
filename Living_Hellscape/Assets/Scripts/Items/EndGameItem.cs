@@ -26,6 +26,8 @@ public class EndGameItem : Item
             yield return null;
         }
 
+        GameStateController.Instance.CurrentRoomIndex = 0;
+
         GameController.Instance.EndPlaySession();
     }
 }
