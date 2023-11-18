@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class InventoryPanelController : MonoBehaviour
+public class InventoryPanelController : MenuController
 {
     public static InventoryPanelController Instance { get; private set; }
 
@@ -24,6 +24,7 @@ public class InventoryPanelController : MonoBehaviour
     {
         gameObject.SetActive(true);
         EventSystem.current.SetSelectedGameObject(inventoryIcons[0].gameObject);
+        currentSelected = inventoryIcons[0].gameObject;
         var inventory = PlayerManager.Instance.Inventory;
         UpdatePanel(inventory);
     }
@@ -66,6 +67,7 @@ public class InventoryPanelController : MonoBehaviour
     private void Update()
     {
         UserInput userInput = InputController.GetUserInput();
+        CheckSelected();
 
         int index = EventSystem.current.currentSelectedGameObject.transform.GetSiblingIndex();
         var item = PlayerManager.Instance.Inventory.GetItemAtIndex(index);
@@ -95,6 +97,7 @@ public class InventoryPanelController : MonoBehaviour
         {
             if (item)
             {
+                PlayButtonDownSound();
                 PlayerManager.Instance.Inventory.HandleMainActionItemSwap(item);
             }
         }
@@ -102,6 +105,7 @@ public class InventoryPanelController : MonoBehaviour
         {
             if (item)
             {
+                PlayButtonDownSound();
                 PlayerManager.Instance.Inventory.HandleSecondActionItemSwap(item);
             }
         }     

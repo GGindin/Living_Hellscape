@@ -1991,11 +1991,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2799115838031470565, guid: 956c1a264e67f46439b74f8e0c376e5e, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[1].x
-      value: -5
+      value: -20
       objectReference: {fileID: 0}
     - target: {fileID: 2799115838031470565, guid: 956c1a264e67f46439b74f8e0c376e5e, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[2].x
-      value: -5
+      value: -20
       objectReference: {fileID: 0}
     - target: {fileID: 2799115838031470565, guid: 956c1a264e67f46439b74f8e0c376e5e, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[3].x
