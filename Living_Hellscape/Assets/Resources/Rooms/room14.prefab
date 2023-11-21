@@ -766,6 +766,10 @@ PrefabInstance:
       value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 149525772556613241, guid: cc7e6815b2ec0f242bb2f5c0d2e2fe04, type: 3}
+      propertyPath: m_ColliderPaths.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 149525772556613241, guid: cc7e6815b2ec0f242bb2f5c0d2e2fe04, type: 3}
       propertyPath: m_CompositePaths.m_Paths.Array.size
       value: 0
       objectReference: {fileID: 0}
@@ -916,6 +920,10 @@ PrefabInstance:
     - target: {fileID: 149525772556613241, guid: cc7e6815b2ec0f242bb2f5c0d2e2fe04, type: 3}
       propertyPath: m_ColliderPaths.Array.data[0].m_ColliderPaths.Array.data[1].Array.data[7].Y
       value: -90000100
+      objectReference: {fileID: 0}
+    - target: {fileID: 149525772556613243, guid: cc7e6815b2ec0f242bb2f5c0d2e2fe04, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1129183829011924372, guid: cc7e6815b2ec0f242bb2f5c0d2e2fe04, type: 3}
       propertyPath: m_SortingOrder

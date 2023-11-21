@@ -9,10 +9,14 @@ public class ChaserEnemy : EnemyController
     [SerializeField]
     float maxChaseDistance;
 
+    GameObject collisionGameObject;
+    Vector2 colNormal;
+
     protected override void Awake()
     {
         base.Awake();
         currentSpeed = speed;
+        collisionGameObject = null;
     }
 
     public override void RoomUpdate() { }
@@ -70,6 +74,17 @@ public class ChaserEnemy : EnemyController
             else
             {
                 direction = (playerController.transform.position - transform.position).normalized;
+                if (collisionGameObject && Vector2.Dot(direction, colNormal) < 0)
+                {
+                    var dot = Vector2.Dot(colNormal, direction);
+                    direction = direction - (colNormal * dot);
+                    direction.Normalize();
+                }
+                else
+                {
+                    collisionGameObject = null;
+                    colNormal = Vector2.zero;
+                }
             }
         }
         else
@@ -85,7 +100,34 @@ public class ChaserEnemy : EnemyController
         }
     }
 
-    protected override void HitLayerReset() { }
+    protected override void HitLayerReset(Collision2D collision)
+    {
+        var contacts = collision.contacts;
+        var normal = new Vector2();
+
+        foreach(var c in contacts)
+        {
+            normal += c.normal;
+        }
+
+        normal.Normalize();
+
+        if(Vector2.Dot(direction, normal) < 0)
+        {
+            collisionGameObject = collision.gameObject;
+            colNormal = normal;
+        }
+        
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if(collisionGameObject == collision.gameObject)
+        {
+            collisionGameObject = null;
+            colNormal = new Vector2();
+        }
+    }
 
     public override void SavePerm(GameDataWriter writer) { }
 

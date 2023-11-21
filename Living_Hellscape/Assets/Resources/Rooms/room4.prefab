@@ -343,6 +343,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: room4
       objectReference: {fileID: 0}
+    - target: {fileID: 8952850905019637428, guid: 76e50dd0231ceca48b9e56c02dfebc43, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8952850905019637430, guid: 76e50dd0231ceca48b9e56c02dfebc43, type: 3}
+      propertyPath: m_ColliderPaths.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 76e50dd0231ceca48b9e56c02dfebc43, type: 3}
 --- !u!4 &775770059626073565 stripped

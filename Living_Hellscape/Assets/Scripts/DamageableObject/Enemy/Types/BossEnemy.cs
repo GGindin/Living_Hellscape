@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditorInternal;
 using UnityEngine;
 
 public class BossEnemy : EnemyController
@@ -65,7 +64,8 @@ public class BossEnemy : EnemyController
             hasDoneFirstUpdate = true;
             if(enterText != null)
             {
-                TextBoxController.instance.OpenTextBox(enterText);
+                //do with callback
+                TextBoxController.instance.OpenTextBoxWithCallBack(enterText, () => AudioController.Instance.PlaySoundEffect("BossMusic"));
             }
         }
 
@@ -95,9 +95,10 @@ public class BossEnemy : EnemyController
                     if (fireAttackPrefab)
                     {
                         currentAttackStopTime = 0f;
-                        var fireAttack = Instantiate(fireAttackPrefab, transform.position + Vector3.up * .5f, Quaternion.LookRotation(Vector3.forward, direction));
+                        var attackDir = (playerController.transform.position - transform.position).normalized;
+                        var fireAttack = Instantiate(fireAttackPrefab, transform.position + Vector3.up * .5f, Quaternion.LookRotation(Vector3.forward, attackDir));
                         fireAttack.transform.SetParent(RoomController.Instance.ActiveRoom.DynamicObjectsHolder, true);
-                        fireAttack.Direction = (playerController.transform.position - transform.position).normalized;
+                        fireAttack.Direction = attackDir;
                     }
                 }
 
@@ -222,7 +223,7 @@ public class BossEnemy : EnemyController
         direction = Quaternion.AngleAxis(angle, Vector3.forward) * Vector2.right;
     }
 
-    protected override void HitLayerReset()
+    protected override void HitLayerReset(Collision2D collision)
     {
         SetBehaviorToWander();
     }
@@ -252,6 +253,8 @@ public class BossEnemy : EnemyController
     {
         if (health <= 0)
         {
+            AudioController.Instance.StopSoundEffect("BossMusic");
+
             if (!ringAttackPrefab)
             {
                 GameStateController.Instance.BeatMiniBoss = true;
@@ -259,7 +262,15 @@ public class BossEnemy : EnemyController
 
             if (exitText != null)
             {
-                TextBoxController.instance.OpenTextBox(exitText);
+                TextBoxController.instance.OpenTextBoxWithCallBack(exitText, () =>
+                {
+                    AudioController.Instance.StartCoroutine(AudioController.Instance.FadeInSoundEffect("MansionAtmosphere", 2f));
+                });
+                
+            }
+            else
+            {
+                AudioController.Instance.StartCoroutine(AudioController.Instance.FadeInSoundEffect("MansionAtmosphere", 2f));
             }
         }
 

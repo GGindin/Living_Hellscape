@@ -17,6 +17,7 @@ public class GameStateController : MonoBehaviour, ISaveableObject
     bool hasGottenIntro;
     bool knowsHowToPossesBody;
     bool beatMiniBoss;
+    bool hasBossKey;
 
     public bool BeatMiniBoss
     {
@@ -28,6 +29,19 @@ public class GameStateController : MonoBehaviour, ISaveableObject
         {
             AudioController.Instance.PlaySoundEffect("victory");
             beatMiniBoss = value;
+            SaveGameState();
+        }
+    }
+
+    public bool HasBossKey
+    {
+        get
+        {
+            return hasBossKey;
+        }
+        set
+        {
+            hasBossKey = value;
             SaveGameState();
         }
     }
@@ -152,6 +166,8 @@ public class GameStateController : MonoBehaviour, ISaveableObject
         knowsHowToPossesBody = val == 1 ? true : false;
         val = reader.ReadInt();
         beatMiniBoss = val == 1 ? true : false;
+        val = reader.ReadInt();
+        hasBossKey = val == 1 ? true : false;
     }
 
     public void LoadTemp(GameDataReader reader)
@@ -209,6 +225,15 @@ public class GameStateController : MonoBehaviour, ISaveableObject
         }
 
         if (beatMiniBoss)
+        {
+            writer.WriteInt(1);
+        }
+        else
+        {
+            writer.WriteInt(0);
+        }
+
+        if (hasBossKey)
         {
             writer.WriteInt(1);
         }

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 9080509497321958275}
   - component: {fileID: 1190282144259210554}
   - component: {fileID: 2626348481617351450}
+  - component: {fileID: 2408273858501320734}
   m_Layer: 19
   m_Name: BossFireProjectile
   m_TagString: Untagged
@@ -159,3 +160,24 @@ MonoBehaviour:
   speed: 5
   lifeTime: 2
   spriteRenderer: {fileID: 1544229792631922434}
+--- !u!95 &2408273858501320734
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8555931869937389560}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 77fc6a33e37ee0e4986f5f8150c18f64, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

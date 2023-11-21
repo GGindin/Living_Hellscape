@@ -17,12 +17,20 @@ public abstract class PlayerController : DamageableObject, ISaveableObject
     [SerializeField]
     protected PlayerInventory inventory;
 
+    [SerializeField]
+    LayerMask normalLayer;
+
+    [SerializeField]
+    LayerMask invincibleLayer;
+
     protected Vector2 lastDirection = Vector2.down;
    
     protected Rigidbody2D rb;
     protected BoxCollider2D boxCollider;
 
     protected InteractableObject interactableObject;
+
+    bool hasDamage = false;
 
     public bool HasHeldObject => heldObjectRoot.childCount > 0;
 
@@ -60,6 +68,12 @@ public abstract class PlayerController : DamageableObject, ISaveableObject
         UserInput userInput = InputController.GetUserInput();
 
         if (HandlePauseAndInventory(userInput)) return;
+
+        if(hasDamage && GetStatusOfType(StatusEffectType.Damage) == null)
+        {
+            hasDamage = false;
+            boxCollider.gameObject.layer = LayerUtil.LayerMaskToLayer(normalLayer);
+        }
 
         if (!(IsStunned() || IsScared()))
         {
@@ -154,6 +168,11 @@ public abstract class PlayerController : DamageableObject, ISaveableObject
         PlayerManager.Instance.StillUpdateRooms = false;
 
         PlayerManager.Instance.SetPlayerControl(true);
+    }
+
+    public void SetAnimSpeedToZero()
+    {
+        animator.SetFloat(speedAnimID, 0f);
     }
 
     protected override void DestroyObject()
@@ -302,6 +321,8 @@ public abstract class PlayerController : DamageableObject, ISaveableObject
     protected override void ChangeHealth(int delta)
     {
         playerStats.ChangeCurrentHealth(delta);
+        hasDamage = true;
+        boxCollider.gameObject.layer = LayerUtil.LayerMaskToLayer(invincibleLayer);
         if (delta < 0f)
         {
             AudioController.Instance.PlaySoundEffect("playerhurt");

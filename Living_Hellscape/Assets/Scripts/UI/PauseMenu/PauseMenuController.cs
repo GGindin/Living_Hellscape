@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class PauseMenuController : MonoBehaviour
+public class PauseMenuController : MenuController
 {
     public static PauseMenuController Instance { get; private set; }
 
@@ -15,18 +15,21 @@ public class PauseMenuController : MonoBehaviour
     {
         Instance = this;
         gameObject.SetActive(false);
+        currentSelected = defaultSelectedButton.gameObject;
     }
 
     private void Update()
     {
         if (VignetteController.Instance.enabled) return;
         UserInput userInput = InputController.GetUserInput();
+        CheckSelected();
 
-        if(userInput.mainAction == ButtonState.Down)
+        if (userInput.mainAction == ButtonState.Down)
         {
             var button = EventSystem.current.currentSelectedGameObject.GetComponent<Button>();
             if (button != null)
             {
+                PlayButtonDownSound();
                 button.onClick.Invoke();
             }
         }

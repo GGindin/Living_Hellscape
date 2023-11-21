@@ -109,6 +109,14 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 3744905016874533229, guid: be92066844f7a2a4d8e0d3dc702cc53e, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3744905016874533231, guid: be92066844f7a2a4d8e0d3dc702cc53e, type: 3}
+      propertyPath: m_ColliderPaths.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3744905016874533231, guid: be92066844f7a2a4d8e0d3dc702cc53e, type: 3}
       propertyPath: m_CompositePaths.m_Paths.Array.size
       value: 0
@@ -856,6 +864,10 @@ PrefabInstance:
     - target: {fileID: 4080242966691345404, guid: be92066844f7a2a4d8e0d3dc702cc53e, type: 3}
       propertyPath: m_SortingOrder
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4080242966870523333, guid: be92066844f7a2a4d8e0d3dc702cc53e, type: 3}
+      propertyPath: requiresKey
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4080242966870523339, guid: be92066844f7a2a4d8e0d3dc702cc53e, type: 3}
       propertyPath: m_IsActive

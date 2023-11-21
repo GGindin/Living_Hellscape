@@ -148,8 +148,15 @@ public class EnemyGhostManager : MonoBehaviour
             ghost.UpdateDistanceWhenPlayerInBody();
             if(ghost.CurrentSqrDistToPlayer > SqrSpawnDist)
             {
-                Destroy(ghost.gameObject);
                 ghosts.RemoveAt(i);
+                if (playerInGhostMode && PlayerInGhostFreeZone)
+                {
+                    ghost.StartCoroutine(ghost.SelfDestroy());
+                }
+                else
+                {
+                    Destroy(ghost.gameObject);
+                }             
             }
         }
     }

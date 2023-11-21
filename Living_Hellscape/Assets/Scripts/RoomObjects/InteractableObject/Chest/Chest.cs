@@ -84,6 +84,8 @@ public class Chest : InteractableObject
         isClosed = false;
         SetAnimator();
 
+        AudioController.Instance.PlaySoundEffect("victory");
+
         if (chestItemPrefab)
         {
             var item = Instantiate(chestItemPrefab);

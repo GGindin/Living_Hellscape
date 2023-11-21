@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1490736053402351729}
   - component: {fileID: 1144828261114722389}
-  - component: {fileID: 7469818767151421446}
+  - component: {fileID: -1395180712432017719}
   m_Layer: 0
   m_Name: SmallKeyRoot
   m_TagString: Untagged
@@ -54,7 +54,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &7469818767151421446
+--- !u!114 &-1395180712432017719
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -63,7 +63,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1490736053402351732}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a734f99464db22b45a31a3929b1a0241, type: 3}
+  m_Script: {fileID: 11500000, guid: bbb286a598b85ea4cac8867cc7d0809c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   uiIcon: {fileID: 384700277192883564, guid: a20f66c26ec965e449071f03a1e2b4a2, type: 3}

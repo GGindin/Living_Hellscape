@@ -645,11 +645,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 518151503}
   m_CullTransparentMesh: 1
---- !u!20 &519420031 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 2802514380940128810, guid: ee0b4dc88792d0547835a338e766f273, type: 3}
-  m_PrefabInstance: {fileID: 2802514381163301461}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &568262464
 GameObject:
   m_ObjectHideFlags: 0
@@ -2547,7 +2542,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.39215687}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3154,7 +3149,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 1
-  m_Camera: {fileID: 519420031}
+  m_Camera: {fileID: 2802514381163301462}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -3202,44 +3197,8 @@ PrefabInstance:
       value: Main Camera
       objectReference: {fileID: 0}
     - target: {fileID: 2802514380940128977, guid: ee0b4dc88792d0547835a338e766f273, type: 3}
-      propertyPath: sounds.Array.size
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 2802514380940128977, guid: ee0b4dc88792d0547835a338e766f273, type: 3}
-      propertyPath: sounds.Array.data[9].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 7f7e7f79869029a4e8b2a8c6cbd184f1, type: 3}
-    - target: {fileID: 2802514380940128977, guid: ee0b4dc88792d0547835a338e766f273, type: 3}
-      propertyPath: sounds.Array.data[9].loop
+      propertyPath: sounds.Array.data[10].loop
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2802514380940128977, guid: ee0b4dc88792d0547835a338e766f273, type: 3}
-      propertyPath: sounds.Array.data[9].name
-      value: knifeattack
-      objectReference: {fileID: 0}
-    - target: {fileID: 2802514380940128977, guid: ee0b4dc88792d0547835a338e766f273, type: 3}
-      propertyPath: sounds.Array.data[10].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: fe16cfe31ddc2a848afd6981609bf5be, type: 3}
-    - target: {fileID: 2802514380940128977, guid: ee0b4dc88792d0547835a338e766f273, type: 3}
-      propertyPath: sounds.Array.data[10].name
-      value: victory
-      objectReference: {fileID: 0}
-    - target: {fileID: 2802514380940128977, guid: ee0b4dc88792d0547835a338e766f273, type: 3}
-      propertyPath: sounds.Array.data[9].pitch
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2802514380940128977, guid: ee0b4dc88792d0547835a338e766f273, type: 3}
-      propertyPath: sounds.Array.data[10].pitch
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2802514380940128977, guid: ee0b4dc88792d0547835a338e766f273, type: 3}
-      propertyPath: sounds.Array.data[9].volume
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2802514380940128977, guid: ee0b4dc88792d0547835a338e766f273, type: 3}
-      propertyPath: sounds.Array.data[10].volume
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2802514380940128981, guid: ee0b4dc88792d0547835a338e766f273, type: 3}
       propertyPath: m_RootOrder
@@ -3287,6 +3246,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ee0b4dc88792d0547835a338e766f273, type: 3}
+--- !u!20 &2802514381163301462 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 8183191379757911083, guid: ee0b4dc88792d0547835a338e766f273, type: 3}
+  m_PrefabInstance: {fileID: 2802514381163301461}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6891209657981121573
 PrefabInstance:
   m_ObjectHideFlags: 0

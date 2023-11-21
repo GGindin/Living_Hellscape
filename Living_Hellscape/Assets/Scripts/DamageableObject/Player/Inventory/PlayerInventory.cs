@@ -115,7 +115,7 @@ public class PlayerInventory: ISaveableObject
         {
             if (items[i])
             {
-                if (items[i].GetType() == type)
+                if (items[i].GetType() == type || items[i] is t)
                 {
                     return items[i] as t;
                 }

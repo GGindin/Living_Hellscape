@@ -30,6 +30,7 @@ public class GameController : MonoBehaviour
     {
         if (!SceneController.Instance)
         {
+            AudioController.Instance.PlaySoundEffect("MansionAtmosphere");
             StartPlaySession(-1);
         }
     }
@@ -160,6 +161,13 @@ public class GameController : MonoBehaviour
     public void SetStopUpdates(bool stop)
     {
         stopUpdates = stop;
+        if (stopUpdates)
+        {
+            if (PlayerManager.Instance.Active)
+            {
+                PlayerManager.Instance.Active.SetAnimSpeedToZero();
+            }
+        }
     }
 
     public void TransitionToRoom(RoomTransitionData transitionData)
@@ -270,6 +278,10 @@ public class GameController : MonoBehaviour
         }
         else
         {
+            if (!GameStateController.Instance.KnowsHowToPossesBody)
+            {
+                GameStateController.Instance.KnowsHowToPossesBody = true;
+            }
             GoToBodyNow();
         }
     }
