@@ -315,8 +315,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e0dc52897654d924880fd51cdeefcb87, type: 2}
+  m_sharedMaterial: {fileID: 7117573724455650780, guid: e0dc52897654d924880fd51cdeefcb87, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -495,8 +495,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Press K to interact
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e0dc52897654d924880fd51cdeefcb87, type: 2}
+  m_sharedMaterial: {fileID: 7117573724455650780, guid: e0dc52897654d924880fd51cdeefcb87, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -520,19 +520,19 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 6
-  m_fontSizeBase: 6
+  m_fontSize: 5
+  m_fontSizeBase: 5
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: 0
+  m_lineSpacing: 8
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -1476,7 +1476,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   charDelay: 0.02
   blinkDelay: 0.75
-  maxChars: 108
+  maxChars: 40
   currentText: {fileID: 1739865550}
   blinkArrow: {fileID: 518151505}
   isFinished: 0
@@ -1822,8 +1822,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e0dc52897654d924880fd51cdeefcb87, type: 2}
+  m_sharedMaterial: {fileID: 7117573724455650780, guid: e0dc52897654d924880fd51cdeefcb87, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1847,8 +1847,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 8
-  m_fontSizeBase: 8
+  m_fontSize: 7
+  m_fontSizeBase: 7
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1859,7 +1859,7 @@ MonoBehaviour:
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: 0
+  m_lineSpacing: 12
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -3197,8 +3197,32 @@ PrefabInstance:
       value: Main Camera
       objectReference: {fileID: 0}
     - target: {fileID: 2802514380940128977, guid: ee0b4dc88792d0547835a338e766f273, type: 3}
+      propertyPath: sounds.Array.size
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2802514380940128977, guid: ee0b4dc88792d0547835a338e766f273, type: 3}
+      propertyPath: sounds.Array.data[3].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 4492790fabbfbf24f810cc1cc8d888f9, type: 3}
+    - target: {fileID: 2802514380940128977, guid: ee0b4dc88792d0547835a338e766f273, type: 3}
       propertyPath: sounds.Array.data[10].loop
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2802514380940128977, guid: ee0b4dc88792d0547835a338e766f273, type: 3}
+      propertyPath: sounds.Array.data[11].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 4492790fabbfbf24f810cc1cc8d888f9, type: 3}
+    - target: {fileID: 2802514380940128977, guid: ee0b4dc88792d0547835a338e766f273, type: 3}
+      propertyPath: sounds.Array.data[11].name
+      value: BossMusic
+      objectReference: {fileID: 0}
+    - target: {fileID: 2802514380940128977, guid: ee0b4dc88792d0547835a338e766f273, type: 3}
+      propertyPath: sounds.Array.data[11].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2802514380940128977, guid: ee0b4dc88792d0547835a338e766f273, type: 3}
+      propertyPath: sounds.Array.data[11].volume
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2802514380940128981, guid: ee0b4dc88792d0547835a338e766f273, type: 3}
       propertyPath: m_RootOrder
