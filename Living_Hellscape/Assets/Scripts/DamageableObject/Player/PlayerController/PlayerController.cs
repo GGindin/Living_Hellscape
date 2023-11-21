@@ -32,6 +32,8 @@ public abstract class PlayerController : DamageableObject, ISaveableObject
 
     bool hasDamage = false;
 
+    int actionAnimID = Animator.StringToHash("Action");
+
     public bool HasHeldObject => heldObjectRoot.childCount > 0;
 
 
@@ -173,6 +175,11 @@ public abstract class PlayerController : DamageableObject, ISaveableObject
     public void SetAnimSpeedToZero()
     {
         animator.SetFloat(speedAnimID, 0f);
+    }
+
+    public void SetActionAnim()
+    {
+        animator.SetTrigger(actionAnimID);
     }
 
     protected override void DestroyObject()

@@ -30,6 +30,7 @@ public class MarbleEq : BodyEquipment
         {
             if (gameObject.activeInHierarchy)
             {
+                PlayerManager.Instance.Active.SetActionAnim();
                 PlayerManager.Instance.Active.StartCoroutine(PlayerManager.Instance.Active.StopControlForTime(.25f));
             }
             var marble = Instantiate(marbleProjectilePrefab, transform.position, Quaternion.identity);
