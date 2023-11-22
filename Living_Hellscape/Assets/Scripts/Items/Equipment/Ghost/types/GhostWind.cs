@@ -33,6 +33,7 @@ public class GhostWind : GhostEquipment
         {
             if (gameObject.activeInHierarchy)
             {
+                PlayerManager.Instance.Active.SetActionAnim();
                 PlayerManager.Instance.Active.StartCoroutine(PlayerManager.Instance.Active.StopControlForTime(.25f));
             }
             var wind = Instantiate(windProjectilePrefab, transform.position, Quaternion.LookRotation(Vector3.forward, direction));

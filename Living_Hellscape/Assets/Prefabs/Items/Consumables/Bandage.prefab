@@ -68,7 +68,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiIcon: {fileID: 1861386955807250875, guid: a20f66c26ec965e449071f03a1e2b4a2, type: 3}
   id: 5
-  description: bandage with ghostly powers
+  description: bandage
   isMainAction: 0
 --- !u!1 &9000594620847817844
 GameObject:
