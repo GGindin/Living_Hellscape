@@ -15,6 +15,7 @@ public class GhostEnemy : EnemyController
     {
         base.Awake();
         currentSpeed = speed;
+        UpdateDirection();
         StartCoroutine(ProcessFadeIn());
     }
 
@@ -39,7 +40,7 @@ public class GhostEnemy : EnemyController
 
     public void RepositionGhost()
     {
-        var playerPos = PlayerManager.Instance.Active.transform.position;
+        var playerPos = PlayerManager.Instance.BodyInstance.transform.position;
         var previousVector = -direction * Mathf.Sqrt(currentSqrDistToPlayer);
         transform.position = new Vector2(playerPos.x, playerPos.y) + previousVector;
     }
