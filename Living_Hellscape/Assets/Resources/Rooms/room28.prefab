@@ -1640,7 +1640,7 @@ PrefabInstance:
     - target: {fileID: 8331932869157734206, guid: 1b27bccb4db5ed348a9277260da20999, type: 3}
       propertyPath: enemyPlacements.Array.data[0].prefab
       value: 
-      objectReference: {fileID: 2371403667347056927, guid: 049c509cbdbc83e468b0a5d916ae6bce, type: 3}
+      objectReference: {fileID: 2371403667347056927, guid: 29178d6b0504f734cb138bf050168b23, type: 3}
     - target: {fileID: 8331932869157734206, guid: 1b27bccb4db5ed348a9277260da20999, type: 3}
       propertyPath: enemyPlacements.Array.data[0].placement
       value: 

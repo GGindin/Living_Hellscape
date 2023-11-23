@@ -178,7 +178,7 @@ public class GhostPlayerController : PlayerController
         if (hasLeftPlayer && collision.attachedRigidbody && GameStateController.Instance.KnowsHowToPossesBody)
         {
             var bodyController = collision.attachedRigidbody.GetComponent<BodyPlayerController>();
-            if (bodyController)
+            if (bodyController && playerStats.CurrentHealth > 0)
             {
                 GameController.Instance.SwitchWorlds();
                 //PlayerManager.Instance.SetActiveController(bodyController);
