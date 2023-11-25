@@ -29,7 +29,12 @@ public class GhostPlayerController : PlayerController
             if (!rb.IsTouching(lastGhostFreeZone.GetComponent<Collider2D>()))
             {
                 EnemyGhostManager.Instance.PlayerInGhostFreeZone = false;
+                lastGhostFreeZone.ZoneEnterTime = -1f;
                 lastGhostFreeZone = null;
+            }
+            else
+            {
+                lastGhostFreeZone.ZoneEnterTime = Time.time;
             }
         }
     }
@@ -165,6 +170,7 @@ public class GhostPlayerController : PlayerController
         if (ghostFreeZone)
         {
             lastGhostFreeZone = ghostFreeZone;
+            lastGhostFreeZone.ZoneEnterTime = Time.time;
             EnemyGhostManager.Instance.PlayerInGhostFreeZone = true;
             return;
         }
@@ -172,7 +178,7 @@ public class GhostPlayerController : PlayerController
         if (hasLeftPlayer && collision.attachedRigidbody && GameStateController.Instance.KnowsHowToPossesBody)
         {
             var bodyController = collision.attachedRigidbody.GetComponent<BodyPlayerController>();
-            if (bodyController)
+            if (bodyController && playerStats.CurrentHealth > 0)
             {
                 GameController.Instance.SwitchWorlds();
                 //PlayerManager.Instance.SetActiveController(bodyController);
@@ -187,7 +193,8 @@ public class GhostPlayerController : PlayerController
         var ghostFreeZone = collision.gameObject.GetComponent<GhostFreeZone>();
         if (ghostFreeZone)
         {
-            lastGhostFreeZone = null;
+            lastGhostFreeZone.ZoneEnterTime = -1f;
+            lastGhostFreeZone = null; 
             EnemyGhostManager.Instance.PlayerInGhostFreeZone = false;
             return;
         }
