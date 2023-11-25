@@ -51,7 +51,7 @@ MonoBehaviour:
   isMainAction: 0
   marbleProjectilePrefab: {fileID: 8514994573918602478, guid: dfc345403d7f9e74695c4dd8a235447f, type: 3}
   stun:
-    duration: 0.5
+    duration: 0.75
   fireRate: 0.5
 --- !u!95 &7125863075838200812
 Animator:

@@ -27,7 +27,11 @@ public class MainMenuController : MenuController
 
     private void Update()
     {
-        if (VignetteController.Instance.isActiveAndEnabled) return;
+        if (VignetteController.Instance.isActiveAndEnabled)
+        {
+            EventSystem.current.SetSelectedGameObject(currentSelected);
+            return;
+        }
 
         UserInput userInput = InputController.GetUserInput();
         CheckSelected();

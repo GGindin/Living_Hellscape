@@ -534,7 +534,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8652713227532819353}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 20.2, y: -2.44, z: 0}
+  m_LocalPosition: {x: 15.92, y: -0.56, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7736480381615796093}
@@ -564,7 +564,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9065994842134395607}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 19.76, y: -0.81, z: 0}
+  m_LocalPosition: {x: 17.73, y: -0.66, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7736480381615796093}
@@ -4013,6 +4013,22 @@ PrefabInstance:
       propertyPath: m_ColliderPaths.Array.data[0].m_ColliderPaths.Array.data[2].Array.data[13].Y
       value: -100000000
       objectReference: {fileID: 0}
+    - target: {fileID: 2945950794602709538, guid: 3253d6139bd5c4741a8b543c685e42e3, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[0].x
+      value: 22.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2945950794602709538, guid: 3253d6139bd5c4741a8b543c685e42e3, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[1].x
+      value: -2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2945950794602709538, guid: 3253d6139bd5c4741a8b543c685e42e3, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[2].x
+      value: -2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2945950794602709538, guid: 3253d6139bd5c4741a8b543c685e42e3, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[3].x
+      value: 22.5
+      objectReference: {fileID: 0}
     - target: {fileID: 2945950795116975945, guid: 3253d6139bd5c4741a8b543c685e42e3, type: 3}
       propertyPath: m_Name
       value: room21
@@ -4060,6 +4076,10 @@ PrefabInstance:
     - target: {fileID: 2945950795116975946, guid: 3253d6139bd5c4741a8b543c685e42e3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2945950795116975947, guid: 3253d6139bd5c4741a8b543c685e42e3, type: 3}
+      propertyPath: dontUpdateLastRoomOnEnter
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2945950795116975947, guid: 3253d6139bd5c4741a8b543c685e42e3, type: 3}
       propertyPath: enemyPlacements.Array.size

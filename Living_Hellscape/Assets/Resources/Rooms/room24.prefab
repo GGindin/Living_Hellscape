@@ -302,6 +302,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4005012473825732117, guid: fa31b134c019efb4db1ae49e110ef69e, type: 3}
+      propertyPath: dontUpdateLastRoomOnEnter
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4005012473825732117, guid: fa31b134c019efb4db1ae49e110ef69e, type: 3}
       propertyPath: enemyPlacements.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -1512,6 +1516,22 @@ PrefabInstance:
     - target: {fileID: 4005012474622280451, guid: fa31b134c019efb4db1ae49e110ef69e, type: 3}
       propertyPath: m_ColliderPaths.Array.data[0].m_ColliderPaths.Array.data[0].Array.data[39].Y
       value: -100000000
+      objectReference: {fileID: 0}
+    - target: {fileID: 4005012475409675132, guid: fa31b134c019efb4db1ae49e110ef69e, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[0].x
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 4005012475409675132, guid: fa31b134c019efb4db1ae49e110ef69e, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[1].x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4005012475409675132, guid: fa31b134c019efb4db1ae49e110ef69e, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[2].x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4005012475409675132, guid: fa31b134c019efb4db1ae49e110ef69e, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[3].x
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 6946956236193855443, guid: fa31b134c019efb4db1ae49e110ef69e, type: 3}
       propertyPath: m_Sprite

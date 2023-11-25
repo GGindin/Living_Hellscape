@@ -925,6 +925,14 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 149525772783472567, guid: cc7e6815b2ec0f242bb2f5c0d2e2fe04, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[0].x
+      value: 13.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 149525772783472567, guid: cc7e6815b2ec0f242bb2f5c0d2e2fe04, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[3].x
+      value: 13.5
+      objectReference: {fileID: 0}
     - target: {fileID: 1129183829011924372, guid: cc7e6815b2ec0f242bb2f5c0d2e2fe04, type: 3}
       propertyPath: m_SortingOrder
       value: -1

@@ -1185,6 +1185,22 @@ PrefabInstance:
       propertyPath: m_Tiles.Array.data[121].second.m_AllTileFlags
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7513218596307409003, guid: 6a8de38778327b447bf580f364727b9b, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[0].x
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 7513218596307409003, guid: 6a8de38778327b447bf580f364727b9b, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[1].x
+      value: -4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7513218596307409003, guid: 6a8de38778327b447bf580f364727b9b, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[2].x
+      value: -4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7513218596307409003, guid: 6a8de38778327b447bf580f364727b9b, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[3].x
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 7513218596871998720, guid: 6a8de38778327b447bf580f364727b9b, type: 3}
       propertyPath: m_Name
       value: room6

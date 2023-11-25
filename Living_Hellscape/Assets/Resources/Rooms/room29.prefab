@@ -113,6 +113,22 @@ PrefabInstance:
       propertyPath: interactableObjectPlacements.Array.data[0].placement
       value: 
       objectReference: {fileID: 4771142944637696763}
+    - target: {fileID: 7826213195896378130, guid: dac9870ad341a5e43b3f48b46bca0300, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[0].x
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 7826213195896378130, guid: dac9870ad341a5e43b3f48b46bca0300, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[1].x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7826213195896378130, guid: dac9870ad341a5e43b3f48b46bca0300, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[2].x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7826213195896378130, guid: dac9870ad341a5e43b3f48b46bca0300, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[3].x
+      value: 17
+      objectReference: {fileID: 0}
     - target: {fileID: 7826213196609759964, guid: dac9870ad341a5e43b3f48b46bca0300, type: 3}
       propertyPath: m_ColliderPaths.Array.size
       value: 1
