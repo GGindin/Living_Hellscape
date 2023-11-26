@@ -9,41 +9,49 @@ public class TextBoxController : MonoBehaviour
     public static TextBoxController instance { get; set; }
     public float charDelay = 0.01f; //seconds
     public float blinkDelay = 0.75f; // seconds
-    public int maxChars = 96;
+    public float inputDelay = 0.2f; // seconds
+    public int maxLines = 4;
     public TMP_Text currentText;
     public Image blinkArrow;
-    public bool isFinished;
 
-    private string text = "";
-    private string buffer = "";
-    private float timeSinceLastChar;
-    private float timeSinceLastBlink;
-    private int itr = 0;
-    private bool waitingForInput = false;
-    private bool atEnd = false;
-    private float buttonCooldown = 0.2f;
-    private float buttonCooldownTimer = 0;
+    private string buffer = string.Empty;
+    private int loc = 0;
+    private int currentVisibleChars = 0;
+    private int totalChars = 0;
+
+    private bool textRevealed = false;
+    private bool end = false;
+    public bool kill = false;
+    private bool setImmediate = false;
+
+    private float timeSinceLastChar = 0;
+    private float timeSinceLastBlink = 0;
+    private float timeSinceLastInput = 0;
+
     private UserInput userInput;
 
     private System.Action callBack;
-    private bool setImmediate;
+
 
     private void Awake()
     {
         instance = this;
         gameObject.SetActive(false);
     }
-    
+
     public void OpenTextBox(string newText)
     {
         if (!gameObject.activeSelf)
         {
             gameObject.SetActive(true);
-            text = newText;
-            atEnd = false;
-            waitingForInput = false;
-            isFinished = false;
-            itr = 0;
+            buffer = newText;
+            currentVisibleChars = 0;
+            totalChars = 0;
+            loc = 0;
+            kill = false;
+            end = false;
+            textRevealed = false;
+            processNewBox();
         }
     }
 
@@ -51,26 +59,78 @@ public class TextBoxController : MonoBehaviour
     {
         gameObject.SetActive(true);
         currentText.text = newText;
-        setImmediate = true;
-        //text = newText;
-        //atEnd = false;
-        //waitingForInput = false;
-        //isFinished = false;
-        //SetTextImmediate();
-        //itr = 0;
+    }
+
+    private void processNewBox()
+    {
+        //currentText.textDisplay.enable = false;
+        currentText.maxVisibleCharacters = 0;
+        timeSinceLastInput = 0;
+        currentText.text = "";
+        currentText.ForceMeshUpdate();
+        currentVisibleChars = 0;
+        totalChars = 1;
+        while ((loc) < buffer.Length && currentText.textInfo.lineCount <= maxLines)
+        {
+            currentText.text += buffer[loc];
+            if (buffer[loc] == '.')
+            {
+                loc += 2;
+                textRevealed = false;
+                //Debug.Log(loc);
+                //Debug.Log(buffer.Length);
+                if ((loc + 1) >= buffer.Length)
+                {
+                    end = true;
+                }
+                return;
+            }
+            //Debug.Log(buffer[loc])
+            totalChars++;
+            loc++;
+            currentText.ForceMeshUpdate();
+        }
+        if ((loc + 1) < buffer.Length)
+        {
+            //Debug.Log(loc);
+            //Debug.Log(buffer.Length);
+            loc--;
+            //totalChars--;
+            currentText.text = currentText.text.Remove(totalChars);
+        }
+        else
+        {
+            //Debug.Log("set end");
+            end = true;
+        }
+        totalChars++;
+        textRevealed = false;
+        //currentText.textDisplay.enable = true;
+    }
+
+    private void revealCharacters()
+    {
+        timeSinceLastChar += Time.deltaTime;
+        if (timeSinceLastChar >= charDelay)
+        {
+            while (timeSinceLastChar >= 0)
+            {
+                currentVisibleChars++;
+                timeSinceLastChar -= charDelay;
+            }
+            if (currentVisibleChars > totalChars)
+                textRevealed = true;
+
+            currentText.maxVisibleCharacters = currentVisibleChars;
+        }
     }
 
     public void OpenTextBoxWithCallBack(string newText, System.Action callBack)
     {
         if (!gameObject.activeSelf)
         {
-            gameObject.SetActive(true);
-            text = newText;
-            atEnd = false;
-            waitingForInput = false;
-            isFinished = false;
-            itr = 0;
             this.callBack = callBack;
+            OpenTextBox(newText);
         }
     }
 
@@ -83,31 +143,21 @@ public class TextBoxController : MonoBehaviour
         setImmediate = false;
     }
 
-    private void UpdateTextbox()
-    {
-        if (buffer.Length > maxChars && buffer[buffer.Length - 1] == ' ')
-        {
-            string newBuffer = "";
-            buffer = newBuffer;
-            waitingForInput = true;
-        }
-        else if (!waitingForInput)
-        {
-            currentText.text = buffer;
-        }
-    }
+
 
     private void Update()
     {
         userInput = InputController.GetUserInput();
-        
-        if (gameObject.activeSelf) {
+
+        if (gameObject.activeSelf)
+        {
             GameController.Instance.SetStopUpdates(true);
             if (setImmediate)
             {
                 return;
             }
-            if (isFinished == true)
+
+            if (kill)
             {
                 CloseTextBox();
                 if (callBack != null)
@@ -116,78 +166,52 @@ public class TextBoxController : MonoBehaviour
                     callBack = null;
                 }
             }
-            UpdateTextbox();
-        }
-        if (gameObject.activeSelf && !waitingForInput)
-        {
-            timeSinceLastChar += Time.deltaTime;
-            if (timeSinceLastChar > charDelay)
+
+            if (!textRevealed)
             {
-                for (int i = 0; i < (int)(timeSinceLastChar / charDelay); i++)
+                revealCharacters();
+                if (timeSinceLastInput >= inputDelay && userInput.mainAction == ButtonState.Down)
                 {
-                    buffer += text[itr];
-                    itr++;
-
-                    if (itr > text.Length - 1)
-                        break;
-
-                    if (text[itr] == ' ')
-                        break;
+                    currentText.maxVisibleCharacters = totalChars;
+                    textRevealed = true;
+                    timeSinceLastInput = 0;
                 }
-                timeSinceLastChar = 0;
             }
-        }
-        else if (gameObject.activeSelf && waitingForInput)
-        {
-            timeSinceLastBlink += Time.deltaTime;
-            if (timeSinceLastBlink > blinkDelay)
+            else if (!end && userInput.mainAction == ButtonState.Down)
             {
-                if (blinkArrow.gameObject.activeSelf)
-                    blinkArrow.gameObject.SetActive(false);
-                else
-                    blinkArrow.gameObject.SetActive(true);
-
-                timeSinceLastBlink = 0;
-            }
-            if (userInput.mainAction == ButtonState.Down)
-            {
-                waitingForInput = false;
-                buttonCooldownTimer = buttonCooldown;
-                if (atEnd == true)
-                    isFinished = true;
-            }
-        }
-
-        if (!waitingForInput && userInput.mainAction == ButtonState.Down)
-        {
-            if (buttonCooldownTimer <= 0)
-            {
-                for (; buffer.Length < maxChars; itr++)
+                if (timeSinceLastInput >= inputDelay)
                 {
-                    if (itr > (text.Length - 1))
-                        break;
-                    buffer += text[itr];
+                    processNewBox();
+                    timeSinceLastInput = 0;
                 }
-                while (itr <= (text.Length - 1) && text[itr] != ' ')
+            }
+            else if (end && userInput.mainAction == ButtonState.Down)
+            {
+                if (timeSinceLastInput >= inputDelay)
                 {
-                    buffer += text[itr];
-                    itr++;
+                    kill = true;
+                    timeSinceLastInput = 0;
                 }
-                buttonCooldownTimer = buttonCooldown;
+            }
+            timeSinceLastInput += Time.deltaTime;
+            if (textRevealed)
+            {
+                timeSinceLastBlink += Time.deltaTime;
+                if (timeSinceLastBlink > blinkDelay)
+                {
+                    if (blinkArrow.gameObject.activeSelf)
+                        blinkArrow.gameObject.SetActive(false);
+                    else
+                        blinkArrow.gameObject.SetActive(true);
+
+                    timeSinceLastBlink = 0;
+                }
             }
         }
-
-        if (itr + 1 > text.Length) 
-        {
-            atEnd = true;
-            UpdateTextbox();
-            waitingForInput = true;
-        }
-        buttonCooldownTimer -= Time.deltaTime;
     }
-        
+} 
 
-    void SetTextImmediate()
+   /* void SetTextImmediate()
     {
         for (; buffer.Length < maxChars; itr++)
         {
@@ -202,4 +226,4 @@ public class TextBoxController : MonoBehaviour
         }
         buttonCooldownTimer = buttonCooldown;
     }
-}
+} */
