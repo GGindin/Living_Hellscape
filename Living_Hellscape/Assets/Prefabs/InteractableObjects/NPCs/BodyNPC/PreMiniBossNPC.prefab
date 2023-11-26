@@ -124,7 +124,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ghostObject: 0
   texts:
-  - Be careful, there is something evil in the next room.
-  - I feel that an evil spirit has left us.
+  - Please be careful. There is something truly terrible behind that door.
+  - I can feel that a powerful evil spirit has moved deeper into the mansion.
   boxCollider2D: {fileID: 8783182669748352872}
   spriteRenderer: {fileID: 7742269933616137975}

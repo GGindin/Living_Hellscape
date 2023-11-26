@@ -125,8 +125,8 @@ MonoBehaviour:
   ghostObject: 1
   texts:
   - Please, stop these monsters!
-  - Thanks for saving me from those monsters. Use this to scare them.
-  - Thanks, again for saving me.
+  - Thank you for saving me from those monsters. Use this to scare them.
+  - Thank you again for saving me. I was sure that I was a goner!
   boxCollider2D: {fileID: 7615384298161447279}
   spriteRenderer: {fileID: 8879256553414660336}
   ghostWindPrefab: {fileID: 8035632176690989601, guid: 314302b38daabea4cbb36a5f6914dfac, type: 3}
