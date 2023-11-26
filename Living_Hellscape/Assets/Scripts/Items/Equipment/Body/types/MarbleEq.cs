@@ -37,6 +37,7 @@ public class MarbleEq : BodyEquipment
             marble.SetDamage(new Stun(stun));
             marble.transform.SetParent(RoomController.Instance.ActiveRoom.DynamicObjectsHolder, true);
             marble.Direction = direction;
+            AudioController.Instance.PlaySoundEffect("throw");
             PlayerManager.Instance.Active.Inventory.UseAmmo(1);
             coolDown = fireRate;
         }

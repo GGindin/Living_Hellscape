@@ -49,6 +49,14 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 5695697055583447120, guid: 372a7a1bc746e5b4bbc80419ca87022e, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[0].x
+      value: 13.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5695697055583447120, guid: 372a7a1bc746e5b4bbc80419ca87022e, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[3].x
+      value: 13.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5695697056372987950, guid: 372a7a1bc746e5b4bbc80419ca87022e, type: 3}
       propertyPath: m_TileAssetArray.Array.data[7].m_Data
       value: 

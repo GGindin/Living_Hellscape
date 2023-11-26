@@ -210,9 +210,13 @@ public class PlayerManager : MonoBehaviour, ISaveableObject
 
     bool IsPlayerDead()
     {
-        if((bodyInstance.IsDead || ghostInstance.IsDead) && !GameOverMenuController.Instance.gameObject.activeInHierarchy)
+        if(bodyInstance.IsDead || ghostInstance.IsDead)
         {
-            GameController.Instance.SetupGameOver();
+            if (!GameOverMenuController.Instance.gameObject.activeInHierarchy)
+            {
+                GameController.Instance.SetupGameOver();
+            }
+            
             return true;
         }
 
