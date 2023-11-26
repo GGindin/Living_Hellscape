@@ -231,7 +231,7 @@ MonoBehaviour:
     coolDown: 2
   attackStopTime: 0.25
   enterText: I have been waiting for you. Prepare to die!!!
-  exitText: I will be back for you
+  exitText: I will be back for you.
 --- !u!50 &6998762087044943512
 Rigidbody2D:
   serializedVersion: 4

@@ -45,6 +45,18 @@ public class GhostPlayerController : PlayerController
         hasLeftPlayer = false;
     }
 
+    protected override void SetIgnorePhysics()
+    {
+        Physics.IgnoreLayerCollision(11, 13);
+        Physics.IgnoreLayerCollision(13, 22);
+    }
+
+    protected override void UnSetIgnorePhysics()
+    {
+        Physics.IgnoreLayerCollision(11, 13, false);
+        Physics.IgnoreLayerCollision(13, 22, false);
+    }
+
     public void FadeInImmediate()
     {
         spriteRenderer.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);

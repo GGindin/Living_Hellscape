@@ -304,18 +304,19 @@ public abstract class PlayerController : DamageableObject, ISaveableObject
 
     private void disableEnemyCollision(float duration)
     {
-        Physics.IgnoreLayerCollision(21, 10);
-        Physics.IgnoreLayerCollision(6, 10);
+        SetIgnorePhysics();
         collisionLessTimer = duration;
     }
+
+    protected virtual void SetIgnorePhysics() { }
+    protected virtual void UnSetIgnorePhysics() { }
 
     private void CollisionLess()
     {
         collisionLessTimer -= Time.deltaTime;
         if (collisionLessTimer < 0)
         {
-            Physics.IgnoreLayerCollision(21, 10, false);
-            Physics.IgnoreLayerCollision(6, 10, false);
+            UnSetIgnorePhysics();
         }
     }
 
