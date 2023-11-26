@@ -1476,10 +1476,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   charDelay: 0.02
   blinkDelay: 0.75
-  maxChars: 40
+  inputDelay: 0.2
+  maxLines: 4
   currentText: {fileID: 1739865550}
   blinkArrow: {fileID: 518151505}
-  isFinished: 0
+  kill: 0
 --- !u!1 &1168914964
 GameObject:
   m_ObjectHideFlags: 0
@@ -1550,7 +1551,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   introText: Welp, it looks like you are dead. Who would have guessed occult rituals
-    would end up this way. Hmm looks like thats your body laying over there.
+    would end up this way. Hmm looks like that's your body laying over there.
 --- !u!1 &1340566354
 GameObject:
   m_ObjectHideFlags: 0
