@@ -124,8 +124,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ghostObject: 0
   texts:
-  - Thanks for saving me. Here take this.
-  - Thanks again
+  - Thank you for saving me. I have something that I think you will find useful.
+  - To use it, equip it to your secondary slot and collect some marbles. The enemies
+    around here might have some.
   boxCollider2D: {fileID: 279304183049920999}
   spriteRenderer: {fileID: 1258328167206064248}
   slingShotPrefab: {fileID: 575737613114154732, guid: 1b059d95d116f1c40b187daffdf24971, type: 3}

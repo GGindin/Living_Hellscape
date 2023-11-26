@@ -61,6 +61,7 @@ public class TextBoxController : MonoBehaviour
     {
         gameObject.SetActive(true);
         currentText.text = newText;
+        setImmediate = true;
     }
 
     private void processNewBox()
@@ -82,6 +83,12 @@ public class TextBoxController : MonoBehaviour
             currentText.text += buffer[loc];
             if (((buffer[loc] == '.') || (buffer[loc] == '?')) || (buffer[loc] == '!'))
             {
+                while ((loc + 1) < buffer.Length && buffer[loc + 1] == '!')
+                {
+                    loc++;
+                    totalChars++;
+                    currentText.text += buffer[loc];
+                }
                 loc += 2;
                 textRevealed = false;
                 //Debug.Log(loc);
