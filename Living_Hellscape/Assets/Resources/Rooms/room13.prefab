@@ -30,6 +30,36 @@ Transform:
   m_Father: {fileID: 976832984789594716}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5587328279351303576
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3434155070776784334}
+  m_Layer: 7
+  m_Name: GameObject (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3434155070776784334
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5587328279351303576}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 9.41, y: -3.029, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 976832984789594716}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5796374736191306321
 GameObject:
   m_ObjectHideFlags: 0
@@ -954,7 +984,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3744905018332769736, guid: be92066844f7a2a4d8e0d3dc702cc53e, type: 3}
       propertyPath: interactableObjectPlacements.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3744905018332769736, guid: be92066844f7a2a4d8e0d3dc702cc53e, type: 3}
       propertyPath: prefabConnections.Array.data[0].pseudoRoomPrefab
@@ -973,6 +1003,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6300222928511370515, guid: 87663d735559e0146871db2b9002988a, type: 3}
     - target: {fileID: 3744905018332769736, guid: be92066844f7a2a4d8e0d3dc702cc53e, type: 3}
+      propertyPath: interactableObjectPlacements.Array.data[3].prefab
+      value: 
+      objectReference: {fileID: 2346461975997069931, guid: 4b72afaa4abf6654a97324918b71a7cf, type: 3}
+    - target: {fileID: 3744905018332769736, guid: be92066844f7a2a4d8e0d3dc702cc53e, type: 3}
       propertyPath: interactableObjectPlacements.Array.data[0].placement
       value: 
       objectReference: {fileID: 5796374736191306321}
@@ -984,6 +1018,10 @@ PrefabInstance:
       propertyPath: interactableObjectPlacements.Array.data[2].placement
       value: 
       objectReference: {fileID: 3216125028968621780}
+    - target: {fileID: 3744905018332769736, guid: be92066844f7a2a4d8e0d3dc702cc53e, type: 3}
+      propertyPath: interactableObjectPlacements.Array.data[3].placement
+      value: 
+      objectReference: {fileID: 5587328279351303576}
     - target: {fileID: 3744905018332769737, guid: be92066844f7a2a4d8e0d3dc702cc53e, type: 3}
       propertyPath: m_RootOrder
       value: 0
