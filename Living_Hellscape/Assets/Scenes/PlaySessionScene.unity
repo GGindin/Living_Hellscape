@@ -1550,8 +1550,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 245b0d709221bb14c983d78c19afdba3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  introText: Welp, it looks like you are dead. Who would have guessed occult rituals
-    would end up this way. Hmm looks like that's your body laying over there.
+  introText: You have died. Who could have guessed that occult rituals might end
+    up this way? Looks like that's your body laying over there. I need to figure
+    out a way to get my body back!
 --- !u!1 &1340566354
 GameObject:
   m_ObjectHideFlags: 0

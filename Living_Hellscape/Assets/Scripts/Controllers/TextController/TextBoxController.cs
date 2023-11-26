@@ -23,10 +23,12 @@ public class TextBoxController : MonoBehaviour
     private bool end = false;
     public bool kill = false;
     private bool setImmediate = false;
+    private bool lastBreak = false;
 
     private float timeSinceLastChar = 0;
     private float timeSinceLastBlink = 0;
     private float timeSinceLastInput = 0;
+
 
     private UserInput userInput;
 
@@ -70,22 +72,26 @@ public class TextBoxController : MonoBehaviour
         currentText.ForceMeshUpdate();
         currentVisibleChars = 0;
         totalChars = 1;
+        if (lastBreak == true)
+        {
+            currentText.text += '-';
+            lastBreak = false;
+        }
         while ((loc) < buffer.Length && currentText.textInfo.lineCount <= maxLines)
         {
             currentText.text += buffer[loc];
-            if (buffer[loc] == '.')
+            if (((buffer[loc] == '.') || (buffer[loc] == '?')) || (buffer[loc] == '!'))
             {
                 loc += 2;
                 textRevealed = false;
                 //Debug.Log(loc);
                 //Debug.Log(buffer.Length);
-                if ((loc + 1) >= buffer.Length)
+                if (loc > buffer.Length)
                 {
                     end = true;
                 }
                 return;
             }
-            //Debug.Log(buffer[loc])
             totalChars++;
             loc++;
             currentText.ForceMeshUpdate();
@@ -94,9 +100,18 @@ public class TextBoxController : MonoBehaviour
         {
             //Debug.Log(loc);
             //Debug.Log(buffer.Length);
-            loc--;
-            //totalChars--;
-            currentText.text = currentText.text.Remove(totalChars);
+            if (buffer[loc + 1] == ' ')
+            {
+                loc -= 1;
+                currentText.text = currentText.text.Remove(totalChars - 2);
+            }
+            else
+            {
+                loc -= 2;
+                currentText.text = currentText.text.Remove(totalChars - 3);
+                currentText.text += '-';
+                lastBreak = true;
+            }
         }
         else
         {
