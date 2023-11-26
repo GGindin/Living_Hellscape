@@ -32,6 +32,9 @@ public abstract class PlayerController : DamageableObject, ISaveableObject
 
     bool hasDamage = false;
 
+    public float collisionLessDuration = 10f;
+    private float collisionLessTimer = 0;
+
     int actionAnimID = Animator.StringToHash("Action");
 
     public bool HasHeldObject => heldObjectRoot.childCount > 0;
@@ -99,6 +102,8 @@ public abstract class PlayerController : DamageableObject, ISaveableObject
         Move(userInput.movement);
 
         RotateEquip();
+
+        CollisionLess();
     }
 
 
@@ -297,6 +302,23 @@ public abstract class PlayerController : DamageableObject, ISaveableObject
         rb.MovePosition(rb.position + velocity);
     }
 
+    private void disableEnemyCollision(float duration)
+    {
+        Physics.IgnoreLayerCollision(21, 10);
+        Physics.IgnoreLayerCollision(6, 10);
+        collisionLessTimer = duration;
+    }
+
+    private void CollisionLess()
+    {
+        collisionLessTimer -= Time.deltaTime;
+        if (collisionLessTimer < 0)
+        {
+            Physics.IgnoreLayerCollision(21, 10, false);
+            Physics.IgnoreLayerCollision(6, 10, false);
+        }
+    }
+
     private void SetDirection(Vector2 movement)
     {     
         //if x is greater than y
@@ -333,6 +355,7 @@ public abstract class PlayerController : DamageableObject, ISaveableObject
         if (delta < 0f)
         {
             AudioController.Instance.PlaySoundEffect("playerhurt");
+            disableEnemyCollision(collisionLessDuration);
         }
         if (playerStats.CurrentHealth <= 0f) 
         {

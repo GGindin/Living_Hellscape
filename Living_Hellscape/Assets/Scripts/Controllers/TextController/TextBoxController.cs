@@ -61,6 +61,7 @@ public class TextBoxController : MonoBehaviour
     {
         gameObject.SetActive(true);
         currentText.text = newText;
+        currentText.maxVisibleCharacters = 999;
         setImmediate = true;
     }
 
@@ -107,18 +108,12 @@ public class TextBoxController : MonoBehaviour
         {
             //Debug.Log(loc);
             //Debug.Log(buffer.Length);
-            if (buffer[loc + 1] == ' ')
-            {
-                loc -= 1;
-                currentText.text = currentText.text.Remove(totalChars - 2);
-            }
-            else
-            {
-                loc -= 2;
-                currentText.text = currentText.text.Remove(totalChars - 3);
-                currentText.text += '-';
-                lastBreak = true;
-            }
+
+            loc -= 3;
+            currentText.text = currentText.text.Remove(totalChars - 4);
+            currentText.text += '-';
+            lastBreak = true;
+            
         }
         else
         {
