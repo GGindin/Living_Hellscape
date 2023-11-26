@@ -32,6 +32,8 @@ public abstract class PlayerController : DamageableObject, ISaveableObject
 
     bool hasDamage = false;
 
+    bool hasLocalControl = true;
+
     public float collisionLessDuration = 10f;
     private float collisionLessTimer = 0;
     bool ignoreCollisions = false;
@@ -69,6 +71,8 @@ public abstract class PlayerController : DamageableObject, ISaveableObject
         //if this is not the active controller return
         if (!IsActive) return;
 
+        if(!hasLocalControl) return;
+
         //poll user input, we use here in update, but b/c it belongs to the static inputcontroller class
         //it will be available in fixed with that correct values
         UserInput userInput = InputController.GetUserInput();
@@ -95,6 +99,8 @@ public abstract class PlayerController : DamageableObject, ISaveableObject
         rb.velocity = Vector2.zero;
 
         if (!IsActive) return;
+
+        if (!hasLocalControl) return;
 
         TestInteractableObject();
 
@@ -165,17 +171,21 @@ public abstract class PlayerController : DamageableObject, ISaveableObject
 
     public IEnumerator StopControlForTime(float time)
     {
-        PlayerManager.Instance.SetPlayerControl(false);
-        PlayerManager.Instance.StillUpdateRooms = true;
+        //PlayerManager.Instance.SetPlayerControl(false);
+        //PlayerManager.Instance.StillUpdateRooms = true;
+
+        hasLocalControl = false;
 
         while(time > 0)
         {
             time -= Time.deltaTime;
             yield return null;
         }
-        PlayerManager.Instance.StillUpdateRooms = false;
 
-        PlayerManager.Instance.SetPlayerControl(true);
+        hasLocalControl = true;
+
+        //PlayerManager.Instance.StillUpdateRooms = false;
+        //PlayerManager.Instance.SetPlayerControl(true);
     }
 
     public void SetAnimSpeedToZero()
