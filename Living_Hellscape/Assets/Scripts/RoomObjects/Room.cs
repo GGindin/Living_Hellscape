@@ -77,7 +77,7 @@ public class Room : MonoBehaviour, ISaveableObject
         if (GameController.Instance.StopUpdates) return;
         if (RoomController.Instance.ActiveRoom == this)
         {
-            if (PlayerManager.Instance.PlayerHasControl || PlayerManager.Instance.StillUpdateRooms)
+            if (PlayerManager.Instance.PlayerHasControl)// || PlayerManager.Instance.StillUpdateRooms)
             {
                 EnemyUpdate();
             }
@@ -94,7 +94,7 @@ public class Room : MonoBehaviour, ISaveableObject
         if (GameController.Instance.StopUpdates) return;
         if (RoomController.Instance.ActiveRoom == this)
         {
-            if (PlayerManager.Instance.PlayerHasControl || PlayerManager.Instance.StillUpdateRooms)
+            if (PlayerManager.Instance.PlayerHasControl)// || PlayerManager.Instance.StillUpdateRooms)
             {
                 EnemyFixedUpdate();
             }
