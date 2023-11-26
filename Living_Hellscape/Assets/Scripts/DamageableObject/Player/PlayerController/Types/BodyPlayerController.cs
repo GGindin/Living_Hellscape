@@ -106,6 +106,26 @@ public class BodyPlayerController : PlayerController
             return;
         }
 
+        var interactableObject = collision.gameObject.GetComponent<InteractableObject>();
+        if (interactableObject)
+        {
+            if (this.interactableObject == null)
+            {
+                NotificationBoxController.instance.CloseNotificationBox();
+                this.interactableObject = interactableObject;
+            }
+
+            NotificationBoxController.instance.OpenNotificationBox("Press K to interact");
+
+            if (!PlayerManager.Instance.PlayerHasControl)
+            {
+                NotificationBoxController.instance.CloseNotificationBox();
+                this.interactableObject.Interact();
+            }
+
+            return;
+        }
+
         StatusRouter statusRouter = collision.gameObject.GetComponent<StatusRouter>();
         if (statusRouter)
         {
