@@ -34,6 +34,7 @@ public abstract class PlayerController : DamageableObject, ISaveableObject
 
     public float collisionLessDuration = 10f;
     private float collisionLessTimer = 0;
+    bool ignoreCollisions = false;
 
     int actionAnimID = Animator.StringToHash("Action");
 
@@ -305,6 +306,7 @@ public abstract class PlayerController : DamageableObject, ISaveableObject
     private void disableEnemyCollision(float duration)
     {
         SetIgnorePhysics();
+        ignoreCollisions = true;
         collisionLessTimer = duration;
     }
 
@@ -314,8 +316,9 @@ public abstract class PlayerController : DamageableObject, ISaveableObject
     private void CollisionLess()
     {
         collisionLessTimer -= Time.deltaTime;
-        if (collisionLessTimer < 0)
+        if (collisionLessTimer < 0 && ignoreCollisions)
         {
+            ignoreCollisions = false;
             UnSetIgnorePhysics();
         }
     }
