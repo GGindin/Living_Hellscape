@@ -187,6 +187,7 @@ MonoBehaviour:
   invincibleLayer:
     serializedVersion: 2
     m_Bits: 2097152
+  collisionLessDuration: 1
 --- !u!50 &7047129748171666700
 Rigidbody2D:
   serializedVersion: 4

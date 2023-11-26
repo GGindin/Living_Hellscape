@@ -47,14 +47,14 @@ public class GhostPlayerController : PlayerController
 
     protected override void SetIgnorePhysics()
     {
-        Physics.IgnoreLayerCollision(11, 13);
-        Physics.IgnoreLayerCollision(13, 22);
+        Physics2D.IgnoreLayerCollision(11, 13);
+        Physics2D.IgnoreLayerCollision(13, 22);
     }
 
     protected override void UnSetIgnorePhysics()
     {
-        Physics.IgnoreLayerCollision(11, 13, false);
-        Physics.IgnoreLayerCollision(13, 22, false);
+        Physics2D.IgnoreLayerCollision(11, 13, false);
+        Physics2D.IgnoreLayerCollision(13, 22, false);
     }
 
     public void FadeInImmediate()

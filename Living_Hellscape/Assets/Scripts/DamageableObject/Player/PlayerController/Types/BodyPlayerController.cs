@@ -16,14 +16,14 @@ public class BodyPlayerController : PlayerController
 
     protected override void SetIgnorePhysics()
     {
-        Physics.IgnoreLayerCollision(21, 10);
-        Physics.IgnoreLayerCollision(6, 10);
+        Physics2D.IgnoreLayerCollision(21, 10);
+        Physics2D.IgnoreLayerCollision(6, 10);
     }
 
     protected override void UnSetIgnorePhysics()
     {
-        Physics.IgnoreLayerCollision(21, 10, false);
-        Physics.IgnoreLayerCollision(6, 10, false);
+        Physics2D.IgnoreLayerCollision(21, 10, false);
+        Physics2D.IgnoreLayerCollision(6, 10, false);
     }
 
     override protected void Awake()
