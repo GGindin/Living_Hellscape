@@ -28,6 +28,6 @@ public abstract class ItemDrop : MonoBehaviour
 
     public virtual void Collect()
     {
-        AudioController.Instance.PlaySoundEffect("doorunlock");
+        AudioController.Instance.PlaySoundEffect("pickupdrop");
     }
 }

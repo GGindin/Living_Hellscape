@@ -188,20 +188,20 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
   - name: BossMusic
-    clip: {fileID: 8300000, guid: e631019ea7a039a498edbd4ebebde96c, type: 3}
-    volume: 1
+    clip: {fileID: 8300000, guid: 4492790fabbfbf24f810cc1cc8d888f9, type: 3}
+    volume: 0.85
     pitch: 1
     loop: 1
     source: {fileID: 0}
   - name: testwalk1
     clip: {fileID: 8300000, guid: ad72318ae479df243a622a9c29978ee4, type: 3}
-    volume: 1
+    volume: 0.499
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: testwalk2
     clip: {fileID: 8300000, guid: bf87531cf13243341b890720fe6c4734, type: 3}
-    volume: 1
+    volume: 0.499
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -219,7 +219,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: MansionAtmosphere
     clip: {fileID: 8300000, guid: b95c493bc81fd014ca8437fbb768c906, type: 3}
-    volume: 1
+    volume: 0.75
     pitch: 1
     loop: 1
     source: {fileID: 0}
@@ -233,7 +233,19 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: fe16cfe31ddc2a848afd6981609bf5be, type: 3}
     volume: 1
     pitch: 1
-    loop: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: pickupbox
+    clip: {fileID: 8300000, guid: 9c2cdfc6215830e4bafa51a8908901d5, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: pickupdrop
+    clip: {fileID: 8300000, guid: 09e3da85959d93e40b87a27caef06074, type: 3}
+    volume: 0.804
+    pitch: 1
+    loop: 0
     source: {fileID: 0}
   logError: 0
 --- !u!1 &3249740865950465794

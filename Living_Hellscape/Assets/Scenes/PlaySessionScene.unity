@@ -2453,7 +2453,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55a9ee386401ac642aa4bd5673e0e006, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentRoomOverrideIndex: -1
+  currentRoomOverrideIndex: 21
 --- !u!4 &1984906010
 Transform:
   m_ObjectHideFlags: 0
@@ -3200,30 +3200,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2802514380940128977, guid: ee0b4dc88792d0547835a338e766f273, type: 3}
       propertyPath: sounds.Array.size
-      value: 11
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 2802514380940128977, guid: ee0b4dc88792d0547835a338e766f273, type: 3}
-      propertyPath: sounds.Array.data[3].clip
+      propertyPath: sounds.Array.data[13].clip
       value: 
-      objectReference: {fileID: 8300000, guid: 4492790fabbfbf24f810cc1cc8d888f9, type: 3}
+      objectReference: {fileID: 8300000, guid: 4f986a4a465c574438b04b571ff70c60, type: 3}
     - target: {fileID: 2802514380940128977, guid: ee0b4dc88792d0547835a338e766f273, type: 3}
-      propertyPath: sounds.Array.data[10].loop
-      value: 0
+      propertyPath: sounds.Array.data[13].name
+      value: slingshot
       objectReference: {fileID: 0}
     - target: {fileID: 2802514380940128977, guid: ee0b4dc88792d0547835a338e766f273, type: 3}
-      propertyPath: sounds.Array.data[11].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 4492790fabbfbf24f810cc1cc8d888f9, type: 3}
-    - target: {fileID: 2802514380940128977, guid: ee0b4dc88792d0547835a338e766f273, type: 3}
-      propertyPath: sounds.Array.data[11].name
-      value: BossMusic
-      objectReference: {fileID: 0}
-    - target: {fileID: 2802514380940128977, guid: ee0b4dc88792d0547835a338e766f273, type: 3}
-      propertyPath: sounds.Array.data[11].pitch
+      propertyPath: sounds.Array.data[13].pitch
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2802514380940128977, guid: ee0b4dc88792d0547835a338e766f273, type: 3}
       propertyPath: sounds.Array.data[11].volume
+      value: 0.804
+      objectReference: {fileID: 0}
+    - target: {fileID: 2802514380940128977, guid: ee0b4dc88792d0547835a338e766f273, type: 3}
+      propertyPath: sounds.Array.data[13].volume
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2802514380940128981, guid: ee0b4dc88792d0547835a338e766f273, type: 3}

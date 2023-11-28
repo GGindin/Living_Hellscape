@@ -49,6 +49,7 @@ public class HoldableObject : InteractableObject
     {
         if (!isHeld)
         {
+            AudioController.Instance.PlaySoundEffect("pickupbox");
             isHeld = PlayerManager.Instance.Active.HoldObject(this);
             if (isHeld)
             {
@@ -122,7 +123,7 @@ public class HoldableObject : InteractableObject
 
         body.MovePosition(end);
 
-        AudioController.Instance.PlaySoundEffect("boxcrash");
+        AudioController.Instance.PlaySoundEffect("box");
         ParticleSystemController.Instance.AddHoldableBreak(transform.position);
 
         Destroy(gameObject);
@@ -132,7 +133,7 @@ public class HoldableObject : InteractableObject
     {
         if (!isThrown) return;
 
-        AudioController.Instance.PlaySoundEffect("boxcrash");
+        AudioController.Instance.PlaySoundEffect("box");
         ParticleSystemController.Instance.AddHoldableBreak(transform.position);
 
         var damageable = collision.gameObject.GetComponent<DamageableObject>();
@@ -160,7 +161,7 @@ public class HoldableObject : InteractableObject
     {
         if (!isThrown) return;
 
-        AudioController.Instance.PlaySoundEffect("boxcrash");
+        AudioController.Instance.PlaySoundEffect("box");
         ParticleSystemController.Instance.AddHoldableBreak(transform.position);
 
 

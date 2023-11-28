@@ -103,6 +103,12 @@ public class GhostPlayerController : PlayerController
         spriteRenderer.color = targetColor;
     }
 
+    override protected void Move(Vector2 movement)
+    {
+        base.Move(movement);
+        AudioController.Instance.StopWalkSound();
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (!IsActive) return;
@@ -201,6 +207,8 @@ public class GhostPlayerController : PlayerController
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (!IsActive) return;
+
+        NotificationBoxController.instance.CloseNotificationBox();
 
         var ghostFreeZone = collision.gameObject.GetComponent<GhostFreeZone>();
         if (ghostFreeZone)
