@@ -1,0 +1,62 @@
+Living_Hellscape Functions/Visuals:
+
+Note: Not all of this is necessary for the project, it is just a rough outline. We would only need to implement about half of this.
+
+Characters:
+
+Player (Living) - Can walk around, interact with objects and the living, can attack, will monologue.
+Player (Ghost) - Can walk around, interact with ghosts, can possess some living (Can't possess the bodies of religious fanatics (the main living enemy)) and the cat, can possess dead bodies, will also monologue.
+Player (Dead Body) - Sits on the ground until possessed, it is the ghost player's access point to the living world.
+Player (Possessed) - Can walk around, interact with objects and the living, can attack, can see signs of ghostly activity, ghost player can separate from dead body at will, as well as combine with it as well (creating the possessed player), has a knife and can find other weapons and items.
+Enemy (Spirit) - Presence can be felt in the living world, it's touch does damage to ghosts in the ghost dimension, harmless in the living world, it is attracted to the ghost player, it is slow, will attack on sight, avoid coming into contact with it, Spell: "Ghost Fire" does damage to it (3 hits and it disappears).
+Enemy (Living) - Break into the mansion about 1/3 of the way into the game, they cannot see or interact with the ghosts, Spell: "A Ghostly Wind" will startle them and cause them to cower, their movements become less deliberate and more cautious in lower lighting, they will attack the product of the spell: "Acute Necromancy" (a summoned corpse), they are momentarily stunned by marbles being thrown at them, it will take 3 stabs of a knife or 3 hits with the candlestick to kill them, pitchfork enemies would need to be stunned before they can be killed with the knife.
+Friendly (Living) - Only one living friend who will not attack the player unless they see the dead body of the player (unpossessed), they can be possessed, they enter the home around the same time as the living enemies, this character has no weapons and can't attack.
+Friendly (Ghost Child) - Harmless in both worlds, a strong poltergeist, introduces the player to spell: "A Ghostly Wind" (a childish spell), can only be seen in ghost form, (His introduction is supposed to be a bit of a joke, an anti-climactic half-scare).
+Friendly (Ghost of Grandpa) - Harmless in both worlds, lives in the master bedroom, introduces the player to the ghost world, can only be seen by ghosts, can mess with lighting, he hints as to where the player can learn how to mess with lighting as well (a spell book in the office).
+Friendly (Ghost Witch Agnis) - Harmless, can only be seen in ghost world, asks the player for a favor of some sort (a mini boss perhaps), she teaches the player the spell: "Ghost Fire" in return, she will be found about 2/5 to 1/2 of the way through the game (in the attic).
+Friendly (Cat) - Can be possessed for a very short period of time, can see where ghosts are, but not what they are, can't attack anything, it can pass by living enemies unnoticed.
+Guide (Ghost Butterfly) - Basically a hint function, it helps to indicate what to do when the player is stuck or where to go, it needs to be activated temporarily by the player.
+Mini Boss (Really Angry Raccoon) - An angry raccoon that resides in the attic, making a mess of the place, the player gets rid of it as a favor to the ghost witch, the raccoon is rather fast, will inflict minor damage upon attacking the player (it's touch will do damage), the player will have to trap it in a cage to defeat it (knifes can only do so much).
+Boss (Demonic Hellbeast) - Can flick between the living and ghost realms, resides in the ballroom, it can use "Ghost Fire" in the spirit world and scratches in the living world to inflict damage on player, after multiple attacks in the living world, it will switch to the ghost world.
+Final Boss (Grim Reaper) - Forces the ghost player out of the dead body upon entering the vault at the end of the game, the player has to fight the Grim Reaper as a ghost, It can inflict damage to ghost player with its scythe, the boss also attacks with a milti-direct Ghost Fire, the boss releases his claim on the player's ghost when beaten, allowing the player to permanently fuse the ghost with the body (The end goal of the game).
+
+Weapons and Spells:
+
+Weapon (Knife) - Stays with the player throughout the game (after the player dies the first time), the knife does damage to the living.
+Weapon (Marbles) - Found in the early second half of the game, marbles momentarily stun the living when they are thrown (5 seconds-ish).
+Spell (Lighting) - Found in a spellbook in the office, it causes the lights to flicker and dim for a couple of seconds.
+Spell (A Ghostly Wind) - Taught by the ghost child towards the end of the first half of the game, blows on the necks of the living to scare them, lightly stuns ghosts, and can blow out a candle.
+Spell (Acute Necromancy) - Summon a single corpse to possess in a pinch, can only have one corpse at a time, it has a long cooldown (a minute or two), it is found within a spellbook in the library.
+Spell (Ghost Fire) - Shoots a ball of ghostly fire in the direction that the player in ghost form is facing, it is taught by the ghost witch half way through the game.
+
+Objects:
+
+Object (Small Key) - Opens a specific lock to a drawer or cabinet.
+Object (Door Key) - Opens a locked door.
+Object (Vault Key) - Only opens the vault (in the basement).
+Object (light) - Can be turned on or off by the living, can be dimmed by ghost spell: "Lighting."
+Object (Candle) - An object held by living enemies to help them see in dimmer spaces, can be blown out by a ghost spell: "A Ghostly Wind."
+Object (Door) - Can be locked, unlocked, open, closed, and used (a door).
+Object (Container) - A drawer, chest, cabinet, desk, or box that can be interacted with and maybe locked (Who knows what is inside?).
+Object (Spellbook of Optics) - The spellbook that teaches the spell: "Lighting."
+Object (Spellbook of Half-Life) - The spellbook that teaches spell: "Acute Necromancy."
+Object (Scroll of Flaming Soul) - The scroll that teaches the spell: "Ghost Fire."
+Object (Ghost Child's Note) - The note that teaches the spell: "A Ghostly Wind."
+Object (Ancient Grimoire) - The spellbook that permanently brings the player back to life.
+Object (Knife) - The object that allows the player to harm the living.
+Object (Candlestick) - The object that allows players to harm living enemies from a greater distance, it does the same damage as the knife, but it is slower.
+Object (Bag of Marbles) - A weak projectile weapon that allows the player to stun the living for a short period of time.
+Object (Bandages) - An object that heals the player's physical form (Can be carried).
+Object (Incense) - A stationary object that can be found in many rooms that heals the player's ghost when within a short vicinity of it.
+
+Menus:
+
+Inventory - Shows what spells the player has unlocked, shows the weapons in the character's possession, it explains what each item does when the mouse hovers over it, shows what keys the player has, also shows the map (the map gets filled out as the player progresses through the game), on the left side of the inventory screen, it shows what he MC looks like (or atleast the character's current form).
+Pause Menu - Shows 3 buttons: "Play", "Settings", and "Save & Quit".
+"Play" Button - Resumes the game.
+"Settings" Button - Allows the player to adjust audio, SFX, and perhaps video settings.
+"Save & Quit" Button - Saves the game to a specific save file and returns to the home menu.
+Home Menu - Has 3 save slots, "Settings" button, and "Credits" button, it has a picture of the outside of the mansion in the background.
+"Credits" button - Displays the credits that can be fast forwarded by pressing and holding down the down arrow or the "a" key and can be exited by pressing the "ESC" key.
+Save Slots - Each save slot will contain the player's chosen name (Mr. Tuff'n will be the default), health, progress, and a "Delete" button.
+"Delete" Button - Will prompt a text box saying, "Are you sure that you want to permanently delete this save file?" ‘Yes’, or ’No’, ‘Yes’ will permanently delete the save file, ‘No’ will close the text box.
