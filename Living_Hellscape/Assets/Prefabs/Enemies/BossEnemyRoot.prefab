@@ -102,7 +102,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -3421000448408613944, guid: f8043a434f5f0474ea19f46617adfe7f, type: 3}
+  m_Sprite: {fileID: 8845858825995727331, guid: 25840645f0357fd4a842482aae95312b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -126,18 +126,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.00000047683716, y: -0.029142022}
+  m_Offset: {x: -0.023566902, y: -0.26481658}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 2}
+    oldSize: {x: 2, y: 3}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.6036682, y: 1.9442017}
+  m_Size: {x: 1.2635571, y: 2.1327415}
   m_EdgeRadius: 0
 --- !u!1 &8728599187968221957
 GameObject:
@@ -167,7 +167,7 @@ Transform:
   m_GameObject: {fileID: 8728599187968221957}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 697847343601796918}
   - {fileID: 1977276668708268415}
@@ -184,7 +184,7 @@ Animator:
   m_GameObject: {fileID: 8728599187968221957}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a5d1abe0c04040d49948583ea88028a6, type: 2}
+  m_Controller: {fileID: 9100000, guid: eed29bedea1b32d4f8b8ff1b2953272d, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -230,7 +230,7 @@ MonoBehaviour:
     probablity: 0.75
     coolDown: 2
   attackStopTime: 0.25
-  enterText: ' to meet DEATH ITSELF!!!scape. Prepare to meet DEATH ITSELF!!!'
+  enterText: This time you will not escape. Prepare to meet DEATH ITSELF!!!
   exitText: NOoOOOoOOOOo
 --- !u!50 &6998762087044943512
 Rigidbody2D:
