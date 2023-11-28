@@ -31,6 +31,22 @@ public class BodyPlayerController : PlayerController
         base.Awake();
     }
 
+    override protected void Move(Vector2 movement)
+    {
+        base.Move(movement);
+        var normInput = movement.normalized;
+
+        Vector2 velocity = normInput * playerStats.Speed * Time.fixedDeltaTime;
+        if (velocity.sqrMagnitude > 0)
+        {
+            AudioController.Instance.PlayWalkSound();
+        }
+        else
+        {
+            AudioController.Instance.StopWalkSound();
+        }
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (!IsActive) return;
@@ -74,6 +90,11 @@ public class BodyPlayerController : PlayerController
     }
 
     private void OnCollisionExit2D()
+    {
+        NotificationBoxController.instance.CloseNotificationBox();
+    }
+
+    private void OnTriggerExit2D()
     {
         NotificationBoxController.instance.CloseNotificationBox();
     }

@@ -13,13 +13,25 @@ public class Sign : InteractableObject
     [SerializeField]
     string signText;
 
+    [SerializeField]
+    bool mustDefeatEnemies;
+
     public override Collider2D InteractableCollider => signCollider;
 
     public override SpriteRenderer SpriteRenderer => spriteRenderer;
 
     public override void Interact()
     {
-        TextBoxController.instance.OpenTextBox(signText);
+        if (mustDefeatEnemies && RoomController.Instance.ActiveRoom.HasActiveEnemies())
+        {
+            NotificationBoxController.instance.CloseNotificationBox();
+            NotificationBoxController.instance.OpenNotificationBox("Can't investigate right now!");
+        }
+        else
+        {
+            NotificationBoxController.instance.CloseNotificationBox();
+            TextBoxController.instance.OpenTextBox(signText);
+        }
     }
 
 
