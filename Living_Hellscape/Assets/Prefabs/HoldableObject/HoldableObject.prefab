@@ -236,7 +236,7 @@ MonoBehaviour:
   throwDistance: 5
   geometryLayer:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 32896
   thrownItemLayer:
     serializedVersion: 2
     m_Bits: 1048576
