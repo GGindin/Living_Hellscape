@@ -187,6 +187,23 @@ public class HoldableObject : InteractableObject
         Destroy(gameObject);
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        var statusRouter = collision.gameObject.GetComponent<StatusRouter>();
+        if (statusRouter)
+        {
+            var sword = statusRouter.Target.gameObject.GetComponent<Sword>();
+            if (sword != null)
+            {
+                AudioController.Instance.PlaySoundEffect("box");
+                ParticleSystemController.Instance.AddHoldableBreak(transform.position);
+
+                Destroy(gameObject);
+            }
+        }
+
+    }
+
     public override string GetFileName()
     {
         //never should get called
