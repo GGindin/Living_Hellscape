@@ -13,6 +13,8 @@ public class AudioController : MonoBehaviour
     [SerializeField]
     bool logError;
 
+    public Sound currentMusic;
+
     void Awake()
     {
         Instance = this;
@@ -54,6 +56,36 @@ public class AudioController : MonoBehaviour
         LogError(name);
     }
 
+    public IEnumerator SetMusic(string name, float duration)
+    {
+        if (name == "nomusic")
+        {
+            yield return StartCoroutine(FadeOutSoundEffect(currentMusic.name, duration));
+            currentMusic = null;
+            yield break;
+        }
+
+        Sound sound = Array.Find(sounds, sounds => sounds.name == name);
+        //Debug.Log("Hello there!");
+
+        if (sound == null)
+        {
+            LogError(name);
+            yield break;
+        }
+
+        if (currentMusic != null)
+        {
+            yield return StartCoroutine(FadeOutSoundEffect(currentMusic.name, duration / 2));
+            yield return StartCoroutine(FadeInSoundEffect(name, duration / 2));
+        }
+        else
+        {
+            yield return StartCoroutine(FadeInSoundEffect(name, duration));
+        }
+        currentMusic = sound;
+    }
+
     public IEnumerator FadeInSoundEffect(string name, float duration)
     {
         Sound sound = Array.Find(sounds, sounds => sounds.name == name);
@@ -72,8 +104,10 @@ public class AudioController : MonoBehaviour
             }
             sound.source.volume = 1 * sound.volume;
         }
-
-        LogError(name);
+        else
+        {
+            LogError(name);
+        }
     }
 
     public IEnumerator FadeOutSoundEffect(string name, float duration)
@@ -94,8 +128,10 @@ public class AudioController : MonoBehaviour
             sound.source.Stop();
             sound.source.volume = 0 * sound.volume;
         }
-
-        LogError(name);
+        else
+        {
+            LogError(name);
+        }
     }
 
 

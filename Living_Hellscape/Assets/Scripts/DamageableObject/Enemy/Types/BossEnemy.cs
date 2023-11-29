@@ -65,7 +65,7 @@ public class BossEnemy : EnemyController
             if(enterText != null)
             {
                 //do with callback
-                TextBoxController.instance.OpenTextBoxWithCallBack(enterText, () => AudioController.Instance.PlaySoundEffect("BossMusic"));
+                TextBoxController.instance.OpenTextBoxWithCallBack(enterText, () => StartCoroutine(AudioController.Instance.SetMusic("BossMusic", 0.1f)));
             }
         }
 
@@ -253,7 +253,7 @@ public class BossEnemy : EnemyController
     {
         if (health <= 0)
         {
-            AudioController.Instance.StopSoundEffect("BossMusic");
+            AudioController.Instance.StopSoundEffect(AudioController.Instance.currentMusic.name);
 
             if (!ringAttackPrefab)
             {
@@ -264,13 +264,13 @@ public class BossEnemy : EnemyController
             {
                 TextBoxController.instance.OpenTextBoxWithCallBack(exitText, () =>
                 {
-                    AudioController.Instance.StartCoroutine(AudioController.Instance.FadeInSoundEffect("MansionAtmosphere", 2f));
+                    AudioController.Instance.StartCoroutine(AudioController.Instance.SetMusic("MansionAtmosphere", 2f));
                 });
                 
             }
             else
             {
-                AudioController.Instance.StartCoroutine(AudioController.Instance.FadeInSoundEffect("MansionAtmosphere", 2f));
+                AudioController.Instance.StartCoroutine(AudioController.Instance.SetMusic("MansionAtmosphere", 2f));
             }
         }
 
