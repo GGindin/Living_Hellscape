@@ -45,6 +45,11 @@ public class SceneController : MonoBehaviour
         if (SceneManager.GetSceneByBuildIndex(PLAY_SEESION_SCENE_ID).isLoaded)
         {
             VignetteController.Instance.StartVignette();
+            if (AudioController.Instance.CurrentMusic != null)
+            {
+                StartCoroutine(AudioController.Instance.FadeOutSoundEffect(AudioController.Instance.CurrentMusic.name, VignetteController.Instance.Duration));
+            }    
+            yield return new WaitForSeconds(VignetteController.Instance.Duration);
             //yield return StartCoroutine(AudioController.Instance.SetMusic("MansionAtmosphere", VignetteController.Instance.Duration));
             sceneControllerSceneCamera.gameObject.SetActive(true);
         }
@@ -62,6 +67,7 @@ public class SceneController : MonoBehaviour
         GameController.Instance.StartPlaySession(i);
         GameController.Instance.SetStopUpdates(true);
         VignetteController.Instance.EndVignette();
+        yield return new WaitForSeconds(VignetteController.Instance.Duration);
         //yield return StartCoroutine(AudioController.Instance.SetMusic("MansionAtmosphere", VignetteController.Instance.Duration));
         GameController.Instance.SetStopUpdates(false);
     }
@@ -72,7 +78,7 @@ public class SceneController : MonoBehaviour
         if (SceneManager.GetSceneByBuildIndex(MAIN_MENU_SCENE_ID).isLoaded)
         {
             VignetteController.Instance.StartVignette();
-            yield return StartCoroutine(AudioController.Instance.FadeOutSoundEffect(AudioController.Instance.currentMusic.name, VignetteController.Instance.Duration));
+            yield return StartCoroutine(AudioController.Instance.FadeOutSoundEffect(AudioController.Instance.CurrentMusic.name, VignetteController.Instance.Duration));
             sceneControllerSceneCamera.gameObject.SetActive(true);
         }
 
@@ -89,6 +95,7 @@ public class SceneController : MonoBehaviour
         GameController.Instance.StartPlaySession(i);
         GameController.Instance.SetStopUpdates(true);
         VignetteController.Instance.EndVignette();
+        yield return new WaitForSeconds(VignetteController.Instance.Duration);
         //yield return StartCoroutine(AudioController.Instance.SetMusic("MansionAtmosphere", VignetteController.Instance.Duration));
         GameController.Instance.SetStopUpdates(false);
     }
@@ -99,7 +106,7 @@ public class SceneController : MonoBehaviour
         if (SceneManager.GetSceneByBuildIndex(PLAY_SEESION_SCENE_ID).isLoaded)
         {
             VignetteController.Instance.StartVignette();
-            yield return StartCoroutine(AudioController.Instance.FadeOutSoundEffect(AudioController.Instance.currentMusic.name, VignetteController.Instance.Duration));
+            yield return StartCoroutine(AudioController.Instance.FadeOutSoundEffect(AudioController.Instance.CurrentMusic.name, VignetteController.Instance.Duration));
             sceneControllerSceneCamera.gameObject.SetActive(true);
         }
 

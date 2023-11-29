@@ -42,7 +42,7 @@ public class RoomController : MonoBehaviour
 
         if(room != null && !room.DontUpdateLastRoomOnEnter)
         {
-            if (AudioController.Instance.currentMusic.name != room.musicTrackName)
+            if (AudioController.Instance.CurrentMusic == null || AudioController.Instance.CurrentMusic.name != room.musicTrackName)
             {
                 StartCoroutine(AudioController.Instance.SetMusic(room.musicTrackName, 2f));
             }

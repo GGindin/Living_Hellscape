@@ -14,13 +14,13 @@ public class BodyPlayerController : PlayerController
         boxCollider.isTrigger = true;
     }
 
-    protected override void SetIgnorePhysics()
+    public override void SetIgnorePhysics()
     {
         Physics2D.IgnoreLayerCollision(21, 10);
         Physics2D.IgnoreLayerCollision(6, 10);
     }
 
-    protected override void UnSetIgnorePhysics()
+    public override void UnSetIgnorePhysics()
     {
         Physics2D.IgnoreLayerCollision(21, 10, false);
         Physics2D.IgnoreLayerCollision(6, 10, false);
