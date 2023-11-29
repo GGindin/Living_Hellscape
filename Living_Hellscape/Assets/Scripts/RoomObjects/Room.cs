@@ -146,7 +146,7 @@ public class Room : MonoBehaviour, ISaveableObject
         LoadAdjacentRooms();
         if (CheckForBossEnemy())
         {
-            AudioController.Instance.StartCoroutine(AudioController.Instance.FadeOutSoundEffect("MansionAtmosphere", 2f));
+            AudioController.Instance.StartCoroutine(AudioController.Instance.SetMusic("nomusic", 2f));
             //fade out main music here
         }
     }

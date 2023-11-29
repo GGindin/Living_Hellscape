@@ -30,7 +30,7 @@ public class GameController : MonoBehaviour
     {
         if (!SceneController.Instance)
         {
-            AudioController.Instance.PlaySoundEffect("MansionAtmosphere");
+            StartCoroutine(AudioController.Instance.SetMusic("MansionAtmosphere", 2));
             StartPlaySession(-1);
         }
     }

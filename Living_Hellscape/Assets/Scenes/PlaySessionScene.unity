@@ -2453,7 +2453,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55a9ee386401ac642aa4bd5673e0e006, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentRoomOverrideIndex: -1
+  currentRoomOverrideIndex: 16
 --- !u!4 &1984906010
 Transform:
   m_ObjectHideFlags: 0
@@ -3199,8 +3199,12 @@ PrefabInstance:
       value: Main Camera
       objectReference: {fileID: 0}
     - target: {fileID: 2802514380940128977, guid: ee0b4dc88792d0547835a338e766f273, type: 3}
+      propertyPath: logError
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2802514380940128977, guid: ee0b4dc88792d0547835a338e766f273, type: 3}
       propertyPath: sounds.Array.size
-      value: 14
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 2802514380940128977, guid: ee0b4dc88792d0547835a338e766f273, type: 3}
       propertyPath: sounds.Array.data[13].clip
@@ -3211,7 +3215,23 @@ PrefabInstance:
       value: slingshot
       objectReference: {fileID: 0}
     - target: {fileID: 2802514380940128977, guid: ee0b4dc88792d0547835a338e766f273, type: 3}
+      propertyPath: sounds.Array.data[14].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 0f7bf56eb65d3ac4fa977c61814e7628, type: 3}
+    - target: {fileID: 2802514380940128977, guid: ee0b4dc88792d0547835a338e766f273, type: 3}
+      propertyPath: sounds.Array.data[14].loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2802514380940128977, guid: ee0b4dc88792d0547835a338e766f273, type: 3}
+      propertyPath: sounds.Array.data[14].name
+      value: EerieDungeon
+      objectReference: {fileID: 0}
+    - target: {fileID: 2802514380940128977, guid: ee0b4dc88792d0547835a338e766f273, type: 3}
       propertyPath: sounds.Array.data[13].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2802514380940128977, guid: ee0b4dc88792d0547835a338e766f273, type: 3}
+      propertyPath: sounds.Array.data[14].pitch
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2802514380940128977, guid: ee0b4dc88792d0547835a338e766f273, type: 3}
@@ -3220,6 +3240,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2802514380940128977, guid: ee0b4dc88792d0547835a338e766f273, type: 3}
       propertyPath: sounds.Array.data[13].volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2802514380940128977, guid: ee0b4dc88792d0547835a338e766f273, type: 3}
+      propertyPath: sounds.Array.data[14].volume
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2802514380940128981, guid: ee0b4dc88792d0547835a338e766f273, type: 3}
