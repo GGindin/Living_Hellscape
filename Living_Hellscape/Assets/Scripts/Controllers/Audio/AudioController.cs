@@ -77,13 +77,14 @@ public class AudioController : MonoBehaviour
         if (currentMusic != null)
         {
             yield return StartCoroutine(FadeOutSoundEffect(currentMusic.name, duration / 2));
+            currentMusic = sound;
             yield return StartCoroutine(FadeInSoundEffect(name, duration / 2));
         }
         else
         {
+            currentMusic = sound;
             yield return StartCoroutine(FadeInSoundEffect(name, duration));
         }
-        currentMusic = sound;
     }
 
     public IEnumerator FadeInSoundEffect(string name, float duration)

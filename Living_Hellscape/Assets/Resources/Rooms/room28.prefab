@@ -3177,6 +3177,10 @@ PrefabInstance:
       value: room28
       objectReference: {fileID: 0}
     - target: {fileID: 8331932869157734206, guid: 1b27bccb4db5ed348a9277260da20999, type: 3}
+      propertyPath: musicTrackName
+      value: EerieDungeon
+      objectReference: {fileID: 0}
+    - target: {fileID: 8331932869157734206, guid: 1b27bccb4db5ed348a9277260da20999, type: 3}
       propertyPath: dontUpdateLastRoomOnEnter
       value: 1
       objectReference: {fileID: 0}

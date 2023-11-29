@@ -268,6 +268,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8952850904329302545, guid: 76e50dd0231ceca48b9e56c02dfebc43, type: 3}
+      propertyPath: musicTrackName
+      value: MansionAtmosphere
+      objectReference: {fileID: 0}
+    - target: {fileID: 8952850904329302545, guid: 76e50dd0231ceca48b9e56c02dfebc43, type: 3}
       propertyPath: defeatAllEnemies
       value: 1
       objectReference: {fileID: 0}

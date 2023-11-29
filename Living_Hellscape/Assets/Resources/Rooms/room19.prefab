@@ -950,6 +950,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6892800787067176765, guid: 6f6af0c75e14b5849856eb4b3606a3ba, type: 3}
+      propertyPath: musicTrackName
+      value: MansionAtmosphere
+      objectReference: {fileID: 0}
+    - target: {fileID: 6892800787067176765, guid: 6f6af0c75e14b5849856eb4b3606a3ba, type: 3}
       propertyPath: interactableObjectPlacements.Array.size
       value: 1
       objectReference: {fileID: 0}

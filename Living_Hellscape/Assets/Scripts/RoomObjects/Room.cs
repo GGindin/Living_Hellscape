@@ -44,6 +44,9 @@ public class Room : MonoBehaviour, ISaveableObject
     [SerializeField]
     Tilemap exteriorTileMap;
 
+    [SerializeField]
+    public String musicTrackName;
+
     HoldableObject[] roomHoldables;
 
     InteractableObject[] roomInteractables;

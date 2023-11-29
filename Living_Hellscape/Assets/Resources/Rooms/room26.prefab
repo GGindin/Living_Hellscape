@@ -2315,6 +2315,10 @@ PrefabInstance:
       value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 8413117113940822084, guid: c6a1653128132554abda7d32a6fbbe06, type: 3}
+      propertyPath: musicTrackName
+      value: EerieDungeon
+      objectReference: {fileID: 0}
+    - target: {fileID: 8413117113940822084, guid: c6a1653128132554abda7d32a6fbbe06, type: 3}
       propertyPath: defeatAllEnemies
       value: 1
       objectReference: {fileID: 0}

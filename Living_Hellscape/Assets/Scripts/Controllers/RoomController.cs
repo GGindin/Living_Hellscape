@@ -42,15 +42,10 @@ public class RoomController : MonoBehaviour
 
         if(room != null && !room.DontUpdateLastRoomOnEnter)
         {
-            if ((room.ID == 26 || room.ID == 27) && AudioController.Instance.currentMusic.name != "EerieDungeon")
+            if (AudioController.Instance.currentMusic.name != room.musicTrackName)
             {
-                StartCoroutine(AudioController.Instance.SetMusic("EerieDungeon", 2f));
+                StartCoroutine(AudioController.Instance.SetMusic(room.musicTrackName, 2f));
             }
-            else if ((room.ID != 26 && room.ID != 27) && AudioController.Instance.currentMusic.name == "EerieDungeon")
-            {
-                StartCoroutine(AudioController.Instance.SetMusic("MansionAtmosphere", 2f));
-            }
-
             currentRoomOverrideIndex = activeRoom.ID;
             GameStateController.Instance.CurrentRoomIndex = activeRoom.ID;
         }

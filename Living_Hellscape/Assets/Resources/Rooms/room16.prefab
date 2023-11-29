@@ -2184,6 +2184,10 @@ PrefabInstance:
       value: room16
       objectReference: {fileID: 0}
     - target: {fileID: 565243631853001318, guid: 437d1119a1f930448be9a2f88031685d, type: 3}
+      propertyPath: musicTrackName
+      value: MansionAtmosphere
+      objectReference: {fileID: 0}
+    - target: {fileID: 565243631853001318, guid: 437d1119a1f930448be9a2f88031685d, type: 3}
       propertyPath: enemyPlacements.Array.size
       value: 5
       objectReference: {fileID: 0}

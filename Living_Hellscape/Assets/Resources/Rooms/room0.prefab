@@ -247,6 +247,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 182077977202522572, guid: d8c8a463c84698a40bb67f7a5f84d736, type: 3}
+      propertyPath: musicTrackName
+      value: MansionAtmosphere
+      objectReference: {fileID: 0}
+    - target: {fileID: 182077977202522572, guid: d8c8a463c84698a40bb67f7a5f84d736, type: 3}
       propertyPath: interactableObjectPlacements.Array.size
       value: 2
       objectReference: {fileID: 0}
