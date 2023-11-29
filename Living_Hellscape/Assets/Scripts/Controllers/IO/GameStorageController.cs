@@ -47,6 +47,7 @@ public class GameStorageController : MonoBehaviour
 
     public void Initialize(int saveFile)
     {
+        saveFileInt = saveFile;
         savePath = Path.Combine(appDatatPath, GetSaveString(saveFile));
 
         permDataPath = Path.Combine(savePath, PERM_DATA_DIR);
@@ -200,16 +201,16 @@ public class GameStorageController : MonoBehaviour
         switch (saveFile)
         {
             case 0:
-                saveFileInt = 0;
+                //saveFileInt = 0;
                 return SAVE_1;
             case 1:
-                saveFileInt = 1;
+                //saveFileInt = 1;
                 return SAVE_2;
             case 2:
-                saveFileInt = 2;
+                //saveFileInt = 2;
                 return SAVE_3;
             default:
-                saveFileInt = 0;
+                //saveFileInt = 0;
                 return SAVE_1;
         }
     }

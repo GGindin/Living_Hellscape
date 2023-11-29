@@ -13,7 +13,7 @@ public class AudioController : MonoBehaviour
     [SerializeField]
     bool logError;
 
-    public Sound currentMusic;
+    public Sound CurrentMusic { get; private set; }
 
     void Awake()
     {
@@ -29,7 +29,6 @@ public class AudioController : MonoBehaviour
             sound.source.loop = sound.loop;
             sound.source.playOnAwake = false;
         }
-
     }
 
 
@@ -60,8 +59,8 @@ public class AudioController : MonoBehaviour
     {
         if (name == "nomusic")
         {
-            yield return StartCoroutine(FadeOutSoundEffect(currentMusic.name, duration));
-            currentMusic = null;
+            yield return StartCoroutine(FadeOutSoundEffect(CurrentMusic.name, duration));
+            CurrentMusic = null;
             yield break;
         }
 
@@ -74,15 +73,15 @@ public class AudioController : MonoBehaviour
             yield break;
         }
 
-        if (currentMusic != null)
+        if (CurrentMusic != null)
         {
-            yield return StartCoroutine(FadeOutSoundEffect(currentMusic.name, duration / 2));
-            currentMusic = sound;
+            yield return StartCoroutine(FadeOutSoundEffect(CurrentMusic.name, duration / 2));
+            CurrentMusic = sound;
             yield return StartCoroutine(FadeInSoundEffect(name, duration / 2));
         }
         else
         {
-            currentMusic = sound;
+            CurrentMusic = sound;
             yield return StartCoroutine(FadeInSoundEffect(name, duration));
         }
     }
