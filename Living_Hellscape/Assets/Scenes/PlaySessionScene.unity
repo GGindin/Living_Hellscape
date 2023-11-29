@@ -2453,7 +2453,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55a9ee386401ac642aa4bd5673e0e006, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentRoomOverrideIndex: 16
+  currentRoomOverrideIndex: -1
 --- !u!4 &1984906010
 Transform:
   m_ObjectHideFlags: 0
@@ -3217,7 +3217,7 @@ PrefabInstance:
     - target: {fileID: 2802514380940128977, guid: ee0b4dc88792d0547835a338e766f273, type: 3}
       propertyPath: sounds.Array.data[14].clip
       value: 
-      objectReference: {fileID: 8300000, guid: 0f7bf56eb65d3ac4fa977c61814e7628, type: 3}
+      objectReference: {fileID: 8300000, guid: eb2291df7d60400499d5d057abaee15b, type: 3}
     - target: {fileID: 2802514380940128977, guid: ee0b4dc88792d0547835a338e766f273, type: 3}
       propertyPath: sounds.Array.data[14].loop
       value: 1
