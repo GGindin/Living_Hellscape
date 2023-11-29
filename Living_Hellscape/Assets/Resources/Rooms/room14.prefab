@@ -162,6 +162,10 @@ PrefabInstance:
       value: room14
       objectReference: {fileID: 0}
     - target: {fileID: 149525771133606622, guid: cc7e6815b2ec0f242bb2f5c0d2e2fe04, type: 3}
+      propertyPath: musicTrackName
+      value: MansionAtmosphere
+      objectReference: {fileID: 0}
+    - target: {fileID: 149525771133606622, guid: cc7e6815b2ec0f242bb2f5c0d2e2fe04, type: 3}
       propertyPath: dontUpdateLastRoomOnEnter
       value: 1
       objectReference: {fileID: 0}

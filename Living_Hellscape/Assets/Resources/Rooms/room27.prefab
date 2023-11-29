@@ -2326,6 +2326,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3710859970699202517, guid: 9495a48cf913d8c48bd68aa580197bd8, type: 3}
+      propertyPath: musicTrackName
+      value: EerieDungeon
+      objectReference: {fileID: 0}
+    - target: {fileID: 3710859970699202517, guid: 9495a48cf913d8c48bd68aa580197bd8, type: 3}
       propertyPath: holdableObjectPlacements.Array.size
       value: 0
       objectReference: {fileID: 0}

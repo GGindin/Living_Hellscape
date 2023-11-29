@@ -218,7 +218,7 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
   - name: MansionAtmosphere
-    clip: {fileID: 8300000, guid: b95c493bc81fd014ca8437fbb768c906, type: 3}
+    clip: {fileID: 8300000, guid: 7050abf1f902ec6409db1698ad78ad24, type: 3}
     volume: 0.75
     pitch: 1
     loop: 1
@@ -237,7 +237,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: pickupbox
     clip: {fileID: 8300000, guid: 9c2cdfc6215830e4bafa51a8908901d5, type: 3}
-    volume: 1
+    volume: 0.804
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -247,7 +247,26 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
-  logError: 0
+  - name: slingshot
+    clip: {fileID: 8300000, guid: 4f986a4a465c574438b04b571ff70c60, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: EerieDungeon
+    clip: {fileID: 8300000, guid: eb2291df7d60400499d5d057abaee15b, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  logError: 1
+  currentMusic:
+    name: 
+    clip: {fileID: 0}
+    volume: 0
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
 --- !u!1 &3249740865950465794
 GameObject:
   m_ObjectHideFlags: 0

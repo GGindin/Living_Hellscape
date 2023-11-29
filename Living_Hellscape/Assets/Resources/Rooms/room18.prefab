@@ -12,6 +12,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3170450803165512936, guid: c22a4f48bd99f5143aabdf2d44a2d9fb, type: 3}
+      propertyPath: musicTrackName
+      value: MansionAtmosphere
+      objectReference: {fileID: 0}
+    - target: {fileID: 3170450803165512936, guid: c22a4f48bd99f5143aabdf2d44a2d9fb, type: 3}
       propertyPath: prefabConnections.Array.data[0].otherRoomID
       value: 16
       objectReference: {fileID: 0}
