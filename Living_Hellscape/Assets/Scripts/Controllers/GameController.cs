@@ -47,9 +47,13 @@ public class GameController : MonoBehaviour
         LoadInPlayer();
     }
 
-    public void EndPlaySession()
+    public void EndPlaySession(bool saveData)
     {
-        SaveGame();
+        if (saveData)
+        {
+            SaveGame();
+        }
+        
         //tell all controllers to save data
         //then init scene change through scene controller to go to main menu
         //for now we just quit or swap scenes
@@ -73,7 +77,10 @@ public class GameController : MonoBehaviour
 
     public void ReloadPlaySession()
     {
-        SaveGame();
+        //is only called on death so do not save
+        //SaveGame();
+
+
         //tell all controllers to save data
         //then init scene change through scene controller to go to main menu
         //for now we just quit or swap scenes
@@ -112,7 +119,7 @@ public class GameController : MonoBehaviour
 
     public void SetupGameOver()
     {
-        GameStateController.Instance.CurrentRoomIndex = 0;
+        //GameStateController.Instance.CurrentRoomIndex = 0;
         GameOverMenuController.Instance.OpenGameOverMenu();
     }
 

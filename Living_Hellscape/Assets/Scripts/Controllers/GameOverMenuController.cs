@@ -45,6 +45,6 @@ public class GameOverMenuController : MonoBehaviour
 
     public void QuitGame()
     {
-        GameController.Instance.EndPlaySession();
+        GameController.Instance.EndPlaySession(false);
     }
 }
