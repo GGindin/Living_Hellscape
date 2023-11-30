@@ -199,7 +199,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7037848087318869854, guid: b62abccfac220f3449e019a7b819143b, type: 3}
       propertyPath: musicTrackName
-      value: MansionAtmosphere
+      value: HopefulHarmony
       objectReference: {fileID: 0}
     - target: {fileID: 7037848087318869854, guid: b62abccfac220f3449e019a7b819143b, type: 3}
       propertyPath: holdableObjectPlacements.Array.size
