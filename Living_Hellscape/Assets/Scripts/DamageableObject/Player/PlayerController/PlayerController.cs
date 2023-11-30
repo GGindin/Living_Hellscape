@@ -311,8 +311,8 @@ public abstract class PlayerController : DamageableObject, ISaveableObject
         collisionLessTimer = duration;
     }
 
-    protected virtual void SetIgnorePhysics() { }
-    protected virtual void UnSetIgnorePhysics() { }
+    public virtual void SetIgnorePhysics() { }
+    public virtual void UnSetIgnorePhysics() { }
 
     private void CollisionLess()
     {

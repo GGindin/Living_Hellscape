@@ -253,7 +253,7 @@ public class BossEnemy : EnemyController
     {
         if (health <= 0)
         {
-            AudioController.Instance.StopSoundEffect(AudioController.Instance.currentMusic.name);
+            AudioController.Instance.StopSoundEffect(AudioController.Instance.CurrentMusic.name);
 
             if (!ringAttackPrefab)
             {

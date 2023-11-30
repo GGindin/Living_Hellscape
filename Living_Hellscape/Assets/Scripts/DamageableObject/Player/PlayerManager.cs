@@ -212,6 +212,9 @@ public class PlayerManager : MonoBehaviour, ISaveableObject
     {
         if(bodyInstance.IsDead || ghostInstance.IsDead)
         {
+            bodyInstance.UnSetIgnorePhysics();
+            ghostInstance.UnSetIgnorePhysics();
+
             if (!GameOverMenuController.Instance.gameObject.activeInHierarchy)
             {
                 GameController.Instance.SetupGameOver();
