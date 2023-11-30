@@ -33,10 +33,10 @@ public class BossEnemy : EnemyController
     [SerializeField]
     float attackStopTime;
 
-    [SerializeField]
+    [SerializeField, TextArea(1, 5)]
     string enterText;
 
-    [SerializeField]
+    [SerializeField, TextArea(1, 5)]
     string exitText;
 
     float currentWanderDirectionTime = float.MaxValue;

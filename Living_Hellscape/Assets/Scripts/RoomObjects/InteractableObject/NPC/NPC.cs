@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class NPC : InteractableObject
 {
-    [SerializeField]
+    [SerializeField, TextArea(1, 5)]
     protected string[] texts;
 
     protected int currentText;
