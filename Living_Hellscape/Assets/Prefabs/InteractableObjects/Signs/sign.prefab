@@ -126,3 +126,4 @@ MonoBehaviour:
   spriteRenderer: {fileID: 2346461975997069925}
   signCollider: {fileID: 2346461975997069924}
   signText: I am a sign check it out
+  mustDefeatEnemies: 0
