@@ -54,6 +54,6 @@ public class PauseMenuController : MenuController
 
     public void QuitGame()
     {
-        GameController.Instance.EndPlaySession();
+        GameController.Instance.EndPlaySession(true);
     }
 }

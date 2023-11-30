@@ -10,7 +10,7 @@ public class Sign : InteractableObject
     [SerializeField]
     Collider2D signCollider;
 
-    [SerializeField]
+    [SerializeField, TextArea(1, 5)]
     string signText;
 
     [SerializeField]
