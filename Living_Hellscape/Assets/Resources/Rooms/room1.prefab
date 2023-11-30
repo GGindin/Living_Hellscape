@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 244955389713412494}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.12, y: -8.58, z: 0}
+  m_LocalPosition: {x: 3, y: -8.75, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2586483881579425421}
@@ -54,7 +54,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1247415722155388858}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.61, y: -8.64, z: 0}
+  m_LocalPosition: {x: 6, y: -8.75, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2586483881579425421}
@@ -84,7 +84,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4770554730359575776}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.86, y: -1.74, z: 0}
+  m_LocalPosition: {x: 3.5, y: -5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2615173255984983461}
@@ -378,6 +378,112 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2672879e534dfa1489513c4e93865e7b, type: 3}
+--- !u!1 &1431334903043389379 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 902808525795451487, guid: 2672879e534dfa1489513c4e93865e7b, type: 3}
+  m_PrefabInstance: {fileID: 2259245779086448028}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &5742008261055409728 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 5833782230386703324, guid: 2672879e534dfa1489513c4e93865e7b, type: 3}
+  m_PrefabInstance: {fileID: 2259245779086448028}
+  m_PrefabAsset: {fileID: 0}
+--- !u!61 &7456895037534572665 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 8657680553549530597, guid: 2672879e534dfa1489513c4e93865e7b, type: 3}
+  m_PrefabInstance: {fileID: 2259245779086448028}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6368089115804844431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1431334903043389379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 541b097d87721f14c952f797aad2f615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ghostObject: 0
+  spriteRenderer: {fileID: 5742008261055409728}
+  signCollider: {fileID: 7456895037534572665}
+  signText: 'You find a note. "Don''t forget: Bandages can mend the soul, too"'
+  mustDefeatEnemies: 1
+--- !u!1001 &3277740797375211922
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1714199101324241357}
+    m_Modifications:
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_RootOrder
+      value: 27
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.52119434
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.6744
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 7.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069930, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_Name
+      value: InvisibleSign (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069931, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: signText
+      value: As you look out into the night sky, you can't help but feel something
+        isn't right.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069931, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: mustDefeatEnemies
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ab59170e7f56a544e87b339d33723527, type: 3}
 --- !u!1001 &3389384772776834244
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -435,6 +541,38 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2672879e534dfa1489513c4e93865e7b, type: 3}
+--- !u!1 &2562241338670077595 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 902808525795451487, guid: 2672879e534dfa1489513c4e93865e7b, type: 3}
+  m_PrefabInstance: {fileID: 3389384772776834244}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &9222318127567884056 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 5833782230386703324, guid: 2672879e534dfa1489513c4e93865e7b, type: 3}
+  m_PrefabInstance: {fileID: 3389384772776834244}
+  m_PrefabAsset: {fileID: 0}
+--- !u!61 &6282453215591772449 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 8657680553549530597, guid: 2672879e534dfa1489513c4e93865e7b, type: 3}
+  m_PrefabInstance: {fileID: 3389384772776834244}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1795018626691605028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2562241338670077595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 541b097d87721f14c952f797aad2f615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ghostObject: 0
+  spriteRenderer: {fileID: 9222318127567884056}
+  signCollider: {fileID: 6282453215591772449}
+  signText: You notice a book. "13 Tips and Tricks for Summoning a Demon"
+  mustDefeatEnemies: 1
 --- !u!1001 &3673362149021773493
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -560,6 +698,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1786957831241888091, guid: 8f693295b98dd2b4f988c741177584bc, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 3234581569248547594, guid: 8f693295b98dd2b4f988c741177584bc, type: 3}
       propertyPath: m_SortingOrder
       value: -5
@@ -1758,14 +1900,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f693295b98dd2b4f988c741177584bc, type: 3}
+--- !u!4 &2615173255984983461 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2261778931826881139, guid: 8f693295b98dd2b4f988c741177584bc, type: 3}
+  m_PrefabInstance: {fileID: 4263085637614624726}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1714199101324241357 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3234581570080699931, guid: 8f693295b98dd2b4f988c741177584bc, type: 3}
-  m_PrefabInstance: {fileID: 4263085637614624726}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &7132720285250707921 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6473087203177250311, guid: 8f693295b98dd2b4f988c741177584bc, type: 3}
   m_PrefabInstance: {fileID: 4263085637614624726}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &2586483881579425421 stripped
@@ -1773,9 +1915,9 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1786957831241888091, guid: 8f693295b98dd2b4f988c741177584bc, type: 3}
   m_PrefabInstance: {fileID: 4263085637614624726}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &2615173255984983461 stripped
+--- !u!4 &7132720285250707921 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 2261778931826881139, guid: 8f693295b98dd2b4f988c741177584bc, type: 3}
+  m_CorrespondingSourceObject: {fileID: 6473087203177250311, guid: 8f693295b98dd2b4f988c741177584bc, type: 3}
   m_PrefabInstance: {fileID: 4263085637614624726}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4716465881683440863
@@ -1835,6 +1977,80 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dafb42c18df6e4849a1cd7636a08e204, type: 3}
+--- !u!1001 &5108001896775330505
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1714199101324241357}
+    m_Modifications:
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_RootOrder
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.52119434
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.6744
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069930, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_Name
+      value: InvisibleSign (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069931, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: signText
+      value: As you look out into the night sky, you can't help but feel something
+        isn't right.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069931, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: mustDefeatEnemies
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ab59170e7f56a544e87b339d33723527, type: 3}
 --- !u!1001 &5471011781796206529
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1892,6 +2108,113 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2672879e534dfa1489513c4e93865e7b, type: 3}
+--- !u!1 &5146378148275549598 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 902808525795451487, guid: 2672879e534dfa1489513c4e93865e7b, type: 3}
+  m_PrefabInstance: {fileID: 5471011781796206529}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &1952647151903304733 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 5833782230386703324, guid: 2672879e534dfa1489513c4e93865e7b, type: 3}
+  m_PrefabInstance: {fileID: 5471011781796206529}
+  m_PrefabAsset: {fileID: 0}
+--- !u!61 &3731991698449895972 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 8657680553549530597, guid: 2672879e534dfa1489513c4e93865e7b, type: 3}
+  m_PrefabInstance: {fileID: 5471011781796206529}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &9138953648636962010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5146378148275549598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 541b097d87721f14c952f797aad2f615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ghostObject: 0
+  spriteRenderer: {fileID: 1952647151903304733}
+  signCollider: {fileID: 3731991698449895972}
+  signText: You notice "Date Night Questions to Ask Your Summoned Demon". By the
+    looks of things, you're not going to be going on a date anytime soon.
+  mustDefeatEnemies: 1
+--- !u!1001 &6745337491366331122
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1714199101324241357}
+    m_Modifications:
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_RootOrder
+      value: 26
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.52119434
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.6744
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069930, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_Name
+      value: InvisibleSign (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069931, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: signText
+      value: As you look out into the night sky, you can't help but feel something
+        isn't right.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069931, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: mustDefeatEnemies
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ab59170e7f56a544e87b339d33723527, type: 3}
 --- !u!1001 &7565794707282242525
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2124,3 +2447,77 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dafb42c18df6e4849a1cd7636a08e204, type: 3}
+--- !u!1001 &8785489371380790645
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1714199101324241357}
+    m_Modifications:
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_RootOrder
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.52119434
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.6744
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069930, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_Name
+      value: InvisibleSign
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069931, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: signText
+      value: As you look out into the night sky, you can't help but feel something
+        isn't right.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069931, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: mustDefeatEnemies
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ab59170e7f56a544e87b339d33723527, type: 3}

@@ -259,14 +259,13 @@ MonoBehaviour:
     pitch: 1
     loop: 1
     source: {fileID: 0}
-  logError: 1
-  currentMusic:
-    name: 
-    clip: {fileID: 0}
-    volume: 0
+  - name: HopefulHarmony
+    clip: {fileID: 8300000, guid: 8a6439eeb9641cf448839e549e6cc5dd, type: 3}
+    volume: 1
     pitch: 1
-    loop: 0
+    loop: 1
     source: {fileID: 0}
+  logError: 0
 --- !u!1 &3249740865950465794
 GameObject:
   m_ObjectHideFlags: 0
