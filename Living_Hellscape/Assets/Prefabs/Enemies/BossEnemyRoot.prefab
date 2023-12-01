@@ -215,7 +215,7 @@ MonoBehaviour:
     magnitude: 5
   redirectLayers:
     serializedVersion: 2
-    m_Bits: 132288
+    m_Bits: 16942272
   enemyDropTable: {fileID: 0}
   ringAttackPrefab: {fileID: 4568787853985871543, guid: 0ab08559d5c80c04eb92ecc47146e118, type: 3}
   fireAttackPrefab: {fileID: 2626348481617351450, guid: c92100fbf7542b64092cf6cfed53139d, type: 3}

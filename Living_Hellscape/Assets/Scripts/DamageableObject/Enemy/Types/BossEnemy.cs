@@ -149,6 +149,7 @@ public class BossEnemy : EnemyController
                 }
             }
         }
+        /*
         else
         {
             if (behaviorIsWander)
@@ -156,7 +157,7 @@ public class BossEnemy : EnemyController
                 currentWanderDirectionTime += Time.deltaTime;
             }
         }
-
+        */
 
     }
 
@@ -172,8 +173,15 @@ public class BossEnemy : EnemyController
         }
         else
         {
-            FindPlayerController();
-            SetChaseDirection();
+            if (PlayerManager.Instance.Active.IsDead)
+            {
+                SetBehaviorToWander();
+            }
+            else
+            {
+                FindPlayerController();
+                SetChaseDirection();
+            }
         }
     }
 

@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 3994309171120220252}
   - component: {fileID: 3994309171120220255}
   - component: {fileID: 3994309171120220254}
+  - component: {fileID: 8753399732070767011}
+  - component: {fileID: 2212634882460104152}
   m_Layer: 15
   m_Name: CandlesForGhostFreeZone
   m_TagString: Untagged
@@ -109,3 +111,39 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &8753399732070767011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3994309171120220225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 541b097d87721f14c952f797aad2f615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ghostObject: 0
+  spriteRenderer: {fileID: 3994309171120220254}
+  signCollider: {fileID: 3994309171120220255}
+  signText: I can feel a gentle warmth emanating from here. I think this keeps the
+    enemy ghosts away.
+  mustDefeatEnemies: 1
+--- !u!114 &2212634882460104152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3994309171120220225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 541b097d87721f14c952f797aad2f615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ghostObject: 0
+  spriteRenderer: {fileID: 3994309171120220254}
+  signCollider: {fileID: 3994309171120220255}
+  signText: I can feel a gentle warmth emanating from here. I think this keeps the
+    enemy ghosts away.
+  mustDefeatEnemies: 1
