@@ -10,6 +10,7 @@ public class TextBoxController : MonoBehaviour
     public float charDelay = 0.01f; //seconds
     public float blinkDelay = 0.75f; // seconds
     public float inputDelay = 0.2f; // seconds
+    public float reentryDelay = 0.5f; // seconds
     public int maxLines = 4;
     public TMP_Text currentText;
     public Image blinkArrow;
@@ -28,6 +29,7 @@ public class TextBoxController : MonoBehaviour
     private float timeSinceLastChar = 0;
     private float timeSinceLastBlink = 0;
     private float timeSinceLastInput = 0;
+    private float timeAtLastExit = 0;
 
 
     private UserInput userInput;
@@ -43,7 +45,7 @@ public class TextBoxController : MonoBehaviour
 
     public void OpenTextBox(string newText)
     {
-        if (!gameObject.activeSelf)
+        if (!gameObject.activeSelf && (timeAtLastExit + reentryDelay) < Time.realtimeSinceStartup)
         {
             gameObject.SetActive(true);
             buffer = newText;
@@ -158,6 +160,7 @@ public class TextBoxController : MonoBehaviour
         currentText.text = "";
         buffer = "";
         setImmediate = false;
+        timeAtLastExit = Time.realtimeSinceStartup;
     }
 
 
@@ -187,14 +190,14 @@ public class TextBoxController : MonoBehaviour
             if (!textRevealed)
             {
                 revealCharacters();
-                if (timeSinceLastInput >= inputDelay && userInput.mainAction == ButtonState.Down)
+                if (timeSinceLastInput >= inputDelay && userInput.secondaryAction == ButtonState.Down)
                 {
-                    currentText.maxVisibleCharacters = totalChars;
+                    currentText.maxVisibleCharacters = totalChars + 1;
                     textRevealed = true;
                     timeSinceLastInput = 0;
                 }
             }
-            else if (!end && userInput.mainAction == ButtonState.Down)
+            else if (!end && userInput.secondaryAction == ButtonState.Down)
             {
                 if (timeSinceLastInput >= inputDelay)
                 {
@@ -202,7 +205,7 @@ public class TextBoxController : MonoBehaviour
                     timeSinceLastInput = 0;
                 }
             }
-            else if (end && userInput.mainAction == ButtonState.Down)
+            else if (end && userInput.secondaryAction == ButtonState.Down)
             {
                 if (timeSinceLastInput >= inputDelay)
                 {

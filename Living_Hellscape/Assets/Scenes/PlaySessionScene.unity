@@ -1477,6 +1477,7 @@ MonoBehaviour:
   charDelay: 0.02
   blinkDelay: 0.75
   inputDelay: 0.2
+  reentryDelay: 0.5
   maxLines: 4
   currentText: {fileID: 1739865550}
   blinkArrow: {fileID: 518151505}
@@ -2453,7 +2454,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55a9ee386401ac642aa4bd5673e0e006, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentRoomOverrideIndex: -1
+  currentRoomOverrideIndex: 6
 --- !u!4 &1984906010
 Transform:
   m_ObjectHideFlags: 0
