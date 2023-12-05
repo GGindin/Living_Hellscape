@@ -217,7 +217,11 @@ public class GameController : MonoBehaviour
 
             EnemyGhostManager.Instance.RepositionGhosts();
 
-            PlayerManager.Instance.SavePlayerData();
+            if (!RoomController.Instance.ActiveRoom.DontUpdateLastRoomOnEnter)
+            {
+                PlayerManager.Instance.SavePlayerData();
+            }
+            
 
             //reset data 
             roomTransitionData = new RoomTransitionData();
