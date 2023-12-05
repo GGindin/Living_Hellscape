@@ -220,6 +220,7 @@ public class GameController : MonoBehaviour
             if (!RoomController.Instance.ActiveRoom.DontUpdateLastRoomOnEnter)
             {
                 PlayerManager.Instance.SavePlayerData();
+                roomTransitionData.fromRoom.SaveRoomData();
             }
             
 
