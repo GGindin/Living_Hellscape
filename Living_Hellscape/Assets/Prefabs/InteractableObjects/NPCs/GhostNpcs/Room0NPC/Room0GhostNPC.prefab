@@ -124,8 +124,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ghostObject: 1
   texts:
-  - Whoa there, you took a nasty touble on that knife. Your body still looks OK.
-    You might be able to posses it if you get close enough. If it works come back
+  - Whoa there, you took a nasty tumble on that knife. Your body still looks fine.
+    You might be able to possess it if you get close enough. If it works come back
     and see me with space bar.
   - Look at that. Be careful moving into the ghost world. There are ghosts not as
     friendly as me out there. This room is safe though.
