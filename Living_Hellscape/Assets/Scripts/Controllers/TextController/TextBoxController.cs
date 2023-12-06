@@ -67,6 +67,26 @@ public class TextBoxController : MonoBehaviour
         setImmediate = true;
     }
 
+    private void walkback()
+    {
+        while (buffer[loc] != ' ')
+        {
+            loc--;
+            totalChars--;
+            currentText.text = currentText.text.Remove(totalChars - 1);
+        }
+        currentText.text += '-';
+        currentText.ForceMeshUpdate();
+        if (currentText.textInfo.lineCount > maxLines)
+        {
+            loc--;
+            totalChars--;
+            walkback();
+            loc++;
+            totalChars++;
+        }
+    }
+
     private void processNewBox()
     {
         //currentText.textDisplay.enable = false;
@@ -80,6 +100,8 @@ public class TextBoxController : MonoBehaviour
         {
             currentText.text += '-';
             lastBreak = false;
+            if (buffer[loc] == ' ')
+                loc++;
         }
         while ((loc) < buffer.Length && currentText.textInfo.lineCount <= maxLines)
         {
@@ -111,9 +133,7 @@ public class TextBoxController : MonoBehaviour
             //Debug.Log(loc);
             //Debug.Log(buffer.Length);
 
-            loc -= 3;
-            currentText.text = currentText.text.Remove(totalChars - 4);
-            currentText.text += '-';
+            walkback();
             lastBreak = true;
             
         }

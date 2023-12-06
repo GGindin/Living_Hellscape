@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4449401578094078361}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.54, y: -7.34, z: 0}
+  m_LocalPosition: {x: 4, y: 0.75, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7021514097065621102}
@@ -54,7 +54,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5774565112874145082}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.64, y: -4.27, z: 0}
+  m_LocalPosition: {x: 13.5, y: -5.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7021514097065621102}
@@ -84,7 +84,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6216491706839729729}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.07, y: -4.37, z: 0}
+  m_LocalPosition: {x: 3, y: 0.75, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7021514097065621102}
@@ -114,7 +114,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8306402548104711702}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.8, y: -0.9, z: 0}
+  m_LocalPosition: {x: 13, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7021514097065621102}
@@ -2395,14 +2395,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9495a48cf913d8c48bd68aa580197bd8, type: 3}
---- !u!4 &5976721899505447430 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3710859970699202516, guid: 9495a48cf913d8c48bd68aa580197bd8, type: 3}
-  m_PrefabInstance: {fileID: 7029568840294989266}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7021514097065621102 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 71888557363530684, guid: 9495a48cf913d8c48bd68aa580197bd8, type: 3}
+  m_PrefabInstance: {fileID: 7029568840294989266}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5976721899505447430 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3710859970699202516, guid: 9495a48cf913d8c48bd68aa580197bd8, type: 3}
   m_PrefabInstance: {fileID: 7029568840294989266}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7282079904612827689
@@ -2519,6 +2519,38 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a0d600c77f836b4b8b9906c07d78e4d, type: 3}
+--- !u!1 &5679554337511040203 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2962992552193474440, guid: 0a0d600c77f836b4b8b9906c07d78e4d, type: 3}
+  m_PrefabInstance: {fileID: 7480336675915258691}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &288333978925116879 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 7192003048321906316, guid: 0a0d600c77f836b4b8b9906c07d78e4d, type: 3}
+  m_PrefabInstance: {fileID: 7480336675915258691}
+  m_PrefabAsset: {fileID: 0}
+--- !u!61 &397371958503331212 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 7083248673740263119, guid: 0a0d600c77f836b4b8b9906c07d78e4d, type: 3}
+  m_PrefabInstance: {fileID: 7480336675915258691}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8810099108198190812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5679554337511040203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 541b097d87721f14c952f797aad2f615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ghostObject: 0
+  spriteRenderer: {fileID: 288333978925116879}
+  signCollider: {fileID: 397371958503331212}
+  signText: As you look at the displaced table, a feeling of dread washes over you.
+  mustDefeatEnemies: 0
 --- !u!1001 &7777477702478132808
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2690,6 +2722,38 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a0d600c77f836b4b8b9906c07d78e4d, type: 3}
+--- !u!61 &1994440674974749209 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 7083248673740263119, guid: 0a0d600c77f836b4b8b9906c07d78e4d, type: 3}
+  m_PrefabInstance: {fileID: 8782419606393216214}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &1886529626365143642 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 7192003048321906316, guid: 0a0d600c77f836b4b8b9906c07d78e4d, type: 3}
+  m_PrefabInstance: {fileID: 8782419606393216214}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5836601477918942046 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2962992552193474440, guid: 0a0d600c77f836b4b8b9906c07d78e4d, type: 3}
+  m_PrefabInstance: {fileID: 8782419606393216214}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2978111040626294719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5836601477918942046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 541b097d87721f14c952f797aad2f615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ghostObject: 0
+  spriteRenderer: {fileID: 1886529626365143642}
+  signCollider: {fileID: 1994440674974749209}
+  signText: As you look at the displaced table, a feeling of dread washes over you.
+  mustDefeatEnemies: 0
 --- !u!1001 &9108055587475143640
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 298192664958738093}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.5, y: -3.56, z: 0}
+  m_LocalPosition: {x: 3, y: -6.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3281291148624973091}
@@ -114,7 +114,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9173432394541953162}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.52, y: -3.76, z: 0}
+  m_LocalPosition: {x: -0.75, y: -6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3037259793357753867}
@@ -356,7 +356,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4005012473825732117, guid: fa31b134c019efb4db1ae49e110ef69e, type: 3}
       propertyPath: musicTrackName
-      value: MansionAtmosphere
+      value: HopefulHarmony
       objectReference: {fileID: 0}
     - target: {fileID: 4005012473825732117, guid: fa31b134c019efb4db1ae49e110ef69e, type: 3}
       propertyPath: defeatAllEnemies

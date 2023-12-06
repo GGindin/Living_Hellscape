@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 593640952072904426}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.7, y: -3.16, z: 0}
+  m_LocalPosition: {x: 3, y: -3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8199350943279184029}
@@ -54,7 +54,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2122017018194809066}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.3, y: -0.24, z: 0}
+  m_LocalPosition: {x: -0.75, y: -2.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3517443320645990337}
@@ -84,7 +84,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5688535163938515033}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.61, y: -8.92, z: 0}
+  m_LocalPosition: {x: -0.75, y: -6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3517443320645990337}
@@ -114,7 +114,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5845803954323448809}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.1, y: -1.55, z: 0}
+  m_LocalPosition: {x: 9.75, y: -3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3517443320645990337}
@@ -144,7 +144,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8949545852759215832}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.2, y: -8.62, z: 0}
+  m_LocalPosition: {x: 9.75, y: -6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3517443320645990337}
@@ -163,7 +163,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 149525771133606622, guid: cc7e6815b2ec0f242bb2f5c0d2e2fe04, type: 3}
       propertyPath: musicTrackName
-      value: HopefulHarmony
+      value: MansionAtmosphere
       objectReference: {fileID: 0}
     - target: {fileID: 149525771133606622, guid: cc7e6815b2ec0f242bb2f5c0d2e2fe04, type: 3}
       propertyPath: dontUpdateLastRoomOnEnter
@@ -1804,6 +1804,71 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2672879e534dfa1489513c4e93865e7b, type: 3}
+--- !u!1001 &5759001340608481971
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 360145526303600769}
+    m_Modifications:
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_RootOrder
+      value: 34
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.46
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069930, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_Name
+      value: InvisibleSign
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069931, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: signText
+      value: 'The evil energy has left this pentagram. '
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069931, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: mustDefeatEnemies
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ab59170e7f56a544e87b339d33723527, type: 3}
 --- !u!1001 &6172404641890936332
 PrefabInstance:
   m_ObjectHideFlags: 0

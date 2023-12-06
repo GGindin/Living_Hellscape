@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 224731349720528388}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.94, y: 5.36, z: 0}
+  m_LocalPosition: {x: 16.75, y: 5.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2340622460844505570}
@@ -54,7 +54,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 574702126481820411}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.87, y: -4.31, z: 0}
+  m_LocalPosition: {x: 4.5, y: -7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2340622460844505570}
@@ -84,7 +84,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 610977086960875738}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.82, y: 0.35, z: 0}
+  m_LocalPosition: {x: 10.25, y: -3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2340622460844505570}
@@ -144,7 +144,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1843456469663884832}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.59, y: 5.36, z: 0}
+  m_LocalPosition: {x: 13.5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2340622460844505570}
@@ -204,7 +204,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2996664958280635864}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.84, y: -5.42, z: 0}
+  m_LocalPosition: {x: 13.5, y: 3.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2340622460844505570}
@@ -294,7 +294,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7259568220300039459}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 14.15, y: -5.65, z: 0}
+  m_LocalPosition: {x: 13.5, y: -3.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2340622460844505570}
@@ -354,7 +354,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9075778567592130851}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.76, y: 1.22, z: 0}
+  m_LocalPosition: {x: 3.25, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2340622460844505570}
@@ -447,6 +447,38 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1400a9b2b2ef185469ce0503597b62aa, type: 3}
+--- !u!212 &3606382528792838723 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 3610061206410691132, guid: 1400a9b2b2ef185469ce0503597b62aa, type: 3}
+  m_PrefabInstance: {fileID: 6177361826955391}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7339048251847900910 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7335373989478416017, guid: 1400a9b2b2ef185469ce0503597b62aa, type: 3}
+  m_PrefabInstance: {fileID: 6177361826955391}
+  m_PrefabAsset: {fileID: 0}
+--- !u!61 &9045952597160837074 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 9051214571524816813, guid: 1400a9b2b2ef185469ce0503597b62aa, type: 3}
+  m_PrefabInstance: {fileID: 6177361826955391}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4077548658381896453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7339048251847900910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 541b097d87721f14c952f797aad2f615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ghostObject: 0
+  spriteRenderer: {fileID: 3606382528792838723}
+  signCollider: {fileID: 9045952597160837074}
+  signText: Now is not the time to start reading a book.
+  mustDefeatEnemies: 1
 --- !u!1001 &135194583490892167
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1188,6 +1220,38 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a0d600c77f836b4b8b9906c07d78e4d, type: 3}
+--- !u!1 &4426392168542141515 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2962992552193474440, guid: 0a0d600c77f836b4b8b9906c07d78e4d, type: 3}
+  m_PrefabInstance: {fileID: 1473554757856052163}
+  m_PrefabAsset: {fileID: 0}
+--- !u!61 &8520774337351077132 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 7083248673740263119, guid: 0a0d600c77f836b4b8b9906c07d78e4d, type: 3}
+  m_PrefabInstance: {fileID: 1473554757856052163}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &8627839793085560143 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 7192003048321906316, guid: 0a0d600c77f836b4b8b9906c07d78e4d, type: 3}
+  m_PrefabInstance: {fileID: 1473554757856052163}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7778459556343405086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4426392168542141515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 541b097d87721f14c952f797aad2f615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ghostObject: 0
+  spriteRenderer: {fileID: 8627839793085560143}
+  signCollider: {fileID: 8520774337351077132}
+  signText: Now is not the time to start reading a book.
+  mustDefeatEnemies: 1
 --- !u!1001 &1477476932326433176
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1725,7 +1789,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 635336202080834171, guid: 3f752c61f7610224c9a3b9038dc0ad18, type: 3}
       propertyPath: musicTrackName
-      value: MansionAtmosphere
+      value: HopefulHarmony
       objectReference: {fileID: 0}
     - target: {fileID: 635336202080834171, guid: 3f752c61f7610224c9a3b9038dc0ad18, type: 3}
       propertyPath: enemyPlacements.Array.size
@@ -1865,14 +1929,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3f752c61f7610224c9a3b9038dc0ad18, type: 3}
---- !u!4 &1464947343727460002 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 635336202080834170, guid: 3f752c61f7610224c9a3b9038dc0ad18, type: 3}
-  m_PrefabInstance: {fileID: 2055228232197713112}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2340622460844505570 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4394999258442388794, guid: 3f752c61f7610224c9a3b9038dc0ad18, type: 3}
+  m_PrefabInstance: {fileID: 2055228232197713112}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1464947343727460002 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 635336202080834170, guid: 3f752c61f7610224c9a3b9038dc0ad18, type: 3}
   m_PrefabInstance: {fileID: 2055228232197713112}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &7017177319482078910 stripped
@@ -2393,6 +2457,38 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a0d600c77f836b4b8b9906c07d78e4d, type: 3}
+--- !u!1 &293290283518151617 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2962992552193474440, guid: 0a0d600c77f836b4b8b9906c07d78e4d, type: 3}
+  m_PrefabInstance: {fileID: 3246906157028275273}
+  m_PrefabAsset: {fileID: 0}
+--- !u!61 &5711570181780241030 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 7083248673740263119, guid: 0a0d600c77f836b4b8b9906c07d78e4d, type: 3}
+  m_PrefabInstance: {fileID: 3246906157028275273}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &5674662354603868869 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 7192003048321906316, guid: 0a0d600c77f836b4b8b9906c07d78e4d, type: 3}
+  m_PrefabInstance: {fileID: 3246906157028275273}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6838051024168131328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 293290283518151617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 541b097d87721f14c952f797aad2f615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ghostObject: 0
+  spriteRenderer: {fileID: 5674662354603868869}
+  signCollider: {fileID: 5711570181780241030}
+  signText: Now is not the time to start reading a book.
+  mustDefeatEnemies: 1
 --- !u!1001 &3256522059587795970
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2743,6 +2839,38 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a0d600c77f836b4b8b9906c07d78e4d, type: 3}
+--- !u!1 &2127556906745871161 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2962992552193474440, guid: 0a0d600c77f836b4b8b9906c07d78e4d, type: 3}
+  m_PrefabInstance: {fileID: 3789835965013066929}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &6293519972125274685 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 7192003048321906316, guid: 0a0d600c77f836b4b8b9906c07d78e4d, type: 3}
+  m_PrefabInstance: {fileID: 3789835965013066929}
+  m_PrefabAsset: {fileID: 0}
+--- !u!61 &6256892520422247038 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 7083248673740263119, guid: 0a0d600c77f836b4b8b9906c07d78e4d, type: 3}
+  m_PrefabInstance: {fileID: 3789835965013066929}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1758906801992207597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2127556906745871161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 541b097d87721f14c952f797aad2f615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ghostObject: 0
+  spriteRenderer: {fileID: 6293519972125274685}
+  signCollider: {fileID: 6256892520422247038}
+  signText: Now is not the time to start reading a book.
+  mustDefeatEnemies: 1
 --- !u!1001 &3852043096154809192
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3199,6 +3327,38 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1400a9b2b2ef185469ce0503597b62aa, type: 3}
+--- !u!61 &4070248554949615098 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 9051214571524816813, guid: 1400a9b2b2ef185469ce0503597b62aa, type: 3}
+  m_PrefabInstance: {fileID: 5035080236912534103}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &8645135874881085547 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 3610061206410691132, guid: 1400a9b2b2ef185469ce0503597b62aa, type: 3}
+  m_PrefabInstance: {fileID: 5035080236912534103}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2318308219803589830 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7335373989478416017, guid: 1400a9b2b2ef185469ce0503597b62aa, type: 3}
+  m_PrefabInstance: {fileID: 5035080236912534103}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &206594016331452837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2318308219803589830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 541b097d87721f14c952f797aad2f615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ghostObject: 0
+  spriteRenderer: {fileID: 8645135874881085547}
+  signCollider: {fileID: 4070248554949615098}
+  signText: Now is not the time to start reading a book.
+  mustDefeatEnemies: 1
 --- !u!1001 &5247343318976458311
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3940,6 +4100,38 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1400a9b2b2ef185469ce0503597b62aa, type: 3}
+--- !u!1 &3913819438066858478 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7335373989478416017, guid: 1400a9b2b2ef185469ce0503597b62aa, type: 3}
+  m_PrefabInstance: {fileID: 6024925480132429695}
+  m_PrefabAsset: {fileID: 0}
+--- !u!61 &3314801603959929042 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 9051214571524816813, guid: 1400a9b2b2ef185469ce0503597b62aa, type: 3}
+  m_PrefabInstance: {fileID: 6024925480132429695}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &7027117660030190915 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 3610061206410691132, guid: 1400a9b2b2ef185469ce0503597b62aa, type: 3}
+  m_PrefabInstance: {fileID: 6024925480132429695}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1012757110833154194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3913819438066858478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 541b097d87721f14c952f797aad2f615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ghostObject: 0
+  spriteRenderer: {fileID: 7027117660030190915}
+  signCollider: {fileID: 3314801603959929042}
+  signText: Now is not the time to start reading a book.
+  mustDefeatEnemies: 1
 --- !u!1001 &6025028073150989611
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4681,6 +4873,38 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1400a9b2b2ef185469ce0503597b62aa, type: 3}
+--- !u!212 &6130999668970373635 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 3610061206410691132, guid: 1400a9b2b2ef185469ce0503597b62aa, type: 3}
+  m_PrefabInstance: {fileID: 7425358528187154495}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &198255115176738478 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7335373989478416017, guid: 1400a9b2b2ef185469ce0503597b62aa, type: 3}
+  m_PrefabInstance: {fileID: 7425358528187154495}
+  m_PrefabAsset: {fileID: 0}
+--- !u!61 &1914156903727906706 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 9051214571524816813, guid: 1400a9b2b2ef185469ce0503597b62aa, type: 3}
+  m_PrefabInstance: {fileID: 7425358528187154495}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5742536055129183433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 198255115176738478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 541b097d87721f14c952f797aad2f615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ghostObject: 0
+  spriteRenderer: {fileID: 6130999668970373635}
+  signCollider: {fileID: 1914156903727906706}
+  signText: Now is not the time to start reading a book.
+  mustDefeatEnemies: 1
 --- !u!1001 &7448436991542072516
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5137,6 +5361,153 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2672879e534dfa1489513c4e93865e7b, type: 3}
+--- !u!1001 &7974520816807158233
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1464947343727460002}
+    m_Modifications:
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_RootOrder
+      value: 101
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.9245325
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.2269
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.5439
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.4631
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9259565
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.00000007025122
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.00000017225729
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.37763035
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 44.374
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069930, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_Name
+      value: InvisibleSign
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069931, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: signText
+      value: You would love to start playing the piano right now, but you have business
+        to attend to.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069931, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: mustDefeatEnemies
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+--- !u!1001 &7992143047757788863
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1464947343727460002}
+    m_Modifications:
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_RootOrder
+      value: 102
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 6.2309613
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.4270439
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 7.169
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.0273
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069930, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_Name
+      value: InvisibleSign (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069931, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: signText
+      value: That's a lot of books!
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069931, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: mustDefeatEnemies
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ab59170e7f56a544e87b339d33723527, type: 3}
 --- !u!1001 &7995514418530175385
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5251,6 +5622,79 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2672879e534dfa1489513c4e93865e7b, type: 3}
+--- !u!1001 &8080663093741226897
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1464947343727460002}
+    m_Modifications:
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_RootOrder
+      value: 103
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 7.0316396
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.4270439
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 6.0204
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.98
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069930, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_Name
+      value: InvisibleSign (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069931, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: signText
+      value: That's a lot of books!
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069931, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: mustDefeatEnemies
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ab59170e7f56a544e87b339d33723527, type: 3}
 --- !u!1001 &8163244624868648365
 PrefabInstance:
   m_ObjectHideFlags: 0
