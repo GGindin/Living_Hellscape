@@ -232,6 +232,7 @@ MonoBehaviour:
   attackStopTime: 0.25
   enterText: This time you will not escape. Prepare to meet DEATH ITSELF!!!
   exitText: NOoOOOoOOOOo
+  exitMusic: EerieDungeon
 --- !u!50 &6998762087044943512
 Rigidbody2D:
   serializedVersion: 4

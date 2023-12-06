@@ -150,6 +150,88 @@ Transform:
   m_Father: {fileID: 553749566886648402}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &314909194820627202
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 3760410531662503482}
+    m_Modifications:
+    - target: {fileID: 2346461975997069924, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_Size.x
+      value: 0.6865139
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069924, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_Size.y
+      value: 1.0835962
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069924, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.031348705
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069924, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.041798115
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_RootOrder
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -6.79
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069930, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_Name
+      value: InvisibleSign (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069931, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: signText
+      value: You see a winding path leading away into the forest. The mansion casts
+        a crimson shadow over it.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069931, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: mustDefeatEnemies
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ab59170e7f56a544e87b339d33723527, type: 3}
 --- !u!1001 &468238109293318345
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -321,6 +403,38 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 18ee8e4fbb0919d41b2c3653bf32269a, type: 3}
+--- !u!1 &8461092968660467203 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8811534482330143183, guid: 18ee8e4fbb0919d41b2c3653bf32269a, type: 3}
+  m_PrefabInstance: {fileID: 1090729643485116364}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &668822222799795690 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 462514584594760230, guid: 18ee8e4fbb0919d41b2c3653bf32269a, type: 3}
+  m_PrefabInstance: {fileID: 1090729643485116364}
+  m_PrefabAsset: {fileID: 0}
+--- !u!61 &2924412472087288371 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: -6361733103020986881, guid: 18ee8e4fbb0919d41b2c3653bf32269a, type: 3}
+  m_PrefabInstance: {fileID: 1090729643485116364}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7265322818259471903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8461092968660467203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 541b097d87721f14c952f797aad2f615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ghostObject: 0
+  spriteRenderer: {fileID: 668822222799795690}
+  signCollider: {fileID: 2924412472087288371}
+  signText: It might not be the best time to make food.
+  mustDefeatEnemies: 1
 --- !u!1001 &1634611244189622651
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -492,6 +606,39 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c3a562ebe7b6e9548b66368998bbf71c, type: 3}
+--- !u!61 &6084087457438925857 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 5545496095661734435, guid: c3a562ebe7b6e9548b66368998bbf71c, type: 3}
+  m_PrefabInstance: {fileID: 1772881271592402434}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &4936449841491330526 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 6636969834119363548, guid: c3a562ebe7b6e9548b66368998bbf71c, type: 3}
+  m_PrefabInstance: {fileID: 1772881271592402434}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3271084567189028878 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3891022163014434316, guid: c3a562ebe7b6e9548b66368998bbf71c, type: 3}
+  m_PrefabInstance: {fileID: 1772881271592402434}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &998966780159886757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3271084567189028878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 541b097d87721f14c952f797aad2f615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ghostObject: 0
+  spriteRenderer: {fileID: 4936449841491330526}
+  signCollider: {fileID: 6084087457438925857}
+  signText: You wish you could host a party, but now might not be the best time.
+    Ghosts don't make for the best guests.
+  mustDefeatEnemies: 1
 --- !u!1001 &1873086347738427829
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -671,6 +818,39 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a0d600c77f836b4b8b9906c07d78e4d, type: 3}
+--- !u!61 &5980510402063150560 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 7083248673740263119, guid: 0a0d600c77f836b4b8b9906c07d78e4d, type: 3}
+  m_PrefabInstance: {fileID: 3509372446673937199}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1850242372564524199 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2962992552193474440, guid: 0a0d600c77f836b4b8b9906c07d78e4d, type: 3}
+  m_PrefabInstance: {fileID: 3509372446673937199}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &6015941653834749347 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 7192003048321906316, guid: 0a0d600c77f836b4b8b9906c07d78e4d, type: 3}
+  m_PrefabInstance: {fileID: 3509372446673937199}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5293419055240389789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1850242372564524199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 541b097d87721f14c952f797aad2f615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ghostObject: 0
+  spriteRenderer: {fileID: 6015941653834749347}
+  signCollider: {fileID: 5980510402063150560}
+  signText: You wish you could host a party, but now might not be the best time.
+    Ghosts don't make for the best guests.
+  mustDefeatEnemies: 1
 --- !u!1001 &3576303574499125956
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -728,6 +908,88 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dafb42c18df6e4849a1cd7636a08e204, type: 3}
+--- !u!1001 &3779246053389336497
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 3760410531662503482}
+    m_Modifications:
+    - target: {fileID: 2346461975997069924, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_Size.x
+      value: 0.6865139
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069924, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_Size.y
+      value: 1.0835962
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069924, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.031348705
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069924, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.041798115
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_RootOrder
+      value: 39
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -6.79
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069930, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_Name
+      value: InvisibleSign (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069931, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: signText
+      value: You see a winding path leading away into the forest. The mansion casts
+        a crimson shadow over it.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069931, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: mustDefeatEnemies
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ab59170e7f56a544e87b339d33723527, type: 3}
 --- !u!1001 &4086261533566660465
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -842,6 +1104,120 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 18ee8e4fbb0919d41b2c3653bf32269a, type: 3}
+--- !u!61 &1808896652498298135 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: -6361733103020986881, guid: 18ee8e4fbb0919d41b2c3653bf32269a, type: 3}
+  m_PrefabInstance: {fileID: 4516240271131461864}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &4091456529909123790 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 462514584594760230, guid: 18ee8e4fbb0919d41b2c3653bf32269a, type: 3}
+  m_PrefabInstance: {fileID: 4516240271131461864}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4964149263123480871 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8811534482330143183, guid: 18ee8e4fbb0919d41b2c3653bf32269a, type: 3}
+  m_PrefabInstance: {fileID: 4516240271131461864}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7931354945968626487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4964149263123480871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 541b097d87721f14c952f797aad2f615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ghostObject: 0
+  spriteRenderer: {fileID: 4091456529909123790}
+  signCollider: {fileID: 1808896652498298135}
+  signText: It might not be the best time to make food.
+  mustDefeatEnemies: 1
+--- !u!1001 &4588482226389051803
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 3760410531662503482}
+    m_Modifications:
+    - target: {fileID: 2346461975997069924, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_Size.x
+      value: 0.6865139
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069924, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_Size.y
+      value: 1.0835962
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069924, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.031348705
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069924, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.041798115
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_RootOrder
+      value: 41
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -6.79
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069930, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_Name
+      value: InvisibleSign (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069931, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: signText
+      value: You see a winding path leading away into the forest. The mansion casts
+        a crimson shadow over it.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069931, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: mustDefeatEnemies
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ab59170e7f56a544e87b339d33723527, type: 3}
 --- !u!1001 &4900462662415567425
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10860,7 +11236,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9138226630828523689, guid: 2a8defcea10d65b418103c25fdf9abe6, type: 3}
       propertyPath: musicTrackName
-      value: MansionAtmosphere
+      value: HopefulHarmony
       objectReference: {fileID: 0}
     - target: {fileID: 9138226630828523689, guid: 2a8defcea10d65b418103c25fdf9abe6, type: 3}
       propertyPath: enemyPlacements.Array.size
@@ -10920,14 +11296,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a8defcea10d65b418103c25fdf9abe6, type: 3}
---- !u!4 &553749566886648402 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5571367856876225728, guid: 2a8defcea10d65b418103c25fdf9abe6, type: 3}
-  m_PrefabInstance: {fileID: 5403802508356034194}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3760410531662503482 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9138226630828523688, guid: 2a8defcea10d65b418103c25fdf9abe6, type: 3}
+  m_PrefabInstance: {fileID: 5403802508356034194}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &553749566886648402 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5571367856876225728, guid: 2a8defcea10d65b418103c25fdf9abe6, type: 3}
   m_PrefabInstance: {fileID: 5403802508356034194}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &4690821423916078630 stripped
@@ -10935,6 +11311,175 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 857668527683946676, guid: 2a8defcea10d65b418103c25fdf9abe6, type: 3}
   m_PrefabInstance: {fileID: 5403802508356034194}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &3760410530023903462 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9138226630187781748, guid: 2a8defcea10d65b418103c25fdf9abe6, type: 3}
+  m_PrefabInstance: {fileID: 5403802508356034194}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &5454901996390952192
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 3760410531662503482}
+    m_Modifications:
+    - target: {fileID: 2346461975997069924, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_Size.x
+      value: 0.6865139
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069924, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_Size.y
+      value: 1.0835962
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069924, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.031348705
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069924, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.041798115
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_RootOrder
+      value: 36
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 9.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -9.52
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069930, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_Name
+      value: InvisibleSign (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069931, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: signText
+      value: You see a winding path leading away into the forest. The mansion casts
+        a crimson shadow over it.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069931, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: mustDefeatEnemies
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+--- !u!1001 &5465652258005725350
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 3760410530023903462}
+    m_Modifications:
+    - target: {fileID: 2346461975997069924, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_Size.x
+      value: 0.6865139
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069924, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_Size.y
+      value: 1.0835962
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069924, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.031348705
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069924, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.041798115
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 13.99
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -13.58
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069930, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_Name
+      value: InvisibleSign (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069931, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: signText
+      value: You see a winding path leading away into the forest. The mansion casts
+        a crimson shadow over it.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069931, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: mustDefeatEnemies
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ab59170e7f56a544e87b339d33723527, type: 3}
 --- !u!1001 &5623897637187001393
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10992,6 +11537,88 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dafb42c18df6e4849a1cd7636a08e204, type: 3}
+--- !u!1001 &5629330205298154613
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 3760410531662503482}
+    m_Modifications:
+    - target: {fileID: 2346461975997069924, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_Size.x
+      value: 0.6865139
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069924, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_Size.y
+      value: 1.0835962
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069924, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.031348705
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069924, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.041798115
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_RootOrder
+      value: 37
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 6.46
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -9.52
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069930, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_Name
+      value: InvisibleSign (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069931, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: signText
+      value: You see a winding path leading away into the forest. The mansion casts
+        a crimson shadow over it.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069931, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: mustDefeatEnemies
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ab59170e7f56a544e87b339d33723527, type: 3}
 --- !u!1001 &5727265837512018048
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11163,6 +11790,39 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c3a562ebe7b6e9548b66368998bbf71c, type: 3}
+--- !u!212 &347850309260148938 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 6636969834119363548, guid: c3a562ebe7b6e9548b66368998bbf71c, type: 3}
+  m_PrefabInstance: {fileID: 6397522584000068374}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7869795087582577946 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3891022163014434316, guid: c3a562ebe7b6e9548b66368998bbf71c, type: 3}
+  m_PrefabInstance: {fileID: 6397522584000068374}
+  m_PrefabAsset: {fileID: 0}
+--- !u!61 &1458356713649815861 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 5545496095661734435, guid: c3a562ebe7b6e9548b66368998bbf71c, type: 3}
+  m_PrefabInstance: {fileID: 6397522584000068374}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1047942576916995715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7869795087582577946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 541b097d87721f14c952f797aad2f615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ghostObject: 0
+  spriteRenderer: {fileID: 347850309260148938}
+  signCollider: {fileID: 1458356713649815861}
+  signText: You wish you could host a party, but now might not be the best time.
+    Ghosts don't make for the best guests.
+  mustDefeatEnemies: 1
 --- !u!1001 &6791251465929011562
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11281,6 +11941,88 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dafb42c18df6e4849a1cd7636a08e204, type: 3}
+--- !u!1001 &7185256745091187704
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 3760410531662503482}
+    m_Modifications:
+    - target: {fileID: 2346461975997069924, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_Size.x
+      value: 0.6865139
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069924, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_Size.y
+      value: 1.0835962
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069924, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.031348705
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069924, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.041798115
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_RootOrder
+      value: 38
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.97
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -9.52
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069930, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_Name
+      value: InvisibleSign (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069931, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: signText
+      value: You see a winding path leading away into the forest. The mansion casts
+        a crimson shadow over it.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346461975997069931, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: mustDefeatEnemies
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ab59170e7f56a544e87b339d33723527, type: 3}
 --- !u!1001 &7333594108309993173
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11395,6 +12137,38 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 18ee8e4fbb0919d41b2c3653bf32269a, type: 3}
+--- !u!61 &6113840587996441875 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: -6361733103020986881, guid: 18ee8e4fbb0919d41b2c3653bf32269a, type: 3}
+  m_PrefabInstance: {fileID: 8317634960675799276}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &659485977161976099 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8811534482330143183, guid: 18ee8e4fbb0919d41b2c3653bf32269a, type: 3}
+  m_PrefabInstance: {fileID: 8317634960675799276}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &8432148617447785162 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 462514584594760230, guid: 18ee8e4fbb0919d41b2c3653bf32269a, type: 3}
+  m_PrefabInstance: {fileID: 8317634960675799276}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6311431541414842097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 659485977161976099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 541b097d87721f14c952f797aad2f615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ghostObject: 0
+  spriteRenderer: {fileID: 8432148617447785162}
+  signCollider: {fileID: 6113840587996441875}
+  signText: It might not be the best time to make food.
+  mustDefeatEnemies: 1
 --- !u!1001 &8727608340118032173
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -432,6 +432,39 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2672879e534dfa1489513c4e93865e7b, type: 3}
+--- !u!1 &3869096432690998588 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 902808525795451487, guid: 2672879e534dfa1489513c4e93865e7b, type: 3}
+  m_PrefabInstance: {fileID: 4122659697251340131}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &7621043988955608255 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 5833782230386703324, guid: 2672879e534dfa1489513c4e93865e7b, type: 3}
+  m_PrefabInstance: {fileID: 4122659697251340131}
+  m_PrefabAsset: {fileID: 0}
+--- !u!61 &4688497562336676486 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 8657680553549530597, guid: 2672879e534dfa1489513c4e93865e7b, type: 3}
+  m_PrefabInstance: {fileID: 4122659697251340131}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6009664400532994632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3869096432690998588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 541b097d87721f14c952f797aad2f615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ghostObject: 0
+  spriteRenderer: {fileID: 7621043988955608255}
+  signCollider: {fileID: 4688497562336676486}
+  signText: '"Note: while people don''t like being hit by marbles, you''re probably
+    not going to kill anyone that way"'
+  mustDefeatEnemies: 1
 --- !u!1001 &5581808717093482563
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -39,6 +39,9 @@ public class BossEnemy : EnemyController
     [SerializeField, TextArea(1, 5)]
     string exitText;
 
+    [SerializeField]
+    string exitMusic;
+
     float currentWanderDirectionTime = float.MaxValue;
 
     float currentBehaviorTime = float.MaxValue;

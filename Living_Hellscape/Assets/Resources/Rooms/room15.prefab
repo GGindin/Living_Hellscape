@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3477644655715302888}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.59, y: -8.27, z: 0}
+  m_LocalPosition: {x: -0.75, y: -8.75, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6923323603907220841}
@@ -54,7 +54,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7709491590001593748}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.65, y: -6.47, z: 0}
+  m_LocalPosition: {x: -0.75, y: -6.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6923323603907220841}
@@ -199,7 +199,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7037848087318869854, guid: b62abccfac220f3449e019a7b819143b, type: 3}
       propertyPath: musicTrackName
-      value: HopefulHarmony
+      value: MansionAtmosphere
       objectReference: {fileID: 0}
     - target: {fileID: 7037848087318869854, guid: b62abccfac220f3449e019a7b819143b, type: 3}
       propertyPath: holdableObjectPlacements.Array.size
