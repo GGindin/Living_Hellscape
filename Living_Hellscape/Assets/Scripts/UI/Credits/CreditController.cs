@@ -19,6 +19,7 @@ public class CreditController : MonoBehaviour
     float halfHeight;
 
     bool wantsToSkip;
+    bool isSkip;
 
     private void Awake()
     {
@@ -80,7 +81,7 @@ public class CreditController : MonoBehaviour
             yield return null;
         }
 
-        if (SceneController.Instance)
+        if (SceneController.Instance && !isSkip)
         {
             SceneController.Instance.LoadMainMenuScene();
         }
@@ -98,6 +99,7 @@ public class CreditController : MonoBehaviour
             {
                 if (SceneController.Instance)
                 {
+                    isSkip = true;
                     SceneController.Instance.LoadMainMenuScene();
                 }
             }
