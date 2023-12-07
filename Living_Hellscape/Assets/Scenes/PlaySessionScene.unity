@@ -2454,7 +2454,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55a9ee386401ac642aa4bd5673e0e006, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentRoomOverrideIndex: -1
+  currentRoomOverrideIndex: 29
 --- !u!4 &1984906010
 Transform:
   m_ObjectHideFlags: 0

@@ -9,6 +9,9 @@ public class CreditController : MonoBehaviour
     float speed = 20f;
 
     [SerializeField]
+    float lingerTime = 5f;
+
+    [SerializeField]
     RectTransform topTarget, botTarget;
 
     RectTransform thisTrans;
@@ -51,7 +54,8 @@ public class CreditController : MonoBehaviour
     IEnumerator ProcessCredits()
     {
         Vector3 endPos = topTarget.position + new Vector3(0f, halfHeight);
-        
+
+        float lingerTimer = lingerTime;
 
         while (true)
         {
@@ -62,6 +66,17 @@ public class CreditController : MonoBehaviour
                 break;
             }
 
+            yield return null;
+        }
+
+        while (true)
+        {
+            lingerTimer -= Time.deltaTime;
+
+            if (lingerTimer < 0)
+            {
+                break;
+            }
             yield return null;
         }
 

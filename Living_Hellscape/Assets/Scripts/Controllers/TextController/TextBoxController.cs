@@ -28,6 +28,7 @@ public class TextBoxController : MonoBehaviour
 
     private float timeSinceLastChar = 0;
     private float timeSinceLastBlink = 0;
+    private bool ignoreInput = false;
 
 
     private UserInput userInput;
@@ -53,6 +54,7 @@ public class TextBoxController : MonoBehaviour
             kill = false;
             end = false;
             textRevealed = false;
+            ignoreInput = true;
             processNewBox();
         }
     }
@@ -192,6 +194,10 @@ public class TextBoxController : MonoBehaviour
             {
                 return;
             }
+            if (userInput.secondaryAction == ButtonState.Off)
+            {
+                ignoreInput = false;
+            }
 
             if (kill)
             {
@@ -206,7 +212,7 @@ public class TextBoxController : MonoBehaviour
             if (!textRevealed)
             {
                 revealCharacters();
-                if (userInput.secondaryAction == ButtonState.Release)
+                if (userInput.secondaryAction == ButtonState.Release && !ignoreInput)
                 {
                     currentText.maxVisibleCharacters = totalChars + 1;
                     textRevealed = true;
