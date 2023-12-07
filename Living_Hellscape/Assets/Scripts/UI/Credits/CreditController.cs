@@ -34,8 +34,6 @@ public class CreditController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GetHalfHeight();
-        PositionAtBottom();
         StartCreditsRoll();
     }
 
@@ -46,12 +44,12 @@ public class CreditController : MonoBehaviour
 
     void GetHalfHeight()
     {
-        halfHeight = textBox.preferredHeight / 2f;
+        halfHeight = thisTrans.rect.height / 2f;
     }
 
     void PositionAtBottom()
     {
-        thisTrans.position = botTarget.position + new Vector3(0, -halfHeight);
+        thisTrans.position = new Vector3(0, -halfHeight);
     }
 
     void StartCreditsRoll()
@@ -61,7 +59,13 @@ public class CreditController : MonoBehaviour
 
     IEnumerator ProcessCredits()
     {
-        Vector3 endPos = topTarget.position + new Vector3(0f, halfHeight);
+        yield return null;
+
+        GetHalfHeight();
+        PositionAtBottom();
+
+        Vector3 endPos = new Vector3(0f, halfHeight);
+
 
         while (true)
         {
@@ -84,7 +88,7 @@ public class CreditController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
         if (!VignetteController.Instance.isActiveAndEnabled)
         {
             var input = InputController.GetUserInput();

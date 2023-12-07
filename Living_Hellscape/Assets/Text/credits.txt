@@ -1,17 +1,70 @@
--- CREDITS --
+In Memory of
 
-foo bar foo bar
-foo bar foo bar
+Our Sanity
 
-foo bar foo bar
-foo bar foo bar
+Team Lead
 
-foo bar foo bar
-foo bar foo bar
+Andy Esper
 
-foo bar foo bar
-foo bar foo bar
+Tech Leads
 
-foo bar foo bar
+Dan Brown
+Jeff Bartman
 
---THE END--
+Art
+
+Andy Esper
+Dan Brown
+
+Character Designers
+
+Dan Brown
+
+Sprite Designers
+
+Dan Brown
+Andy Esper
+
+Setting Designers
+
+Andy Esper
+
+Story Designers
+
+Andy Esper
+
+Music
+
+Greg Gindin
+
+SFX
+
+Greg Gindin
+
+
+Main Programers
+
+Jeff Bartman
+Greg Gindin
+
+Animators
+
+Dan Brown
+
+Text
+
+Greg Gindin
+
+Damage Control
+
+Jeff Bartman
+
+Special Thanks
+
+Jeff Bartman
+
+For making most of this game possible
+
+Jing Bai
+
+For allowing this to happen
