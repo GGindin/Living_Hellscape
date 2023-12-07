@@ -28,8 +28,6 @@ public class TextBoxController : MonoBehaviour
 
     private float timeSinceLastChar = 0;
     private float timeSinceLastBlink = 0;
-    private float timeSinceLastInput = 0;
-    private float timeAtLastExit = 0;
 
 
     private UserInput userInput;
@@ -45,7 +43,7 @@ public class TextBoxController : MonoBehaviour
 
     public void OpenTextBox(string newText)
     {
-        if (!gameObject.activeSelf && (timeAtLastExit + reentryDelay) < Time.realtimeSinceStartup)
+        if (!gameObject.activeSelf)
         {
             gameObject.SetActive(true);
             buffer = newText;
@@ -91,7 +89,6 @@ public class TextBoxController : MonoBehaviour
     {
         //currentText.textDisplay.enable = false;
         currentText.maxVisibleCharacters = 0;
-        timeSinceLastInput = 0;
         currentText.text = "";
         currentText.ForceMeshUpdate();
         currentVisibleChars = 0;
@@ -180,7 +177,6 @@ public class TextBoxController : MonoBehaviour
         currentText.text = "";
         buffer = "";
         setImmediate = false;
-        timeAtLastExit = Time.realtimeSinceStartup;
     }
 
 
@@ -210,30 +206,20 @@ public class TextBoxController : MonoBehaviour
             if (!textRevealed)
             {
                 revealCharacters();
-                if (timeSinceLastInput >= inputDelay && userInput.secondaryAction == ButtonState.Down)
+                if (userInput.secondaryAction == ButtonState.Release)
                 {
                     currentText.maxVisibleCharacters = totalChars + 1;
                     textRevealed = true;
-                    timeSinceLastInput = 0;
                 }
             }
-            else if (!end && userInput.secondaryAction == ButtonState.Down)
+            else if (!end && userInput.secondaryAction == ButtonState.Release)
             {
-                if (timeSinceLastInput >= inputDelay)
-                {
                     processNewBox();
-                    timeSinceLastInput = 0;
-                }
             }
-            else if (end && userInput.secondaryAction == ButtonState.Down)
+            else if (end && userInput.secondaryAction == ButtonState.Release)
             {
-                if (timeSinceLastInput >= inputDelay)
-                {
-                    kill = true;
-                    timeSinceLastInput = 0;
-                }
+                kill = true;
             }
-            timeSinceLastInput += Time.deltaTime;
             if (textRevealed)
             {
                 timeSinceLastBlink += Time.deltaTime;
