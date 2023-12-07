@@ -15,8 +15,6 @@ public class EndGameItem : Item
 
     IEnumerator DisplayEndText()
     {
-        yield return new WaitForSeconds(.5f);
-
         TextBoxController.instance.OpenTextBox(endGameText);
 
         while (true)

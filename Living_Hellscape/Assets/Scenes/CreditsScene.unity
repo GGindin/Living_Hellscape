@@ -311,7 +311,6 @@ GameObject:
   - component: {fileID: 296764269}
   - component: {fileID: 296764268}
   - component: {fileID: 296764270}
-  - component: {fileID: 296764271}
   m_Layer: 5
   m_Name: Credits
   m_TagString: Untagged
@@ -335,8 +334,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 0}
+  m_AnchoredPosition: {x: -0.000011444, y: -59.73473}
+  m_SizeDelta: {x: 320, y: 1090.5305}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &296764268
 MonoBehaviour:
@@ -358,20 +357,16 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '--CREDITS--
-
-
-    THESE ARE TESTS
-
-
-    THE TEXT HERE IS SET FROM A TEXT
-    ASSET
-
-
-    THANK YOU VERY MUCH
-
-
-    --THE END--'
+  m_text: "--Credits--\n\n--In Memory of--\n\nOur Sanity\r\n\n--Team Lead--\r\n\r\nAndy
+    Esper\r\n\r\n--Tech Leads--\r\n\r\nDan Brown\r\nJeff Bartman\r\n\n--Art--\n\r\nAndy
+    Esper\r\nDan Brown\r\n\r\n--Character Designers--\r\n\r\nDan Brown\r\n\r\n--Sprite
+    Designers--\r\n\r\nDan Brown\r\nAndy Esper\r\n\r\n--Setting Designers--\r\n\r\nAndy
+    Esper\r\n\r\n--Story Designers--\r\n\r\nAndy Esper\r\n\r\n--Music--\r\n\r\nGreg
+    Gindin\r\n\r\n--SFX--\r\n\r\nGreg Gindin\r\n\r\n\r--Main Programers--\r\n\r\nJeff
+    Bartman\r\nGreg Gindin\r\n\r\n--Animators--\r\n\r\nDan Brown\r\n\r\n--Text--\r\n\r\nGreg
+    Gindin\r\n\r\n--Damage Control--\r\n\r\nJeff Bartman\r\n\r\n--Special Thanks--\r\n\r\nJeff
+    Bartman\r\n\r\nFor making most of this game possible\r\n\r\nJing Bai\r\n\r\nFor
+    allowing this to happen\r\n\n--THE END--\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a9943dca1922eaf438f42051456fbb0d, type: 2}
   m_sharedMaterial: {fileID: 4869055860976819915, guid: a9943dca1922eaf438f42051456fbb0d, type: 2}
@@ -398,8 +393,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 14
-  m_fontSizeBase: 14
+  m_fontSize: 13
+  m_fontSizeBase: 13
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -460,25 +455,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98d25f6139e7c724b970e6fbf4c86883, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 50
-  textBox: {fileID: 296764268}
-  text: {fileID: 4900000, guid: 6a417e594aef2594eb30f5951ef88cc3, type: 3}
+  speed: 25
   topTarget: {fileID: 722255101}
   botTarget: {fileID: 1255294087}
---- !u!114 &296764271
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 296764266}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_HorizontalFit: 0
-  m_VerticalFit: 2
 --- !u!1 &607820998
 GameObject:
   m_ObjectHideFlags: 0

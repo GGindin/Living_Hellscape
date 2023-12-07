@@ -9,12 +9,6 @@ public class CreditController : MonoBehaviour
     float speed = 20f;
 
     [SerializeField]
-    TextMeshProUGUI textBox;
-
-    [SerializeField]
-    TextAsset text;
-
-    [SerializeField]
     RectTransform topTarget, botTarget;
 
     RectTransform thisTrans;
@@ -26,30 +20,27 @@ public class CreditController : MonoBehaviour
     private void Awake()
     {
         thisTrans = GetComponent<RectTransform>();
-
-        SetText();
-
     }
 
     // Start is called before the first frame update
     void Start()
     {
+        GetHalfHeight();
+        PositionAtBottom();
         StartCreditsRoll();
-    }
-
-    void SetText()
-    {
-        textBox.text = text.text;
     }
 
     void GetHalfHeight()
     {
-        halfHeight = thisTrans.rect.height / 2f;
+        var corns = new Vector3[4];
+        thisTrans.GetWorldCorners(corns);
+
+        halfHeight = Mathf.Abs(corns[0].y - corns[1].y) / 2f;
     }
 
     void PositionAtBottom()
     {
-        thisTrans.position = new Vector3(0, -halfHeight);
+        thisTrans.position = botTarget.position + new Vector3(0, -halfHeight);
     }
 
     void StartCreditsRoll()
@@ -59,13 +50,8 @@ public class CreditController : MonoBehaviour
 
     IEnumerator ProcessCredits()
     {
-        yield return null;
-
-        GetHalfHeight();
-        PositionAtBottom();
-
-        Vector3 endPos = new Vector3(0f, halfHeight);
-
+        Vector3 endPos = topTarget.position + new Vector3(0f, halfHeight);
+        
 
         while (true)
         {
