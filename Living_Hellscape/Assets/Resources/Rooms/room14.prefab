@@ -1811,6 +1811,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 360145526303600769}
     m_Modifications:
+    - target: {fileID: 2346461975997069924, guid: ab59170e7f56a544e87b339d33723527, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
       propertyPath: m_RootOrder
       value: 34
@@ -1825,7 +1829,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 2346461975997069926, guid: ab59170e7f56a544e87b339d33723527, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1861,7 +1865,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2346461975997069931, guid: ab59170e7f56a544e87b339d33723527, type: 3}
       propertyPath: signText
-      value: 'The evil energy has left this pentagram. '
+      value: The evil energy has left this pentagram.
       objectReference: {fileID: 0}
     - target: {fileID: 2346461975997069931, guid: ab59170e7f56a544e87b339d33723527, type: 3}
       propertyPath: mustDefeatEnemies

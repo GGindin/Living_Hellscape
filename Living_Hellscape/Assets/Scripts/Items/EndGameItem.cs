@@ -28,6 +28,6 @@ public class EndGameItem : Item
 
         GameStateController.Instance.CurrentRoomIndex = 0;
 
-        GameController.Instance.EndPlaySession(true);
+        GameController.Instance.RollCredits();
     }
 }
