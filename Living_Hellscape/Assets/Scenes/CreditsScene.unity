@@ -2156,7 +2156,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 25
-  lingerTime: 5
+  lingerTimeEnd: 5
+  lingerTimeBeg: 2
   topTarget: {fileID: 722255101}
   botTarget: {fileID: 1255294087}
 --- !u!1 &300975289
