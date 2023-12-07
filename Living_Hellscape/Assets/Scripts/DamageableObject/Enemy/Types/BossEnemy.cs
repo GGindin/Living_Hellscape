@@ -275,13 +275,13 @@ public class BossEnemy : EnemyController
             {
                 TextBoxController.instance.OpenTextBoxWithCallBack(exitText, () =>
                 {
-                    AudioController.Instance.StartCoroutine(AudioController.Instance.SetMusic("HopefulHarmony", 2f));
+                    AudioController.Instance.StartCoroutine(AudioController.Instance.SetMusic(RoomController.Instance.ActiveRoom.musicTrackName, 2f));
                 });
                 
             }
             else
             {
-                AudioController.Instance.StartCoroutine(AudioController.Instance.SetMusic("HopefulHarmony", 2f));
+                AudioController.Instance.StartCoroutine(AudioController.Instance.SetMusic(RoomController.Instance.ActiveRoom.musicTrackName, 2f));
             }
         }
 

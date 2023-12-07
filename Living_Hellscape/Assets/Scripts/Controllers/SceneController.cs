@@ -165,7 +165,7 @@ public class SceneController : MonoBehaviour
         sceneControllerSceneCamera.gameObject.SetActive(false);
 
         VignetteController.Instance.EndVignette();
-        StartCoroutine(AudioController.Instance.SetMusic("MansionAtmosphere", VignetteController.Instance.Duration));
+        StartCoroutine(AudioController.Instance.SetMusic("HopefulHarmony", VignetteController.Instance.Duration));
         yield return new WaitForSeconds(VignetteController.Instance.Duration);
     }
 
