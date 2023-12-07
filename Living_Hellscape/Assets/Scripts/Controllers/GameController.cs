@@ -75,6 +75,30 @@ public class GameController : MonoBehaviour
 
     }
 
+    public void RollCredits()
+    {
+        SaveGame();
+
+        //tell all controllers to save data
+        //then init scene change through scene controller to go to main menu
+        //for now we just quit or swap scenes
+        SetPause(false);
+        stopUpdates = true;
+
+        if (!SceneController.Instance)
+        {
+#if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+#else
+                Application.Quit();
+#endif
+        }
+        else
+        {
+            SceneController.Instance.LoadCreditsScene();
+        }
+    }
+
     public void ReloadPlaySession()
     {
         //is only called on death so do not save

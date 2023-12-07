@@ -83,7 +83,10 @@ public class HoldableObject : InteractableObject
         var shadowEndPos = shadowStartPos + (direction * throwDistance);
         shadow.transform.position = shadowStartPos;
 
-        var hitResult = Physics2D.Raycast(playerPos, direction, throwDistance, geometryLayer);
+        ContactFilter2D contactFilter = new ContactFilter2D();
+        contactFilter.useTriggers = false;
+
+        var hitResult = Physics2D.Raycast(playerPos, direction, throwDistance, geometryLayer, 0);
         if(hitResult)
         {
             end = hitResult.point;
