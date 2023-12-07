@@ -132,6 +132,8 @@ public class GameController : MonoBehaviour
         SetPause(false);
         SetStopUpdates(true);
 
+        SaveGame();
+
         yield return StartCoroutine(VignetteController.Instance.ProcessVignette());
         GameStorageController.Instance.DeleteAllTempData();
         RoomController.Instance.ReloadSpawnRoomsTempData();
