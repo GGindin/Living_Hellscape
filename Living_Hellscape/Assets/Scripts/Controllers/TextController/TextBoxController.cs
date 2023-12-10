@@ -90,6 +90,7 @@ public class TextBoxController : MonoBehaviour
     private void processNewBox()
     {
         //currentText.textDisplay.enable = false;
+        blinkArrow.gameObject.SetActive(false);
         currentText.maxVisibleCharacters = 0;
         currentText.text = "";
         currentText.ForceMeshUpdate();
