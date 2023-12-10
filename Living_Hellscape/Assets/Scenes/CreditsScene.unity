@@ -1974,16 +1974,16 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "--Credits--\n\n\n\n\n\n\n\n\n\n\n\n\n\n--In Memory of--\n\n\nOur Sanity\r\n\n\n\n\n\n\n\n\n\n\n\n--Team
-    Lead--\r\n\r\n\nAndrew Esper\r\n\r\n\n\n\n\n--Tech Leads--\r\n\r\n\nDan Brown\r\nJeff
-    Bartman\r\n\n\n\n\n\n\r--Main Programmers--\r\n\r\n\nJeff Bartman\r\nGregory
-    Gindin\r\n\n\n\n\n\n--Damage Control--\r\n\r\n\nJeff Bartman\r\n\n\n\n\n\n\n\n\n\n--Art--\n\r\n\nAndrew
-    Esper\r\nDan Brown\r\n\r\n\n\n\n\n--Character Designers--\r\n\r\n\nDan Brown\r\n\r\n\n\n\n\n--Sprite
-    Designers--\r\n\r\n\nDan Brown\r\nAndrew Esper\r\n\r\n\n\n\n\n--Setting Designers--\r\n\r\n\nAndrew
-    Esper\r\n\n\n\n\n\n--Animators--\r\n\r\n\nDan Brown\r\n\r\n\n\n\n\n--Story Designers--\r\n\r\n\nAndrew
-    Esper\r\n\r\n\n\n\n\n--Text--\r\n\r\n\nGregory Gindin\r\n\n\n\n\n\n\n\n\n\n--Music--\r\n\r\n\nGregory
-    Gindin\r\n\r\n\n\n\n\n--SFX--\r\n\r\n\nGregory Gindin\r\n\r\n\n\n\n\n\n\n--Special
-    Thanks--\r\n\r\n\nJeff Bartman\r\n\r\n\nFor making most of this game possible\r\n\r\n\n\n\n\nJing
-    Bai\r\n\r\n\nFor allowing this to happen\r\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n--THE
+    Lead--\r\n\r\n\nAndrew Esper\r\n\r\n\n\n\n\n\n--Tech Lead--\r\n\r\n\nJeff Bartman\r\n\n\n\n\n\n\r--Main
+    Programmers--\r\n\r\n\nJeff Bartman\r\nGregory Gindin\r\n\n\n\n\n\n--Damage Control--\r\n\r\n\nJeff
+    Bartman\r\n\n\n\n\n\n\n\n\n\n--Art--\n\r\n\nAndrew Esper\r\nDan Brown\r\n\r\n\n\n\n\n--Character
+    Designers--\r\n\r\n\nDan Brown\r\n\r\n\n\n\n\n--Sprite Designers--\r\n\r\n\nDan
+    Brown\r\nAndrew Esper\r\n\r\n\n\n\n\n--Setting Designers--\r\n\r\n\nAndrew Esper\r\n\n\n\n\n\n--Animators--\r\n\r\n\nDan
+    Brown\r\n\r\n\n\n\n\n--Story Designers--\r\n\r\n\nAndrew Esper\r\n\r\n\n\n\n\n--Text--\r\n\r\n\nGregory
+    Gindin\r\n\n\n\n\n\n\n\n\n\n--Music--\r\n\r\n\nGregory Gindin\r\n\r\n\n\n\n\n--SFX--\r\n\r\n\nGregory
+    Gindin\r\n\r\n\n\n\n\n\n\n--Special Thanks--\r\n\r\n\nJeff Bartman\r\n\r\n\nFor
+    making most of this game possible\r\n\r\n\n\n\n\nJing Bai\r\n\r\n\nFor allowing
+    this to happen\r\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n--THE
     END--\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a9943dca1922eaf438f42051456fbb0d, type: 2}
